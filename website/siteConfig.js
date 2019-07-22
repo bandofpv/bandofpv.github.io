@@ -37,10 +37,10 @@ const siteConfig = {
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
-  headerLinks: [
+    headerLinks: [
+    {page: 'help', label: 'About Me'},
     {doc: 'doc1', label: 'Projects'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
+    {doc: 'doc4', label: 'Tutorials'},
     {blog: true, label: 'Blog'},
   ],
 
@@ -73,7 +73,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Andrew Bernas`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
