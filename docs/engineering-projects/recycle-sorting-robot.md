@@ -25,7 +25,7 @@ WIP!!!
 
 ### Video
 
-VIDEO!!!
+[![final milestone video](assets/recycle-sorting-robot-final-milestone-video.png)](https://www.youtube.com/watch?v=n1w2irt5mIk)
 
 ### Documentation
 
