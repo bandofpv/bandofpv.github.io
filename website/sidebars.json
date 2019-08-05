@@ -1,28 +1,23 @@
 {
   "projects": {
     "In Progress": ["doc1"],
-      "Engineering Projects": [
-	  "engineering-projects/recycle-sorting-robot",
-	  {
-	      "type": "subcategory",
-	      "label": "RC Airplanes",
-	      "ids": [
-		  "engineering-projects/rc-airplanes/ft-explorer"
-	      ]
-	  },
-	  {
-	     "type": "subcategory",
-	     "label": "Drones",
-	     "ids": [
-		 "engineering-projects/qav-r",
-		 "engineering-projects/rotor-riot-cl1"
-	     ]
-	 }
-      ],
+    "Robots": [
+	  "robots/recycle-sorting-robot"
+    ],
+    "Drones": [
+	  "drones/qav-r",
+	  "drones/rotor-riot-cl1"
+    ],
+    "RC Airplanes": [
+	  "rc-airplanes/ft-explorer"
+    ],
     "Conservation Service Projects": ["doc3"]
   },
     
   "tutorials": {
-    "First Category": ["doc4", "doc5"]
+      "Tutorials": [
+	  "doc4",
+	  "doc5"
+      ]
   }
 }

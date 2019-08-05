@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'Andrew Bernas', // Title for your website.
-  tagline: 'Project Portfolio',
+  tagline: 'Projects and Tutorials',
   url: 'https://your-docusaurus-test-site.com', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -38,10 +38,11 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
-    {page: 'help', label: 'About Me'},
+    {page: 'about-me', label: 'About Me'},
     {doc: 'doc1', label: 'Projects'},
     {doc: 'doc4', label: 'Tutorials'},
-    {blog: true, label: 'Blog'},
+    {href: "https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg", label: 'Youtube'},
+    {href: "https://github.com/bandofpv", label: 'GitHub'}, 
   ],
 
   // If you have users set above, you add it here:
@@ -89,12 +90,12 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/undraw_online.svg',
-  twitterImage: 'img/undraw_tweetstorm.svg',
+  ogImage: 'img/favicon.ico',
+  twitterImage: 'img/favicon.ico',
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
-  // docsSideNavCollapsible: true,
+  docsSideNavCollapsible: true,
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,

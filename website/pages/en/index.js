@@ -29,17 +29,11 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Logo = props => (
-      <div className="projectLogo">
-        <img src={props.img_src} alt="Project Logo" />
-      </div>
-    );
-
     const ProjectTitle = () => (
-      <h2 className="projectTitle">
+      <h1 className="projectTitle">
         {siteConfig.title}
         <small>{siteConfig.tagline}</small>
-      </h2>
+      </h1>
     );
 
     const PromoSection = props => (
@@ -60,13 +54,12 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html')}>Example Link</Button>
-            <Button href={docUrl('doc2.html')}>Example Link 2</Button>
+            <Button href={docUrl('doc1.html')}>Projects</Button>
+            <Button href={docUrl('doc4.html')}>Tutorials</Button>
+            <Button href="https://github.com/bandofpv">GitHub</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -81,7 +74,6 @@ class Index extends React.Component {
 
     const Block = props => (
       <Container
-        padding={['bottom', 'top']}
         id={props.id}
         background={props.background}>
         <GridBlock
@@ -92,17 +84,8 @@ class Index extends React.Component {
       </Container>
     );
 
-    const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
-      </div>
-    );
-
     const TryOut = () => (
-      <Block id="try">
+      <Block id="try" background="light">
         {[
           {
             content:
@@ -117,92 +100,74 @@ class Index extends React.Component {
       </Block>
     );
 
-    const Description = () => (
-      <Block background="dark">
+      const Description = () => (
+      <Block layout="twoColumn">
         {[
           {
-            content:
-              'This is another description of how this project is useful',
-            image: `${baseUrl}img/undraw_note_list.svg`,
-            imageAlign: 'right',
+            content: 'This is another description of how this project is useful fkldaj fklajd  fkdajf lkajsdfj flkadsj fks',
             title: 'Description',
           },
+	  {
+	    image: `${baseUrl}img/GitHub.png`,
+            imageAlign: 'right',
+	  }
         ]}
       </Block>
     );
 
     const LearnHow = () => (
-      <Block background="light">
+      <Block>
         {[
           {
-            content:
-              'Each new Docusaurus project has **randomly-generated** theme colors.',
-            image: `${baseUrl}img/undraw_youtube_tutorial.svg`,
-            imageAlign: 'right',
-            title: 'Randomly Generated Theme Colors',
+            content:'Visit my [About Me Page](about-me.html)',
+            image: `${baseUrl}img/about-me-page.png`,
+            imageAlign: 'bottom',
+	    imageLink: `${baseUrl}about-me.html`,
+            title: 'About Me',
           },
         ]}
       </Block>
     );
 
     const Features = () => (
-      <Block layout="fourColumn">
+      <Block layout="twoColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/undraw_react.svg`,
-            imageAlign: 'top',
-            title: 'Feature One',
+            image: `${baseUrl}img/in-progress.png`,
+            imageAlign: 'bottom',
+            title: `[In Progress](${baseUrl}docs/doc1.html)`,
+	    imageLink: `${baseUrl}docs/doc1.html`,
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/undraw_operating_system.svg`,
-            imageAlign: 'top',
-            title: 'Feature Two',
+            image: `${baseUrl}img/robot.png`,
+            imageAlign: 'bottom',
+            title: `[Robots](${baseUrl}docs/robots/recycle-sorting-robot.html)`,
+	    imageLink: `${baseUrl}docs/robots/recycle-sorting-robot.html`,
+          },
+	  {
+            image: `${baseUrl}img/drone.png`,
+            imageAlign: 'bottom',
+            title: `[Drones](${baseUrl}docs/drones/qav-r.html)`,
+	    imageLink: `${baseUrl}docs/drones/qav-r.html`,
+          },
+	  {
+            image: `${baseUrl}img/rc-airplane.png`,
+            imageAlign: 'bottom',
+            title: `[RC Airplanes](${baseUrl}docs/rc-airplanes/ft-explorer.html)`,
+	    imageLink: `${baseUrl}docs/rc-airplanes/ft-explorer.html`,
           },
         ]}
       </Block>
     );
-
-    const Showcase = () => {
-      if ((siteConfig.users || []).length === 0) {
-        return null;
-      }
-
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ));
-
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
-
-      return (
-        <div className="productShowcaseSection paddingBottom">
-          <h2>Who is Using This?</h2>
-          <p>This project is used by all these people</p>
-          <div className="logos">{showcase}</div>
-          <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
-              More {siteConfig.title} Users
-            </a>
-          </div>
-        </div>
-      );
-    };
 
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
           <LearnHow />
           <TryOut />
           <Description />
-          <Showcase />
         </div>
       </div>
     );
