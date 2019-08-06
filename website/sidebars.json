@@ -14,13 +14,18 @@
     "RC Airplanes": [
 	  "rc-airplanes/ft-explorer"
     ],
-    "Conservation Service Projects": ["doc3"]
+    "Conservation Service Projects": [
+	  "conservation-service-projects/invasive-species-control"
+    ]
   },
     
   "tutorials": {
       "Tutorials": [
-	  "doc4",
-	  "doc5"
+	  "tutorials/ft-explorer-vtol-tutorial",
+	  "tutorials/scratch-build-ft-plane-tutorial",
+	  "tutorials/multirotor-beginner-series-tutorial",
+	  "tutorials/qav-ulx-tutorial",
+	  "tutorials/qav-r-tutorial"
       ]
   }
 }

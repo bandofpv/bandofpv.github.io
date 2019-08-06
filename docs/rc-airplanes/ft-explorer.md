@@ -64,6 +64,8 @@ Recommended Servos: (2 – 4) 9 gram servos
 
 * x1 - [Velcro Tape](https://www.amazon.com/VELCRO-Brand-Industrial-Strength-Superior/dp/B00114LOMM/ref=sr_1_1_sspa?keywords=velcro&qid=1563836688&s=gateway&sr=8-1-spons&th=1)
 
+* x1 - [Rubber Bands](https://www.amazon.com/Alliance-26339-Advantage-Contains-Approx/dp/B008X09PGO/ref=sr_1_5?gclid=EAIaIQobChMIs5i279zt4wIVVRx9Ch1lagjREAAYAiAAEgKcK_D_BwE&hvadid=174255625898&hvdev=c&hvlocphy=9031971&hvnetw=g&hvpos=1t2&hvqmt=e&hvrand=9585746456564511481&hvtargid=kwd-90756301&hydadcr=24663_9649017&keywords=rubber+bands&qid=1565076670&s=gateway&sr=8-5)
+
 * x1 - Barbecue Skewers
 
 ## Electronics
