@@ -1,6 +1,9 @@
 {
   "projects": {
-    "In Progress": ["doc1"],
+      "In Progress": [
+	  "in-progress/lockheed-vega",
+	  "in-progress/sar-drone"
+    ],
     "Robots": [
 	  "robots/recycle-sorting-robot"
     ],

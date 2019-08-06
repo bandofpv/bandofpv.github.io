@@ -20,7 +20,7 @@ VIDEO!!!
 
 Picture of FPV Nose!!!
 
-## FT Explorer Specs.
+## Specifications
 
 Weight Without Battery: 1.08 lbs (493 g)
 
@@ -78,8 +78,6 @@ Recommended Servos: (2 – 4) 9 gram servos
 
 * x1 - [30CM Servo Lead Extention (JR) 26AWG(10pcs/bag)](https://hobbyking.com/en_us/30cm-servo-lead-extention-jr-26awg-10pcs-bag.html)
 
-* x1 - [Spektrum AR610 6-Channel DSMX Aircraft Receiver](https://www.amazon.com/Spektrum-AR610-6-Channel-Aircraft-Receiver/dp/B00CPNABYU)
-
 * x1 - [DX6i 6-Channel DSMX® Transmitter](https://www.horizonhobby.com/dx6i-6-channel-dsmx-reg%3B-transmitter-spmr6630)
 
 ## FPV Nose Parts
@@ -95,3 +93,5 @@ Recommended Servos: (2 – 4) 9 gram servos
 ## Tools
 
 * x1 - [Flite Test Crafty Kit](https://store.flitetest.com/flite-test-crafty-kit-flt-5010/p791877)
+
+* x1 - [Pliers](https://www.amazon.com/Tools-VISE-GRIP-Pliers-6-Inch-2078216/dp/B000A0OW2M?ref_=Oct_BSellerC_553314_1&pf_rd_p=192c0672-a4fc-5e22-b935-349dd71711e1&pf_rd_s=merchandised-search-6&pf_rd_t=101&pf_rd_i=553314&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=2M4HQBG3AXGM6CT25QDS&pf_rd_r=2M4HQBG3AXGM6CT25QDS&pf_rd_p=192c0672-a4fc-5e22-b935-349dd71711e1)

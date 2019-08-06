@@ -39,7 +39,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
     {page: 'about-me', label: 'About Me'},
-    {doc: 'doc1', label: 'Projects'},
+    {doc: 'in-progress/lockheed-vega', label: 'Projects'},
     {doc: 'doc4', label: 'Tutorials'},
     {href: "https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg", label: 'Youtube'},
     {href: "https://github.com/bandofpv", label: 'GitHub'}, 
