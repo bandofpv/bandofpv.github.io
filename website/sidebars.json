@@ -5,7 +5,8 @@
 	  "in-progress/sar-drone"
     ],
     "Robots": [
-	  "robots/recycle-sorting-robot"
+	  "robots/recycle-sorting-robot",
+	  "robots/vacuum-robot"
     ],
     "Drones": [
 	  "drones/qav-r",

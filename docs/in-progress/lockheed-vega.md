@@ -4,7 +4,9 @@ title: Lockheed Vega
 sidebar_label: Lockheed Vega
 ---
 
-[Forum Page](https://forum.flitetest.com/index.php?threads/swappable-lockheed-vega-scratch-build.57538/#post-490118)
+December 2018 - Present
+
+**[Forum Page](https://forum.flitetest.com/index.php?threads/swappable-lockheed-vega-scratch-build.57538/#post-490118)**
 
 ## Introduction
 

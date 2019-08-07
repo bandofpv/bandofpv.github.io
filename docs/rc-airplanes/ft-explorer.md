@@ -4,6 +4,8 @@ title: FT Explorer
 sidebar_label: FT Explorer
 ---
 
+November 2017
+
 ## Introduction
 
 This plane was built for long range gliding and FPV (First Person View) flying. I get around 20 minutes of flight time with or with out FPV. I also built an FPV swappable nose that is compatible with any plane that uses the explorer core.

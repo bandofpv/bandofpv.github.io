@@ -1,0 +1,27 @@
+---
+id: vacuum-robot
+title: Autonomous Vacuum Robot
+sidebar_label: Autonomous Vacuum Robot
+---
+
+June 2017 - July 2017
+
+**[Notebook](assets/robots/vacuum-robot/notebook.pdf)**
+
+**[GitHub Repository](https://github.com/bandofpv/Vacuum_Robot)**
+
+## Introduction
+
+I have built a vacuum robot. This is a fun DIY project to work on during the summer. It’s an autonomous robot that will avoid walls and drop-offs. The robot will also help you understand how the arduino works. This is a super useful robot if you don’t like vacuuming the floor. Just lay it down and let it clean!
+
+![vacuum robot](assets/robots/vacuum-robot/vacuum-robot-picture.jpg)
+
+## Final Milestone
+
+### Video
+
+
+
+### Documentation
+
+I completed my final milestone for my vacuum robot. In the end, it vacuums the house for you! besides sucking up dirt and hair, it can avoid walls, stairs, and chairs. It has a 30 minute battery life and will let you know when the battery is low and needs a recharge. Some of the new features that were not shown in the video was the bluetooth capability. I added a little bluetooth module so I can wirelessly control the robot using my phone or computer. For the phone, I created a simple app that can move the robot forwards, right, left, and backwards. It also added a  voice recognition capability so you can tell it to clean and move around. Finally, there is the cleaning button where you can start and stop the robot from cleaning your house. To control it from your computer, you can just use the arrow keys and press “c” on the keyboard to start cleaning! One challenge that I faced would be connecting the bluetooth to my phone or computer. I never used bluetooth low energy before and never created code for a bluetooth module. With a little research, I was able to get it up and running.

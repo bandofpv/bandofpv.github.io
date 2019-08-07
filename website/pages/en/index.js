@@ -57,8 +57,8 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('doc1.html')}>Projects</Button>
-            <Button href={docUrl('doc4.html')}>Tutorials</Button>
+            <Button href={docUrl('in-progress/lockheed-vega.html')}>Projects</Button>
+            <Button href={docUrl('tutorials/ft-explorer-vtol-tutorial.html')}>Tutorials</Button>
             <Button href="https://github.com/bandofpv">GitHub</Button>
           </PromoSection>
         </div>
@@ -85,31 +85,32 @@ class Index extends React.Component {
     );
 
     const TryOut = () => (
-      <Block id="try" background="light">
-        {[
-          {
-            content:
-              'To make your landing page more attractive, use illustrations! Check out ' +
-              '[**unDraw**](https://undraw.co/) which provides you with customizable illustrations which are free to use. ' +
-              'The illustrations you see on this page are from unDraw.',
-            image: `${baseUrl}img/undraw_code_review.svg`,
+      <Block id="try" layout="twoColumn">
+         {[
+	  {
+	    image: `${baseUrl}img/youtube-icon.png`,
             imageAlign: 'left',
-            title: 'Wonderful SVG Illustrations',
-          },
+	    imageLink: 'https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg',
+	  },
+          {
+            content: 'Checkout my ' + '[Youtube Channel](https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg)' + ' where you can find my demo videos and video tutorials!',
+            title: 'Youtube Channel',
+          }
         ]}
       </Block>
     );
 
-      const Description = () => (
+    const Description = () => (
       <Block layout="twoColumn">
         {[
           {
-            content: 'This is another description of how this project is useful fkldaj fklajd  fkdajf lkajsdfj flkadsj fks',
-            title: 'Description',
+              content: 'Feel free to checkout my ' + '[GitHub Page](https://github.com/bandofpv)' + ' where you can find the code and resources used for all my projects!',
+            title: 'GitHub',
           },
 	  {
 	    image: `${baseUrl}img/GitHub.png`,
             imageAlign: 'right',
+	    imageLink: 'https://github.com/bandofpv',
 	  }
         ]}
       </Block>
