@@ -22,11 +22,12 @@
     
   "tutorials": {
       "Tutorials": [
-	  "tutorials/ft-explorer-vtol-tutorial",
-	  "tutorials/scratch-build-ft-plane-tutorial",
-	  "tutorials/multirotor-beginner-series-tutorial",
-	  "tutorials/qav-ulx-tutorial",
-	  "tutorials/qav-r-tutorial"
+        "tutorials/reading-eye-for-the-blind",
+	    "tutorials/ft-explorer-vtol-tutorial",
+	    "tutorials/scratch-build-ft-plane-tutorial",
+	    "tutorials/multirotor-beginner-series-tutorial",
+	    "tutorials/qav-ulx-tutorial",
+	    "tutorials/qav-r-tutorial"
       ]
   }
 }
