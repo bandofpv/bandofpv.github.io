@@ -189,7 +189,7 @@ Bazel is a build tool just like make and cmake. TF wasn’t made specifically to
 
 ![edge tpu compiler](assets/robots/recycle-sorting-robot/recycle-sorting-robot-first-milestone-7.jpg)
 
-![basic workflow to create a model for hte edge tpu](assets/recycle-sorting-robot/recycle-sorting-robot-first-milestone-8.jpg)
+![workflow](assets/robots/recycle-sorting-robot/workflow.jpg)
 
 Now that I’m done with the model, I can finally test it! Using the edge.tpu.detection.engine I can simply input my re-trained model with the live video feed to get the outputted label, confidence, and bounding box of the object that my model recognizes. This is made super easy thanks to the Edge TPU Python API. With this API, you not only can do object detection but also image classification. 
 

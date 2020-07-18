@@ -23,9 +23,9 @@
   "tutorials": {
       "Tutorials": [
         "tutorials/reading-eye-for-the-blind",
-	    "tutorials/ft-explorer-vtol-tutorial",
+	    "tutorials/ft-explorer-vtol",
 	    "tutorials/scratch-build-ft-plane-tutorial",
-	    "tutorials/multirotor-beginner-series-tutorial",
+	    "tutorials/multirotor-beginner-series",
 	    "tutorials/qav-ulx-tutorial",
 	    "tutorials/qav-r-tutorial"
       ]

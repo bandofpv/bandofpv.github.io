@@ -136,8 +136,8 @@ class Index extends React.Component {
           {
             image: `${baseUrl}img/in-progress.png`,
             imageAlign: 'bottom',
-            title: `[In Progress](${baseUrl}docs/doc1.html)`,
-	    imageLink: `${baseUrl}docs/doc1.html`,
+            title: `[In Progress](${baseUrl}docs/in-progress/lockheed-vega.html)`,
+	    imageLink: `${baseUrl}docs/in-progress/lockheed-vega.html`,
           },
           {
             image: `${baseUrl}img/robot.png`,
