@@ -23,6 +23,7 @@
   "tutorials": {
       "Tutorials": [
         "tutorials/reading-eye-for-the-blind",
+        "tutorials/recycle-sorting-robot",
 	    "tutorials/ft-explorer-vtol",
 	    "tutorials/scratch-build-ft-plane-tutorial",
 	    "tutorials/multirotor-beginner-series",

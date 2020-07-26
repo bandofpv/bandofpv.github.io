@@ -12,11 +12,13 @@ December 2018 - Present
 
 This plane is designed after the popular Lockheed Vega that was flow by Amelia Earheat. She made two aviation records with her red 5B Vega, being the first woman to solo across the Atlantic and fly nonstop across the United States.
 
+Currently, I still plan to publish a build video as well as a more polished flight video. 
+
 ![amelia earheart's lockheed vega](assets/in-progress/lockheed-vega/lockheed-vega-amelia-earhart.jpg)
 
 ## Video
 
-WIP
+[![demo](assets/in-progress/lockheed-vega/demo.jpg)](https://www.youtube.com/watch?v=GPNp3jSjrzM)
 
 ## Prototype Pictures
 
@@ -28,11 +30,35 @@ WIP
 
 ## Specifications
 
-WIP
+Weight Without Battery: WIP
+
+Center of Gravity: WIP
+
+Control Surface Throws: 12˚ deflection - Expo 30%
+
+Wingspan: 41 inches (1041.4 mm)
+
+Recommended Motor: 1000 kV Park 425
+
+Recommended Prop: 10 x 4.7 slow fly
+
+Recommended ESC: 30 amp minimum
+
+Recommended battery: 2200 mAh 3S
+
+Recommended Servos: (x4) 9 gram 
 
 ## Plans
 
-[Lockheed Vega Plans](assets/in-progress/lockheed-vega/lockheed-vega-prototype-plans.pdf)
+[Page 1](https://ftforumx2.s3.amazonaws.com/2020/07/316068_987f3179f3db1847fcb8c77fefc5c8ae.pdf)
+
+[Page 2](https://ftforumx2.s3.amazonaws.com/2020/07/316069_1989159290b8fe9b69443c179f03c988.pdf)
+
+[Page 3](https://ftforumx2.s3.amazonaws.com/2020/07/316070_04f0a476a964c8ff0a99e6095574f6d3.pdf)
+
+[Page 4](https://ftforumx2.s3.amazonaws.com/2020/07/316071_e5518e11d4e41a5af2f3e3fef71394a8.pdf)
+
+[Page 5](https://ftforumx2.s3.amazonaws.com/2020/07/316072_5749ccda8807b6b979cf4e09f2baf9d9.pdf)
 
 ## Airplane Parts
 

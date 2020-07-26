@@ -41,6 +41,7 @@ const siteConfig = {
     {page: 'about-me', label: 'About Me'},
     {doc: 'in-progress/lockheed-vega', label: 'Projects'},
     {doc: 'tutorials/reading-eye-for-the-blind', label: 'Tutorials'},
+    {page: 'gallery', label: 'Test'},
     {href: "https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg", label: 'Youtube'},
     {href: "https://github.com/bandofpv", label: 'GitHub'}, 
   ],

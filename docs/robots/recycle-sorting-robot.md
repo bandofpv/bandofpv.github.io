@@ -1,7 +1,7 @@
 ---
 id: recycle-sorting-robot
 title: Recycle Sorting Robot With Machine Learning & Robotic Arm
-sidebar_label: Recycle Sorting Robot With Machine Learning & Robotic Arm
+sidebar_label: Recycle Sorting Robot
 ---
 
 June 2019 - July 2019
