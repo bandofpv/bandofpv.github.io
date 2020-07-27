@@ -56,21 +56,13 @@ function About(props) {
 
             [![Night_Light_AB](img/gallery/Night_Light_AB.jpg)](img/gallery/large/Night_Light_AB.jpg)
 
-            [![1](img/gallery/1.jpg)](img/gallery/large/1.jpg)
-
             [![2](img/gallery/2.jpg)](img/gallery/large/2.jpg)
-
-            [![3](img/gallery/3.jpg)](img/gallery/large/3.jpg)
 
             [![4](img/gallery/4.jpg)](img/gallery/large/4.jpg)
 
             [![Image15](img/gallery/Image15.jpg)](img/gallery/large/Image15.jpg)
 
-            [![Image23](img/gallery/Image23.jpg)](img/gallery/large/Image23.jpg)
-
             [![Image3](img/gallery/Image3.jpg)](img/gallery/large/Image3.jpg)
-
-            [![Line_of_Sight_AB](img/gallery/Line_of_Sight_AB.jpg)](img/gallery/large/Line_of_Sight_AB.jpg)
 
             [![Image9](img/gallery/Image9.jpg)](img/gallery/large/Image9.jpg)
 
@@ -83,8 +75,6 @@ function About(props) {
             [![night](img/gallery/night.jpg)](img/gallery/large/night.jpg)
 
             [![sunset](img/gallery/sunset.jpg)](img/gallery/large/sunset.jpg)
-
-            [![Circle_of_Life_AB](img/gallery/Circle_of_Life_AB.jpg)](img/gallery/large/Circle_of_Life_AB.jpg)
 
             [![Jet_Bound_AB](img/gallery/Jet_Bound_AB.jpg)](img/gallery/large/Jet_Bound_AB.jpg)
 
