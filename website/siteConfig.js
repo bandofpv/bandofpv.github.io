@@ -42,6 +42,7 @@ const siteConfig = {
     {doc: 'in-progress/lockheed-vega', label: 'Projects'},
     {doc: 'tutorials/reading-eye-for-the-blind', label: 'Tutorials'},
     {page: 'gallery', label: 'Photography'},
+    {href: "https://docs.google.com/document/d/1LFxUAfSPOlgA_n8IyqA-czno1DAukBsEL19MBdMJNjs/edit?usp=sharing", label: 'Resume'},
     {href: "https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg", label: 'Youtube'},
     {href: "https://github.com/bandofpv", label: 'GitHub'}, 
   ],

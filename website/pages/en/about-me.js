@@ -21,7 +21,7 @@ function About(props) {
 
   const aboutMe = [
     {
-      content: 'Andrew loves to build anything he thinks of. It could be drones whizzing through the air or a recycle sorting robot that uses object detection and machine learning to distinguish between different recycle materials. Andrew is also an Eagle Scout from Troop 57 where he earned up to 55 merit badges. He continues to be active in the outdoors, whether it’s casual hikes or annual backpacking trips with his scouts or family. Andrew also has many other hobbies. These include being an advanced open water certified diver and competing for his school’s varsity tennis team. During the school year, he continues to serve his community by being an active board member in his school’s Youth Community Service - Interact Club. ',
+      content: 'Andrew loves to build anything he thinks of. It could be drones whizzing through the air or a recycle sorting robot that uses object detection and machine learning to distinguish between different recycle materials. Andrew is also an Eagle Scout from Troop 57 where he earned up to 55 merit badges. He continues to be active in the outdoors, whether it’s casual hikes or annual backpacking trips with his scouts or family. Andrew also has many other hobbies. These include being an advanced open water certified diver and competing for his school’s varsity tennis team. During the school year, he continues to serve his community by being an active board member in his school’s Youth Community Service - Interact Club.',
     },
     {
 	image: `${baseUrl}img/about-me.png`,

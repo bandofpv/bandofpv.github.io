@@ -6,7 +6,8 @@
     ],
     "Robots": [
 	  "robots/recycle-sorting-robot",
-	  "robots/vacuum-robot"
+	  "robots/vacuum-robot",
+      "robots/bi-pedal-robot"
     ],
     "Drones": [
 	  "drones/qav-r",
