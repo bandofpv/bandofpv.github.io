@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Recycle Sorting Robot With Google Coral · Andrew Bernas</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="June 2019 - July 2019"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Recycle Sorting Robot With Google Coral · Andrew Bernas"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bandofpv.github.io/"/><meta property="og:description" content="June 2019 - July 2019"/><meta property="og:image" content="https://bandofpv.github.io/img/favicon.ico"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bandofpv.github.io/img/favicon.ico"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Andrew Bernas"/><h2 class="headerTitleWithLogo">Andrew Bernas</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/about-me" target="_self">About Me</a></li><li class=""><a href="/docs/in-progress/lockheed-vega" target="_self">Projects</a></li><li class="siteNavGroupActive"><a href="/docs/tutorials/reading-eye-for-the-blind" target="_self">Tutorials</a></li><li class=""><a href="/gallery" target="_self">Photography</a></li><li class=""><a href="https://docs.google.com/document/d/1LFxUAfSPOlgA_n8IyqA-czno1DAukBsEL19MBdMJNjs/edit?usp=sharing" target="_self">Resume</a></li><li class=""><a href="https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg" target="_self">Youtube</a></li><li class=""><a href="https://github.com/bandofpv" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Tutorials</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Tutorials<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/tutorials/reading-eye-for-the-blind">Reading Eye For The Blind With NVIDIA Jetson Nano</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/tutorials/recycle-sorting-robot">Recycle Sorting Robot With Google Coral</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/ft-explorer-vtol">FT Explorer VTOL</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/multirotor-beginner-series">Multirotor Beginner Series</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/qav-r-tutorial">QAV-R Build</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Recycle Sorting Robot With Google Coral</h1></header><article><div><span><p>June 2019 - July 2019</p>
+<p><a href="https://www.hackster.io/bandofpv/recycle-sorting-robot-with-google-coral-b52a92">Hackster.io Tutorial</a></p>
+<h2><a class="anchor" aria-hidden="true" id="story"></a><a href="#story" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Story:</h2>
+<p>Did you know that the average contamination rate in communities and businesses range up to 25%? That means one out of every four pieces of recycling you throw away doesn’t get recycled. This is caused due to human error in recycling centers. Traditionally, workers will sort through trash into different bins depending on the material. Humans are bound to make errors and end up not sorting the trash properly, leading to contamination. As pollution and climate change become even more significant in today’s society, recycling takes a huge part in protecting our planet. By using robots to sort through trash, contamination rates will decrease drastically, not to mention a lot cheaper and more sustainable. To solve this, I created a recycle sorting robot that uses machine learning to sort between different recycle materials.</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/story.jpg" alt="story"></p>
+<h2><a class="anchor" aria-hidden="true" id="demo-video"></a><a href="#demo-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo Video:</h2>
+<p><a href="https://www.youtube.com/watch?v=dlkS8SC_BcU"><img src="/docs/assets/tutorials/reading-eye-for-the-blind/demo.jpg" alt="demo"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="code"></a><a href="#code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code:</h2>
+<p>Please clone my GitHub <a href="https://github.com/bandofpv/Trash_Sorting_Robot">repository</a> to follow along with this tutorial.</p>
+<h2><a class="anchor" aria-hidden="true" id="hardware-components"></a><a href="#hardware-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hardware components:</h2>
+<p><a href="https://www.hackster.io/products/buy/66729?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Raspberry Pi RPI 4 4GB</a> x1</p>
+<p><a href="https://www.hackster.io/products/buy/66740?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Google Coral USB Accelerator</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66728?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Arduino Uno R3</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66739?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Raspberry Pi Camera Module V2</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66730?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">5V 2A DC Wall Power Supply</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66746?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">DC 12V Power Supply</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66731?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">SG90 9g Micro Servos 4pcs.</a>  ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66733?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">M3 x 0.5mm Stainless Steel Self-Lock Nylon Hex Lock Nut 100pcs.</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66736?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">M3x20 Button Head Titanium Screws 10pcs.</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66735?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">MG996R Metal Gear Torque Analog Servo Motor 4cs.</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66738?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Samsung 32GB Select Memory Card</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66741?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">Adafruit Flex Cable for Raspberry Pi Camera - 1 meter</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66742?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">M2 Male Female Brass Spacer Standoff Screw Nut Assortment Kit</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66743?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">60mm 12V Fan</a> ×1</p>
+<p><a href="https://www.hackster.io/products/buy/66745?s=BAhJIhMzMDkzNjEsUHJvamVjdAY6BkVG%0A">6.69&quot;x 5.12&quot; x 2.95&quot; Project Box</a> ×1</p>
+<h2><a class="anchor" aria-hidden="true" id="3d-files"></a><a href="#3d-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3D Files:</h2>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041948/gripper_YuCH4I8eHE.STL">Gripper</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041946/grip_link_MY3KNbqjIe.STL">Grip Link</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041947/gripper_base_HEB0qlzgc8.STL">Gripper Base</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041942/gear_01_zjRwdtekXi.STL">Gear 1</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041944/gear_02_xUpxMSdjJl.STL">Gear 2</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041955/waist_ekOk4GnHFc.STL">Waist</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041935/arm_01_VX0u0eXCiP.STL">Arm 1</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041936/arm_02_kJH30OMcWB.STL">Arm 1</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041937/arm_03_d3oVRlk7qT.STL">Arm 3</a></p>
+<p><a href="https://hacksterio.s3.amazonaws.com/uploads/attachments/1041939/base_jjW668gqgL.STL">Base</a></p>
+<h2><a class="anchor" aria-hidden="true" id="step-1-getting-the-data"></a><a href="#step-1-getting-the-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1, Getting the Data:</h2>
+<p>To train the object detection model that can detect and recognize different recycling materials, I used the <a href="https://github.com/garythung/trashnet">trashnet</a> dataset which includes 2527 images:</p>
+<ul>
+<li>501 glass</li>
+<li>594 paper</li>
+<li>403 cardboard</li>
+<li>482 plastic</li>
+<li>410 metal</li>
+<li>137 trash</li>
+</ul>
+<p>Here is an example image:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step1.jpg" alt="step1"></p>
+<p>This dataset is very small to train an object detection model. There are only about 100 images of trash that are too little to train an accurate model, so I decided to leave it out.</p>
+<p>You can use this google drive <a href="https://drive.google.com/drive/folders/0B3P9oO5A3RvSUW9qTG11Ul83TEE">folder</a> to download the dataset. Make sure to download the dataset-resized.zip file. It contains the set of images that are already resized to a smaller size to allow for faster training. If you would like to resize the raw images to your own liking, feel free to download the dataset-original.zip file.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-2-labeling-the-images"></a><a href="#step-2-labeling-the-images" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2, Labeling the Images:</h2>
+<p>Next, we need to label several images of different recycling materials so we can train the object detection model. To do this, I used <a href="https://github.com/tzutalin/labelImg">labelImg</a>, free software that allows you to label object bounding boxes in images.</p>
+<p>Label each image with the proper label. <a href="https://youtu.be/p0nR2YsCY_U">This</a> tutorial shows you how. Make sure to make each bounding box as close to the border of each object to ensure the detection model is as accurate as possible. Save all the .xml files into a folder.</p>
+<p>Here is how to label your images:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step2.jpg" alt="step2"></p>
+<p>This is a very tedious &amp; mind-numbing experience. Thankfully for you, I already labeled all the images for you! You can find it <a href="https://github.com/bandofpv/Trash_Sorting_Robot/tree/master/Tensorflow/Images">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-3-training"></a><a href="#step-3-training" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 3, Training:</h2>
+<p>In terms of training, I decided to use <a href="https://en.wikipedia.org/wiki/Transfer_learning">transfer learning</a> using Tensorflow. This allows us to train a decently accurate model without a large amount of data.</p>
+<p>There are a couple of ways we can do this. We can do it on our local desktop machine on the cloud. Training on our local machine will take a super long time depending on how powerful your computer is and if you have a powerful GPU. This is probably the easiest way in my opinion, but again with the downside of speed.</p>
+<p>There are some key things to note about transfer learning. You need to make sure that the pre-trained model you use for training is compatible with the Coral Edge TPU. You can find compatible models <a href="https://coral.ai/models/">here</a>. I used the MobileNet SSD v2 (COCO) model. Feel free to experiment with others too.</p>
+<p>To train on your local machine, I would recommend following <a href="https://coral.ai/docs/edgetpu/retrain-detection/">Google's</a> tutorial or <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10">EdjeElectronics</a> tutorial if running on Windows 10. Personally, I have tested EdjeElectroncs tutorial and reached success on my desktop. I can not confirm if Google's tutorial will work, but I would be surprised if it doesn't.</p>
+<p>To train in the cloud, you can use AWS or GCP. I found <a href="https://medium.com/tensorflow/training-and-serving-a-realtime-mobile-object-detector-in-30-minutes-with-cloud-tpus-b78971cf1193">this</a> tutorial that you can try. It uses Google's cloud TPU's that can train your object detection model super fast. Feel free to use AWS as well.</p>
+<p>Whether you train on your local machine or in the cloud, you should end up with a trained tensorflow model.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-4-compiling-the-trained-model"></a><a href="#step-4-compiling-the-trained-model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 4, Compiling the Trained Model:</h2>
+<p>In order for your trained model to work with the Coral Edge TPU, you need to compile it.</p>
+<p>Here is a diagram for the workflow:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step4.jpg" alt="step4"></p>
+<p>After training, you need to save it as a frozen graph (.pb file). Then, you need to convert it into a Tensorflow Lite model. Note how it says &quot;Post-training quantization&quot;. If you used the compatible pre-trained models when using transfer learning, you don't need to do this. Take a look at the full documentation on compatibility <a href="https://coral.ai/docs/edgetpu/models-intro/">here</a>.</p>
+<p>With the Tensorflow Lite model, you need to compile it to an Edge TPU model. See details on how to do this <a href="https://coral.ai/docs/edgetpu/models-intro/#compiling">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-5-deploy-the-model"></a><a href="#step-5-deploy-the-model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 5, Deploy the Model:</h2>
+<p>The next step is to set up the Raspberry Pi (RPI) and Edge TPU to run the trained object detection model.</p>
+<p>First, set up the RPI using <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2">this</a> tutorial.</p>
+<p>Next, set up the Edge TPU following <a href="https://coral.ai/docs/accelerator/get-started/">this</a> tutorial.</p>
+<p>Finally, connect the RPI camera module to the raspberry pi.</p>
+<p>You are now ready to test your object detection model!</p>
+<p>If you cloned my <a href="https://github.com/bandofpv/Trash_Sorting_Robot">repository</a> already, you will want to navigate to the RPI directory and run the <a href="https://github.com/bandofpv/Trash_Sorting_Robot/blob/master/RPI/test_detection.py">test_detection.py</a> file:</p>
+<pre><code class="hljs css language-console">python test_detection.py --model recycle_ssd_mobilenet_v2_quantized_300x300_coco_2019_01_03/detect_edgetpu.tflite --labels recycle_ssd_mobilenet_v2_quantized_300x300_coco_2019_01_03/labels.txt
+</code></pre>
+<p>A small window should pop up and if you put a plastic water bottle or other recycle material, it should detect it like this:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step5.jpg" alt="step5"></p>
+<p>Press the letter &quot;q&quot; on your keyboard to end the program.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-6-build-the-robotic-arm"></a><a href="#step-6-build-the-robotic-arm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 6, Build the Robotic Arm:</h2>
+<p>The robotic arm is a 3D printed arm I found <a href="https://howtomechatronics.com/tutorials/arduino/diy-arduino-robot-arm-with-smartphone-control/">here</a>. Just follow the tutorial on setting it up.</p>
+<p>This is how my arm turned out:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step6.jpg" alt="step6"></p>
+<p>Make sure you connect the servo pins to the according to Arduino I/O pins in my code. Connect the servos from bottom to top of the arm in this order: 3, 11, 10, 9, 6, 5. Not connecting it in this order will cause the arm to move the wrong servo!</p>
+<p>Test to see it working by navigating to the Arduino directory and running the <a href="https://github.com/bandofpv/Trash_Sorting_Robot/blob/master/Arduino/basicMovement/basicMovement.ino">basicMovement.ino</a> file. This will simply grab an object that you place in front of the arm and drop it behind.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-7-connecting-the-rpi-and-robotic-arm"></a><a href="#step-7-connecting-the-rpi-and-robotic-arm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 7, Connecting the RPI and Robotic arm:</h2>
+<p>We first need to mount the camera module to the bottom of the claw:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step7.jpg" alt="step7"></p>
+<p>Try to align the camera as straight as possible to minimize errors in grabbing the recognized recycle material. You will need to use the long camera module ribbon cable as seen in the materials list.</p>
+<p>Next, you need to upload the <a href="https://github.com/bandofpv/Trash_Sorting_Robot/blob/master/Arduino/roboticArm/roboticArm.ino">roboticArm.ino</a> file to the Arduino board.</p>
+<p>Finally, we just have to connect a USB cable between the RPI's USB port and the Arduino's USB port. This will allow them to communicate via serial. Follow this <a href="https://www.sunfounder.com/blog/rpi-ard/">tutorial</a> on how to set this up.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-8-final-touches"></a><a href="#step-8-final-touches" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 8, Final Touches:</h2>
+<p>This step is completely optional but I like to put all my components into a nice little project box.</p>
+<p>Here is how it looks:</p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step8-1.jpg" alt="step8-1"></p>
+<p><img src="/docs/assets/tutorials/recycle-sorting-robot/step8-2.jpg" alt="step8-2"></p>
+<p>You can find the project box on the materials list. I just drilled some holes and used brass standoffs to mount the electronics. I also mounted 4 cooling fans to keep a constant airflow through the RPI and TPU when hot.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-9-running"></a><a href="#step-9-running" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 9, Running:</h2>
+<p>You are now ready to power on both the robotic arm and RPI! On the RPI, you can simply run the <a href="https://github.com/bandofpv/Trash_Sorting_Robot/blob/master/RPI/recycle_detection.py">recycle_detection.py</a> file. This will open a window and the robotic arm will start running just like in the demo video! Press the letter &quot;q&quot; on your keyboard to end the program.</p>
+<p>Feel free to play around with the code and have fun!</p>
+<h2><a class="anchor" aria-hidden="true" id="future-work"></a><a href="#future-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Future Work:</h2>
+<p>I hope to use R.O.S. to control the robotic arm with more precise movements. This will enable more accurate picking up of objects.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/tutorials/reading-eye-for-the-blind"><span class="arrow-prev">← </span><span>Reading Eye For The Blind With NVIDIA Jetson Nano</span></a><a class="docs-next button" href="/docs/tutorials/ft-explorer-vtol"><span>FT Explorer VTOL</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#story">Story:</a></li><li><a href="#demo-video">Demo Video:</a></li><li><a href="#code">Code:</a></li><li><a href="#hardware-components">Hardware components:</a></li><li><a href="#3d-files">3D Files:</a></li><li><a href="#step-1-getting-the-data">Step 1, Getting the Data:</a></li><li><a href="#step-2-labeling-the-images">Step 2, Labeling the Images:</a></li><li><a href="#step-3-training">Step 3, Training:</a></li><li><a href="#step-4-compiling-the-trained-model">Step 4, Compiling the Trained Model:</a></li><li><a href="#step-5-deploy-the-model">Step 5, Deploy the Model:</a></li><li><a href="#step-6-build-the-robotic-arm">Step 6, Build the Robotic Arm:</a></li><li><a href="#step-7-connecting-the-rpi-and-robotic-arm">Step 7, Connecting the RPI and Robotic arm:</a></li><li><a href="#step-8-final-touches">Step 8, Final Touches:</a></li><li><a href="#step-9-running">Step 9, Running:</a></li><li><a href="#future-work">Future Work:</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Andrew Bernas" width="66" height="58"/></a><div><h5>Projects</h5><a href="/docs/doc1.html">In Progress</a><a href="/docs/engineering-projects/recycle-sorting-robot.html">Engineering Projects</a><a href="/docs/doc3.html">Conservation Service Projects</a></div><div><h5>Tutorials</h5><a href="/doc3.html">Work in progress!!!</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/bandofpv" target="_blank" rel="noreferrer noopener">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/bandofpv" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Andrew Bernas</section></footer></div></body></html>
