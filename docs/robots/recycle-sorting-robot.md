@@ -10,6 +10,8 @@ June 2019 - July 2019
 
 **[GitHub Repository](https://github.com/bandofpv/Trash_Sorting_Robot)**
 
+**Note:** Check out my tutorial for this robot **[HERE](https://bandofpv.github.io/docs/tutorials/recycle-sorting-robot)**.
+
 ## Introduction
 
 Did you know that the average contamination rate in communities and businesses range up to 25%? That means one out of every four pieces of recycling you throw away doesn’t get recycled. This is caused due to human error in recycling centers. Traditionally, workers will sort through trash into different bins depending on the material. Humans are bound to make errors and end up not sorting the trash properly, leading to contamination. As pollution and climate change become even more significant in today’s society, recycling takes a huge part in protecting our planet. By using robots to sort through trash, contamination rates will decrease drastically, not to mention a lot cheaper and more sustainable. To solve this, I created a recycle sorting robot that uses machine learning to sort between different recycle materials.

@@ -38,7 +38,7 @@ I completed my final milestone for my vacuum robot. In the end, it vacuums the h
 
 ### Video
 
-[![third milestone video](assets/robots/vacuum-robot/vacuum-robot-third-milestone-video.png)](https://www.youtube.com/watch?v=ThmuH1fsDFk)
+[![third milestone video](assets/robots/vacuum-robot/vacuum-robot-third-milestone-video.jpg)](https://www.youtube.com/watch?v=ThmuH1fsDFk)
 
 ### Documentation
 
@@ -46,18 +46,38 @@ Today I finished my third milestone. I am finally done with my autonomous vacuum
 
 ### Pictures
 
-![vacuum robot third  milestone inside view](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-1.jpg)
+![vacuum robot third milestone inside view](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-1.jpg)
 
-![vacuum robot third  milestone schematic](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-2.jpg)
+![vacuum robot third milestone schematic](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-2.jpg)
 
 ## Second Milestone
 
 ### Video
 
+[![second milestone video](assets/robots/vacuum-robot/vr-video.jpg)](https://www.youtube.com/watch?v=CJ6rm8M8DqI)
+
 ### Documentation
+
+Today I accomplished my second milestone. I added a couple of new electronics to my vacuum robot such as 4 more IR (Infrared) sensors, a bumper, a fan, and a voltage divider. My milestone was more focused on the fan and voltage divider(a circuit that will let me safely measure the voltage from the battery using the arduino). I still need to program the wall, ground, and bumper sensors for my third milestone. The fan will be used for sucking in the dirt and dust on the floor. It’s connected into a digital pin(a pin on the arduino inputing or outputting 0 volts and 5 volts) so I can turn it on and off. I also added a removable container to hold in the dirt it sucks. The container also has a filter, similar to the ones in vacuum bags. All the dirt and dust will be caught by the filter and the air will escape through the back. The main purpose of the voltage divider is to decrease the voltage coming into the arduino. Because my Lithium Polymer battery(LiPo) will provide up to 12.6 volts, it will damage the arduino due to the large amount of voltage. The decreased voltage will go into one an analog pin. The arduino will then read the voltage coming from voltage divider and then calculate the real voltage coming from the battery using a formula. I also have a conditional statement turning the fan motor on if the battery is full and turn it off if the battery is low. It’s important to measure the voltage of the battery so you don’t damage it. If the cell voltage of any LiPo (Lithium Polymer) battery goes below 3 volts, then it will be destroyed. This is called over discharging. When you over discharge a battery, it will start to puff like a balloon and when it pops, it becomes a huge fire ball of flames and smoke. Obviously, I don’t want this to happen to my battery so that’s why I made a voltage divider consisting of a 1k resistor(component that resists electric current) and a 2k potentiometer(component that allows me to increase and decrease the resistance of electric current). The potentiometer allows me to calibrate the voltage divider so the arduino gets an accurate reading. To do this, you simply calculate the actual voltage of your battery using a voltmeter. Then write a simple code so you can see the amount of voltage coming from the arduino using the serial monitor. I also had a huge amount of trouble with the IR sensors. After hooking up all the sensors to the arduino, I realized that I ran out of analog pins(pin that inputs and outputs varying data). I only have 6 analog pins and have 6 IR sensors and a voltage divider. So after a couple of hours on the internet I came up with a great idea! I could use the front IR sensors in the digital pins. The problem with using digital pins is that the only values you get from the arduino is HIGH (5 volts) or LOW (0 volts), the IR sensor either detects something or doesn’t. The main reason I used the analog pins for the sensors is because they are distance sensors. You can measure the distance from the sensor and the wall, this is an analog signal. But because the front sensors don’t need to calculate the distance like the wall and ground sensors so it would work perfectly. This would free up 2 more analog pins used for the voltage divider. I had trouble programming it because conditional statements are different due to using the arduino pins. Here is my new code for the vacuum. I added the ability to control the fan motor, measure the voltage of my battery, and avoid obstacles using the IR sensors connected to the digital pins.
 
 ### Pictures
 
-![vacuum robot second  milestone inside view](assets/robots/vacuum-robot/vacuum-robot-second-milestone-picture-1.jpg)
+![vacuum robot second milestone inside view](assets/robots/vacuum-robot/milestone-2_schematic.jpg)
 
-![vacuum robot second  milestone schematic](assets/robots/vacuum-robot/vacuum-robot-second-milestone-picture-2.jpg)
+![vacuum robot second milestone schematic](assets/robots/vacuum-robot/img_6934-3.jpg)
+
+## First Milestone
+
+### Video
+
+[![first milestone video](assets/robots/vacuum-robot/vr-vid-first.jpg)](https://www.youtube.com/watch?v=h9BQUSkQpjo)
+
+### Documentation
+
+Today I completed my first milestone which was to build and program my IR sensors and motors. I connected the l298 dual H-bridge motor driver(part that lets you to change the speed and direction of motors) to the arduino(a programable microcontroller), the 2 motors, battery and the 2 IR sensors. The 1300mAh 3s Lithium Polymer(LiPo) battery will be used to power all the electronics. At full charge, the battery will provide up to 12.6 volts into the motor driver. The 12.6 volts will be used to power up the two metal gear motors. The power from the LiPo battery will also go into a 5 volt step down voltage regulator that will decrease the voltage down to 5 volts. The 5 volts will be used for powering up the two IR(infrared) sensors and the arduino. Then there is the ground that will be connected to all the electronics so the electricity will go through all the components. Now let’s look into the pins on the arduino. Analog pin 0 and 1 will be connected into the two IR sensors. I am also using PWM(Pulse Width Modulation) pins 3, 5, 6, and 9 for the motors. I am using PWM so I can  controll the speed of the motors. The H-bridge has 2 inputs for each motor. This allows you to change the direction of the motor. If you’re confused, you can check out the schematic below. So how does the arduino know what it needs to do? It’s in the code (link). When both sensors detect an object, then the robot will move backwards then turn left. When only the right sensor detects an object the robot will move backwards then turn right. When only the left sensor detects an object the robot will turn right. When both sensors don’t detect an object then the robot will move forwards. This code will help my robot avoid walls and other obstacles. But had some trouble with coding the arduino. Once I finished coding, I found out that my robot wasn’t moving in the correct direction. I thought it was my sensors that wasn’t working. In end, it was the code. I had to debug it for hours to later find out that my motors were traveling the opposite direction then what I expected. When the robot was supposed to go right, it went forwards. So after fixing the motor directions, it worked!
+
+### Pictures
+
+![vacuum robot first milestone inside view](assets/robots/vacuum-robot/motor_and_ir_sensor_schem.jpg)
+
+![vacuum robot first milestone schematic](assets/robots/vacuum-robot/img_6680-1.jpg)

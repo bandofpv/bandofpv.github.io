@@ -1,9 +1,8 @@
 ---
 id: reading-eye-for-the-blind
 title: Reading Eye For The Blind With NVIDIA Jetson Nano
-sidebar_label: Reading Eye For The Blind With NVIDIA Jetson Nano
+sidebar_label: Reading Eye For The Blind
 ---
-
 December 2019 - February 2020
 
 [Hackster.io Tutorial](https://www.hackster.io/bandofpv/reading-eye-for-the-blind-with-nvidia-jetson-nano-8657ed)

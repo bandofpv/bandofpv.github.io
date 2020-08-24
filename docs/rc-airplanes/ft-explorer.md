@@ -1,7 +1,7 @@
 ---
-id: ft-explorer
-title: FT Explorer
-sidebar_label: FT Explorer
+id: explorer
+title: Explorer
+sidebar_label: Explorer
 ---
 
 November 2017
@@ -12,13 +12,15 @@ This plane was built for long range gliding and FPV (First Person View) flying. 
 
 ## Video
 
-VIDEO!!!
+[![demo](assets/rc-airplanes/ft-explorer/demo.jpg)](https://www.youtube.com/watch?v=poedh6mf1UQ)
 
 ## Pictures
 
 ![ft explorer front](assets/rc-airplanes/ft-explorer/ft-explorer-1.jpg)
 
 ![ft explorer back](assets/rc-airplanes/ft-explorer/ft-explorer-2.jpg)
+
+![ft explorer back](assets/rc-airplanes/ft-explorer/ft-explorer-3.jpg)
 
 Picture of FPV Nose!!!
 

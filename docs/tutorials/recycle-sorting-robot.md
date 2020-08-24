@@ -1,7 +1,7 @@
 ---
 id: recycle-sorting-robot
 title: Recycle Sorting Robot With Google Coral
-sidebar_label: Recycle Sorting Robot With Google Coral
+sidebar_label: Recycle Sorting Robot 
 ---
 
 June 2019 - July 2019
@@ -16,7 +16,7 @@ Did you know that the average contamination rate in communities and businesses r
 
 ## Demo Video:
 
-[![demo](assets/tutorials/reading-eye-for-the-blind/demo.jpg)](https://www.youtube.com/watch?v=dlkS8SC_BcU)
+[![demo](assets/tutorials/recycle-sorting-robot/demo.jpg)](https://www.youtube.com/watch?v=dlkS8SC_BcU)
 
 ## Code:
 

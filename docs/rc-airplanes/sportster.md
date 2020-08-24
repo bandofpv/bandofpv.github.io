@@ -1,0 +1,52 @@
+---
+id: sportster
+title: Sportster
+sidebar_label: Sportster
+---
+May 2019
+
+## Introduction
+
+This plane is created for aerobatics. It can flip, barrel roll, and even hover. 
+
+## Pictures
+
+![ft sportster front](assets/rc-airplanes/sportster/sportster-1.jpg)
+
+![ft sportster back](assets/rc-airplanes/sportster/sportster-2.jpg)
+
+## Specifications
+
+Weight Without Battery: 0.95 lbs
+
+Wingspan: 39 Inches (990mm)
+
+Center of Gravity: 2.5 Inches (63mm) from leading edge of wing (Recommended)
+
+Control Surface Throws: 12-16 Degrees
+
+Expo Suggestions: 30%
+
+Recommended Motor: Park 400 Size; 1000kV
+
+Recommended Propellers: 10x4.7
+
+Recommended ESC: 30 Amp
+
+Recommended Battery: 3S 11.1V LiPo 2200mAh
+
+Recommended Servos: ~9 Gram Micro Servos
+
+## Plans
+
+[FT Sportster Plans](assets/rc-airplanes/sportster/plans.pdf)
+
+## Airplane Parts
+
+WIP
+
+## Tools
+
+* x1 - [Flite Test Crafty Kit](https://store.flitetest.com/flite-test-crafty-kit-flt-5010/p791877)
+
+* x1 - [Pliers](https://www.amazon.com/Tools-VISE-GRIP-Pliers-6-Inch-2078216/dp/B000A0OW2M?ref_=Oct_BSellerC_553314_1&pf_rd_p=192c0672-a4fc-5e22-b935-349dd71711e1&pf_rd_s=merchandised-search-6&pf_rd_t=101&pf_rd_i=553314&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=2M4HQBG3AXGM6CT25QDS&pf_rd_r=2M4HQBG3AXGM6CT25QDS&pf_rd_p=192c0672-a4fc-5e22-b935-349dd71711e1)

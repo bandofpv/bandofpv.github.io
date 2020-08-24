@@ -3,6 +3,7 @@ id: ft-explorer-vtol
 title: FT Explorer VTOL 
 sidebar_label: FT Explorer VTOL 
 ---
+August 2018 - September 2019
 
 [Maker Fair Exhibit](https://makerfaire.com/maker/entry/69816/)
 

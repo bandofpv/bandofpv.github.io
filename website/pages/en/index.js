@@ -59,6 +59,7 @@ class HomeSplash extends React.Component {
           <PromoSection>
             <Button href={docUrl('in-progress/lockheed-vega.html')}>Projects</Button>
             <Button href={docUrl('tutorials/reading-eye-for-the-blind.html')}>Tutorials</Button>
+            <Button href="https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg">Youtube</Button>
             <Button href="https://github.com/bandofpv">GitHub</Button>
           </PromoSection>
         </div>
@@ -154,7 +155,7 @@ class Index extends React.Component {
 	  {
             image: `${baseUrl}img/rc-airplane.png`,
             imageAlign: 'bottom',
-            title: `[RC Airplanes](${baseUrl}docs/rc-airplanes/ft-explorer.html)`,
+            title: `[RC Airplanes](${baseUrl}docs/rc-airplanes/explorer.html)`,
 	    imageLink: `${baseUrl}docs/rc-airplanes/ft-explorer.html`,
           },
         ]}
