@@ -28,7 +28,7 @@ const siteConfig = {
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
-  cname: 'www.andrewbernas.com',
+  cname: 'www.andrewbernas.comwb',
 
   // Used for publishing and more
   projectName: 'bandofpv.github.io',
@@ -53,7 +53,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
+  footerIcon: 'img/FullSizeRender.jpg',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */

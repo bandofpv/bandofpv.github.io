@@ -85,52 +85,6 @@ class Index extends React.Component {
       </Container>
     );
 
-    const TryOut = () => (
-      <Block id="try" layout="twoColumn">
-         {[
-	  {
-	    image: `${baseUrl}img/youtube-icon.png`,
-            imageAlign: 'left',
-	    imageLink: 'https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg',
-	  },
-          {
-            content: 'Checkout my ' + '[Youtube Channel](https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg)' + ' where you can find my demo videos and video tutorials!',
-            title: 'Youtube Channel',
-          }
-        ]}
-      </Block>
-    );
-
-    const Description = () => (
-      <Block layout="twoColumn">
-        {[
-          {
-              content: 'Feel free to checkout my ' + '[GitHub Page](https://github.com/bandofpv)' + ' where you can find the code and resources used for all my projects!',
-            title: 'GitHub',
-          },
-	  {
-	    image: `${baseUrl}img/GitHub.png`,
-            imageAlign: 'right',
-	    imageLink: 'https://github.com/bandofpv',
-	  }
-        ]}
-      </Block>
-    );
-
-    const LearnHow = () => (
-      <Block>
-        {[
-          {
-            content:'Visit my [About Me Page](about-me.html)',
-            image: `${baseUrl}img/about-me-page.png`,
-            imageAlign: 'bottom',
-	    imageLink: `${baseUrl}about-me.html`,
-            title: 'About Me',
-          },
-        ]}
-      </Block>
-    );
-
     const Features = () => (
       <Block layout="twoColumn">
         {[
@@ -167,9 +121,6 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
-          <LearnHow />
-          <TryOut />
-          <Description />
         </div>
       </div>
     );
