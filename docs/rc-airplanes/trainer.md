@@ -8,7 +8,7 @@ May 2017
 
 ## Introduction
 
-This was my first plane that I was able to learn how to fly. The previous Flyer(LINKK) and Nutball(LINK) was too fast for me to learn. This is also the plane I taught my dad how to fly as well. I've built this plane a total of 4 times either to expirement with different airfoils or center of gravities (CG) and also because some crashes are beyond repair. :)
+This was my first plane that I was able to learn how to fly. The previous [Flyer](https://www.andrewbernas.com/docs/rc-airplanes/flyer) and [Nutball](https://www.andrewbernas.com/docs/rc-airplanes/nutball) was too fast for me to learn. This is also the plane I taught my dad how to fly as well. I've built this plane a total of 4 times either to expirement with different airfoils or center of gravities (CG) and also because some crashes are beyond repair. :)
 
 ## Video
 

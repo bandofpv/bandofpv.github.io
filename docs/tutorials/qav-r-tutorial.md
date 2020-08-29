@@ -7,7 +7,7 @@ April 2016
 
 ## Story:
 
-After building my [first drone](https://bandofpv.github.io/docs/drones/diatone), I decided to build something more robust and powerful that can last a lifetime. So I decided to build the QAV-R which was a pretty hot trend in the drone community back then. I also wanted to share my experience and hopefully help other beginners with their own build by creating a build series.
+After building my [first drone](https://andrewbernas.com/docs/drones/diatone), I decided to build something more robust and powerful that can last a lifetime. So I decided to build the QAV-R which was a pretty hot trend in the drone community back then. I also wanted to share my experience and hopefully help other beginners with their own build by creating a build series.
 
 ## Maiden
 

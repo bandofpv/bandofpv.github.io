@@ -7,7 +7,7 @@ August 2018 - November 2018
 
 ## Introduction
 
-This was my most recent race drone build. Its main purpose is my backup quad if I crash my [QAV-R](https://bandofpv.github.io/docs/drones/qav-r). I actually transferred my old electronics from my QAV-R onto this build.
+This was my most recent race drone build. Its main purpose is my backup quad if I crash my [QAV-R](https://andrewbernas.com/docs/drones/qav-r). I actually transferred my old electronics from my QAV-R onto this build.
 
 ![intro Andrew Bernas](assets/drones/cl1/intro.jpg)
 

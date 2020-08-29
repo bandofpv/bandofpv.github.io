@@ -10,7 +10,7 @@ June 2019 - July 2019
 
 **[GitHub Repository](https://github.com/bandofpv/Trash_Sorting_Robot)**
 
-**Note:** Check out my tutorial for this robot **[HERE](https://bandofpv.github.io/docs/tutorials/recycle-sorting-robot)**.
+**Note:** Check out my tutorial for this robot **[HERE](https://andrewbernas.com/docs/tutorials/recycle-sorting-robot)**.
 
 ## Introduction
 

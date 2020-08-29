@@ -22,7 +22,7 @@ Here is a video of me flying it.
 
 ## Pictures
 
-![ft scout front](assets/rc-airplanes/scout/scout-1.jpg)
+![ft scout front Andrew Bernas](assets/rc-airplanes/scout/scout-1.jpg)
 
 ![ft scout front Andrew Bernas](assets/rc-airplanes/scout/scout-2.jpg)
 

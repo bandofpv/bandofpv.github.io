@@ -17,7 +17,7 @@ Here is a video of me flying it.
 
 ## Pictures
 
-![ft se-5 front Andrew Bernas(assets/rc-airplanes/se-5/se-5-1.jpg)
+![ft se-5 front Andrew Bernas](assets/rc-airplanes/se-5/se-5-1.jpg)
 
 ## Specifications
 

@@ -5,7 +5,7 @@ sidebar_label: QAV-R
 ---
 April 2016 - Present
 
-**Note:** You can find the tutorial for this build **[here](https://bandofpv.github.io/docs/tutorials/qav-r-tutorial)**
+**Note:** You can find the tutorial for this build **[here](https://andrewbernas.com/docs/tutorials/qav-r-tutorial)**
 
 ## Introduction
 

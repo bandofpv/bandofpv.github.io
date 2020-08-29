@@ -5,7 +5,7 @@ sidebar_label: Reading Eye For The Blind
 ---
 December 2019 - February 2020
 
-**Note:** check out my tutorial **[here](https://bandofpv.github.io/docs/tutorials/reading-eye-for-the-blind)**
+**Note:** check out my tutorial **[here](https://andrewbernas.com/docs/tutorials/reading-eye-for-the-blind)**
 
 ## Introduction:
 

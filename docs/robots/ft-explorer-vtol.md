@@ -5,7 +5,7 @@ sidebar_label: FT Explorer VTOL
 ---
 August 2018 - September 2019
 
-**Note:** Check out my tutorial **[HERE](https://bandofpv.github.io/docs/tutorials/ft-explorer-vtol)**. 
+**Note:** Check out my tutorial **[HERE](https://andrewbernas.com/docs/tutorials/ft-explorer-vtol)**. 
 
 ## Introduction
 
@@ -15,7 +15,7 @@ After building many remote controlled airplanes and drones, I decided to merge t
 
 Here is a video of the maiden. 
 
-[![maiden](assets/robots/ft-explorer-vtol/maiden.jpg)](https://www.youtube.com/watch?v=eWn1f8fRiag)
+[![maiden Andrew Bernas](assets/robots/ft-explorer-vtol/maiden.jpg)](https://www.youtube.com/watch?v=eWn1f8fRiag)
 
 ## Pictures:
 

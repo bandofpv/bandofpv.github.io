@@ -8,7 +8,7 @@ July 2018 - Present
 
 ## Introduction
 
-This plane is another twin engine aircraft like the [Guinea](https://bandofpv.github.io/docs/rc-airplanes/guinea). This one is built for speed with its sleek airframe. I just don't have enough motors to complete the build. So currently, I only have the airframe complete. 
+This plane is another twin engine aircraft like the [Guinea](https://andrewbernas.com/docs/rc-airplanes/guinea). This one is built for speed with its sleek airframe. I just don't have enough motors to complete the build. So currently, I only have the airframe complete. 
 
 ## Images
 

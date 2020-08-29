@@ -18,7 +18,7 @@ Currently, I still plan to publish a build video as well as a more polished flig
 
 ## Video
 
-[![demo](assets/in-progress/lockheed-vega/demo.jpg)](https://www.youtube.com/watch?v=GPNp3jSjrzM)
+[![demo Andrew Bernas](assets/in-progress/lockheed-vega/demo.jpg)](https://www.youtube.com/watch?v=GPNp3jSjrzM)
 
 ## Prototype Pictures
 

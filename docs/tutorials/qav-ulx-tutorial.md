@@ -7,7 +7,7 @@ October 2016 - December 2016
 
 ## Story:
 
-After building my [qav-r](https://bandofpv.github.io/docs/tutorials/qav-r-tutorial), I wanted to improve my Line of Sight piloting skills. So I decided to build this "basher" quad composed of old parts from my [versacopter](https://bandofpv.github.io/docs/drones/versacopter). That way, I won't be too worried about crashing it if it was brand new. 
+After building my [qav-r](https://andrewbernas.com/docs/tutorials/qav-r-tutorial), I wanted to improve my Line of Sight piloting skills. So I decided to build this "basher" quad composed of old parts from my [versacopter](https://andrewbernas.com/docs/drones/versacopter). That way, I won't be too worried about crashing it if it was brand new. 
 
 ## Maiden:
 
