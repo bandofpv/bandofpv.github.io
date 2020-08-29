@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,17 +8,11 @@
 const React = require('react');
 
 class Footer extends React.Component {
-  docUrl(doc, language) {
+  docUrl(doc) {
     const baseUrl = this.props.config.baseUrl;
     const docsUrl = this.props.config.docsUrl;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
-    return `${baseUrl}${docsPart}${langPart}${doc}`;
-  }
-
-  pageUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? `${language}/` : '') + doc;
+    return `${baseUrl}${docsPart}${doc}`;
   }
 
   render() {
@@ -36,62 +30,50 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5>Projects</h5>
-            <a href={this.docUrl('in-progress/lockheed-vega.html')}>
-              In Progress
+            <h5>Docs</h5>
+            <a href={this.docUrl('doc1.html')}>
+              Getting Started (or other categories)
             </a>
-            <a href={this.docUrl('robots/recycle-sorting-robot.html')}>
-              Robots
+            <a href={this.docUrl('doc2.html')}>Guides (or other categories)</a>
+            <a href={this.docUrl('doc3.html')}>
+              API Reference (or other categories)
             </a>
-            <a href={this.docUrl('drones/qav-r.html')}>
-              Drones
+          </div>
+          <div>
+            <h5>Community</h5>
+            <a href={`${this.props.config.baseUrl}users`}>User Showcase</a>
+            <a
+              href="https://stackoverflow.com/questions/tagged/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Stack Overflow
             </a>
-            <a href={this.docUrl('rc-airplanes/explorer.html')}>
-              RC Airplanes
-            </a>
-            <a href={this.docUrl('conservation-service-projects/fish-and-wildlife-management.html')}>
-              Conservation Service Projects
+            <a href="https://discordapp.com/">Project Chat</a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Twitter
             </a>
           </div>
           <div>
             <h5>More</h5>
-            <a href={this.docUrl('tutorials/reading-eye-for-the-blind.html')}>
-               Tutorials
-            </a>
-            <a href={this.pageUrl('gallery.html')}>
-               Photography
-            </a>
-          </div>
-          <div>
-            <h5>Profile</h5>
-            <a href={this.pageUrl('about-me.html')}>
-               About Me
-            </a>
+            <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
+            <a href="https://github.com/">GitHub</a>
             <a
-              href="https://docs.google.com/document/d/1LFxUAfSPOlgA_n8IyqA-czno1DAukBsEL19MBdMJNjs/edit?usp=sharing"
-              target="_blank"
-              rel="noreferrer noopener">
-              Resume
+              className="github-button"
+              href={this.props.config.repoUrl}
+              data-icon="octicon-star"
+              data-count-href="/facebook/docusaurus/stargazers"
+              data-show-count="true"
+              data-count-aria-label="# stargazers on GitHub"
+              aria-label="Star this project on GitHub">
+              Star
             </a>
-            <a
-              href="https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg"
-              target="_blank"
-              rel="noreferrer noopener">
-              Youtube
-            </a>
-            <a
-	          href="https://github.com/bandofpv"
-	          target="_blank"
-	          rel="noreferrer noopener">
-	          GitHub
-	        </a>
-
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a
-                  href={`https://twitter.com/${
-                    this.props.config.twitterUsername
-                  }`}
+                  href={`https://twitter.com/${this.props.config.twitterUsername}`}
                   className="twitter-follow-button">
                   Follow @{this.props.config.twitterUsername}
                 </a>
@@ -112,6 +94,19 @@ class Footer extends React.Component {
             )}
           </div>
         </section>
+
+        <a
+          href="https://opensource.facebook.com/"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="fbOpenSource">
+          <img
+            src={`${this.props.config.baseUrl}img/oss_logo.png`}
+            alt="Facebook Open Source"
+            width="170"
+            height="45"
+          />
+        </a>
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );
