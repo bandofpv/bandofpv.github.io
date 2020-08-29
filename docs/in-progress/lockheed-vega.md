@@ -14,7 +14,7 @@ This plane is designed after the popular Lockheed Vega that was flow by Amelia E
 
 Currently, I still plan to publish a build video as well as a more polished flight video. 
 
-![amelia earheart's lockheed vega](assets/in-progress/lockheed-vega/lockheed-vega-amelia-earhart.jpg)
+![amelia earheart's lockheed vega Andrew Bernas](assets/in-progress/lockheed-vega/lockheed-vega-amelia-earhart.jpg)
 
 ## Video
 
@@ -22,11 +22,11 @@ Currently, I still plan to publish a build video as well as a more polished flig
 
 ## Prototype Pictures
 
-![lockheed vega prototype picture 1](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-1.jpg)
+![lockheed vega prototype picture 1 Andrew Bernas](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-1.jpg)
 
-![lockheed vega prototype picture 2](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-2.jpg)
+![lockheed vega prototype picture 2 Andrew Bernas](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-2.jpg)
 
-![lockheed vega prototype picture 3](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-3.jpg)
+![lockheed vega prototype picture 3 Andrew Bernas](assets/in-progress/lockheed-vega/lockheed-vega-prototype-picture-3.jpg)
 
 ## Specifications
 

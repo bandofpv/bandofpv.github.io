@@ -11,13 +11,13 @@ April 2016 - Present
 
 This was the second racing drone that I have built. It is a 5" race quad which I continue to upgrade with new parts and software. 
 
-![intro](assets/drones/qav-r/intro.jpg)
+![intro Andrew Bernas](assets/drones/qav-r/intro.jpg)
 
 ## Video
 
 Here is my maiden flight of my first QAV-R build. Please note that all my drone footage on my [Youtube Channel](https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg) is taken with this quad.
 
-[![video](assets/drones/qav-r/video.jpg)](https://www.youtube.com/watch?v=aSrFUe3jUjA)
+[![video Andrew Bernas](assets/drones/qav-r/video.jpg)](https://www.youtube.com/watch?v=aSrFUe3jUjA)
 
 ## Parts
 

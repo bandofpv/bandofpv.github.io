@@ -12,9 +12,9 @@ This was my third airplane build. This is a wing with a motor attached to the ba
 
 ## Pictures
 
-![ft versa wing front](assets/rc-airplanes/versa-wing/versa-wing-1.jpg)
+![ft versa wing front Andrew Bernas](assets/rc-airplanes/versa-wing/versa-wing-1.jpg)
 
-![ft versa wing back](assets/rc-airplanes/versa-wing/versa-wing-2.jpg)
+![ft versa wing back Andrew Bernas](assets/rc-airplanes/versa-wing/versa-wing-2.jpg)
 
 ## Specifications
 

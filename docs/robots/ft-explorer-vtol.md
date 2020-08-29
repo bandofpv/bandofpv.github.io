@@ -19,6 +19,6 @@ Here is a video of the maiden.
 
 ## Pictures:
 
-![ft explorer vtol front](assets/robots/ft-explorer-vtol/ft-explorer-vtol-1.jpg)
+![ft explorer vtol front Andrew Bernas](assets/robots/ft-explorer-vtol/ft-explorer-vtol-1.jpg)
 
-![ft explorer vtol back](assets/robots/ft-explorer-vtol/ft-explorer-vtol-2.jpg)
+![ft explorer vtol back Andrew Bernas](assets/robots/ft-explorer-vtol/ft-explorer-vtol-2.jpg)

@@ -14,7 +14,7 @@ This was my first robot I built after getting inspired by a Make: Magazine. I de
 
 Here is a test video of its dancing capabilities. I also programmed it so it can be controlled via a remote controller (allowing  the user to move it forwards, backwards, turn, and perform dance moves).
 
-[![video](assets/robots/bi-pedal-robot/video.jpg)](https://www.youtube.com/watch?v=wKSRsIeH-PE)
+[![video Andrew Bernas](assets/robots/bi-pedal-robot/video.jpg)](https://www.youtube.com/watch?v=wKSRsIeH-PE)
 
 ## Hardware Parts
 

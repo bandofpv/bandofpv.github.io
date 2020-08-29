@@ -12,11 +12,11 @@ June 2019 - July 2019
 
 Did you know that the average contamination rate in communities and businesses range up to 25%? That means one out of every four pieces of recycling you throw away doesn’t get recycled. This is caused due to human error in recycling centers. Traditionally, workers will sort through trash into different bins depending on the material. Humans are bound to make errors and end up not sorting the trash properly, leading to contamination. As pollution and climate change become even more significant in today’s society, recycling takes a huge part in protecting our planet. By using robots to sort through trash, contamination rates will decrease drastically, not to mention a lot cheaper and more sustainable. To solve this, I created a recycle sorting robot that uses machine learning to sort between different recycle materials.
 
-![story](assets/tutorials/recycle-sorting-robot/story.jpg)
+![story Andrew Bernas](assets/tutorials/recycle-sorting-robot/story.jpg)
 
 ## Demo Video:
 
-[![demo](assets/tutorials/recycle-sorting-robot/demo.jpg)](https://www.youtube.com/watch?v=dlkS8SC_BcU)
+[![demo Andrew Bernas](assets/tutorials/recycle-sorting-robot/demo.jpg)](https://www.youtube.com/watch?v=dlkS8SC_BcU)
 
 ## Code:
 
@@ -91,7 +91,7 @@ To train the object detection model that can detect and recognize different recy
 
 Here is an example image:
 
-![step1](assets/tutorials/recycle-sorting-robot/step1.jpg)
+![step1 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step1.jpg)
 
 This dataset is very small to train an object detection model. There are only about 100 images of trash that are too little to train an accurate model, so I decided to leave it out.
 
@@ -105,7 +105,7 @@ Label each image with the proper label. [This](https://youtu.be/p0nR2YsCY_U) tut
 
 Here is how to label your images:
 
-![step2](assets/tutorials/recycle-sorting-robot/step2.jpg)
+![step2 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step2.jpg)
 
 This is a very tedious & mind-numbing experience. Thankfully for you, I already labeled all the images for you! You can find it [here](https://github.com/bandofpv/Trash_Sorting_Robot/tree/master/Tensorflow/Images).
 
@@ -129,7 +129,7 @@ In order for your trained model to work with the Coral Edge TPU, you need to com
 
 Here is a diagram for the workflow:
 
-![step4](assets/tutorials/recycle-sorting-robot/step4.jpg)
+![step4 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step4.jpg)
 
 After training, you need to save it as a frozen graph (.pb file). Then, you need to convert it into a Tensorflow Lite model. Note how it says "Post-training quantization". If you used the compatible pre-trained models when using transfer learning, you don't need to do this. Take a look at the full documentation on compatibility [here](https://coral.ai/docs/edgetpu/models-intro/).
 
@@ -155,7 +155,7 @@ python test_detection.py --model recycle_ssd_mobilenet_v2_quantized_300x300_coco
 
 A small window should pop up and if you put a plastic water bottle or other recycle material, it should detect it like this:
 
-![step5](assets/tutorials/recycle-sorting-robot/step5.jpg)
+![step5 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step5.jpg)
 
 Press the letter "q" on your keyboard to end the program.
 
@@ -165,7 +165,7 @@ The robotic arm is a 3D printed arm I found [here](https://howtomechatronics.com
 
 This is how my arm turned out:
 
-![step6](assets/tutorials/recycle-sorting-robot/step6.jpg)
+![step6 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step6.jpg)
 
 Make sure you connect the servo pins to the according to Arduino I/O pins in my code. Connect the servos from bottom to top of the arm in this order: 3, 11, 10, 9, 6, 5. Not connecting it in this order will cause the arm to move the wrong servo!
 
@@ -175,7 +175,7 @@ Test to see it working by navigating to the Arduino directory and running the [b
 
 We first need to mount the camera module to the bottom of the claw:
 
-![step7](assets/tutorials/recycle-sorting-robot/step7.jpg)
+![step7 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step7.jpg)
 
 Try to align the camera as straight as possible to minimize errors in grabbing the recognized recycle material. You will need to use the long camera module ribbon cable as seen in the materials list.
 
@@ -189,9 +189,9 @@ This step is completely optional but I like to put all my components into a nice
 
 Here is how it looks:
 
-![step8-1](assets/tutorials/recycle-sorting-robot/step8-1.jpg)
+![step8-1 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step8-1.jpg)
 
-![step8-2](assets/tutorials/recycle-sorting-robot/step8-2.jpg)
+![step8-2 Andrew Bernas](assets/tutorials/recycle-sorting-robot/step8-2.jpg)
 
 You can find the project box on the materials list. I just drilled some holes and used brass standoffs to mount the electronics. I also mounted 4 cooling fans to keep a constant airflow through the RPI and TPU when hot.
 

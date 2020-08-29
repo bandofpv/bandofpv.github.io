@@ -14,13 +14,13 @@ This was my first plane that I was able to learn how to fly. The previous Flyer(
 
 Here is a video of me chasing the Ft Trainer (piloted by my dad).
 
-[![demo](assets/rc-airplanes/trainer/demo.jpg)](https://www.youtube.com/watch?v=4kowm-iJe28)
+[![demo Andrew Bernas](assets/rc-airplanes/trainer/demo.jpg)](https://www.youtube.com/watch?v=4kowm-iJe28)
 
 ## Pictures
 
-![ft trainer front](assets/rc-airplanes/trainer/trainer-1.jpg)
+![ft trainer front Andrew Bernas](assets/rc-airplanes/trainer/trainer-1.jpg)
 
-![ft trainer back](assets/rc-airplanes/trainer/trainer-2.jpg)
+![ft trainer back Andrew Bernas](assets/rc-airplanes/trainer/trainer-2.jpg)
 
 ## Specifications
 

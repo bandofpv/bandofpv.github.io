@@ -11,9 +11,9 @@ This plane is a mini cargo plane. Its very powerful due to its twin motors. This
 
 ## Pictures
 
-![ft guinea front](assets/rc-airplanes/guinea/guinea-1.jpg)
+![ft guinea front Andrew Bernas](assets/rc-airplanes/guinea/guinea-1.jpg)
 
-![ft guinea back](assets/rc-airplanes/guinea/guinea-2.jpg)
+![ft guinea back Andrew Bernas](assets/rc-airplanes/guinea/guinea-2.jpg)
 
 ## Specifications
 

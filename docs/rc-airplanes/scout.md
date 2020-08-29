@@ -14,19 +14,19 @@ Made this plane at Flite Fest 2018 in Ohio. I then crashed it in combat the stri
 
 Here is a video of me flying it in combat!
 
-[![demo-1](assets/rc-airplanes/scout/demo-1.jpg)](https://www.youtube.com/watch?v=GHQCRJQBI8o)
+[![demo-1 Andrew Bernas](assets/rc-airplanes/scout/demo-1.jpg)](https://www.youtube.com/watch?v=GHQCRJQBI8o)
 
 Here is a video of me flying it.
 
-[![demo](assets/rc-airplanes/scout/demo.jpg)](https://www.youtube.com/watch?v=DLmC0bXiDLM)
+[![demo Andrew Bernas](assets/rc-airplanes/scout/demo.jpg)](https://www.youtube.com/watch?v=DLmC0bXiDLM)
 
 ## Pictures
 
 ![ft scout front](assets/rc-airplanes/scout/scout-1.jpg)
 
-![ft scout front](assets/rc-airplanes/scout/scout-2.jpg)
+![ft scout front Andrew Bernas](assets/rc-airplanes/scout/scout-2.jpg)
 
-![ft scout me](assets/rc-airplanes/scout/scout-3.jpg)
+![ft scout me Andrew Bernas](assets/rc-airplanes/scout/scout-3.jpg)
 
 
 ## Specifications

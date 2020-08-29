@@ -11,7 +11,7 @@ This is a model of the DR-1 Triplane. More widely known as the "red barron" in w
 
 ## Pictures
 
-![ft dr1 front](assets/rc-airplanes/dr1/dr1.jpg)
+![ft dr1 front Andrew Bernas](assets/rc-airplanes/dr1/dr1.jpg)
 
 ## Specifications
 

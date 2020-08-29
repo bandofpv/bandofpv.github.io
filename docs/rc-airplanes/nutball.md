@@ -11,7 +11,7 @@ This was my second plane. It doesn't fly like a traditional plane but tends to f
 
 ## Picture
 
-![ft nutball front](assets/rc-airplanes/nutball/nutball.jpg)
+![ft nutball front Andrew Bernas](assets/rc-airplanes/nutball/nutball.jpg)
 
 ## Specifications
 

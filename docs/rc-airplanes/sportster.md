@@ -11,9 +11,9 @@ This plane is created for aerobatics. It can flip, barrel roll, and even hover.
 
 ## Pictures
 
-![ft sportster front](assets/rc-airplanes/sportster/sportster-1.jpg)
+![ft sportster front Andrew Bernas](assets/rc-airplanes/sportster/sportster-1.jpg)
 
-![ft sportster back](assets/rc-airplanes/sportster/sportster-2.jpg)
+![ft sportster back Andrew Bernas](assets/rc-airplanes/sportster/sportster-2.jpg)
 
 ## Specifications
 

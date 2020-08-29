@@ -11,32 +11,32 @@ After building my [qav-r](https://bandofpv.github.io/docs/tutorials/qav-r-tutori
 
 ## Maiden:
 
-[![maiden](assets/tutorials/qav-ulx/demo.jpg)](https://www.youtube.com/watch?v=Fm6doqfCcIw)
+[![maiden Andrew Bernas](assets/tutorials/qav-ulx/demo.jpg)](https://www.youtube.com/watch?v=Fm6doqfCcIw)
 
 ## Introduction:
 
-[![intro](assets/tutorials/qav-ulx/intro.jpg)](https://www.youtube.com/watch?v=lKl8YhR9SaQ)
+[![intro Andrew Bernas](assets/tutorials/qav-ulx/intro.jpg)](https://www.youtube.com/watch?v=lKl8YhR9SaQ)
 
 ## Power Distribution Board:
 
-[![power distribution board](assets/tutorials/qav-ulx/pdb.jpg)](https://www.youtube.com/watch?v=JTRSZ5QnOto)
+[![power distribution board Andrew Bernas](assets/tutorials/qav-ulx/pdb.jpg)](https://www.youtube.com/watch?v=JTRSZ5QnOto)
 
 ## Motors and ESC's:
 
-[![motors and esc's](assets/tutorials/qav-ulx/esc.jpg)](https://www.youtube.com/watch?v=tENdeBgPLWU)
+[![motors and esc's Andrew Bernas](assets/tutorials/qav-ulx/esc.jpg)](https://www.youtube.com/watch?v=tENdeBgPLWU)
 
 ## LED's:
 
-[![led's](assets/tutorials/qav-ulx/leds.jpg)](https://www.youtube.com/watch?v=-9l5HVC7pNo)
+[![led's Andrew Bernas](assets/tutorials/qav-ulx/leds.jpg)](https://www.youtube.com/watch?v=-9l5HVC7pNo)
 
 ## Reciever:
 
-[![reciever](assets/tutorials/qav-ulx/reciever.jpg)](https://www.youtube.com/watch?v=BiYIm9BKT6Q)
+[![reciever Andrew Bernas](assets/tutorials/qav-ulx/reciever.jpg)](https://www.youtube.com/watch?v=BiYIm9BKT6Q)
 
 ## Flight Controller & Taranis:
 
-[![flight controller](assets/tutorials/qav-ulx/flight-controller.jpg)](https://www.youtube.com/watch?v=HzQah-PV_Qc)
+[![flight controller Andrew Bernas](assets/tutorials/qav-ulx/flight-controller.jpg)](https://www.youtube.com/watch?v=HzQah-PV_Qc)
 
 ## Final Setup:
 
-[![final setup](assets/tutorials/qav-ulx/final.jpg)](https://www.youtube.com/watch?v=BfVbkwku-YE)
+[![final setup Andrew Bernas](assets/tutorials/qav-ulx/final.jpg)](https://www.youtube.com/watch?v=BfVbkwku-YE)

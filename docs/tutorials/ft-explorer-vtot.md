@@ -13,7 +13,7 @@ After building many remote controlled airplanes and drones, I decided to merge t
 
 ## Maiden Flight:
 
-[![maiden](assets/tutorials/ft-explorer-vtol/maiden.jpg)](https://www.youtube.com/watch?v=eWn1f8fRiag)
+[![maiden Andrew Bernas](assets/tutorials/ft-explorer-vtol/maiden.jpg)](https://www.youtube.com/watch?v=eWn1f8fRiag)
 
 ## Parts:
 
@@ -51,14 +51,14 @@ After building many remote controlled airplanes and drones, I decided to merge t
 
 ## Build Introduction:
 
-[![intro](assets/tutorials/ft-explorer-vtol/intro.jpg)](https://www.youtube.com/watch?v=HDKnBOYNgUQ)
+[![intro Andrew Bernas](assets/tutorials/ft-explorer-vtol/intro.jpg)](https://www.youtube.com/watch?v=HDKnBOYNgUQ)
 
 ## Build Part 1:
 
-[![build-pt1](assets/tutorials/ft-explorer-vtol/build.jpg)](https://www.youtube.com/watch?v=JN3NZXVM76Q)
+[![build-pt1 Andrew Bernas](assets/tutorials/ft-explorer-vtol/build.jpg)](https://www.youtube.com/watch?v=JN3NZXVM76Q)
 
 ## Build Part 2:
 
-[![build-pt2](assets/tutorials/ft-explorer-vtol/build.jpg)](https://www.youtube.com/watch?v=0vv0P30OUnA)
+[![build-pt2 Andrew Bernas](assets/tutorials/ft-explorer-vtol/build.jpg)](https://www.youtube.com/watch?v=0vv0P30OUnA)
 
 

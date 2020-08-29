@@ -12,9 +12,9 @@ After building my first VTOL(LINK), I decided to challenge myself to design and 
 
 ## Images
 
-![another vtol front](assets/in-progress/another-vtol/another-vtol-1.jpg)
+![another vtol front Andrew Bernas](assets/in-progress/another-vtol/another-vtol-1.jpg)
 
-![another vtol front](assets/in-progress/another-vtol/another-vtol-2.jpg)
+![another vtol front Andrew Bernas](assets/in-progress/another-vtol/another-vtol-2.jpg)
 
 ## 3D Files
 

@@ -13,11 +13,11 @@ This is a model of the SE-5 fighter plane. This was a very popular british aircr
 
 Here is a video of me flying it.
 
-[![demo](assets/rc-airplanes/se-5/demo.jpg)](https://www.youtube.com/watch?v=7rs0aV4w3zU)
+[![demo Andrew Bernas](assets/rc-airplanes/se-5/demo.jpg)](https://www.youtube.com/watch?v=7rs0aV4w3zU)
 
 ## Pictures
 
-![ft se-5 front](assets/rc-airplanes/se-5/se-5-1.jpg)
+![ft se-5 front Andrew Bernas(assets/rc-airplanes/se-5/se-5-1.jpg)
 
 ## Specifications
 

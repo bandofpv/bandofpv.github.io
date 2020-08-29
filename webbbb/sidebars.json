@@ -1,0 +1,59 @@
+{
+  "projects": {
+      "In Progress": [
+	  "in-progress/lockheed-vega",
+	  "in-progress/sar-drone",
+        "in-progress/cruiser",
+        "in-progress/another-vtol"
+    ],
+    "Robots": [
+      "robots/reading-eye",
+      "robots/ft-explorer-vtol",
+	  "robots/recycle-sorting-robot",
+	  "robots/vacuum-robot",
+      "robots/bi-pedal-robot"
+    ],
+    "Drones": [
+	  "drones/qav-r",
+	  "drones/rotor-riot-cl1",
+      "drones/ft-210",
+      "drones/qav-ulx",
+      "drones/versacopter",
+      "drones/diatone"
+    ],
+    "RC Airplanes": [
+      "rc-airplanes/explorer",
+      "rc-airplanes/sportster",
+      "rc-airplanes/guinea",
+      "rc-airplanes/goblin",
+      "rc-airplanes/f22",
+      "rc-airplanes/scout",
+      "rc-airplanes/arrow",
+      "rc-airplanes/dr1",
+      "rc-airplanes/se5",
+      "rc-airplanes/p51",
+      "rc-airplanes/trainer",
+      "rc-airplanes/versa-wing",
+      "rc-airplanes/nutball",
+      "rc-airplanes/flyer"
+    ],
+    "Conservation Service Projects": [
+      "conservation-service-projects/fish-and-wildlife-management",
+      "conservation-service-projects/soil-and-water-conservation",
+	  "conservation-service-projects/invasive-species-control"
+    ]
+  },
+    
+  "tutorials": {
+      "Tutorials": [
+        "tutorials/reading-eye-for-the-blind",
+        "tutorials/recycle-sorting-robot",
+	    "tutorials/ft-explorer-vtol",
+	    "tutorials/scratch-build-ft-plane-tutorial",
+	    "tutorials/multirotor-beginner-series",
+	    "tutorials/qav-ulx-tutorial",
+	    "tutorials/qav-ulx-tutorial",
+        "tutorials/qav-r-tutorial"
+      ]
+  }
+}

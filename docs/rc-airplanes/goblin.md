@@ -14,13 +14,13 @@ With its aerodynamic airframe and powerful motor, this is a fast FPV plane.
 
 Here is a video of fpv footage recorded on my dvr. 
 
-[![demo](assets/rc-airplanes/goblin/demo.jpg)](https://www.youtube.com/watch?v=jHG5FISguYQ)
+[![demo Andrew Bernas](assets/rc-airplanes/goblin/demo.jpg)](https://www.youtube.com/watch?v=jHG5FISguYQ)
 
 ## Pictures
 
-![ft explorer front](assets/rc-airplanes/goblin/goblin-1.jpg)
+![ft explorer front Andrew Bernas](assets/rc-airplanes/goblin/goblin-1.jpg)
 
-![ft explorer back](assets/rc-airplanes/goblin/goblin-2.jpg)
+![ft explorer back Andrew Bernas](assets/rc-airplanes/goblin/goblin-2.jpg)
 
 ## Specifications
 

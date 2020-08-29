@@ -14,13 +14,13 @@ June 2017 - July 2017
 
 I have built a vacuum robot. This is a fun DIY project to work on during the summer. It’s an autonomous robot that will avoid walls and drop-offs. The robot will also help you understand how the arduino works. This is a super useful robot if you don’t like vacuuming the floor. Just lay it down and let it clean!
 
-![vacuum robot](assets/robots/vacuum-robot/vacuum-robot-picture.jpg)
+![vacuum robot Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-picture.jpg)
 
 ## Final Milestone
 
 ### Video
 
-[![final milestone video](assets/robots/vacuum-robot/vacuum-robot-final-milestone-video.png)](https://www.youtube.com/watch?v=D1FHCfAPJcg)
+[![final milestone video Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-final-milestone-video.png)](https://www.youtube.com/watch?v=D1FHCfAPJcg)
 
 ### Documentation
 
@@ -28,17 +28,17 @@ I completed my final milestone for my vacuum robot. In the end, it vacuums the h
 
 ### Pictures
 
-![vacuum app](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-1.png)
+![vacuum app Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-1.png)
 
-![vacuum robot final milestone inside view](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-2.jpg)
+![vacuum robot final milestone inside view Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-2.jpg)
 
-![vacuum robot final milestone schematic](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-3.jpg)
+![vacuum robot final milestone schematic Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-final-milestone-picture-3.jpg)
 
 ## Third Milestone
 
 ### Video
 
-[![third milestone video](assets/robots/vacuum-robot/vacuum-robot-third-milestone-video.jpg)](https://www.youtube.com/watch?v=ThmuH1fsDFk)
+[![third milestone video Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-third-milestone-video.jpg)](https://www.youtube.com/watch?v=ThmuH1fsDFk)
 
 ### Documentation
 
@@ -46,15 +46,15 @@ Today I finished my third milestone. I am finally done with my autonomous vacuum
 
 ### Pictures
 
-![vacuum robot third milestone inside view](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-1.jpg)
+![vacuum robot third milestone inside view Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-1.jpg)
 
-![vacuum robot third milestone schematic](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-2.jpg)
+![vacuum robot third milestone schematic Andrew Bernas](assets/robots/vacuum-robot/vacuum-robot-third-milestone-picture-2.jpg)
 
 ## Second Milestone
 
 ### Video
 
-[![second milestone video](assets/robots/vacuum-robot/vr-video.jpg)](https://www.youtube.com/watch?v=CJ6rm8M8DqI)
+[![second milestone video Andrew Bernas](assets/robots/vacuum-robot/vr-video.jpg)](https://www.youtube.com/watch?v=CJ6rm8M8DqI)
 
 ### Documentation
 
@@ -62,15 +62,15 @@ Today I accomplished my second milestone. I added a couple of new electronics to
 
 ### Pictures
 
-![vacuum robot second milestone inside view](assets/robots/vacuum-robot/milestone-2_schematic.jpg)
+![vacuum robot second milestone inside view Andrew Bernas](assets/robots/vacuum-robot/milestone-2_schematic.jpg)
 
-![vacuum robot second milestone schematic](assets/robots/vacuum-robot/img_6934-3.jpg)
+![vacuum robot second milestone schematic Andrew Bernas](assets/robots/vacuum-robot/img_6934-3.jpg)
 
 ## First Milestone
 
 ### Video
 
-[![first milestone video](assets/robots/vacuum-robot/vr-vid-first.jpg)](https://www.youtube.com/watch?v=h9BQUSkQpjo)
+[![first milestone video Andrew Bernas](assets/robots/vacuum-robot/vr-vid-first.jpg)](https://www.youtube.com/watch?v=h9BQUSkQpjo)
 
 ### Documentation
 
@@ -78,6 +78,6 @@ Today I completed my first milestone which was to build and program my IR sensor
 
 ### Pictures
 
-![vacuum robot first milestone inside view](assets/robots/vacuum-robot/motor_and_ir_sensor_schem.jpg)
+![vacuum robot first milestone inside view Andrew Bernas](assets/robots/vacuum-robot/motor_and_ir_sensor_schem.jpg)
 
-![vacuum robot first milestone schematic](assets/robots/vacuum-robot/img_6680-1.jpg)
+![vacuum robot first milestone schematic Andrew Bernas](assets/robots/vacuum-robot/img_6680-1.jpg)
