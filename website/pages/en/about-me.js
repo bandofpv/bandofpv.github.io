@@ -34,7 +34,7 @@ function About(props) {
       <Container className="mainContainer documentContainer postContainer">
         <div className="post">
           <header className="postHeader">
-            <h1>About Me</h1>
+            <h1>Who is Andrew Bernas?</h1>
           </header>        
           <GridBlock contents={aboutMe} layout="twoColumn" />
 	  <h1>Gear:</h1>
