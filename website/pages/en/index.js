@@ -95,7 +95,7 @@ class Index extends React.Component {
 	    imageLink: `${baseUrl}docs/in-progress/sar-drone.html`,
           },
           {
-            image: `${baseUrl}img/in-progress.png`,
+            image: `${baseUrl}img/incomplete.png`,
             imageAlign: 'bottom',
             title: `[Incomplete Prototypes](${baseUrl}docs/incomplete-prototypes/lockheed-vega.html)`,
 	    imageLink: `${baseUrl}docs/incomplete-prototypes/lockheed-vega.html`,
@@ -119,7 +119,7 @@ class Index extends React.Component {
 	    imageLink: `${baseUrl}docs/rc-airplanes/explorer.html`,
           },
       {
-            image: `${baseUrl}img/in-progress.png`,
+            image: `${baseUrl}img/conserve.png`,
             imageAlign: 'bottom',
             title: `[Conservation Service Projects](${baseUrl}docs/conservation-service-projects/fish-and-wildlife-management.html)`,
 	    imageLink: `${baseUrl}docs/conservation-service-projects/fish-and-wildlife-management.html`,

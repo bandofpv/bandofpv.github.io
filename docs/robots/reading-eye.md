@@ -18,3 +18,10 @@ My whole inspiration for this project was to help my grandmother who's vision de
 ## Video:
 
 [![demo-video Andrew Bernas](assets/robots/reading-eye/demo-video.jpg)](https://www.youtube.com/watch?v=ZVquCjLMWuA)
+
+## Brief Summary
+
+This device can successfully translate any given physical text into spoken words. It first takes a picture of a page when the user presses a button. This picture will be transformed to remove camera lens distortions, camera angle distortions, and any shadows on the page. The page will essentially look like a black and white scanned copy. With this image, the device will feed the data into a Convolutional Neural Network (CNN) and Recurrent Neural Network (RNN) to extract any relevant information to finally output the recognized text. This text will be fed into text to speech algorithm to save the text as a human like speech audio file to be played through the audio jack.
+
+## Description
+
