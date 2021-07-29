@@ -110,7 +110,7 @@ class Index extends React.Component {
             image: `${baseUrl}img/rc-airplane.png`,
             imageAlign: 'bottom',
             title: `[RC Airplanes](${baseUrl}docs/rc-airplanes/explorer.html)`,
-	    imageLink: `${baseUrl}docs/rc-airplanes/ft-explorer.html`,
+	    imageLink: `${baseUrl}docs/rc-airplanes/explorer.html`,
           },
         ]}
       </Block>
