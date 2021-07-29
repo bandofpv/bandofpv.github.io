@@ -57,7 +57,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('in-progress/lockheed-vega.html')}>Projects</Button>
+            <Button href={docUrl('in-progress/sar-drone.html')}>Projects</Button>
             <Button href={docUrl('tutorials/reading-eye-for-the-blind.html')}>Tutorials</Button>
             <Button href="https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg">Youtube</Button>
             <Button href="https://github.com/bandofpv">GitHub</Button>
@@ -91,14 +91,20 @@ class Index extends React.Component {
           {
             image: `${baseUrl}img/in-progress.png`,
             imageAlign: 'bottom',
-            title: `[In Progress](${baseUrl}docs/in-progress/lockheed-vega.html)`,
-	    imageLink: `${baseUrl}docs/in-progress/lockheed-vega.html`,
+            title: `[In Progress](${baseUrl}docs/in-progress/sar-drone.html)`,
+	    imageLink: `${baseUrl}docs/in-progress/sar-drone.html`,
+          },
+          {
+            image: `${baseUrl}img/in-progress.png`,
+            imageAlign: 'bottom',
+            title: `[Incomplete Prototypes](${baseUrl}docs/incomplete-prototypes/lockheed-vega.html)`,
+	    imageLink: `${baseUrl}docs/incomplete-prototypes/lockheed-vega.html`,
           },
           {
             image: `${baseUrl}img/robot.png`,
             imageAlign: 'bottom',
-            title: `[Robots](${baseUrl}docs/robots/recycle-sorting-robot.html)`,
-	    imageLink: `${baseUrl}docs/robots/recycle-sorting-robot.html`,
+            title: `[Robots](${baseUrl}docs/robots/reading-eye.html)`,
+	    imageLink: `${baseUrl}docs/robots/reading-eye.html`,
           },
 	  {
             image: `${baseUrl}img/drone.png`,
@@ -111,6 +117,12 @@ class Index extends React.Component {
             imageAlign: 'bottom',
             title: `[RC Airplanes](${baseUrl}docs/rc-airplanes/explorer.html)`,
 	    imageLink: `${baseUrl}docs/rc-airplanes/explorer.html`,
+          },
+      {
+            image: `${baseUrl}img/in-progress.png`,
+            imageAlign: 'bottom',
+            title: `[Conservation Service Projects](${baseUrl}docs/conservation-service-projects/fish-and-wildlife-management.html)`,
+	    imageLink: `${baseUrl}docs/conservation-service-projects/fish-and-wildlife-management.html`,
           },
         ]}
       </Block>

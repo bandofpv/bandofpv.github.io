@@ -1,10 +1,12 @@
 {
   "projects": {
-      "In Progress": [
-	  "in-progress/lockheed-vega",
-	  "in-progress/sar-drone",
-        "in-progress/cruiser",
-        "in-progress/another-vtol"
+    "In Progress": [
+	  "in-progress/sar-drone"
+    ],
+    "Incomplete Prototypes ": [
+      "incomplete-prototypes/lockheed-vega",
+      "incomplete-prototypes/cruiser",
+      "incomplete-prototypes/another-vtol"
     ],
     "Robots": [
       "robots/reading-eye",

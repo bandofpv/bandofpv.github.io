@@ -12,9 +12,9 @@ This plane is another twin engine aircraft like the [Guinea](https://andrewberna
 
 ## Images
 
-![ft cruiser front Andrew Bernas](assets/in-progress/cruiser/cruiser-1.jpg)
+![ft cruiser front Andrew Bernas](assets/incomplete-prototypes/cruiser/cruiser-1.jpg)
 
-![ft cruiser front Andrew Bernas](assets/in-progress/cruiser/cruiser-2.jpg)
+![ft cruiser front Andrew Bernas](assets/incomplete-prototypes/cruiser/cruiser-2.jpg)
 
 ## Specifications
 

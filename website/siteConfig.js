@@ -40,7 +40,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
     {page: 'about-me', label: 'About Me'},
-    {doc: 'in-progress/lockheed-vega', label: 'Projects'},
+    {doc: 'in-progress/sar-drone', label: 'Projects'},
     {doc: 'tutorials/reading-eye-for-the-blind', label: 'Tutorials'},
     {doc: 'gallery/gallery-best', label: 'Photography'},
     {href: "https://docs.google.com/document/d/1LFxUAfSPOlgA_n8IyqA-czno1DAukBsEL19MBdMJNjs/edit?usp=sharing", label: 'Resume'},
