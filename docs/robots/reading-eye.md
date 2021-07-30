@@ -25,3 +25,34 @@ This device can successfully translate any given physical text into spoken words
 
 ## Description
 
+The device uses a NVIDIA Jetson Nano for computing the algorithms required for text recognition and text-to-speech. It comes with a 128-core Maxwell GPU, Quad-core ARM A57 @ 1.43 GHz CPU, and 4 GB of LPDDR4 RAM. It uses a 32GB SDHC U1 card for storage and is powered via a 10,000mAh 5v 3A battery via its USB port. The battery is rechargeable by simply connecting it to a 5v wall power supply. An 8MP camera module with an IMX219 image sensor and a 175-degree field of view lens used to take pictures of the given text and is connected to the Jetson Nano’s CSi connector using a 457mm ribbon cable. A Noctua NF-A4x20 5v Fan is used to cool down the Jetson Nano when under heavy loads. A Wi-Fi USB adapter is plugged into the Jetson Nano to connect to the internet when available. The audio jack, which plays the synthesized speech is hooked up to the back of the device to plug in headphones or a speaker to. Finally, there is a blue LED button used to activate the text recognition sequence and a toggle switch used to turn the device on and off.  
+
+The first step the device takes is to take a picture of the piece of text below the camera. This is activated through the button at the top and depending on how many times you press it in succession, it will either recognize handwritten or printed text. This image is then fed into several algorithms in order to clean up any defects caused by the camera or lighting. 
+
+The first algorithm removes lens distortions which causes the edges of the image to appear curved and have a fisheye effect. This distortion will cause the text to bend.
+
+![Fig. 4 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/page1.jpg)
+
+To compensate for this the device uses OpenCV’s camera distortion algorithms. The first equation solves the radial distortions and the second solves tangential distortion which is caused when the camera lens is not parallel to the image sensor.
+
+![Fig. 5 Andrew Bernas](assets/robots/reading-eye/fig5.png)
+
+![Fig. 6 Andrew Bernas](assets/robots/reading-eye/fig6.png)
+
+In total the algorithm uses 5 parameters known as distortion coefficients: 
+
+![Fig. 7 Andrew Bernas](assets/robots/reading-eye/fig7.png)
+
+which are dependent on the type of lens and image sensor you have. The undistorted image can be seen below. 
+
+![Fig. 8 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/page2.jpg)
+
+The second algorithm is to normalize the input image to only get the important information. In this case, it’s the page. No matter the size of the page, this algorithm will transform it into image that appears to be scanned from a document scanner.
+
+![Fig. 9 Andrew Bernas](assets/robots/reading-eye/fig9.jpeg)
+
+The first step is passing an edge detection algorithm so it can detect the predominant contour in the image. Using this information, it will segment it using a four-point perspective transformation.
+
+![Fig. 10 Andrew Bernas](assets/robots/reading-eye/fig10.png)
+
+
