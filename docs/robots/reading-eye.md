@@ -55,4 +55,36 @@ The first step is passing an edge detection algorithm so it can detect the predo
 
 ![Fig. 10 Andrew Bernas](assets/robots/reading-eye/fig10.png)
 
+The final step in cleaning up the image and omitting any unimportant information is the binarization algorithm. This will essentially turn the grayscale image into a binary image where the colors are either black or white and nothing in between. This allows the text recognition algorithm to be more efficient. There are many techniques of binarization, but this device uses Adaptive Document Binarization. The image also undergoes illumination compensation for light normalization or remove any shadows on the page.
 
+![Fig. 11 Andrew Bernas](assets/robots/reading-eye/fig11.png)
+
+After normalizing the page, the device is ready to run the printed or handwritten text recognition process. This process could either be run in the cloud or on the edge device. The device determines this by first checking if it is connected to the internet by simply pinging to 8.8.8.8. If it’s successful, it will perform online text recognition and if not, offline text recognition. The user then has to tell the device to detect handwritten or printed text. If pressed once, it will perform printed text recognition and if twice, then handwritten text recognition. 
+
+If it’s online text recognition, it will connect to Google Cloud OCR text recognition and Text To Speech (TTS) to convert the normalized page into recognized text and then into a human like synthesized voice. This will work for both printed and handwritten text and can be programmed to recognize and speak different languages. The device also replaces special characters such as “&” with HTML Ampersand Character Codes to prevent the API from confusing text with SSML commands. It’s important to note that Google’s TTS has a limit of 5,000 characters per request. To minimize errors, the device splits up the recognized text and generates separate speech files to play consecutively. 
+
+If it’s offline printed text recognition, it will use the Tesseract OCR engine to convert the normalized page into text. The device will take this text and feed it into the pyttsx3 engine to synthesize the recognized text into human speech. These engines/algorithms are relatively lightweight and only need to use the CPU to compute.
+
+If it’s offline handwritten text recognition, it will need to segment the text into lines using a statistical approach by analyzing the chunks of text and pixels to recognize text lines on the normalized page. 
+
+![Fig. 12 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/line-segmentation.jpg)
+
+The lines will then be saved as individual images for text recognition. These images will then undergo deslanting, which essentially removes the slant in cursive writing to help improve accuracy of the devices text predictions.
+
+![Fig. 13 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/deslanting.jpg)
+
+The device’s Convolutional Recurrent Neural Network (CRNN) for handwritten text recognition is trained on the IAM Public Database which comes with 9,000 pre-labeled text lines from 500 different writers. Below is an example in the dataset. 
+
+![Fig. 14 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/database-example.jpg)
+
+With the help of TensorFlow 2.0 and Google Cloud Notebook Colab, deep learning is used to train the CRNN using a Tesla K80 GPU, Xeon CPU, and 13 GB of RAM. 
+
+First, the input image is fed through the Convolutional Neural Network (CNN) layers which will extract the relevant features from the image. Each layer consists of three operations: Convolution Operation, Non-Linear RELU Function, and Pooling. The Convolution Operation applies a filter kernel with size 5x5 in the first 2 layers and size 3x3 in the last three. Next, the Non-Linear RELU activation function is used and then the pooling layer will summarize the image regions and outputs a feature map of size 32x256.
+
+Next, the output feature map from the CNN layers will be fed into the Recurrent Neural Network (RNN) which will propagate relevant information through longer distances. It does this through the implementation of Long Short-Term Memory (LSTM), which provides more robust training than vanilla RNNs. The output sequence matrix has a size of 32x80. The reason for this is because the IAM data set has 79 characters but an additional “blank” character is needed for the CTC operation. Thus, 80 entries for each 32 time-steps. 
+
+Finally, the Connectionist Temporal Classification (CTC) will calculate loss value and decodes the RNN output sequence into the final text. 
+
+This workflow is repeated for each text line image after segmentation. The output would be the final recognized text which is fed into the pyttsx3 engine to synthesize the recognized text into human speech.
+
+![Fig. 14 Andrew Bernas](assets/tutorials/reading-eye-for-the-blind/crnn.jpg)

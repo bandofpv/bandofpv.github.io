@@ -14,6 +14,8 @@ This device is a drone that can successfully fly autonomously over any terrain a
 
 ## Video
 
+Short demonstration video displaying the drone's tracking capabilities. 
+
 [![demo-video Andrew Bernas](assets/in-progress/sar-drone/demo-video.png)](https://www.youtube.com/watch?v=deG4v4odLUE)
 
 ## Brief Summary 
@@ -48,3 +50,4 @@ It would be ideal for a SAR operation to use multiple of these drones to search 
 
 ## Pictures
 
+Coming Soon
