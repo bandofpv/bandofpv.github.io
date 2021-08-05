@@ -1,14 +1,18 @@
 ---
 id: sar-drone
 title: Seach And Rescue Drone
-sidebar_label: SAR Drone
+sidebar_label: Search And Rescue Drone
 ---
 
 July 2018 - August 2020
 
+***Note:*** check out my tutorial [here](https://www.andrewbernas.com/docs/tutorials/sar-drone)
+
+![cover Andrew Bernas](assets/in-progress/sar-drone/cover.jpg)
+
 ## Introduction
 
-Between 1992 and 2007, around 11 Search and Rescue (SAR) operations took place each day in the U.S. National Parks. Each costing about $895 per incident and totaling to $58,572,164 [1]. Furthermore, around 700 lives are lost per year from coast guard SAR missions [2]. Better training and technological advancements have helped the decline in fatalities and costs, but it is still relatively expensive. Therefore, there is a need for a novel device that would minimize the fatality rate and costs of SAR operations.
+Between 1992 and 2007, around 11 Search and Rescue (SAR) operations took place each day in the U.S. National Parks. Each costing about $895 per incident and totaling to $58,572,164. Furthermore, around 700 lives are lost per year from coast guard SAR missions. Better training and technological advancements have helped the decline in fatalities and costs, but it is still relatively expensive. Therefore, there is a need for a novel device that would minimize the fatality rate and costs of SAR operations.
 
 This device is a drone that can successfully fly autonomously over any terrain and search for the missing subjects. The operator just has to plug in the battery, flip a switch, and will take off on a programmed SAR pattern configurable to any search area and pattern. A camera takes video of the ground below and feeds that input into a compute module to run a Convolutional Neural Network (CNN). This CNN is capable of detecting humans, cars, and several other objects that can provide clues for the SAR team to find the missing subject/s. When the drone detects a person, it will follow the subject if it moves and simultaneously send GPS coordinates with time stamps to the SAR team. The operator can also view the live video to coordinate how to reach the missing subject in the safest manner. When low on battery, the drone will autonomously fly back to where it took off. Utilizing a drone instead of having to use helicopters or land teams serves as a cheaper and safer way to perform SAR operations. Teams could use multiple of these drones and search a large area fast and autonomously. 
 

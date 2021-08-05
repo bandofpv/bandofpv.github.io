@@ -41,7 +41,7 @@ const siteConfig = {
     headerLinks: [
     {page: 'about-me', label: 'About Me'},
     {doc: 'in-progress/sar-drone', label: 'Projects'},
-    {doc: 'tutorials/reading-eye-for-the-blind', label: 'Tutorials'},
+    {doc: 'tutorials/sar-drone', label: 'Tutorials'},
     {doc: 'gallery/gallery-best', label: 'Photography'},
     {href: "https://docs.google.com/document/d/1LFxUAfSPOlgA_n8IyqA-czno1DAukBsEL19MBdMJNjs/edit?usp=sharing", label: 'Resume'},
     {href: "https://www.youtube.com/channel/UCYIknwUG33u7_Se2__GrHrg", label: 'Youtube'},

@@ -50,7 +50,7 @@ function About(props) {
 	    <li><a href="https://www.getfpv.com/laforge-v4-fat-shark-receiver-module.html">LaForge V4 Fat Shark Receiver Module</a></li>
 	    <li><a href="https://www.getfpv.com/tbs-triumph-5-8ghz-rhcp-fpv-antenna-set-sma.html">TBS Triumph 5.8GHz RHCP FPV Antenna Set (SMA)</a></li>
 	    <li><a href="https://www.getfpv.com/tattu-2500mah-2s1p-fatshark-goggles-lipo-battery-pack-dc3-5mm-plug.html">Tattu 2500mAh 2S1P Fatshark Goggles Lipo Battery Pack (DC3.5mm plug)</a></li>
-	    <li><a href="https://www.getfpv.com/mr-steele-earbud.html">Mr Steele Earbud</a></li>
+	    <li><a href="https://www.getfpv.com/mr-steele-earbud.html">Mr. Steele Earbud</a></li>
 	 </ul>
         </div>
       </Container>
