@@ -1,0 +1,27 @@
+{
+  "id": "projects/race-quads/diatone",
+  "title": "Diatone 5\"",
+  "description": "January 2015 - April 2015",
+  "source": "@site/docs/projects/race-quads/diatone.mdx",
+  "sourceDirName": "projects/race-quads",
+  "slug": "/projects/race-quads/diatone",
+  "permalink": "/docs/projects/race-quads/diatone",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "sidebar_label": "Diatone"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "FT Versacopter",
+    "permalink": "/docs/projects/race-quads/versacopter"
+  },
+  "next": {
+    "title": "RC Airplanes",
+    "permalink": "/docs/category/rc-airplanes"
+  }
+}

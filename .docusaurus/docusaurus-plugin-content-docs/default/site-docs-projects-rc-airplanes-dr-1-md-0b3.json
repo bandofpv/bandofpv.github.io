@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/dr-1",
+  "title": "FT Mini DR1",
+  "description": "January 2019",
+  "source": "@site/docs/projects/rc-airplanes/dr-1.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/dr-1",
+  "permalink": "/docs/projects/rc-airplanes/dr-1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "sidebar_label": "Fokker Dr.I"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "F-22 Raptor",
+    "permalink": "/docs/projects/rc-airplanes/f22"
+  },
+  "next": {
+    "title": "RAF S.E.5",
+    "permalink": "/docs/projects/rc-airplanes/se5"
+  }
+}

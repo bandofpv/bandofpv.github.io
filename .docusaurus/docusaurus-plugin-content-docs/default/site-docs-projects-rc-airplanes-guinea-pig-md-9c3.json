@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/guinea-pig",
+  "title": "FT Mini Guinea",
+  "description": "March 2019",
+  "source": "@site/docs/projects/rc-airplanes/guinea-pig.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/guinea-pig",
+  "permalink": "/docs/projects/rc-airplanes/guinea-pig",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Guinea"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Sportster",
+    "permalink": "/docs/projects/rc-airplanes/sportster"
+  },
+  "next": {
+    "title": "Goblin",
+    "permalink": "/docs/projects/rc-airplanes/goblin"
+  }
+}

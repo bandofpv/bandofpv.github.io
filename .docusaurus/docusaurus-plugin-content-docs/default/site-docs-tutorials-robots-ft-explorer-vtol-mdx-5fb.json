@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/ft-explorer-vtol",
+  "title": "FT Explorer VTOL",
+  "description": "August 2018 - September 2019",
+  "source": "@site/docs/tutorials/robots/ft-explorer-vtol.mdx",
+  "sourceDirName": "tutorials/robots",
+  "slug": "/tutorials/robots/ft-explorer-vtol",
+  "permalink": "/docs/tutorials/robots/ft-explorer-vtol",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "VTOL Aircraft"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Reading Robot",
+    "permalink": "/docs/tutorials/robots/reading-eye"
+  },
+  "next": {
+    "title": "Recycle Sorting Robot",
+    "permalink": "/docs/tutorials/robots/recycle-sorting-robot"
+  }
+}

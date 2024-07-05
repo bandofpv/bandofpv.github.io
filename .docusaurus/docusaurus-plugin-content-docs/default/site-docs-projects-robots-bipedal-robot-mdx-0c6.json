@@ -1,0 +1,27 @@
+{
+  "id": "projects/robots/bipedal-robot",
+  "title": "Bipedal Robot",
+  "description": "November 2016 - December 2016",
+  "source": "@site/docs/projects/robots/bipedal-robot.mdx",
+  "sourceDirName": "projects/robots",
+  "slug": "/projects/robots/bipedal-robot",
+  "permalink": "/docs/projects/robots/bipedal-robot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "sidebar_label": "Bipedal Robot"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Vacuum Robot",
+    "permalink": "/docs/projects/robots/vacuum-robot"
+  },
+  "next": {
+    "title": "Race Quads",
+    "permalink": "/docs/category/race-quads"
+  }
+}

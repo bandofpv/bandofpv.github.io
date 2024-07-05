@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/flyer",
+  "title": "FT Flyer",
+  "description": "February 2015",
+  "source": "@site/docs/projects/rc-airplanes/flyer.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/flyer",
+  "permalink": "/docs/projects/rc-airplanes/flyer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "sidebar_position": 13,
+    "sidebar_label": "Flyer"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Trainer",
+    "permalink": "/docs/projects/rc-airplanes/trainer"
+  },
+  "next": {
+    "title": "Nutball",
+    "permalink": "/docs/projects/rc-airplanes/nutball"
+  }
+}

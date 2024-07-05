@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/sportster",
+  "title": "FT Sportster",
+  "description": "May 2019",
+  "source": "@site/docs/projects/rc-airplanes/sportster.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/sportster",
+  "permalink": "/docs/projects/rc-airplanes/sportster",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Sportster"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Lockheed Vega",
+    "permalink": "/docs/projects/rc-airplanes/lockheed-vega"
+  },
+  "next": {
+    "title": "Guinea",
+    "permalink": "/docs/projects/rc-airplanes/guinea-pig"
+  }
+}

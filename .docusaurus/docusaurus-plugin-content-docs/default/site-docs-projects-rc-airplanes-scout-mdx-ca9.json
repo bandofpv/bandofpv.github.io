@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/scout",
+  "title": "FT Simple Scout",
+  "description": "July 2018",
+  "source": "@site/docs/projects/rc-airplanes/scout.mdx",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/scout",
+  "permalink": "/docs/projects/rc-airplanes/scout",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "sidebar_position": 8,
+    "sidebar_label": "Scout"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "RAF S.E.5",
+    "permalink": "/docs/projects/rc-airplanes/se5"
+  },
+  "next": {
+    "title": "Arrow",
+    "permalink": "/docs/projects/rc-airplanes/arrow"
+  }
+}

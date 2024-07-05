@@ -1,0 +1,27 @@
+{
+  "id": "projects/robots/reading-eye",
+  "title": "Reading Eye For The Blind",
+  "description": "December 2019 - February 2020",
+  "source": "@site/docs/projects/robots/reading-eye.mdx",
+  "sourceDirName": "projects/robots",
+  "slug": "/projects/robots/reading-eye",
+  "permalink": "/docs/projects/robots/reading-eye",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Reading Robot"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Search & Rescue Drone",
+    "permalink": "/docs/projects/robots/sar-drone"
+  },
+  "next": {
+    "title": "VTOL Aircraft",
+    "permalink": "/docs/projects/robots/ft-explorer-vtol"
+  }
+}

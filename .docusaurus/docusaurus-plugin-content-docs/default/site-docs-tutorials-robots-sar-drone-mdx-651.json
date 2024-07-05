@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/sar-drone",
+  "title": "Autonomous Search And Rescue Drone",
+  "description": "July 2018 - August 2020",
+  "source": "@site/docs/tutorials/robots/sar-drone.mdx",
+  "sourceDirName": "tutorials/robots",
+  "slug": "/tutorials/robots/sar-drone",
+  "permalink": "/docs/tutorials/robots/sar-drone",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Search And Rescue Drone"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Robots",
+    "permalink": "/docs/category/robots-1"
+  },
+  "next": {
+    "title": "Reading Robot",
+    "permalink": "/docs/tutorials/robots/reading-eye"
+  }
+}

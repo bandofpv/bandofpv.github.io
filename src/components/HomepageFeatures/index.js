@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Link from '@docusaurus/Link';
 import ThemedImage from '@theme/ThemedImage';
 import styles from './styles.module.css';
 
@@ -11,16 +12,22 @@ export default function HomepageFeatures() {
         <div className="row">
           <div className="col">
             <div className="text--center">
-              <ThemedImage className={styles.Svg}
-                alt="Docusaurus themed image"
-                sources={{
-                  light: useBaseUrl('/img/undraw_project_light.svg'),
-                  dark: useBaseUrl('/img/undraw_project_dark.svg'),
-                }}
-              />
+              <Link className="home-link" to="/docs/projects">
+                <ThemedImage className={styles.Svg}
+                  alt="Docusaurus themed image"
+                  sources={{
+                    light: useBaseUrl('/img/undraw_project_light.svg'),
+                    dark: useBaseUrl('/img/undraw_project_dark.svg'),
+                  }}
+                />
+              </Link>
             </div>
             <div className="text--center padding-horiz--md">
-              <Heading as="h2">Projects</Heading>
+              <Heading as="h2">
+                <Link className="home-link" to="/docs/projects">
+                  Projects
+                </Link>
+              </Heading>
               <p>Documentation for robots, drones, rc airplanes, and more!</p>
             </div>
           </div>
@@ -31,16 +38,22 @@ export default function HomepageFeatures() {
           </div>
           <div className="col">
             <div className="text--center">
-              <ThemedImage className={styles.Svg}
-                alt="Docusaurus themed image"
-                sources={{
-                  light: useBaseUrl('/img/undraw_tutorial_light.svg'),
-                  dark: useBaseUrl('/img/undraw_tutorial_dark.svg'),
-                }}
-              />
+              <Link className="home-link" to="/docs/tutorials">
+                <ThemedImage className={styles.Svg}
+                  alt="Docusaurus themed image"
+                  sources={{
+                    light: useBaseUrl('/img/undraw_tutorial_light.svg'),
+                    dark: useBaseUrl('/img/undraw_tutorial_dark.svg'),
+                  }}
+                />
+              </Link>
             </div>
             <div className="text--center padding-horiz--md">
-              <Heading as="h2">Tutorials</Heading>
+              <Heading as="h2">
+                <Link className="home-link" to="/docs/tutorials">
+                  Tutorials
+                </Link>
+              </Heading>
               <p>Step by step instructions to replicate many of my projects!</p>
             </div>
           </div>

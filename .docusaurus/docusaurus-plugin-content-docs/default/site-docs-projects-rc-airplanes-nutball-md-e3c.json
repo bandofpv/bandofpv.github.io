@@ -1,0 +1,23 @@
+{
+  "id": "projects/rc-airplanes/nutball",
+  "title": "FT Nutball",
+  "description": "January 2015",
+  "source": "@site/docs/projects/rc-airplanes/nutball.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/nutball",
+  "permalink": "/docs/projects/rc-airplanes/nutball",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "sidebar_position": 14,
+    "sidebar_label": "Nutball"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Flyer",
+    "permalink": "/docs/projects/rc-airplanes/flyer"
+  }
+}

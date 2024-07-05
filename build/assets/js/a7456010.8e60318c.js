@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbandofpv_github_io=self.webpackChunkbandofpv_github_io||[]).push([[1235],{8552:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);

@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/se5",
+  "title": "FT Mini SE5",
+  "description": "December 2018",
+  "source": "@site/docs/projects/rc-airplanes/se5.mdx",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/se5",
+  "permalink": "/docs/projects/rc-airplanes/se5",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "sidebar_label": "RAF S.E.5"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Fokker Dr.I",
+    "permalink": "/docs/projects/rc-airplanes/dr-1"
+  },
+  "next": {
+    "title": "Scout",
+    "permalink": "/docs/projects/rc-airplanes/scout"
+  }
+}

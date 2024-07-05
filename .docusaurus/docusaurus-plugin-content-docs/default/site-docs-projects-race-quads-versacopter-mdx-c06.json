@@ -1,0 +1,27 @@
+{
+  "id": "projects/race-quads/versacopter",
+  "title": "FT Versacopter 6\"",
+  "description": "March 2016 - April 2016",
+  "source": "@site/docs/projects/race-quads/versacopter.mdx",
+  "sourceDirName": "projects/race-quads",
+  "slug": "/projects/race-quads/versacopter",
+  "permalink": "/docs/projects/race-quads/versacopter",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "FT Versacopter"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "QAV-ULX",
+    "permalink": "/docs/projects/race-quads/qav-ulx"
+  },
+  "next": {
+    "title": "Diatone",
+    "permalink": "/docs/projects/race-quads/diatone"
+  }
+}

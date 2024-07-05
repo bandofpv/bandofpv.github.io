@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/arrow",
+  "title": "FT Mini Arrow",
+  "description": "April 2018",
+  "source": "@site/docs/projects/rc-airplanes/arrow.md",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/arrow",
+  "permalink": "/docs/projects/rc-airplanes/arrow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9,
+    "sidebar_label": "Arrow"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Scout",
+    "permalink": "/docs/projects/rc-airplanes/scout"
+  },
+  "next": {
+    "title": "Explorer",
+    "permalink": "/docs/projects/rc-airplanes/ft-explorer"
+  }
+}

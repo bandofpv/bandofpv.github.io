@@ -1,0 +1,214 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "projects/index",
+          "docs": [
+            {
+              "id": "projects/index",
+              "path": "/docs/projects/",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/diatone",
+              "path": "/docs/projects/race-quads/diatone",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/ft-210",
+              "path": "/docs/projects/race-quads/ft-210",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/qav-r",
+              "path": "/docs/projects/race-quads/qav-r",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/qav-ulx",
+              "path": "/docs/projects/race-quads/qav-ulx",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/rotor-riot-cl1",
+              "path": "/docs/projects/race-quads/rotor-riot-cl1",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/race-quads/versacopter",
+              "path": "/docs/projects/race-quads/versacopter",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/arrow",
+              "path": "/docs/projects/rc-airplanes/arrow",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/dr-1",
+              "path": "/docs/projects/rc-airplanes/dr-1",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/f22",
+              "path": "/docs/projects/rc-airplanes/f22",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/flyer",
+              "path": "/docs/projects/rc-airplanes/flyer",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/ft-explorer",
+              "path": "/docs/projects/rc-airplanes/ft-explorer",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/goblin",
+              "path": "/docs/projects/rc-airplanes/goblin",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/guinea-pig",
+              "path": "/docs/projects/rc-airplanes/guinea-pig",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/lockheed-vega",
+              "path": "/docs/projects/rc-airplanes/lockheed-vega",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/nutball",
+              "path": "/docs/projects/rc-airplanes/nutball",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/p-51",
+              "path": "/docs/projects/rc-airplanes/p-51",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/scout",
+              "path": "/docs/projects/rc-airplanes/scout",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/se5",
+              "path": "/docs/projects/rc-airplanes/se5",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/sportster",
+              "path": "/docs/projects/rc-airplanes/sportster",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/rc-airplanes/trainer",
+              "path": "/docs/projects/rc-airplanes/trainer",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/bipedal-robot",
+              "path": "/docs/projects/robots/bipedal-robot",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/ft-explorer-vtol",
+              "path": "/docs/projects/robots/ft-explorer-vtol",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/reading-eye",
+              "path": "/docs/projects/robots/reading-eye",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/recycle-sorting-robot",
+              "path": "/docs/projects/robots/recycle-sorting-robot",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/sar-drone",
+              "path": "/docs/projects/robots/sar-drone",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/robots/vacuum-robot",
+              "path": "/docs/projects/robots/vacuum-robot",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "tutorials/index",
+              "path": "/docs/tutorials/",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/ft-explorer-vtol",
+              "path": "/docs/tutorials/robots/ft-explorer-vtol",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/reading-eye",
+              "path": "/docs/tutorials/robots/reading-eye",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/recycle-sorting-robot",
+              "path": "/docs/tutorials/robots/recycle-sorting-robot",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/sar-drone",
+              "path": "/docs/tutorials/robots/sar-drone",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "/category/robots",
+              "path": "/docs/category/robots",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "/category/race-quads",
+              "path": "/docs/category/race-quads",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "/category/rc-airplanes",
+              "path": "/docs/category/rc-airplanes",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "/category/robots-1",
+              "path": "/docs/category/robots-1",
+              "sidebar": "tutorialsSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "projectsSidebar": {
+              "link": {
+                "path": "/docs/projects/",
+                "label": "Projects"
+              }
+            },
+            "tutorialsSidebar": {
+              "link": {
+                "path": "/docs/tutorials/",
+                "label": "Tutorials"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

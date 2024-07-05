@@ -1,0 +1,27 @@
+{
+  "id": "projects/race-quads/rotor-riot-cl1",
+  "title": "Rotor Riot CL1 5\"",
+  "description": "August 2018 - November 2018",
+  "source": "@site/docs/projects/race-quads/rotor-riot-cl1.mdx",
+  "sourceDirName": "projects/race-quads",
+  "slug": "/projects/race-quads/rotor-riot-cl1",
+  "permalink": "/docs/projects/race-quads/rotor-riot-cl1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Rotor Riot CL1"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "QAV-R",
+    "permalink": "/docs/projects/race-quads/qav-r"
+  },
+  "next": {
+    "title": "FT 210",
+    "permalink": "/docs/projects/race-quads/ft-210"
+  }
+}

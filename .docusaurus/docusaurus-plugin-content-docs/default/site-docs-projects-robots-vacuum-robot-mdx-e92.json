@@ -1,0 +1,27 @@
+{
+  "id": "projects/robots/vacuum-robot",
+  "title": "Autonomous Vacuum Robot",
+  "description": "June 2017 - July 2017",
+  "source": "@site/docs/projects/robots/vacuum-robot.mdx",
+  "sourceDirName": "projects/robots",
+  "slug": "/projects/robots/vacuum-robot",
+  "permalink": "/docs/projects/robots/vacuum-robot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "sidebar_label": "Vacuum Robot"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Recycle Sorting Robot",
+    "permalink": "/docs/projects/robots/recycle-sorting-robot"
+  },
+  "next": {
+    "title": "Bipedal Robot",
+    "permalink": "/docs/projects/robots/bipedal-robot"
+  }
+}

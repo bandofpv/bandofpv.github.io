@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/ft-explorer",
+  "title": "FT Explorer",
+  "description": "November 2017",
+  "source": "@site/docs/projects/rc-airplanes/ft-explorer.mdx",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/ft-explorer",
+  "permalink": "/docs/projects/rc-airplanes/ft-explorer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "sidebar_position": 10,
+    "sidebar_label": "Explorer"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Arrow",
+    "permalink": "/docs/projects/rc-airplanes/arrow"
+  },
+  "next": {
+    "title": "P-51 Mustang",
+    "permalink": "/docs/projects/rc-airplanes/p-51"
+  }
+}

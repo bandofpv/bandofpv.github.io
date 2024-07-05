@@ -1,0 +1,23 @@
+{
+  "id": "projects/index",
+  "title": "Projects",
+  "description": "<CardSection",
+  "source": "@site/docs/projects/index.md",
+  "sourceDirName": "projects",
+  "slug": "/projects/",
+  "permalink": "/docs/projects/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Projects"
+  },
+  "sidebar": "projectsSidebar",
+  "next": {
+    "title": "Robots",
+    "permalink": "/docs/category/robots"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/f22",
+  "title": "FT Mini F-22",
+  "description": "January 2019",
+  "source": "@site/docs/projects/rc-airplanes/f22.mdx",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/f22",
+  "permalink": "/docs/projects/rc-airplanes/f22",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "F-22 Raptor"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Goblin",
+    "permalink": "/docs/projects/rc-airplanes/goblin"
+  },
+  "next": {
+    "title": "Fokker Dr.I",
+    "permalink": "/docs/projects/rc-airplanes/dr-1"
+  }
+}

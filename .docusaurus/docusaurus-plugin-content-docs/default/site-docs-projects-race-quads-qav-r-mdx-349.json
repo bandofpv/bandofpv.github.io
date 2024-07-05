@@ -1,0 +1,27 @@
+{
+  "id": "projects/race-quads/qav-r",
+  "title": "QAV-R 5\"",
+  "description": "April 2016 - October 2019",
+  "source": "@site/docs/projects/race-quads/qav-r.mdx",
+  "sourceDirName": "projects/race-quads",
+  "slug": "/projects/race-quads/qav-r",
+  "permalink": "/docs/projects/race-quads/qav-r",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "QAV-R"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Race Quads",
+    "permalink": "/docs/category/race-quads"
+  },
+  "next": {
+    "title": "Rotor Riot CL1",
+    "permalink": "/docs/projects/race-quads/rotor-riot-cl1"
+  }
+}

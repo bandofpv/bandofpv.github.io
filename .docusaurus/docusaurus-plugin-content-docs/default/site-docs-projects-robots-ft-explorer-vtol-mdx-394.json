@@ -1,0 +1,27 @@
+{
+  "id": "projects/robots/ft-explorer-vtol",
+  "title": "FT Explorer VTOL",
+  "description": "August 2018 - September 2019",
+  "source": "@site/docs/projects/robots/ft-explorer-vtol.mdx",
+  "sourceDirName": "projects/robots",
+  "slug": "/projects/robots/ft-explorer-vtol",
+  "permalink": "/docs/projects/robots/ft-explorer-vtol",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "VTOL Aircraft"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Reading Robot",
+    "permalink": "/docs/projects/robots/reading-eye"
+  },
+  "next": {
+    "title": "Recycle Sorting Robot",
+    "permalink": "/docs/projects/robots/recycle-sorting-robot"
+  }
+}

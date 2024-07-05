@@ -1,0 +1,27 @@
+{
+  "id": "projects/race-quads/qav-ulx",
+  "title": "QAV-ULX 5\"",
+  "description": "October 2016 - December 2016",
+  "source": "@site/docs/projects/race-quads/qav-ulx.mdx",
+  "sourceDirName": "projects/race-quads",
+  "slug": "/projects/race-quads/qav-ulx",
+  "permalink": "/docs/projects/race-quads/qav-ulx",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "QAV-ULX"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "FT 210",
+    "permalink": "/docs/projects/race-quads/ft-210"
+  },
+  "next": {
+    "title": "FT Versacopter",
+    "permalink": "/docs/projects/race-quads/versacopter"
+  }
+}

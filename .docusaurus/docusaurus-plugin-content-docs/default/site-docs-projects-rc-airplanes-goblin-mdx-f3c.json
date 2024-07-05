@@ -1,0 +1,27 @@
+{
+  "id": "projects/rc-airplanes/goblin",
+  "title": "FT Goblin",
+  "description": "March 2019",
+  "source": "@site/docs/projects/rc-airplanes/goblin.mdx",
+  "sourceDirName": "projects/rc-airplanes",
+  "slug": "/projects/rc-airplanes/goblin",
+  "permalink": "/docs/projects/rc-airplanes/goblin",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Goblin"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Guinea",
+    "permalink": "/docs/projects/rc-airplanes/guinea-pig"
+  },
+  "next": {
+    "title": "F-22 Raptor",
+    "permalink": "/docs/projects/rc-airplanes/f22"
+  }
+}
