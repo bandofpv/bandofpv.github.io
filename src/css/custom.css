@@ -1,0 +1,154 @@
+:root {
+  --ifm-color-primary: #1c5cd8;
+  --ifm-color-primary-dark: #1953c2;
+  --ifm-color-primary-darker: #184eb8;
+  --ifm-color-primary-darkest: #144097;
+  --ifm-color-primary-light: #2968e3;
+  --ifm-color-primary-lighter: #3470e5;
+  --ifm-color-primary-lightest: #5487e9;
+}
+
+/*dark theme colors */
+[data-theme='dark'] {
+  --ifm-color-primary: #1da7e2;
+  --ifm-color-primary-dark: #1a96cb;
+  --ifm-color-primary-darker: #198ec0;
+  --ifm-color-primary-darkest: #14759e;
+  --ifm-color-primary-light: #34b0e5;
+  --ifm-color-primary-lighter: #3fb4e6;
+  --ifm-color-primary-lightest: #61c1eb;
+}
+
+.video_wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Video aspect ratio: 100 / (16 / 9) */
+}
+
+.video_player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.short_pic {
+  max-height: 10px;
+}
+
+/* Copied */
+/* Dyte Docs Tokens */
+:root {
+  --docs-color-border: #dadde1;
+
+  --docs-color-text: #000000;
+  --docs-color-text-100: #646464;
+
+  --docs-color-background: #ffffff;
+  --docs-color-background-hover: #f8f8f8;
+}
+
+[data-theme='dark'] {
+  --docs-color-border: #2e2e2e;
+
+  --docs-color-text: #ffffff;
+  --docs-color-text-100: #b4b4b4;
+
+  --docs-color-background: #161616;
+  --docs-color-background-hover: #1c1c1c;
+}
+
+.section-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.has-sub-sections > h3 {
+  margin-bottom: 1.5rem;
+}
+
+.has-sub-sections > .section-content {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.has-sub-sections > .section-content > .homepage-section {
+  margin-bottom: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.homepage-section {
+  margin-bottom: 3rem;
+}
+
+.section-description {
+  color: var(--docs-color-text-100);
+  margin: 0rem 0 1.25rem 0;
+  margin-top: -0.5rem;
+}
+
+.has-sub-sections > .section-content .section-description {
+  font-size: 14px;
+}
+
+.homepage-card {
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: var(--docs-color-text);
+  background-color: var(--docs-color-background);
+  border: solid;
+  border-color: var(--docs-color-border);
+  text-align: center;
+
+  --ifm-link-hover-decoration: none;
+  --ifm-link-hover-color: inherit;
+
+  cursor: pointer;
+  border-width: 1px;
+  transition-property: background-color, color;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.homepage-card:hover {
+  background-color: var(--docs-color-background-hover);
+}
+
+.homepage-card.row {
+  flex-direction: row;
+}
+
+.icon svg {
+  width: auto;
+  height: 100%;
+}
+
+.homepage-card .icon {
+  width: 48px;
+  height: 48px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-content .title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.card-content .description {
+  font-size: 14px;
+  color: var(--docs-color-text-100);
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 996px) {
+  .section-content {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

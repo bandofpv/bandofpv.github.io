@@ -1,0 +1,16 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+.Svg {
+  height: 250px;
+  width: 250px;
+}
+
+.profile {
+  border-radius: 10%;
+  height: 370px;
+}
