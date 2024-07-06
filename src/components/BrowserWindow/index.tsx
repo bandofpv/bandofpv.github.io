@@ -34,7 +34,7 @@ export default function BrowserWindow({
           <span className={styles.dot} style={{background: '#58cb42'}} />
         </div>
         <div className={clsx(styles.browserWindowAddressBar, 'text--truncate')}>
-          https://andrewbernas.com/?docusaurus-theme=dark
+          https://andrewbernas.com
         </div>
         <div className={styles.browserWindowMenuIcon}>
           <div>

@@ -1,0 +1,23 @@
+{
+  "id": "usna/ew202",
+  "title": "EW202: Principles of Mechatronics",
+  "description": "January 2024 - May 2024",
+  "source": "@site/docs/usna/ew202.mdx",
+  "sourceDirName": "usna",
+  "slug": "/usna/ew202",
+  "permalink": "/docs/usna/ew202",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "EW202"
+  },
+  "sidebar": "usnaSidebar",
+  "next": {
+    "title": "EW200",
+    "permalink": "/docs/usna/ew200"
+  }
+}

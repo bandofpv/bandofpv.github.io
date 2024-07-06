@@ -50,6 +50,11 @@
   max-height: 10px;
 }
 
+.pdf {
+  height: 500px;
+  width: 100%;
+}
+
 .section-content {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

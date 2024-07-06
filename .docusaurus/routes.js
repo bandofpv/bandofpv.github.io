@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e87'),
+    component: ComponentCreator('/docs', 'c14'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '7c9'),
+        component: ComponentCreator('/docs', '8b5'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '25f'),
+            component: ComponentCreator('/docs', '568'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -294,6 +294,18 @@ export default [
                 component: ComponentCreator('/docs/tutorials/robots/sar-drone', '7de'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/usna/ew200',
+                component: ComponentCreator('/docs/usna/ew200', '5fd'),
+                exact: true,
+                sidebar: "usnaSidebar"
+              },
+              {
+                path: '/docs/usna/ew202',
+                component: ComponentCreator('/docs/usna/ew202', 'ce9'),
+                exact: true,
+                sidebar: "usnaSidebar"
               }
             ]
           }

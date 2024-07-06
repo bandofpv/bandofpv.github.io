@@ -186,6 +186,16 @@
               "sidebar": "tutorialsSidebar"
             },
             {
+              "id": "usna/ew200",
+              "path": "/docs/usna/ew200",
+              "sidebar": "usnaSidebar"
+            },
+            {
+              "id": "usna/ew202",
+              "path": "/docs/usna/ew202",
+              "sidebar": "usnaSidebar"
+            },
+            {
               "id": "/category/robots",
               "path": "/docs/category/robots",
               "sidebar": "projectsSidebar"
@@ -228,6 +238,12 @@
               "link": {
                 "path": "/docs/tutorials/",
                 "label": "Tutorials"
+              }
+            },
+            "usnaSidebar": {
+              "link": {
+                "path": "/docs/usna/ew202",
+                "label": "EW202"
               }
             }
           }

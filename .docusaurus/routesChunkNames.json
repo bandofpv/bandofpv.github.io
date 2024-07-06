@@ -42,17 +42,17 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-e87": {
+  "/docs-c14": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-7c9": {
+  "/docs-8b5": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-25f": {
+  "/docs-568": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/docs/category/code-ad2": {
@@ -218,6 +218,14 @@
   "/docs/tutorials/robots/sar-drone-7de": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorials-robots-sar-drone-651-064"
+  },
+  "/docs/usna/ew200-5fd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-usna-ew-2008-b-1-2fd"
+  },
+  "/docs/usna/ew202-ce9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-usna-ew-20207-f-e68"
   },
   "/-2e1": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
