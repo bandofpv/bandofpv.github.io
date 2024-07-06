@@ -19,7 +19,7 @@ import Card from '@site/src/components/Card';
   <Card
     title="Code"
     icon={<IIcon icon="ant-design:code-filled" />}
-    to="/docs/projects/code/barber-scheduler"
+    to="/docs/projects/code/website"
     description="Computer programming projects"
   />
   <Card

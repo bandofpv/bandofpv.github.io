@@ -1,7 +1,5 @@
 # Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-
 ### Installation
 
 ```
@@ -48,3 +46,14 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 [How Big Should My Images Be?](https://www.cronyxdigital.com/blog/the-ultimate-website-image-guide)
 
 [Image Resizer](https://imageresizer.com/): When you don't want to compress the image, but still want to constrain its size.
+
+
+### Setup
+
+Install [Node.js](https://nodejs.org/en/download/package-manager).
+
+Install `react-player`:
+
+```
+npm install react-player # or yarn add react-player
+```

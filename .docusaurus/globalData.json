@@ -16,6 +16,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/code/website",
+              "path": "/docs/projects/code/website",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/index",
               "path": "/docs/projects/",
               "sidebar": "projectsSidebar"

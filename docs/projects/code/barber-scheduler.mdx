@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player'
 
 May 2024
 
-**[GitHub Respository](https://github.com/bandofpv/USNA_Barber_Scheduler)**
+**[GitHub Repository](https://github.com/bandofpv/USNA_Barber_Scheduler)**
 
 :::info
 Check out my tutorial **[HERE](../../tutorials/code/barber-scheduler.mdx)**
@@ -26,8 +26,8 @@ COMING SOON
 
 ## Description
 
-The program is quite simple. It utilzes [Selenium](https://www.selenium.dev/) which offers its [WebDriver](https://www.selenium.dev/documentation/webdriver/) tool which we can use to automate web tasks. The tool allows us to open up a web browser, interact with websites, and even log into sign in pages. In this case, I used the Selenium WebDriver to login and navigate through the barber shop scheduling portal to automatically schedule haircut appointments. 
+The program is quite simple. It utilizes [Selenium](https://www.selenium.dev/) which offers its [WebDriver](https://www.selenium.dev/documentation/webdriver/) tool which we can use to automate web tasks. The tool allows us to open up a web browser, interact with websites, and even log into sign in pages. In this case, I used the Selenium WebDriver to login and navigate through the barber shop scheduling portal to automatically schedule haircut appointments. 
 
-When the script is run, it first parses through the [dates.txt](https://github.com/bandofpv/USNA_Barber_Scheduler/blob/main/dates.txt) file to read the first date. It then compares that date with the current date. If the date read is in 13 days or less (when the scheduling portal makes the appointment available), the script will open a web browser and schedule your appointment. After scheduling your appointment, it immediatly removes the date from the txt file to avoid repeating. You will also recieve an email notification that your appointment was scheduled so you won't forget about it. If the date is too far in advance (14+ days), then it will close the program. Additionally, the script logs updates and errors into a `scheduler.log` file.
+When the script is run, it first parses through the [dates.txt](https://github.com/bandofpv/USNA_Barber_Scheduler/blob/main/dates.txt) file to read the first date. It then compares that date with the current date. If the date read is in 13 days or less (when the scheduling portal makes the appointment available), the script will open a web browser and schedule your appointment. After scheduling your appointment, it immediately removes the date from the txt file to avoid repeating. You will also receive an email notification that your appointment was scheduled so you won't forget about it. If the date is too far in advance (14+ days), then it will close the program. Additionally, the script logs updates and errors into a `scheduler.log` file.
 
-The program is built to be run several times via a remote server. In my case, I used a Raspberry Pi. By utlizing a CronJob, I can have my RPi run the script every day.
+The program is built to be run several times via a remote server. In my case, I used a Raspberry Pi. By utilizing a CronJob, I can have my RPi run the script every day.

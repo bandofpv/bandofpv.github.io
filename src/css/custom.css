@@ -97,7 +97,7 @@
   --ifm-link-hover-color: inherit;
 
   cursor: pointer;
-  border-width: 1px;
+  border-width: 2px;
   transition-property: background-color, color;
   transition-duration: 0.1s;
   border-radius: 15px;

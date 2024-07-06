@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '229'),
+    component: ComponentCreator('/docs', 'e87'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'f9c'),
+        component: ComponentCreator('/docs', '7c9'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'eb1'),
+            component: ComponentCreator('/docs', '25f'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -94,6 +94,12 @@ export default [
               {
                 path: '/docs/projects/code/barber-scheduler',
                 component: ComponentCreator('/docs/projects/code/barber-scheduler', '145'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/code/website',
+                component: ComponentCreator('/docs/projects/code/website', '2ae'),
                 exact: true,
                 sidebar: "projectsSidebar"
               },

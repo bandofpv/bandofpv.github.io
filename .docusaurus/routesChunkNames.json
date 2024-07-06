@@ -42,17 +42,17 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-229": {
+  "/docs-e87": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-f9c": {
+  "/docs-7c9": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-eb1": {
+  "/docs-25f": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/docs/category/code-ad2": {
@@ -86,6 +86,10 @@
   "/docs/projects/code/barber-scheduler-145": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-projects-code-barber-scheduler-922-8f4"
+  },
+  "/docs/projects/code/website-2ae": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-projects-code-website-7-c-2-bf0"
   },
   "/docs/projects/race-quads/diatone-f64": {
     "__comp": "__comp---theme-doc-item-178-a40",
