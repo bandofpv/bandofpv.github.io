@@ -13,7 +13,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://bandofpv.github.io',
+  url: 'https://www.andrewbernas.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -126,6 +126,25 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      headTags: [
+         // Declare some json-ld structured data
+        {
+          tagName: 'script',
+          attributes: {
+            type: 'application/ld+json',
+          },
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'Organization',
+            name: 'Andrew Bernas',
+            url: 'https://www.andrewbernas.com/',
+            logo: 'https://bandofpv.github.io/img/profile.jpg',
+            description: 'Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.',
+            alternateName: 'Bando FPV',
+            sameAs: 'https://bandofpv.github.io/',
+          }),
+        },
+      ],
     }),
 };
 

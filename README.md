@@ -39,3 +39,12 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `deployment` branch.
+
+
+### Helpful Links
+
+[Squoosh](https://squoosh.app/): A website to compress and resize images for webpages. 
+
+[How Big Should My Images Be?](https://www.cronyxdigital.com/blog/the-ultimate-website-image-guide)
+
+[Image Resizer](https://imageresizer.com/): When you don't want to compress the image, but still want to constrain its size.
