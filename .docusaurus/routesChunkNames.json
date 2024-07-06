@@ -42,18 +42,26 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-394": {
+  "/docs-229": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-2af": {
+  "/docs-f9c": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-961": {
+  "/docs-eb1": {
     "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs/category/code-ad2": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---docs-category-code-25-d-3d3"
+  },
+  "/docs/category/code-1-341": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---docs-category-code-1695-0c9"
   },
   "/docs/category/race-quads-8d7": {
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
@@ -74,6 +82,10 @@
   "/docs/projects-55c": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-projects-10-e-8ce"
+  },
+  "/docs/projects/code/barber-scheduler-145": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-projects-code-barber-scheduler-922-8f4"
   },
   "/docs/projects/race-quads/diatone-f64": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -182,6 +194,10 @@
   "/docs/tutorials-84d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorialsfea-ae6"
+  },
+  "/docs/tutorials/code/barber-scheduler-783": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-code-barber-schedulerb-22-8b6"
   },
   "/docs/tutorials/robots/ft-explorer-vtol-701": {
     "__comp": "__comp---theme-doc-item-178-a40",

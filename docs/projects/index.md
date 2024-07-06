@@ -17,9 +17,9 @@ import Card from '@site/src/components/Card';
     description="Drones, robotic arms, computer vision, and more"
   />
   <Card
-    title="Coding"
+    title="Code"
     icon={<IIcon icon="ant-design:code-filled" />}
-    to="/docs/projects/robots/sar-drone"
+    to="/docs/projects/code/barber-scheduler"
     description="Computer programming projects"
   />
   <Card

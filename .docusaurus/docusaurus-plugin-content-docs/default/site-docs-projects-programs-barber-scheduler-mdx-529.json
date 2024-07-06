@@ -1,0 +1,27 @@
+{
+  "id": "projects/programs/barber-scheduler",
+  "title": "Automatic Barber Scheduler",
+  "description": "May 2024",
+  "source": "@site/docs/projects/programs/barber-scheduler.mdx",
+  "sourceDirName": "projects/programs",
+  "slug": "/projects/programs/barber-scheduler",
+  "permalink": "/docs/projects/programs/barber-scheduler",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Barber Scheduler"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Programs",
+    "permalink": "/docs/category/programs"
+  },
+  "next": {
+    "title": "Race Quads",
+    "permalink": "/docs/category/race-quads"
+  }
+}

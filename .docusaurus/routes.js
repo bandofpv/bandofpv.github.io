@@ -39,16 +39,28 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '394'),
+    component: ComponentCreator('/docs', '229'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '2af'),
+        component: ComponentCreator('/docs', 'f9c'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '961'),
+            component: ComponentCreator('/docs', 'eb1'),
             routes: [
+              {
+                path: '/docs/category/code',
+                component: ComponentCreator('/docs/category/code', 'ad2'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/category/code-1',
+                component: ComponentCreator('/docs/category/code-1', '341'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
               {
                 path: '/docs/category/race-quads',
                 component: ComponentCreator('/docs/category/race-quads', '8d7'),
@@ -76,6 +88,12 @@ export default [
               {
                 path: '/docs/projects',
                 component: ComponentCreator('/docs/projects', '55c'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/code/barber-scheduler',
+                component: ComponentCreator('/docs/projects/code/barber-scheduler', '145'),
                 exact: true,
                 sidebar: "projectsSidebar"
               },
@@ -238,6 +256,12 @@ export default [
               {
                 path: '/docs/tutorials',
                 component: ComponentCreator('/docs/tutorials', '84d'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/code/barber-scheduler',
+                component: ComponentCreator('/docs/tutorials/code/barber-scheduler', '783'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
               },

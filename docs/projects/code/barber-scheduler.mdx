@@ -1,0 +1,33 @@
+---
+sidebar_position: 2
+sidebar_label: Barber Scheduler
+---
+import ReactPlayer from 'react-player'
+
+# Automatic Barber Scheduler
+
+May 2024
+
+**[GitHub Respository](https://github.com/bandofpv/USNA_Barber_Scheduler)**
+
+:::info
+Check out my tutorial **[HERE](../../tutorials/code/barber-scheduler.mdx)**
+:::
+
+## Introduction
+
+As Midshipmen at the United States Naval Academy, we are required to keep our haircuts within regulation. This being said, we have to get our hair cut at least every two to three weeks depending on how close you get your cut. A common issue we face to get a haircut on campus is waiting in super long lines. The only way to avoid waiting in line is to schedule an appointment via the [schedule portal](https://www.usnabsd.com/services/barber-beauty-shop/barber-beauty-shop-scheduler/). This however, only allows  you to schedule two weeks in advance and there's a chance someone already booked an appointment at the same time you desire. Midshipmen are often times so pre-occupied with school that it's hard to remember to book a haircut appointment, and you find yourself having to wait in line to get a last minute cut. I personally found this to be of great annoyance and it usually interfering with my already busy schedule.
+
+The solution to this is to create a program that can automatically schedule appointments for you. The usage is simple, just enter the date and time of your appointment into the [dates.txt](https://github.com/bandofpv/USNA_Barber_Scheduler/blob/main/dates.txt) file and let the script run on a remote server. Doing so allows you to block out appointment times months in advance and never have to wait in line for a haircut.
+
+## Video
+
+COMING SOON
+
+## Description
+
+The program is quite simple. It utilzes [Selenium](https://www.selenium.dev/) which offers its [WebDriver](https://www.selenium.dev/documentation/webdriver/) tool which we can use to automate web tasks. The tool allows us to open up a web browser, interact with websites, and even log into sign in pages. In this case, I used the Selenium WebDriver to login and navigate through the barber shop scheduling portal to automatically schedule haircut appointments. 
+
+When the script is run, it first parses through the [dates.txt](https://github.com/bandofpv/USNA_Barber_Scheduler/blob/main/dates.txt) file to read the first date. It then compares that date with the current date. If the date read is in 13 days or less (when the scheduling portal makes the appointment available), the script will open a web browser and schedule your appointment. After scheduling your appointment, it immediatly removes the date from the txt file to avoid repeating. You will also recieve an email notification that your appointment was scheduled so you won't forget about it. If the date is too far in advance (14+ days), then it will close the program. Additionally, the script logs updates and errors into a `scheduler.log` file.
+
+The program is built to be run several times via a remote server. In my case, I used a Raspberry Pi. By utlizing a CronJob, I can have my RPi run the script every day.

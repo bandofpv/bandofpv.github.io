@@ -19,5 +19,9 @@
   "previous": {
     "title": "VTOL Aircraft",
     "permalink": "/docs/tutorials/robots/ft-explorer-vtol"
+  },
+  "next": {
+    "title": "Code",
+    "permalink": "/docs/category/code-1"
   }
 }

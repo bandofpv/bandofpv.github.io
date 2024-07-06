@@ -11,6 +11,11 @@
           "mainDocId": "projects/index",
           "docs": [
             {
+              "id": "projects/code/barber-scheduler",
+              "path": "/docs/projects/code/barber-scheduler",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/index",
               "path": "/docs/projects/",
               "sidebar": "projectsSidebar"
@@ -146,6 +151,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "tutorials/code/barber-scheduler",
+              "path": "/docs/tutorials/code/barber-scheduler",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
               "id": "tutorials/index",
               "path": "/docs/tutorials/",
               "sidebar": "tutorialsSidebar"
@@ -176,6 +186,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "/category/code",
+              "path": "/docs/category/code",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "/category/race-quads",
               "path": "/docs/category/race-quads",
               "sidebar": "projectsSidebar"
@@ -188,6 +203,11 @@
             {
               "id": "/category/robots-1",
               "path": "/docs/category/robots-1",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "/category/code-1",
+              "path": "/docs/category/code-1",
               "sidebar": "tutorialsSidebar"
             }
           ],
