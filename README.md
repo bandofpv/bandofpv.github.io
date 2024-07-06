@@ -57,3 +57,7 @@ Install `react-player`:
 ```
 npm install react-player # or yarn add react-player
 ```
+
+### When Domain Expires
+
+Change both instances of `url` to `https://bandofpv.github.io` in the `docusaurus.config.js` file.
