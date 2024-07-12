@@ -36,6 +36,8 @@ export default function Home() {
       description="Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.">
       <Head>
         <meta property="og:image" content="https://bandofpv.github.io/img/profile.jpg" />
+        <meta property="image" content="https://bandofpv.github.io/img/profile.jpg" />
+        <meta property="og:logo" content="https://bandofpv.github.io/img/profile.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -45,6 +47,7 @@ export default function Home() {
             url: 'https://www.andrewbernas.com/',
             description: 'Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.',
             logo: 'https://bandofpv.github.io/img/profile.jpg',
+            image: 'https://bandofpv.github.io/img/profile.jpg',
           })}
         </script>
       </Head>

@@ -147,6 +147,7 @@ const config = {
             url: 'https://www.andrewbernas.com/',
             description: 'Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.',
             logo: 'https://bandofpv.github.io/img/profile.jpg',
+            image: 'https://bandofpv.github.io/img/profile.jpg',
           }),
         },
       ],
