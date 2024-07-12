@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import Head from '@docusaurus/Head';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -33,6 +34,20 @@ export default function Home() {
     <Layout
       title="Porfolio Website"
       description="Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.">
+      <Head>
+        <meta property="og:image" content="https://bandofpv.github.io/img/profile.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'Organization',
+            name: 'Andrew Bernas',
+            url: 'https://www.andrewbernas.com/',
+            description: 'Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.',
+            logo: 'https://bandofpv.github.io/img/profile.jpg',
+          })}
+        </script>
+      </Head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
