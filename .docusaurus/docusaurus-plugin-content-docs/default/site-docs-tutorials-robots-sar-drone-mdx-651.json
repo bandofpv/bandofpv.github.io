@@ -10,15 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
+  "sidebarPosition": 2,
   "frontMatter": {
-    "sidebar_position": 1,
+    "sidebar_position": 2,
     "sidebar_label": "Search And Rescue Drone"
   },
   "sidebar": "tutorialsSidebar",
   "previous": {
-    "title": "Robots",
-    "permalink": "/docs/category/robots-1"
+    "title": "Simulation",
+    "permalink": "/docs/tutorials/robots/mavrospy/sim"
   },
   "next": {
     "title": "Reading Robot",

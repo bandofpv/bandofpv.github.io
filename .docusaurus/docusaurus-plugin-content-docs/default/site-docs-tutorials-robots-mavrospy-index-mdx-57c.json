@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/mavrospy/index",
+  "title": "MAVROSPY",
+  "description": "Jun 2024 - Present",
+  "source": "@site/docs/tutorials/robots/mavrospy/index.mdx",
+  "sourceDirName": "tutorials/robots/mavrospy",
+  "slug": "/tutorials/robots/mavrospy/",
+  "permalink": "/docs/tutorials/robots/mavrospy/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "MAVROSPY"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Robots",
+    "permalink": "/docs/category/robots-1"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/docs/tutorials/robots/mavrospy/setup"
+  }
+}

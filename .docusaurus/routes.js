@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c14'),
+    component: ComponentCreator('/docs', '350'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '8b5'),
+        component: ComponentCreator('/docs', 'fc4'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '568'),
+            component: ComponentCreator('/docs', '30b'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -274,6 +274,36 @@ export default [
               {
                 path: '/docs/tutorials/robots/ft-explorer-vtol',
                 component: ComponentCreator('/docs/tutorials/robots/ft-explorer-vtol', '701'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy', 'd25'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy/mocap',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy/mocap', 'f0e'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy/outdoor',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy/outdoor', '9c8'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy/setup',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy/setup', '7e2'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy/sim',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy/sim', '719'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
               },

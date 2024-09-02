@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 4,
+  "sidebarPosition": 5,
   "frontMatter": {
-    "sidebar_position": 4,
+    "sidebar_position": 5,
     "sidebar_label": "Recycle Sorting Robot"
   },
   "sidebar": "tutorialsSidebar",

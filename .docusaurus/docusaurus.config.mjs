@@ -314,6 +314,11 @@ export default {
         "autoCollapseCategories": false
       }
     },
+    "blog": {
+      "sidebar": {
+        "groupByYear": true
+      }
+    },
     "metadata": [],
     "tableOfContents": {
       "minHeadingLevel": 2,

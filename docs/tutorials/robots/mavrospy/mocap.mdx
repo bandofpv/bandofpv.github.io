@@ -1,0 +1,208 @@
+---
+sidebar_position: 3
+sidebar_label: Motion Capture
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import ReactPlayer from 'react-player';
+
+# Motion Capture
+
+Motion capture allows for non-GPS navigation by sending pose estimation data to the flight controller's EKF. ROS makes this easy as there are drivers and packages that allow us to publish pose topics into the ROS framework. We can then relay those topics directly into MAVROS which will then send the poses to the flight controller.
+
+## Qualisys Motion Capture
+
+This assumes that you have already set up your [Qualisys](https://www.qualisys.com/) motion capture system and configured a rigid body for your UAV.
+
+[QTM](https://www.qualisys.com/software/qualisys-track-manager/) is only supported via Windows, so we will use another computer utilizing a Linux distro to act as our ROS pose publisher. The best practice is to connect these two machines via Ethernet to avoid latency and packet loss.
+
+## Docker
+
+Setting up Qualisys ROS on Linux is made easy via Docker.
+
+This tutorial will assume you are running on a Linux OS, but Docker can be used on both Mac and Windows via [Docker Desktop](https://docs.docker.com/get-docker/).
+
+First, make sure you installed [Docker Engine](https://docs.docker.com/engine/install/). It is also recommend you follow the [Linux Post-Installation Steps](https://docs.docker.com/engine/install/linux-postinstall/) as well to manage Docker as a non-root user.
+
+We can verify our Docker installation via:
+
+```bash
+$ docker run hello-world
+```
+
+We can now build our Docker image via the following commands:
+
+```bash
+$ cd ~/mavrospy/docker/mocap
+$ bash run_docker.sh
+```
+
+This script will automatically build the Docker image and open it in a Docker container.
+
+## PX4 Parameters
+
+If you wish to use a motion caputure system as your means for navigating with out a GPS, you must configure the following PX4 parameters.
+
+```bash
+    EKF2_HGT_REF = Vision
+    EKF2_EV_DELAY = 50.0ms
+    EKF2_GPS_CTRL = 0
+    EKF2_BARO_CTRL = Disabled
+    EKF2_RNG_CTRL = Disable range fusion
+    EKF2_REQ_NSATS = 5
+    MAV_USEHILGPS = Enabled
+    EKF2_MAG_TYPE = None
+```
+
+## Timesync
+
+For the pose topic to be understood properly between computers, it's important that both machines are in sync. On both systems, run:
+
+```bash
+$ timedatectl
+```
+
+In the output, you should see:
+
+```bash
+System clock synchronized: yes
+NTP service: active
+```
+
+If the output indicates that the NTP service isn't active, turn it on via:
+
+```bash
+$ sudo timedatectl set-ntp on
+```
+
+After this, run `timedatectl` again to confirm the network time status.
+
+## Motion Capture Demo
+
+On your companion computer, make sure your running the MAVROSPY Docker container:
+
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    ```bash
+    $ cd ~/mavrospy/docker/rpi
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    ```bash
+    $ cd ~/mavrospy/docker/jetson
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+</Tabs>
+
+We must modify the `mocap.launch` file to direct your rigid body name to the relay topic node. Open the file:
+
+```bash
+$ nano ~/mavrospy/launch/mocap.launch
+```
+
+Find this line:
+
+```bash
+<node pkg="topic_tools" type="relay" name="relay" output="screen" args="/qualisys/My_Quad/pose /mavros/vision_pose/pose"/>
+```
+
+Replace `My_Quad` with the label of your rigid body created in QTM.
+
+You can now start our motion capture control node on our companion computer via:
+
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    ```bash
+    $ roslaunch mavrospy mocap.launch
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    ```bash
+    $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL
+    ```
+  </TabItem>
+</Tabs>
+
+:::info
+You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
+
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    ```bash
+    $ roslaunch mavrospy mocap.launch pattern:=figure8
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    ```bash
+    $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL pattern:=figure8
+    ```
+  </TabItem>
+</Tabs>
+
+Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
+:::
+
+In order to publish ROS pose topics from our computer to the companion computer, we must establish a [ROS Master](https://wiki.ros.org/Master). In our case, we will choose the companion computer as the master.
+
+On your publishing computer, export the `ROS_MASTER_URI` environment variable. Make sure to replace `master_ip_address` with the IP address of the companion computer:
+
+```bash
+$ export ROS_MASTER_URI=http://master_ip_address:11311
+```
+
+Now start publishing. On your motion capture pose publishing computer, enter:
+
+```bash
+$ roslaunch mocap_qualisys qualisys.launch server_address:=qtm_server_address
+```
+
+Where `qtm_server_address` is the IP address to your QTM server.
+
+To verify your pose topics are being published, run the following on another terminal on your companion computer:
+
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    ```bash
+    $ cd ~/mavrospy/docker/rpi
+    $ bash run_docker.sh
+    $ rostopic echo /qualisys/rigid_body_name/pose
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    ```bash
+    $ cd ~/mavrospy/docker/jetson
+    $ bash run_docker.sh
+    $ rostopic echo /qualisys/My_Quad/pose
+    ```
+  </TabItem>
+</Tabs>
+
+Where `My_Quad` is the label of your rigid body created in QTM. **CTRL+C** to exit.
+
+You can verify that your companion computer is receiving our pose topic via:
+
+```bash
+$ rostopic echo /mavros/vision_pose/pose
+```
+
+**CTRL+C** to exit.
+
+Additionally, you can check that the PX4 flight contoller is able to calculate a global position estimage via:
+
+```bash
+$ rostopic echo /mavros/global_position/global
+```
+
+**CTRL+C** to exit.
+
+You can now switch to OFFBOARD mode and watch it fly!
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/b3LORO2ftRI"/>
+</div>

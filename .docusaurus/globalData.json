@@ -171,6 +171,31 @@
               "sidebar": "tutorialsSidebar"
             },
             {
+              "id": "tutorials/robots/mavrospy/index",
+              "path": "/docs/tutorials/robots/mavrospy/",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/mavrospy/mocap",
+              "path": "/docs/tutorials/robots/mavrospy/mocap",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/mavrospy/outdoor",
+              "path": "/docs/tutorials/robots/mavrospy/outdoor",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/mavrospy/setup",
+              "path": "/docs/tutorials/robots/mavrospy/setup",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/mavrospy/sim",
+              "path": "/docs/tutorials/robots/mavrospy/sim",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
               "id": "tutorials/robots/reading-eye",
               "path": "/docs/tutorials/robots/reading-eye",
               "sidebar": "tutorialsSidebar"

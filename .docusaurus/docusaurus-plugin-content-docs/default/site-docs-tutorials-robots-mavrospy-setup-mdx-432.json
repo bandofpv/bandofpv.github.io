@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/mavrospy/setup",
+  "title": "Setup",
+  "description": "MAVROSPY is supported on a PX4 (v1.14.3) flight controller with a RPi4 (Ubuntu 22.04 MATE) or Jetson Nano (JetPack 4.6) companion computer. Additionally, it uses ROS1 Noetic and can be integrated with ROS2 Humble via the ros1bridge.",
+  "source": "@site/docs/tutorials/robots/mavrospy/setup.mdx",
+  "sourceDirName": "tutorials/robots/mavrospy",
+  "slug": "/tutorials/robots/mavrospy/setup",
+  "permalink": "/docs/tutorials/robots/mavrospy/setup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Setup"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "MAVROSPY",
+    "permalink": "/docs/tutorials/robots/mavrospy/"
+  },
+  "next": {
+    "title": "GPS Navigation",
+    "permalink": "/docs/tutorials/robots/mavrospy/outdoor"
+  }
+}

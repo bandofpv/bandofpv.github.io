@@ -1,0 +1,169 @@
+---
+sidebar_position: 4
+sidebar_label: Simulation
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import ReactPlayer from 'react-player';
+
+# Simulation
+
+An additional benifit of using ROS is that it allows users to easily develop simulators such as [Gazebo](https://classic.gazebosim.org/) with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.
+
+## Docker
+
+Setting up Gazebo ROS on Linux is made easy via Docker.
+
+This tutorial will assume you are running on a Linux OS, but Docker can be used on both Mac and Windows via [Docker Desktop](https://docs.docker.com/get-docker/).
+
+First, make sure you installed [Docker Engine](https://docs.docker.com/engine/install/). It is also recommend you follow the [Linux Post-Installation Steps](https://docs.docker.com/engine/install/linux-postinstall/) as well to manage Docker as a non-root user.
+
+We can verify our Docker installation via:
+
+```bash
+$ docker run hello-world
+```
+
+## NVIDIA GPU Acceleration
+
+We can use [Gazebo Classic](https://classic.gazebosim.org/) to simulate our MAVROSPY movment commands. Using an NVIDIA graphics card will improve simulation performance, but is by no means required if you have a modern integrated graphics card.
+
+To use our NVIDIA GPU, verify you have installed its driver:
+
+```bash
+$ nvidia-smi
+```
+
+If it's not installed, follow your desktops OS driver installation instructions.
+
+To utilize our NVIDIA GPU inside a Docker container, we must install the NVIDIA Container Toolkit.
+
+This is a summary of the official [installation instructions](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+
+Configure the production repository:
+
+```bash
+$ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+```
+
+Update the packages list from the repository:
+
+```bash
+$ sudo apt update
+```
+
+Install the NVIDIA Container Toolkit packages:
+
+```bash
+$ sudo apt install nvidia-container-toolkit
+```
+
+Configure the Docker container runtime by using the `nvidia-ctk` command:
+
+```bash
+$ sudo nvidia-ctk runtime configure --runtime=docker
+```
+
+Restart the Docker daemon:
+
+```bash
+$ sudo systemctl restart docker
+```
+
+Verify the installation by running a sample CUDA container:
+
+```bash
+$ sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+```
+
+Depending on your PC, you may have an internal graphics card. To use your NVIDIA graphics card, enter this command:
+
+```bash
+$ sudo prime-select nvidia
+```
+
+Then, reboot.
+
+## Build Docker Image
+
+We can now build our Docker image via the following commands:
+
+```bash
+$ cd ~
+$ git clone https://github.com/bandofpv/mavrospy.git
+$ cd ~/mavrospy/docker/sim
+$ bash run_docker.sh
+```
+
+This script will automatically build the Docker image and open it in a Docker container.
+
+## Launch Gazebo Classic Simulator
+
+Inside the docker container, launch a simulation:
+
+```bash
+$ roslaunch mavrospy gazebo_sim.launch
+```
+
+:::info
+You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
+
+```bash
+$ roslaunch mavrospy gazebo_sim.launch pattern:=spiral
+```
+
+Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
+:::
+
+Gazebo will open up and display a quadcopter model.
+
+In the container, wait for the messages to stop updating until you see the following line:
+
+```bash
+INFO  [commander] Ready for takeoff!
+```
+
+Press `Enter` to open the PX4 shell. You should see a `pxh>` before your cursor.
+
+Enter the following command to change into offboard mode:
+
+```bash
+pxh> commander mode offboard
+```
+
+Go back to the Gazebo window and watch drone fly!
+
+The ROS program will automatically clean up after the drone lands. Press **CTRL+D** to exit/close the container.
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
+</div>
+
+## Visualization with RViz
+
+We can also visualize our simulation poses with [RViz](http://wiki.ros.org/rviz).
+
+After launching the Gazebo Classic Simulator, we can launch RViz.
+
+Open a new termial and attach to the MAVROSPY sim container:
+
+```bash
+$ bash ~/mavrospy/docker/sim/run_docker.sh
+```
+
+Launch RViz:
+
+```bash
+$ roslaunch mavrospy rviz.launch
+```
+
+ROS will automatically begin plotting the drone's path.
+
+**CTRL+C** to exit.
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/exunchncuj8"/>
+</div>

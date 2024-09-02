@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/mavrospy/mocap",
+  "title": "Motion Capture",
+  "description": "Motion capture allows for non-GPS navigation by sending pose estimation data to the flight controller's EKF. ROS makes this easy as there are drivers and packages that allow us to publish pose topics into the ROS framework. We can then relay those topics directly into MAVROS which will then send the poses to the flight controller.",
+  "source": "@site/docs/tutorials/robots/mavrospy/mocap.mdx",
+  "sourceDirName": "tutorials/robots/mavrospy",
+  "slug": "/tutorials/robots/mavrospy/mocap",
+  "permalink": "/docs/tutorials/robots/mavrospy/mocap",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Motion Capture"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "GPS Navigation",
+    "permalink": "/docs/tutorials/robots/mavrospy/outdoor"
+  },
+  "next": {
+    "title": "Simulation",
+    "permalink": "/docs/tutorials/robots/mavrospy/sim"
+  }
+}

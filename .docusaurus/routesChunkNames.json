@@ -42,17 +42,17 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-c14": {
+  "/docs-350": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-8b5": {
+  "/docs-fc4": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-568": {
+  "/docs-30b": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/docs/category/code-ad2": {
@@ -206,6 +206,26 @@
   "/docs/tutorials/robots/ft-explorer-vtol-701": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorials-robots-ft-explorer-vtol-5-fb-f68"
+  },
+  "/docs/tutorials/robots/mavrospy-d25": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-mavrospy-57-c-b56"
+  },
+  "/docs/tutorials/robots/mavrospy/mocap-f0e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-mavrospy-mocap-891-7ac"
+  },
+  "/docs/tutorials/robots/mavrospy/outdoor-9c8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-mavrospy-outdoor-4-d-7-937"
+  },
+  "/docs/tutorials/robots/mavrospy/setup-7e2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-mavrospy-setup-432-aeb"
+  },
+  "/docs/tutorials/robots/mavrospy/sim-719": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-mavrospy-sim-53-d-a5c"
   },
   "/docs/tutorials/robots/reading-eye-662": {
     "__comp": "__comp---theme-doc-item-178-a40",

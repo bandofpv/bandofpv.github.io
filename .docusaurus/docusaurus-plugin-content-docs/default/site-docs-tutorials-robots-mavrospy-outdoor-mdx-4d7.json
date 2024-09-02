@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/mavrospy/outdoor",
+  "title": "GPS Navigation",
+  "description": "We can run an outdoor demonstration of MAVROSPY via the outdoor.launch file. However, we need to make sure it runs on boot as we would not be able to SSH to our companion computer on the field.",
+  "source": "@site/docs/tutorials/robots/mavrospy/outdoor.mdx",
+  "sourceDirName": "tutorials/robots/mavrospy",
+  "slug": "/tutorials/robots/mavrospy/outdoor",
+  "permalink": "/docs/tutorials/robots/mavrospy/outdoor",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "GPS Navigation"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/docs/tutorials/robots/mavrospy/setup"
+  },
+  "next": {
+    "title": "Motion Capture",
+    "permalink": "/docs/tutorials/robots/mavrospy/mocap"
+  }
+}
