@@ -79,6 +79,24 @@ After this, run `timedatectl` again to confirm the network time status.
 
 ## Motion Capture Demo
 
+:::warning
+If you are following this tutorial after the [GPS Navigation Tutorial](outdoor.mdx) please remove the outdoor MAVROSPY container:
+
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    ```bash
+    $ docker container rm -f mavrospy-rpi-outdoor-container
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    ```bash
+    $ docker container rm -f mavrospy-jetson-outdoor-container
+    ```
+  </TabItem>
+</Tabs>
+:::
+
 On your companion computer, make sure your running the MAVROSPY Docker container:
 
 <Tabs groupId="companion-computers">
