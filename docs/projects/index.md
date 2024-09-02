@@ -13,7 +13,7 @@ import Card from '@site/src/components/Card';
   <Card
     title="Robots"
     icon={<IIcon icon="mdi:robot-industrial-outline" />}
-    to="/docs/projects/robots/sar-drone"
+    to="/docs/projects/robots/mavrospy"
     description="Drones, robotic arms, computer vision, and more"
   />
   <Card
