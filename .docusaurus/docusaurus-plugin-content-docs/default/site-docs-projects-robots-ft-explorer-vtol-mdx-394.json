@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 3,
+  "sidebarPosition": 4,
   "frontMatter": {
-    "sidebar_position": 3,
+    "sidebar_position": 4,
     "sidebar_label": "VTOL Aircraft"
   },
   "sidebar": "projectsSidebar",

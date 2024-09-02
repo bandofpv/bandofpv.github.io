@@ -136,6 +136,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/robots/mavrospy",
+              "path": "/docs/projects/robots/mavrospy",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/robots/reading-eye",
               "path": "/docs/projects/robots/reading-eye",
               "sidebar": "projectsSidebar"
@@ -168,11 +173,6 @@
             {
               "id": "tutorials/robots/ft-explorer-vtol",
               "path": "/docs/tutorials/robots/ft-explorer-vtol",
-              "sidebar": "tutorialsSidebar"
-            },
-            {
-              "id": "tutorials/robots/mavrospy/index",
-              "path": "/docs/tutorials/robots/mavrospy/",
               "sidebar": "tutorialsSidebar"
             },
             {

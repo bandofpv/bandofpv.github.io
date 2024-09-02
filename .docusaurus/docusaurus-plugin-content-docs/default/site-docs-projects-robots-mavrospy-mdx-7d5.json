@@ -1,0 +1,27 @@
+{
+  "id": "projects/robots/mavrospy",
+  "title": "MAVROSPY",
+  "description": "June 2024 - Present",
+  "source": "@site/docs/projects/robots/mavrospy.mdx",
+  "sourceDirName": "projects/robots",
+  "slug": "/projects/robots/mavrospy",
+  "permalink": "/docs/projects/robots/mavrospy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "MAVROSPY"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Robots",
+    "permalink": "/docs/category/robots"
+  },
+  "next": {
+    "title": "Search & Rescue Drone",
+    "permalink": "/docs/projects/robots/sar-drone"
+  }
+}
