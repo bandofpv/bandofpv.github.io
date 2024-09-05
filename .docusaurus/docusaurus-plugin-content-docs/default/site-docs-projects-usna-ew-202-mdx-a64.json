@@ -1,0 +1,27 @@
+{
+  "id": "projects/usna/ew202",
+  "title": "EW202: Principles of Mechatronics",
+  "description": "January 2024 - May 2024",
+  "source": "@site/docs/projects/usna/ew202.mdx",
+  "sourceDirName": "projects/usna",
+  "slug": "/projects/usna/ew202",
+  "permalink": "/docs/projects/usna/ew202",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "EW202"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Nutball",
+    "permalink": "/docs/projects/rc-airplanes/nutball"
+  },
+  "next": {
+    "title": "EW200",
+    "permalink": "/docs/projects/usna/ew200"
+  }
+}

@@ -161,6 +161,16 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/ping-pong",
+              "path": "/docs/projects/school/ping-pong",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/school/tag",
+              "path": "/docs/projects/school/tag",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "tutorials/code/barber-scheduler",
               "path": "/docs/tutorials/code/barber-scheduler",
               "sidebar": "tutorialsSidebar"
@@ -173,6 +183,11 @@
             {
               "id": "tutorials/robots/ft-explorer-vtol",
               "path": "/docs/tutorials/robots/ft-explorer-vtol",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/mavrospy/index",
+              "path": "/docs/tutorials/robots/mavrospy/",
               "sidebar": "tutorialsSidebar"
             },
             {
@@ -211,16 +226,6 @@
               "sidebar": "tutorialsSidebar"
             },
             {
-              "id": "usna/ew200",
-              "path": "/docs/usna/ew200",
-              "sidebar": "usnaSidebar"
-            },
-            {
-              "id": "usna/ew202",
-              "path": "/docs/usna/ew202",
-              "sidebar": "usnaSidebar"
-            },
-            {
               "id": "/category/robots",
               "path": "/docs/category/robots",
               "sidebar": "projectsSidebar"
@@ -228,6 +233,11 @@
             {
               "id": "/category/code",
               "path": "/docs/category/code",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "/category/school",
+              "path": "/docs/category/school",
               "sidebar": "projectsSidebar"
             },
             {
@@ -263,12 +273,6 @@
               "link": {
                 "path": "/docs/tutorials/",
                 "label": "Tutorials"
-              }
-            },
-            "usnaSidebar": {
-              "link": {
-                "path": "/docs/usna/ew202",
-                "label": "EW202"
               }
             }
           }

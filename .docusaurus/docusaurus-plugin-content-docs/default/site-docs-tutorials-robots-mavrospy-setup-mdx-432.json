@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialsSidebar",
   "previous": {
-    "title": "Robots",
-    "permalink": "/docs/category/robots-1"
+    "title": "MAVROSPY",
+    "permalink": "/docs/tutorials/robots/mavrospy/"
   },
   "next": {
     "title": "GPS Navigation",

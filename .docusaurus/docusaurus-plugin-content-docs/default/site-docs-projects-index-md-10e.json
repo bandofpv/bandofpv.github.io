@@ -1,7 +1,7 @@
 {
   "id": "projects/index",
   "title": "Projects",
-  "description": "<CardSection",
+  "description": "<Card",
   "source": "@site/docs/projects/index.md",
   "sourceDirName": "projects",
   "slug": "/projects/",

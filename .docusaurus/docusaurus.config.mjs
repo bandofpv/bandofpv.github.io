@@ -62,12 +62,6 @@ export default {
           "label": "Tutorials"
         },
         {
-          "type": "docSidebar",
-          "sidebarId": "usnaSidebar",
-          "position": "left",
-          "label": "USNA Courses"
-        },
-        {
           "href": "https://www.flickr.com/photos/201020418@N06/",
           "label": "Photgraphy",
           "position": "right"

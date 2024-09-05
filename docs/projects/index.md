@@ -7,9 +7,7 @@ import Card from '@site/src/components/Card';
 
 # Projects
 
-<CardSection
-  id="projects"
->
+<CardSection id="projects">
   <Card
     title="Robots"
     icon={<IIcon icon="mdi:robot-industrial-outline" />}
@@ -21,6 +19,12 @@ import Card from '@site/src/components/Card';
     icon={<IIcon icon="ant-design:code-filled" />}
     to="/docs/projects/code/website"
     description="Computer programming projects"
+  />
+  <Card
+    title="School"
+    icon={<IIcon icon="mdi:school" />}
+    to="/docs/projects/school/ew202"
+    description="Final projects from the United States Naval Academy"
   />
   <Card
     title="Race Quads"

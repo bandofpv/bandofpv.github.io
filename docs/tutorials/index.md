@@ -13,7 +13,7 @@ import Card from '@site/src/components/Card';
   <Card
     title="Robots"
     icon={<IIcon icon="mdi:robot-industrial-outline" />}
-    to="/docs/tutorials/robots/mavrospy/setup"
+    to="/docs/tutorials/robots/mavrospy"
     description="Drones, robotic arms, computer vision, and more"
   />
   <Card

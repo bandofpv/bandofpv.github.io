@@ -1,0 +1,61 @@
+---
+sidebar_position: 1
+sidebar_label: Ping Pong Levitator
+---
+import ReactPlayer from 'react-player'
+
+# Ping Pong Ball Feedback Controller
+
+February 2024 - April 2024
+
+**[GitHub Repository](https://github.com/bandofpv/EW202/tree/main/Labs/PI_Control)**
+
+## Introduction
+
+My second course in the robotics and control engineering introduced concepts from control theory, instrumentation, and mechatronics.
+
+The final project for this course was to develop a Proportional and Integral Controller onto a [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) microcontroller to manipulate a fan to levitate a ping pong ball at a user specified height.
+
+# IMAGE
+
+## Final Report
+
+# Add LINKS to IN-text references and end
+
+**Authors:** Midshipman 3/C Andrew Bernas and Midshipman 3/C Remi Nguyen
+
+**Abstract** — The Feedback Control Laboratory’s objective is to create a control logic program using relay control, proportional (P) control, and proportional and integral (PI) control to levitate a ping pong ball at a desired height for any period of time. The laboratory builds knowledge of how to design a program in order to properly calibrate IR sensors and apply the Ziegler-Nichols’ method for tuning control systems. It specifically bolsters the understanding of the feedback control configuration by the requirement to design a program that affects each component and to analyze its data. The final design of the program resulted in successfully controlling motor power and levitating the ball at one height
+
+### Introduction
+
+**Problem Statement and Objectives**
+
+&nbsp;&nbsp;&nbsp;&nbsp;The objective of this lab is to levitate a ping pong ball at a desired height using the 3D printed structure illustrated in Figure 1. As such, the following are the learning objectives of this lab: utilize serial communication between MATLAB and an RP2040 to transfer data and plot, use the RP2040 16-bit ADC to collect IR sensor output, construct a model that relates ADC voltage to distance, use PWM with a MOSFET to control the speed of a DC fan motor, and develop a control logic program that can accomplish the main objective of the lab.
+
+**Related Work**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Ziegler and Nichols advanced the methods of tuning parameters by introducing their Ziegler-Nichols tuning formula in 1942. Their tuning method aimed to minimize the rise time, maximum overshoot, and setting time for PID control.
+
+&nbsp;&nbsp;&nbsp;&nbsp;The Traditional Ziegler-Nichols method sets the proportional gain at a very low number. Then, with multiple steps in experimentation, they increase the gain until the system oscillates to extract the parameters k (gain), L (delay time), and T (time constant). The Ziegler-Nichols formula is then applied to get controller parameters of proportional gain and period of oscillation [1]. The traditional method is aggressive which leads to high overshooting and an unstable system.  We attempted to emulate this method of tuning in the first part of our experiment. It resulted in a high peak overshoot and error.
+
+&nbsp;&nbsp;&nbsp;&nbsp;The Ziegler-Nichols method was applied to a hot water dispenser. In the experiment, they tested the hot water temperature with and without the PID controller that used the Ziegler-Nichols method and compared both results. The results determined that without the PID controller, the temperature of the water was not able to maintain a stable temperature, reaching a high point of about 95 degrees and dropping to 87 degrees Celsius. When a PID controller was used, the temperature approached a stable 92 degrees, having a solid state relay [2]. We see the same results in the Ping Pong experiment. Without the PI Controller, the ping pong ball seemed to be unpredictable with the ball maintaining different heights and ultimately being unstable. Whereas with the PI controller, the ping pong ball levitates with a steady oscillation and low error.
+
+### Design Process
+
+**Objectives and Desired Functionality**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Design an algorithm using relay, P, and PI controllers to levitate a ping pong ball at any specified height. For P and PI controllers, use the Ziegler-Nichols gain tuning method to calculate the proportional and integral gain parameters. Apply the parameters to the initial relay system to reduce error of the ball levitation system.
+
+&nbsp;&nbsp;&nbsp;&nbsp;We hope to achieve a settling time no longer than 3 seconds and a ± 1cm error for all three relay, P, and PI controllers.
+
+**Design Constraints**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Outside of being constrained to using the 3D structure illustrated in Figure 1, there are some limitations to the control logic outlined in this lab. For instance, the relay control logic program is limited by its extreme simplicity. The only way to get the levitation height more accurate is by adjusting the base voltage and incremental voltages. If the incremental voltage is too low, the fan power might not increase or decrease enough to impact ball height. Furthermore, P control is limited based on the error calculation. This method changes the fan voltage to the amount of error observed. During steady state, the error in the system will reach a point where it remains constant. While it doesn’t change, the fan voltage would not change. As a result, the steady state is offset from the desired height. This offset can not be eliminated using solely the P controller and we must implement other techniques.
+
+**Ethical Considerations**
+
+&nbsp;&nbsp;&nbsp;&nbsp;The automatic control solution here is important because it improves the capability for machines to learn and adapt to their environment around them. Most technology today including HVAC systems, drones, and overall industry control uses the PID controllers. It is the most common because it is simple and could be used in a wide range of conditions.  There is no simpler way of automation. The PID controller can be applied to volumetric control, pressure control, and also temperature control. Without it, those functions wouldn’t be able to be automated in a simple and straightforward method. It fully supports the IEEE Code of Ethics with no dangers to “safety, health, and welfare of the public” [3]. The advantages of the PID control are that it could achieve many different desired conditions, prevent equipment damage, and improve performance of machines through behavior adjusting. Overall, the control system only provides benefits to a multitude of industries today.
+
+### Final Design
+
+

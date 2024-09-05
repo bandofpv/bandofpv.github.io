@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '543'),
+    component: ComponentCreator('/docs', 'e5d'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'fc4'),
+        component: ComponentCreator('/docs', 'e9a'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '131'),
+            component: ComponentCreator('/docs', 'b72'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -84,6 +84,12 @@ export default [
                 component: ComponentCreator('/docs/category/robots-1', 'a5f'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/category/school',
+                component: ComponentCreator('/docs/category/school', '369'),
+                exact: true,
+                sidebar: "projectsSidebar"
               },
               {
                 path: '/docs/projects',
@@ -266,6 +272,18 @@ export default [
                 sidebar: "projectsSidebar"
               },
               {
+                path: '/docs/projects/school/ping-pong',
+                component: ComponentCreator('/docs/projects/school/ping-pong', '07d'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/school/tag',
+                component: ComponentCreator('/docs/projects/school/tag', '72b'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
                 path: '/docs/tutorials',
                 component: ComponentCreator('/docs/tutorials', '84d'),
                 exact: true,
@@ -280,6 +298,12 @@ export default [
               {
                 path: '/docs/tutorials/robots/ft-explorer-vtol',
                 component: ComponentCreator('/docs/tutorials/robots/ft-explorer-vtol', '701'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/mavrospy',
+                component: ComponentCreator('/docs/tutorials/robots/mavrospy', 'd25'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
               },
@@ -324,18 +348,6 @@ export default [
                 component: ComponentCreator('/docs/tutorials/robots/sar-drone', '7de'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
-              },
-              {
-                path: '/docs/usna/ew200',
-                component: ComponentCreator('/docs/usna/ew200', '5fd'),
-                exact: true,
-                sidebar: "usnaSidebar"
-              },
-              {
-                path: '/docs/usna/ew202',
-                component: ComponentCreator('/docs/usna/ew202', 'ce9'),
-                exact: true,
-                sidebar: "usnaSidebar"
               }
             ]
           }

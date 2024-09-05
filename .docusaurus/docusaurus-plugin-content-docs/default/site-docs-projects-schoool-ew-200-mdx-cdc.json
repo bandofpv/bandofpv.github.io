@@ -1,0 +1,23 @@
+{
+  "id": "projects/schoool/ew200",
+  "title": "EW200: Intro to Programming and Design",
+  "description": "August 2023 - December 2023",
+  "source": "@site/docs/projects/schoool/ew200.mdx",
+  "sourceDirName": "projects/schoool",
+  "slug": "/projects/schoool/ew200",
+  "permalink": "/docs/projects/schoool/ew200",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "EW200"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "EW202",
+    "permalink": "/docs/projects/schoool/ew202"
+  }
+}

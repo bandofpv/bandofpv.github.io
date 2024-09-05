@@ -1,0 +1,27 @@
+{
+  "id": "projects/school/ping-pong",
+  "title": "Ping Pong Ball Feedback Controller",
+  "description": "February 2024 - April 2024",
+  "source": "@site/docs/projects/school/ping-pong.mdx",
+  "sourceDirName": "projects/school",
+  "slug": "/projects/school/ping-pong",
+  "permalink": "/docs/projects/school/ping-pong",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Ping Pong Levitator"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "School",
+    "permalink": "/docs/category/school"
+  },
+  "next": {
+    "title": "Tag! Pygame",
+    "permalink": "/docs/projects/school/tag"
+  }
+}
