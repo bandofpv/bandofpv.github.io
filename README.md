@@ -16,6 +16,12 @@ Install `react-player`:
 npm install react-player # or yarn add react-player
 ```
 
+Install KaTeX:
+
+```
+npm install --save remark-math@6 rehype-katex@7
+```
+
 ### Installation
 
 ```

@@ -36,11 +36,11 @@ MAVROSPY provides support for GPS Navigation, Motion Capture, and Simulation.
 
 Navigating via GPS is quite simple as it is the traditional way UAVs navigate autonomously.
 
-We can manipulate the movement of the drone via GPS via the `SET_POSITION_TARGET_GLOBAL_INT` or `SET_POSITION_TARGET_LOCAL_NED` MAVLink message. MAVROSPY utilizes the later as it provides more flexibily when navigating relative to its local frame rather then the global (GPS) frame.
+We can manipulate the movement of the drone via GPS via the `SET_POSITION_TARGET_GLOBAL_INT` or `SET_POSITION_TARGET_LOCAL_NED` MAVLink message. MAVROSPY utilizes the latter as it provides more flexibily when navigating relative to its local frame rather then the global (GPS) frame.
 
-The `SET_POSITION_TARGET_LOCAL_NED` message takes in a x, y, and z position, velocity, and acceleration in the NED (North, East, Down) frame as well as yaw and yaw rate. This message doesn't correlate to ROS very well because ROS uses a ENU (East, North, Up) frame. Additionally, ROS uses the [geometry_msgs/Pose](http://docs.ros.org/en/api/geometry_msgs/html/msg/Pose.html) message which uses an x, y, z [geometry_msgs/Point](http://docs.ros.org/en/api/geometry_msgs/html/msg/Point.html) message and an x, y, z, w [geometry_msgs/Quaternion](http://docs.ros.org/en/api/geometry_msgs/html/msg/Quaternion.html) message. This is where MAVROS comes to play. It transforms the MAVLink/FCU NED frame into the ROS ENU frame and converts the x, y, z position and yaw into a [geometry_msgs/Pose](http://docs.ros.org/en/api/geometry_msgs/html/msg/Pose.html) message via the `/mavros/setpoint_position/local` topic.
+The `SET_POSITION_TARGET_LOCAL_NED` message takes in a x, y, and z position, velocity, and acceleration in the NED (North, East, Down) frame as well as yaw and yaw rate. This message doesn't correlate well with ROS because it uses the ENU (East, North, Up) frame. Additionally, ROS uses the [geometry_msgs/Pose](http://docs.ros.org/en/api/geometry_msgs/html/msg/Pose.html) message which uses an x, y, z [geometry_msgs/Point](http://docs.ros.org/en/api/geometry_msgs/html/msg/Point.html) message and an x, y, z, w [geometry_msgs/Quaternion](http://docs.ros.org/en/api/geometry_msgs/html/msg/Quaternion.html) message. This is where MAVROS comes to play. It transforms the MAVLink/FCU NED frame into the ROS ENU frame and converts the x, y, z position and yaw into a [geometry_msgs/Pose](http://docs.ros.org/en/api/geometry_msgs/html/msg/Pose.html) message via the `/mavros/setpoint_position/local` topic.
 
-As such, MAVROSPY can simply publish messages to the `/mavros/setpoint_position/local` topic:
+As such, MAVROSPY can simply publish messages to the `/mavros/setpoint_position/local` topic to maneuver the UAV:
 
 ```python
 def goto(self, pose):
@@ -101,15 +101,15 @@ def goto_xyz_rpy(self, x, y, z, roll, pitch, yaw, timeout=30, isClose=True, chec
 
 Where `is_close` is a method that compares whether the current and target values are within a set tolerance.
 
-The demonstration video for GPS Navigation was displayed at the [Video](mavrospy/#video) section.
+The demonstration video for GPS Navigation was displayed in the [Video](mavrospy/#video) section.
 
 ### Motion Capture
 
 Now that we can integrate our UAV into the ROS framework using MAVROS and maneuver the UAV using MAVROSPY, we can begin integrating other ROS features into the design. Using a motion capture system is crucial for rapid prototyping as you can test movement scripts in a controlled lab environment, without GPS, and without having to go outside.
 
-In order to do this, we must be able to send information to the UAV regarding its position as GPS is very unreliable indoors. We can do this via the `VISION_POSITION_ESTIMATE` MAVLink message which requires a local x, y, and z position and a roll, pitch, and yaw angle. Again, MAVROS integrates this into ROS via the same `geometry_msgs/Pose` message. As such, all MAVROSPY has to do is relay the motion caputure topic into the `/mavros/vision_pose/pose` topic.
+In order to do this, we must be able to send information to the UAV regarding its position as GPS is very unreliable indoors. We can do this via the `VISION_POSITION_ESTIMATE` MAVLink message which requires a local x, y, and z position and a roll, pitch, and yaw angle. Again, MAVROS integrates this into ROS via the same `geometry_msgs/Pose` message. As such, all MAVROSPY has to do is relay the motion caputure topic into the `/mavros/vision_pose/pose` topic to inform the UAV of its position.
 
-If we want to utilize any PX4 Auto Modes (Mission, Return, Land, Hold, & Orbit) with a **local** position estimate, we would have to mimic a GPS signal. To do this, we can utilize the MAVROS `fake_gps` plugin which requires a [geometry_msgs/Transform](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Transform.html) ROS message. This message "represents the transform between two coordinate frames in free space". In other words, we need to convert the motion capture `geometry_msgs/Pose` message into a quaternion (orientation) and a 3-D vector from the local origin to the UAV's current location:
+If we want to utilize any PX4 Auto Modes (Mission, Return, Land, Hold, & Orbit) with a *local* position estimate, we would have to mimic a GPS signal. To do this, we can utilize the MAVROS `fake_gps` plugin which requires a [geometry_msgs/Transform](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Transform.html) ROS message. This message "represents the transform between two coordinate frames in free space". In other words, we need to convert the motion capture `geometry_msgs/Pose` message into a quaternion (orientation) and a 3-D vector from the local origin to the UAV's current location:
 
 ```python
  # Create a TransformStamped message
@@ -139,9 +139,9 @@ Now we can integrate the `goto_xyz_rpy` method as well as any PX4 Auto modes uti
 
 ### Simulation
 
-Being able to simulate in any robotics project and especially for UAVs is very important if you want to avoid damaging hardware. With ROS fully integrated into our system, we can easily use the [Gazebo Simulator](https://gazebosim.org/) to simulate our UAV.
+Being able to simulate in any robotics project and especially for UAVs is very important if you want to avoid damaging hardware. With ROS fully integrated into our system, we can easily use the [Gazebo Simulator](https://classic.gazebosim.org/) to simulate our UAV.
 
-First, we need to simulate a PX4 flight controller on a computer. Luckily, PX4 makes this very easy as its source code is all [open-source](https://github.com/PX4/PX4-Autopilot) and can be compiled on almost any system. We can then use MAVROS to integrate the simualted flight controller into ROS and MAVROSPY to maneuver our simulated drone:
+Luckily, PX4 makes this very easy as its source code is all [open-source](https://github.com/PX4/PX4-Autopilot) and can be compiled on almost any system to simulate its flight controller software. We can then use MAVROS to integrate the simualted flight controller into ROS and MAVROSPY to maneuver our simulated drone:
 
 <div className="video_wrapper">
     <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
