@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player'
 
 February 2024 - April 2024
 
-**[GitHub Repository](https://github.com/bandofpv/EW202/tree/main/Labs/PI_Control)**
+**[GitHub Repository](https://github.com/bandofpv/USNA-Robotics-Courses/tree/main/EW202/Labs/PI_Control)**
 
 ## Introduction
 
@@ -21,8 +21,6 @@ The final project for this course was to develop a Proportional and Integral Con
 </div>
 
 ## Final Report
-
-# Add LINKS to IN-text references and end
 
 **Authors:** Midshipman 3/C Andrew Bernas and Midshipman 3/C Remi Nguyen
 
@@ -138,9 +136,49 @@ $$
 
 &nbsp;&nbsp;&nbsp;&nbsp;Tuning for proportional and proportional & integral control requires changing the gains. Using the Ziegler-Nichols method [1], we must start by setting the integral gain to zero and only change proportional gain. Starting with a small value, such as 0.01, we slowly increase the proportional gain to the critical value. This is observed when the steady state experiences excessive oscillations in the steady state as illustrated in Figures 6.3-4. We ended up with a critical gain value of 0.18. For proportional control, we set the p gain to half of the critical gain value using the Ziegler-Nichols method. The results of the P controller are illustrated in Figures 6.5-6.
 
+<div align="center">
+  ![Figure 6.3 Andrew Bernas](../../assets/school/ping-pong/P_CG.png)
+  <p>Figure 6.3</p>
+</div>
+
+<div align="center">
+  ![Figure 6.4 Andrew Bernas](../../assets/school/ping-pong/P_V_CG.png)
+  <p>Figure 6.4</p>
+</div>
+
+<div align="center">
+  ![Figure 6.5 Andrew Bernas](../../assets/school/ping-pong/P_1.png)
+  <p>Figure 6.5</p>
+</div>
+
+<div align="center">
+  ![Figure 6.6 Andrew Bernas](../../assets/school/ping-pong/P_V_1.png)
+  <p>Figure 6.6</p>
+</div>
+
 &nbsp;&nbsp;&nbsp;&nbsp;For proportional & integral control, we must determine the observed period of oscillation as illustrated in Figure 6.3. To do this, we just take the number of samples between two peaks during the steady state oscillation and multiply that by the sampling period of 0.02 seconds. According to the Ziegler-Nichols method for proportional & integral control, the proportional gain is 40% of the critical gain (0.072) and the integral gain is half of the critical gain divided by the period of oscillation (0.225). The results of the tuned PI controller are illustrated in Figures 6.7-8.
 
+<div align="center">
+  ![Figure 6.7 Andrew Bernas](../../assets/school/ping-pong/PI_1.png)
+  <p>Figure 6.7</p>
+</div>
+
+<div align="center">
+  ![Figure 6.8 Andrew Bernas](../../assets/school/ping-pong/PI_V_1.png)
+  <p>Figure 6.8</p>
+</div>
+
 &nbsp;&nbsp;&nbsp;&nbsp;Due to the limitation of Proportional control systems, we incorporated a baseline voltage calculation to ensure that the control technique can reach a steady state closer to the desired height. Otherwise, the ball would consistently reach a steady state below the desired height as illustrated in Figure 6.5. By integrating the scheduled baseline voltage model with proportional control, the steady state was much closer to the desired height as illustrated in Figures 6.9-10
+
+<div align="center">
+  ![Figure 6.9 Andrew Bernas](../../assets/school/ping-pong/PVB_1.png)
+  <p>Figure 6.9</p>
+</div>
+
+<div align="center">
+  ![Figure 6.10 Andrew Bernas](../../assets/school/ping-pong/PVB_V_1.png)
+  <p>Figure 6.10</p>
+</div>
 
 ### Results and Analysis
 
@@ -154,11 +192,91 @@ $$
 
 &nbsp;&nbsp;&nbsp;&nbsp;We are reporting average performance. Figures 7.1-4 illustrate the performance of 2 more relay control trials. All three trials observed a peak overshoot at approximately 19 cm and reached steady state oscillations at around the 150th sample mark (3 seconds). The steady states of the trials all observed noticeable oscillations of about ± 3 cm and the error ranged from approximately 0.50 cm to 0.35 cm.
 
+<div align="center">
+  ![Figure 7.1 Andrew Bernas](../../assets/school/ping-pong/R_2.png)
+  <p>Figure 7.1</p>
+</div>
+
+<div align="center">
+  ![Figure 7.2 Andrew Bernas](../../assets/school/ping-pong/R_V_2.png)
+  <p>Figure 7.2</p>
+</div>
+
+<div align="center">
+  ![Figure 7.3 Andrew Bernas](../../assets/school/ping-pong/R_3.png)
+  <p>Figure 7.3</p>
+</div>
+
+<div align="center">
+  ![Figure 7.4 Andrew Bernas](../../assets/school/ping-pong/R_V_3.png)
+  <p>Figure 7.4</p>
+</div>
+
 &nbsp;&nbsp;&nbsp;&nbsp;Figures 7.5-8 illustrate the performance of 2 more proportional control trials. All three trials observed a peak overshoot at approximately 21 cm and reached steady state at around the 250th sample mark (5 seconds). The steady states of the trials did not observe any noticeable oscillations and the error ranged from approximately 3.4 cm to 3.6 cm
+
+<div align="center">
+  ![Figure 7.5 Andrew Bernas](../../assets/school/ping-pong/P_2.png)
+  <p>Figure 7.5</p>
+</div>
+
+<div align="center">
+  ![Figure 7.6 Andrew Bernas](../../assets/school/ping-pong/P_V_2.png)
+  <p>Figure 7.6</p>
+</div>
+
+<div align="center">
+  ![Figure 7.7 Andrew Bernas](../../assets/school/ping-pong/P_3.png)
+  <p>Figure 7.7</p>
+</div>
+
+<div align="center">
+  ![Figure 7.8 Andrew Bernas](../../assets/school/ping-pong/P_V_3.png)
+  <p>Figure 7.8</p>
+</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Figures 7.9-12 illustrate the performance of 2 more proportional and integral control trials. Figure 7.9 demonstrates an oddly low peak overshoot of 16 cm compared to the typical 20 cm. This abnormal behavior did not have any significant effect on the settling time. All three trials reached steady state at around the 350th sample mark (7 seconds), 100 samples (2 seconds) longer than the P controller. Additionally, the steady state of the trials did not observe any noticeable oscillations and the error was low, ranging from approximately 0.03 cm to 0.08 cm
 
+<div align="center">
+  ![Figure 7.9 Andrew Bernas](../../assets/school/ping-pong/PI_2.png)
+  <p>Figure 7.9</p>
+</div>
+
+<div align="center">
+  ![Figure 7.10 Andrew Bernas](../../assets/school/ping-pong/PI_V_2.png)
+  <p>Figure 7.10</p>
+</div>
+
+<div align="center">
+  ![Figure 7.11 Andrew Bernas](../../assets/school/ping-pong/PI_3.png)
+  <p>Figure 7.11</p>
+</div>
+
+<div align="center">
+  ![Figure 7.12 Andrew Bernas](../../assets/school/ping-pong/PI_V_3.png)
+  <p>Figure 7.12</p>
+</div>
+
 &nbsp;&nbsp;&nbsp;&nbsp;Figures 7.13-16 illustrate the performance of 2 more proportional control with scheduled baseline voltage trials. All three trials observed a peak overshoot at approximately 21 cm and reached steady state at around the 250th sample mark (5 seconds). The peak overshoot and settling times were consistent with the proportional control without scheduled baseline voltage trials. This makes sense as it is still using the same control logic but only adjusting the baseline voltage to reduce steady state error. Additionally, the steady states of the trials did not observe any noticeable oscillations and the error was slightly greater than the PI controller, ranging from approximately 0.23 cm to 0.55 cm
+
+<div align="center">
+  ![Figure 7.13 Andrew Bernas](../../assets/school/ping-pong/PVB_2.png)
+  <p>Figure 7.13</p>
+</div>
+
+<div align="center">
+  ![Figure 7.14 Andrew Bernas](../../assets/school/ping-pong/PVB_V_2.png)
+  <p>Figure 7.14</p>
+</div>
+
+<div align="center">
+  ![Figure 7.15 Andrew Bernas](../../assets/school/ping-pong/PVB_3.png)
+  <p>Figure 7.15</p>
+</div>
+
+<div align="center">
+  ![Figure 7.16 Andrew Bernas](../../assets/school/ping-pong/PVB_V_3.png)
+  <p>Figure 7.16</p>
+</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;As observed in Figures 7.1-16, the control logic of all three techniques proved to be consistent. The overall trend throughout the control logic techniques is that as you decrease error, you observe increased settling times. Furthermore, the results observed in the graphs were predictable and expected given the design constraints
 
