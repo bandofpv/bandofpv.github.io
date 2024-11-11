@@ -221,49 +221,71 @@ Restart your companion computer.
 
 ## Install Docker
 
-Installing [Docker](https://www.docker.com/) on Ubuntu MATE is very easy and will allow us to build the ROS environment onto the companion computer in just a few steps.
+Installing [Docker](https://www.docker.com/) on Ubuntu is very easy and will allow us to build the ROS environment onto the companion computer in just a few steps.
 
 This is a summarized version of the offical [installation insructions](https://docs.docker.com/engine/install/ubuntu/#installation-methods).
 
-Setup Docker's `apt` repsitory:
+<Tabs groupId="companion-computers">
+  <TabItem value="rpi" label="RPi4">
+    Setup Docker's `apt` repsitory:
 
-```bash
-$ sudo apt install -y ca-certificates curl
-$ sudo install -m 0755 -d /etc/apt/keyrings
-$ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-$ sudo chmod a+r /etc/apt/keyrings/docker.asc
-$ echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-$ sudo apt update
-```
+    ```bash
+    $ sudo apt install -y ca-certificates curl
+    $ sudo install -m 0755 -d /etc/apt/keyrings
+    $ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    $ sudo chmod a+r /etc/apt/keyrings/docker.asc
+    $ echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    $ sudo apt update
+    ```
 
-Install the Docker packages:
+    Install the Docker packages:
 
-```bash
-$ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+    ```bash
+    $ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    ```
 
-Create the `docker` group if not already created:
+    Create the `docker` group if not already created:
 
-```bash
-$ sudo groupadd docker
-```
+    ```bash
+    $ sudo groupadd docker
+    ```
 
-Add your user to the `docker` group:
+    Add your user to the `docker` group:
 
-```bash
-$ sudo usermod -aG docker $USER
-```
+    ```bash
+    $ sudo usermod -aG docker $USER
+    ```
 
-Restart so that your group membership is re-evaluated.
+    Restart so that your group membership is re-evaluated.
 
-We can verify our Docker installation via:
+    We can verify our Docker installation via:
 
-```bash
-$ docker run hello-world
-```
+    ```bash
+    $ docker run hello-world
+    ```
+  </TabItem>
+
+  <TabItem value="jetson" label="Jetson Nano">
+    Jetpack already comes with Docker installed!
+
+    Add your user to the `docker` group:
+
+    ```bash
+    $ sudo usermod -aG docker $USER
+    ```
+
+    Restart so that your group membership is re-evaluated.
+
+    We can verify our Docker installation via:
+
+    ```bash
+    $ docker run hello-world
+    ```
+  </TabItem>
+</Tabs>
 
 ## Build MAVROSPY Docker image
 
