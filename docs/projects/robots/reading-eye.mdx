@@ -43,17 +43,19 @@ The first algorithm removes lens distortions which causes the edges of the image
 To compensate for this the device uses OpenCV’s camera distortion algorithms. The first equation solves the radial distortions and the second solves tangential distortion which is caused when the camera lens is not parallel to the image sensor.
 
 <div align="center">
-![Fig. 5 Andrew Bernas](../../assets/robots/reading-eye/fig5.png)
-</div>
+$\Large x_{distorted} = x(1+k_1r^2+k_2r^4+k_3r^6)$
 
-<div align="center">
-![Fig. 6 Andrew Bernas](../../assets/robots/reading-eye/fig6.png)
+$\Large y_{distorted} = y(1+k_1r^2+k_2r^4+k_3r^6)$
+
+$\Large x_{distorted} = x+[2p_1xy+p_2(r^2+2x^2)]$
+
+$\Large y_{distorted} = y+[p_1(r^2+2y^2)+2p_2xy]$
 </div>
 
 In total the algorithm uses 5 parameters known as distortion coefficients: 
 
 <div align="center">
-![Fig. 7 Andrew Bernas](../../assets/robots/reading-eye/fig7.png)
+$\Large k_1\:k_2\:p_1\:p_2\:k_3$
 </div>
 
 which are dependent on the type of lens and image sensor you have. The undistorted image can be seen below.

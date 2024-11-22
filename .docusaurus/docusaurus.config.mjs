@@ -335,6 +335,14 @@ export default {
   },
   "baseUrlIssueBanner": true,
   "future": {
+    "experimental_faster": {
+      "swcJsLoader": false,
+      "swcJsMinimizer": false,
+      "swcHtmlMinimizer": false,
+      "lightningCssMinimizer": false,
+      "mdxCrossCompilerCache": false,
+      "rspackBundler": false
+    },
     "experimental_storage": {
       "type": "localStorage",
       "namespace": false
