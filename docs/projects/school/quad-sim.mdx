@@ -1,0 +1,162 @@
+---
+sidebar_position: 1
+sidebar_label: Quadcopter Simulation
+---
+import ReactPlayer from 'react-player'
+
+# Modeling and Simulation of a Quadcopter
+
+August 2024 - December 2024
+
+**[GitHub Repository](https://github.com/bandofpv/USNA-Robotics-Courses/tree/main/EW301/FinalProject)**
+
+## Introduction
+
+My fourth course in robotics and control engineering covered the fundamentals of developing, simulating, and validating models for dynamic systems.
+
+The final project for this course was to research a technical paper from an academic journal or conference proceeding and create a figure from the paper.
+
+<div align="center">
+  ![Ping Pong Andrew Bernas](../../assets/school/quad-sim/Quad3D.png)
+</div>
+
+## Final Report
+
+**Abstract** — Flying robots such as quadcopters can perform many tasks efficiently and safely across a variety of industries such as agriculture, construction, photography, the military, and more. With current advances in sensor, actuator, and energy storage technology, quadcopters can operate on a larger scale and tackle increasingly complex challenges. As a result, it is vital to understand how to model and simulate these complex systems for development purposes. The paper studied provides a way of modeling and simulating the movement of quadcopters with PD control. The following report delves into further analysis of the underlying modeling equations and utilizes a Euler’s method scheme to compose a simulation capable of reproducing the results found in the paper studied.
+
+### Introduction
+
+Unmanned Aerial Vehicles, or UAVs, are robots that have the ability to fly. This gives them an upper hand over land-based robots as UAVs are capable of navigating around difficult terrain and move at faster speeds. As a result, these systems have proven to be effective at aiding a variety of industries. Some examples include infrastructure inspections, exploring dangerous regions, spraying crops, and more. With the current advancements in electronic technology and control theory, UAVs have become relatively simple to manufacture at scale. Being able to model UAVs, such as quadcopters, is essential during the developmental process. With a model, simulations can evaluate the performance of different controller designs, minimizing the risk of damage to physical components.
+
+In [1], the authors propose a nonlinear dynamic model of a quadcopter and simulate its performance via a PD controller. The equations of motion for the six degrees of freedom were provided, along with the parameters used in simulation. In the following report, a manual reconstruction of the referenced paper was conducted supplemented by an in-depth analysis on the equations of motion and the implementation of a custom Euler integration scheme. Additionally, the report offers criticism to the control design provided and explains why it lacks practical feasibility. 
+
+### Problem Statement and Objectives
+
+Quadcopters offer a complex modelling problem as they involve four motors connected to a rigid body with some means to move about 3D space. It is a classic underactuated system with only throttle, roll, pitch, and yaw inputs to maneuver throughout six degrees of freedom. It is up to the engineer to come up with some method of converting the individual speeds of each motor into a position and orientation of the quadcopter. A controller must then be designed to manipulate the four motor speeds to reach a desired state. 
+
+The paper studied documents a nonlinear mathematical model of a quadcopter with three translational ($x, y, z$) and three rotational ($\varphi, \theta, \psi$) degrees of freedom (DOF). Euler angles are used to model rotation as they are more intuitive. However, they are prone to “gimbal lock” which loses one degree of freedom. This issue can be resolved by using quaternions, but doing so can be confusing for the reader as they live in 4-dimensional space. Additionally, the authors propose a PD controller to achieve altitude, roll, pitch, and yaw angle setpoints. Details on the applied simulation method were excluded from the paper, but plots of the 4 setpoint responses were provided along with the associated gain values.
+
+### Modeling
+
+A quadcopter is defined as a multirotor with four motors, typically arranged in a “+” or “x” configuration. We decided to model the “+” variant of the quadcopter rather than the “x” variant as it is more intuitive. The front and back motors, $M_2$ and $M_4$, rotate in the counterclockwise direction whereas the left and right motors, $M_1$ and $M_3$, rotate in the clockwise direction as depicted in Figure 1. This configuration ensures that the torque due to the clockwise spinning motors counteract the torque due counterclockwise spinning motors.
+
+<div align="center">
+  ![Figure 1 andrew bernas](../../assets/school/quad-sim/Quad3D.png)
+  <p><i>Figure 1 Body Frame of Quadcopter</i></p>
+</div>
+
+When modeling with Euler angles, it is crucial to maintain a standard rotation order as each rotation is relative to the new reference frame due to the previous rotation. For example, to yaw 90 degrees the quadcopter rotates 90 degrees about the original z axis. This establishes a new reference frame for the next rotation. Consequently, to roll 45 degrees, the quadcopter rotates 45 degrees about the new x axis. The new x axis due to the yaw rotation should not be confused with the original x axis before the yaw rotation. This paper will assume the order: yaw, pitch, roll.
+
+Control of the quadcopter involves varying the speed of the motors. Rotating the motor, and thereby the propeller, generates two main forces: thrust (1) and torque (2).
+
+<div class='equation-block'>
+  <div class='equation'>$F_i = b\omega_i^2$</div>
+  <div class='right-text'>(1)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$T_i=d\omega_i^2$</div>
+  <div class='right-text'>(2)</div>
+</div>
+
+Where $F$ is the thrust produced, $T$ is the torque, $i$ references the motor number, $l$ is the length between the motor and center of gravity, and $\omega$ is the angular velocity of the motor. The constants $b$ and $d$ are a simplified representation of the parameters affecting the thrust and torque produced by the propeller. This value can be estimated empirically and is influenced by factors such as air density and size of the propeller. Thrust will produce a lifting force as denoted in Figure 1 and torque will produce a moment in the direction opposite of the propeller rotation. Both of these phenomenon’s are derived from Newton’s third law which states, that every action has an equal and opposite reaction. The thrust generated by the propellers will push air down, causing the quadcopter to lift in the opposite direction. Additionally, the act of rotating a propeller clockwise will in turn apply a force to rotate the body counterclockwise.
+
+In order to maneuver the quadcopter, there are four independent control inputs: throttle, roll, pitch, and yaw. To change the throttle, $U_1$, all four motors are increased or decreased equivalently (3).
+
+<div class='equation-block'>
+  <div class='equation'>$U_1=F_{tot}=F_1+F_2+F_3+F_4=b(\omega_1^2+\omega_2^2+\omega_3^2+\omega_4^2)$</div>
+  <div class='right-text'>(3)</div>
+</div>
+
+To make the quadcopter roll, $U_2$, in the positive $\varphi$ direction, keep $F_1$ and $F_3$ the same, but increase $F_4$ and decrease $F_2$ (4). To roll the opposite direction, decrease $F_4$ and increase $F_2$.
+
+<div class='equation-block'>
+  <div class='equation'>$U_2=T_\varphi=l(F_4-F_2)=lb(\omega_4^2-\omega_2^2)$</div>
+  <div class='right-text'>(4)</div>
+</div>
+
+To make the quadcopter pitch, $U_3$, in the positive $\theta$ direction, keep $F_2$ and $F_4$ the same, but increase $F_1$ and decrease $F_3$ (5). To pitch in the opposite direction, decrease $F_1$ and increase $F_3$.
+
+<div class='equation-block'>
+  <div class='equation'>$U_3=T_\theta=l(F_3-F_1)=lb(\omega_1^2-\omega_3^2)$</div>
+  <div class='right-text'>(5)</div>
+</div>
+
+To make the quadcopter yaw, $U_4$, in the positive $\psi$ direction, increase both $F_2$ and $F_4$, but decrease both $F_1$ and $F_3$ (6). To yaw in the opposite direction, decrease both $F_2$ and $F_4$, but increase both $F_1$ and $F_3$.
+
+<div class='equation-block'>
+  <div class='equation'>$U_4=T_\psi=-T_1+T_2-T_3+T_4=d(-\omega_1^2+\omega_2^2-\omega_3^2+\omega_4^2)$</div>
+  <div class='right-text'>(6)</div>
+</div>
+
+Equation (7) represents (3), (4), (5), and (6) in matrix form.
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}U_1\\U_2\\U_3\\U_4\end{bmatrix}=\begin{bmatrix}b&b&b&b\\0&-lb&0&lb\\lb&0&-lb&0\\-d&d&-d&d\end{bmatrix}\begin{bmatrix}\omega_1^2\\\omega_2^2\\\omega_3^2\\\omega_4^2\end{bmatrix}$</div>
+  <div class='right-text'>(7)</div>
+</div>
+
+From a practical control perspective, it is more beneficial to calculate the resulting motor speeds based on the four control inputs (8).
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}\omega_1^2\\\omega_2^2\\\omega_3^2\\\omega_4^2\end{bmatrix}=\begin{bmatrix}\frac{1}{4b}&0&\frac{1}{2bl}&\frac{1}{4d}\\\\\frac{1}{4b}&-\frac{1}{2bl}&0&\frac{1}{4d}\\\\-\frac{1}{4b}&0&-\frac{1}{2bl}&-\frac{1}{4d}\\\\\frac{1}{4b}&\frac{1}{2bl}&0&\frac{1}{4d}\end{bmatrix}\begin{bmatrix}U_1\\U_2\\U_3\\U_4\end{bmatrix}$</div>
+  <div class='right-text'>(8)</div>
+</div>
+
+With (7) and (8), understanding the relationship between motor speed and change in translation or rotation is straight forward. It is important to notice that the four control inputs $U_1$, $U_2$, $U_3$, and $U_4$ affect movements relative to the body. These changes however, are not equal to the movements which are observed from a fixed point of view. This problem is exacerbated when attempting to integrate sensors such as a barometer and GPS. For example, when using these sensors to estimate altitude, a fixed reference frame is being used. Altitude is defined as the location along the z axis relative to Earth. However, if the quadcopter is pitched or rolled, the z axis relative to the body no longer aligns with the z axis relative to Earth. This can cause problems when trying to maintain altitude as maintaining position on the z axis relative to the body, will not always equate to maintaining altitude or position on the z axis relative to Earth. As a result, it is important to define two coordinate systems, one body frame and one Earth frame. The body frame is represented in Figure 1 where the reference frame is always fixed to the body of the quadcopter. No matter the orientation, the body frame’s z axis will always be orthogonal to the quadcopter’s body. Furthermore, the Earth frame is fixed, with the z axis orthogonal to the surface of the Earth.
+
+Moving between the two coordinate systems can be achieved using a rotation matrix accounting for the three successive Euler angle rotations. Before the first rotation, the body frame and Earth frame are aligned. Sticking with the yaw, pitch, roll order convention, first rotate about the z axis (yaw) through an angle $\psi$ (9). The frame $e$ refers to the original Earth frame and $e_1$ refers to the rotated reference frame.
+
+<div class='equation-block'>
+  <div class='equation'>$R_e^{e_1}(\psi)=\begin{bmatrix}\cos(\psi)&\sin(\psi)&0\\-\sin(\psi)&\cos(\psi)&0\\0&0&1\end{bmatrix}$</div>
+  <div class='right-text'>(9)</div>
+</div>
+
+Next, pitch about the new y axis by the angle $\theta$ (10).
+
+<div class='equation-block'>
+  <div class='equation'>$R_{e_1}^{e_2}(\theta)=\begin{bmatrix}\cos(\theta)&0&-\sin(\theta)\\0&1&0\\\sin(\theta)&0&\cos(\theta)\end{bmatrix}$</div>
+  <div class='right-text'>(10)</div>
+</div>
+
+Finally, roll about the new x axis by the angle $\varphi$ (11). The frame $b$ refers to the final body frame.
+
+<div class='equation-block'>
+  <div class='equation'>$R_{e_2}^b(\varphi)=\begin{bmatrix}1&0&0\\0&\cos(\varphi)&\sin(\varphi)\\0&-\sin(\varphi)&\cos(\varphi)\end{bmatrix}$</div>
+  <div class='right-text'>(11)</div>
+</div>
+
+Equation (12) represents the derivation of the rotation matrix of the original Earth frame, $e$, in the fully transformed body frame, $b$.
+
+<div class='equation-block'>
+  <div class='equation'>$R_e^b(\varphi,\theta,\psi)=R_{e_2}^b(\varphi)R_{e_1}^{e_2}(\theta)R_e^{e_1}(\psi)$</div>
+  <div class='right-text'>(12)</div>
+</div>
+
+Equation (13) is the expanded form of $R_e^b$ where $\text{s}$ represents $\sin$ and $\text{c}$ represents $\cos$.
+
+<div class='equation-block'>
+  <div class='equation'>$R_e^b=\begin{bmatrix}\text{c}(\theta)\text{c}(\psi)&\text{c}(\theta)\text{s}(\psi)&-\text{s}(\theta)\\\text{s}(\theta)\text{s}(\varphi)\text{c}(\psi)-\text{s}(\psi)\text{c}(\varphi)&\text{s}(\psi)\text{s}(\theta)\text{s}(\varphi)+\text{c}(\psi)\text{c}(\varphi)&\text{s}(\varphi)\text{c}(\theta)\\\text{s}(\theta)\text{c}(\varphi)\text{c}(\psi)+\text{s}(\psi)\text{s}(\varphi)&\text{s}(\psi)\text{s}(\theta)\text{c}(\varphi)-\text{c}(\psi)\text{s}(\varphi)&\text{c}(\varphi)\text{c}(\theta)\end{bmatrix}$</div>
+  <div class='right-text'>(13)</div>
+</div>
+
+With a method of converting between both reference frames, deriving the translational equations of motions is straight forward. Newton’s 2nd law of motion states that the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass (14).
+
+<div class='equation-block'>
+  <div class='equation'>$F=ma$</div>
+  <div class='right-text'>(14)</div>
+</div>
+
+For simplification purposes, the model assumes no drag and claims that the gyroscopic effects due to the spinning motors are negligible. Therefore, the only forces acting on the body is the total thrust, $U_1$, and gravity, $mg$ (15). Notice how the accelerations $\ddot{x}$, $\ddot{y}$, $\ddot{z}$ and $g$ are in relation to the earth frame but $U_1$ is relative to the body frame. The transformation of $U_1$ to the earth frame is achieved by multiplying the rotation matrix $R_e^b$.
+
+<div class='equation-block'>
+  <div class='equation'>$m\begin{bmatrix}\ddot{x}\\\ddot{y}\\\ddot{z}\end{bmatrix}=\begin{bmatrix}0\\0\\-mg\end{bmatrix}+R_e^b\begin{bmatrix}0\\0\\U_1\end{bmatrix}$</div>
+  <div class='right-text'>(15)</div>
+</div>
+
+Expanding (15) and isolating the linear accelerations $\ddot{x}$, $\ddot{y}$, and $\ddot{z}$ is illustrated in (16).
+
+<div class='equation-block'>
+  <div class='equation'>$$</div>
+  <div class='right-text'>(16)</div>
+</div>

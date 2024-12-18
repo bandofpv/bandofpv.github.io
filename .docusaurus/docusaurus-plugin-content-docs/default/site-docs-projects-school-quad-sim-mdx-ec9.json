@@ -1,0 +1,27 @@
+{
+  "id": "projects/school/quad-sim",
+  "title": "Modeling and Simulation of a Quadcopter",
+  "description": "August 2024 - December 2024",
+  "source": "@site/docs/projects/school/quad-sim.mdx",
+  "sourceDirName": "projects/school",
+  "slug": "/projects/school/quad-sim",
+  "permalink": "/docs/projects/school/quad-sim",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Quadcopter Simulation"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "School",
+    "permalink": "/docs/category/school"
+  },
+  "next": {
+    "title": "Ping Pong Levitator",
+    "permalink": "/docs/projects/school/ping-pong"
+  }
+}

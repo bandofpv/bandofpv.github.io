@@ -175,3 +175,22 @@
   --ifm-link-hover-decoration: none;
   --ifm-link-hover-color: inherit;
 }
+
+.equation-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 0 0 18px;
+}
+
+.equation {
+    text-align: center;
+    flex: 0 0 auto; /* Prevent the centered content from shrinking */
+}
+
+.right-text {
+    position: absolute;
+    right: 0;
+}

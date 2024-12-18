@@ -166,6 +166,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/quad-sim",
+              "path": "/docs/projects/school/quad-sim",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/tag",
               "path": "/docs/projects/school/tag",
               "sidebar": "projectsSidebar"
