@@ -17,7 +17,7 @@ My fourth course in robotics and control engineering covered the fundamentals of
 The final project for this course was to research a technical paper from an academic journal or conference proceeding and create a figure from the paper.
 
 <div align="center">
-  ![Ping Pong Andrew Bernas](../../assets/school/quad-sim/Quad3D.png)
+  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/quad-sim/Quad3D.png').default} width="480px" />
 </div>
 
 ## Final Report
@@ -41,8 +41,8 @@ The paper studied documents a nonlinear mathematical model of a quadcopter with 
 A quadcopter is defined as a multirotor with four motors, typically arranged in a “+” or “x” configuration. We decided to model the “+” variant of the quadcopter rather than the “x” variant as it is more intuitive. The front and back motors, $M_2$ and $M_4$, rotate in the counterclockwise direction whereas the left and right motors, $M_1$ and $M_3$, rotate in the clockwise direction as depicted in Figure 1. This configuration ensures that the torque due to the clockwise spinning motors counteract the torque due counterclockwise spinning motors.
 
 <div align="center">
-  ![Figure 1 andrew bernas](../../assets/school/quad-sim/Quad3D.png)
-  <p><i>Figure 1 Body Frame of Quadcopter</i></p>
+  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/quad-sim/Quad3D.png').default} width="480px" />
+  <p><b><i>Figure 1 Body Frame of Quadcopter</i></b></p>
 </div>
 
 When modeling with Euler angles, it is crucial to maintain a standard rotation order as each rotation is relative to the new reference frame due to the previous rotation. For example, to yaw 90 degrees the quadcopter rotates 90 degrees about the original z axis. This establishes a new reference frame for the next rotation. Consequently, to roll 45 degrees, the quadcopter rotates 45 degrees about the new x axis. The new x axis due to the yaw rotation should not be confused with the original x axis before the yaw rotation. This paper will assume the order: yaw, pitch, roll.
@@ -157,6 +157,200 @@ For simplification purposes, the model assumes no drag and claims that the gyros
 Expanding (15) and isolating the linear accelerations $\ddot{x}$, $\ddot{y}$, and $\ddot{z}$ is illustrated in (16).
 
 <div class='equation-block'>
-  <div class='equation'>$$</div>
+  <div class='equation'>$\begin{bmatrix}\ddot{x}\\\ddot{y}\\\ddot{z}\end{bmatrix}=\begin{bmatrix}(\sin(\theta)\cos(\varphi)\cos(\psi)+\sin(\psi)\sin(\varphi))\frac{U_1}{m}\\\\(\sin(\psi)\sin(\theta)\cos(\varphi)-\cos(\psi)\sin(\varphi))\frac{U_1}{m}\\\\(\cos(\varphi)\cos(\theta))\frac{U_1}{m}-g\end{bmatrix}$</div>
   <div class='right-text'>(16)</div>
 </div>
+
+Deriving the rotational equations of motion is a little more difficult due to the fact that the time rate of change of Euler angles does not directly equate to angular velocity of the body frame. This makes sense because the yaw angle, applied first, is not rotated about the final body yaw axis. Instead, pitch and roll rotations have to be incorporated before calculating the time rate change for yaw relative to the final body frame. Equation (17) illustrates this concept in mathematical form.
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}p\\q\\r\end{bmatrix}=R_{e_2}^b(\varphi)R_{e_1}^{e_2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}+R_e^{e_1}(\varphi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+\begin{bmatrix}\dot{\varphi}\\0\\0\end{bmatrix}$</div>
+  <div class='right-text'>(17)</div>
+</div>
+
+The vector, $[p\;q\;r]^T$, denotes the angular velocity of the body frame and $\dot{\varphi}$, $\dot{\theta}$, and $\dot{\psi}$ denote the instantaneous change of Euler angles. Notice how the time rate change vector for yaw, $[0\;0\;\dot{\psi}]^T$, is multiplied by the rotation matrices $R_{e_2}^b(\varphi)$ and $R_{e_1}^{e_2}(\theta)$ to account for the roll and pitch rotations.
+
+Equation (18) is the expanded form of (17).
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}p\\q\\r\end{bmatrix}=\begin{bmatrix}1&0&-\sin(\theta)\\0&\cos(\varphi)&\sin(\varphi)\cos(\theta)\\0&-\sin(\varphi)&\cos(\varphi)\cos(\theta)\end{bmatrix}\begin{bmatrix}\dot{\varphi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}$</div>
+  <div class='right-text'>(18)</div>
+</div>
+
+It is more beneficial to calculate the time rate change of Euler angles from the angular velocity of the body frame (19). Numerically integrating $\dot{\varphi}$, $\dot{\theta}$, $\dot{\psi}$ will get the Euler rotation angles $\varphi$, $\theta$, $\psi$ to be used in (16).
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}\dot{\varphi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}=\begin{bmatrix}1&\sin(\varphi)\tan(\theta)&\cos(\varphi)\tan(\theta)\\0&\cos(\varphi)&-\sin(\varphi)\\0&\sin(\varphi)\sec(\theta)&\cos(\varphi)\sec(\theta)\end{bmatrix}\begin{bmatrix}p\\q\\r\end{bmatrix}$</div>
+  <div class='right-text'>(19)</div>
+</div>
+
+A method of calculating the angular velocity can be derived using Euler’s rotation equations. Equation (20) denotes the general vector form.
+
+<div class='equation-block'>
+  <div class='equation'>$M=I\dot{\omega}+\omega\times(I\omega)$</div>
+  <div class='right-text'>(20)</div>
+</div>
+
+$M$ refers to the vector of the applied torques (21). $T_\varphi$, $T_\theta$, and $T_\psi$ denote the torques about the x, y, and z axis. Notice how these torques also equate to $U_2$, $U_3$, and $U_4$ as defined in (4), (5), and (6).
+
+<div class='equation-block'>
+  <div class='equation'>$M=\begin{bmatrix}T_\varphi\\T_\theta\\T_\psi\end{bmatrix}=\begin{bmatrix}U_2\\U_3\\U_4\end{bmatrix}$</div>
+  <div class='right-text'>(21)</div>
+</div>
+
+$I$ refers to the principle inertia matrix where $I_x$, $I_y$, and $I_z$ denotes the moment of inertia about the x-axis, y-axis, and z-axis respectively (22).
+
+<div class='equation-block'>
+  <div class='equation'>$I=\begin{bmatrix}I_x&0&0\\0&I_y&0\\0&0&I_z\end{bmatrix}$</div>
+  <div class='right-text'>(22)</div>
+</div>
+
+$\omega$ denotes the angular velocity of the body frame, $[p\;q\;r]^T$. $\dot{\omega}$ denotes the angular acceleration of the body frame $[\dot{p}\;\dot{q}\;\dot{r}]^T$. Equation (23) represents (20) rearranged with the vectors plugged in.
+
+<div class='equation-block'>
+  <div class='equation'>$I\begin{bmatrix}\dot{p}\\\dot{q}\\\dot{r}\end{bmatrix}=\begin{bmatrix}U_2\\U_3\\U_4\end{bmatrix}-\begin{bmatrix}p\\q\\r\end{bmatrix}\times I\begin{bmatrix}p\\q\\r\end{bmatrix}$</div>
+  <div class='right-text'>(23)</div>
+</div>
+
+Equation (24) is the result of simplifying and isolating $\dot{\omega}$, the angular velocity vector.
+
+<div class='equation-block'>
+  <div class='equation'>$\begin{bmatrix}\dot{p}\\\dot{q}\\\dot{r}\end{bmatrix}=\begin{bmatrix}\frac{U_2}{I_x}+qr\frac{I_y-I_z}{I_x}\\\\\frac{U_3}{I_y}+rp\frac{I_z-I_x}{I_y}\\\\\frac{U_4}{I_z}+pq\frac{I_x-I_y}{I_z}\end{bmatrix}$</div>
+  <div class='right-text'>(24)</div>
+</div>
+
+All equations required to model the quadcopter have been derived. Table 1 refers to the parameters used.
+
+<div align="center">
+***Table 1 Quadcopter Model Parameters***
+
+|$\textbf{Parameter}$|$\textbf{Description}$|$\textbf{Value}$|
+|:---:|:----:|:---:|
+|$m$|$\text{Quadcopter Mass}$|$\text{0.65 kg}$|
+|$l$|$\text{Quadcopter Arm Length}$|$\text{0.23 m}$|
+|$b$|$\text{Thrust Factor}$|$3.13\times 10^{-5}\text{ Ns}^2$|
+|$d$|$\text{Torque Factor}$|$7.5\times 10^{-7}\text{ Ns}^2$|
+|$I_x$|$\text{Moment of Inertia about x-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+|$I_y$|$\text{Moment of Inertia about y-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+|$I_z$|$\text{Moment of Inertia about z-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+|$g$|$\text{Acceleration of Gravity}$|$9.81\text{ m/s}^2$|
+</div>
+
+A PD controller was utilized for altitude, roll, pitch, and yaw angle control. A PD controller for altitude is plausible because the force of gravity on the quadcopter is known (25). $K_p$ and $K_d$ denote the proportional and derivative gains of the controller. $e_z$ refers to the altitude error.
+
+<div class='equation-block'>
+  <div class='equation'>$u_1(t)=\frac{e_zK_p+mg-K_d\frac{d}{dt}z}{\cos(\varphi)\cos(\theta)}$</div>
+  <div class='right-text'>(25)</div>
+</div>
+
+Equations (26), (27), and (28) refer to the PD controllers for the roll, pitch, and yaw angles respectively. $e_\varphi$, $e_\theta$, and $e_\psi$ denote the associated roll, pitch, and yaw errors.
+
+<div class='equation-block'>
+  <div class='equation'>$u_2(t)=e_\varphi K_p-K_d\frac{d}{dt}\varphi$</div>
+  <div class='right-text'>(26)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$u_3(t)=e_\theta K_p-K_d\frac{d}{dt}\theta$</div>
+  <div class='right-text'>(27)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$u_4(t)=e_\psi K_p-K_d\frac{d}{dt}\psi$</div>
+  <div class='right-text'>(28)</div>
+</div>
+
+Table 2 refers to the gains used.
+
+<div align="center">
+***Table 2 PD Gains***
+
+|$\textbf{Gain}$|$\textbf{Altitude}$|$\textbf{Roll}$|$\textbf{Pitch}$|$\textbf{Yaw}$|
+|:---:|:----:|:---:|:---:|:----:|
+|$K_p$|$\text{1.8}$|$\text{0.4}$|$\text{0.6}$|$\text{0.3}$|
+|$K_d$|$\text{2}$|$\text{0.2}$|$\text{0.2}$|$\text{0.2}$|
+</div>
+
+Notice the use of the derivative on measurement versus taking the derivative on error. This is implemented to eliminate derivative kick by assuming the setpoint is constant (29)
+
+<div class='equation-block'>
+  <div class='equation'>$\frac{d\text{Error}}{dt}=\frac{d\text{Setpoint}}{dt}-\frac{d\text{Input}}{dt}=-\frac{d\text{Input}}{dt},\space\frac{d\text{Setpoint}}{dt}=0$</div>
+  <div class='right-text'>(29)</div>
+</div>
+
+### Simulations
+
+Simulation of the quadcopter plant system can be accomplished using the equations of motion (16) and (24), with (19) serving as an equation to transform the angular velocities into the time rate change of the Euler angles. Numerical integration of variables $\ddot{x}$, $\dot{x}$, $\ddot{y}$, $\dot{y}$, $\ddot{z}$, $\dot{z}$, $\dot{p}$, $\dot{q}$, $\dot{r}$, $\dot{\varphi}$, $\dot{\theta}$, and $\dot{\psi}$ is achieved using the Euler method (30). Where $y$ denotes the integrated variable and $h$ the variable to integrate. The step size, $h$, was set to 0.001 seconds.
+
+<div class='equation-block'>
+  <div class='equation'>$y(t+h)\approx y(t)+h\dot{y}(t)$</div>
+  <div class='right-text'>(30)</div>
+</div>
+
+The feedback control system is simulated using the PD control equations (25), (26), (27), and (28). The derivative term is calculated by taking the backward difference (31). Where $\dot{y}$ denotes the derivative of the variable $y$. The sampling rate, $h$, is equal to the step size of 0.001 seconds.
+
+<div class='equation-block'>
+  <div class='equation'>$\dot{y}(t)=\frac{y(t)-y(t-h)}{h}$</div>
+  <div class='right-text'>(31)</div>
+</div>
+
+### Results
+
+<div align="center">
+  <img alt="Figure 2 Andrew Bernas" src={require('../../assets/school/quad-sim/altitude.png').default} width="500px" />
+  <p><b><i>Figure 2 Simulated Altitude PD Response</i></b></p>
+</div>
+
+<div align="center">
+  <img alt="Figure 3 Andrew Bernas" src={require('../../assets/school/quad-sim/altitude-paper.png').default} width="500px" />
+  <p><b><i>Figure 3 Paper Altitude PD Response [1]</i></b></p>
+</div>
+
+Figure 2 illustrates the altitude step response of the simulated PD controller with a settling time of 2.510 seconds and percent overshoot of 2.9683%. Figure 3 illustrates the altitude plot provided from the paper that was emulated.
+
+<div align="center">
+  <img alt="Figure 4 Andrew Bernas" src={require('../../assets/school/quad-sim/roll.png').default} width="500px" />
+  <p><b><i>Figure 4 Simulated Roll Angle PD Response</i></b></p>
+</div>
+
+<div align="center">
+  <img alt="Figure 5 Andrew Bernas" src={require('../../assets/school/quad-sim/roll-paper.png').default} width="500px" />
+  <p><b><i>Figure 5 Paper Roll Angle PD Response [1]</i></b></p>
+</div>
+
+Figure 4 illustrates the roll angle step response with a settling time of 1.933 seconds and negligible percent overshoot. Figure 5 illustrates the roll angle plot provided from the paper that was emulated.
+
+<div align="center">
+  <img alt="Figure 6 Andrew Bernas" src={require('../../assets/school/quad-sim/pitch.png').default} width="500px" />
+  <p><b><i>Figure 6 Simulated Pitch Angle PD Response</i></b></p>
+</div>
+
+<div align="center">
+  <img alt="Figure 7 Andrew Bernas" src={require('../../assets/school/quad-sim/pitch-paper.png').default} width="500px" />
+  <p><b><i>Figure 7 Paper Pitch Angle PD Response [1]</i></b></p>
+</div>
+
+Figure 6 illustrates the pitch angle step response with a settling time of 1.166 seconds and percent overshoot of 0.0248%. Figure 7 illustrates the pitch angle plot provided from the paper that was emulated.
+
+<div align="center">
+  <img alt="Figure 8 Andrew Bernas" src={require('../../assets/school/quad-sim/yaw.png').default} width="500px" />
+  <p><b><i>Figure 8 Simulated Yaw Angle PD Response</i></b></p>
+</div>
+
+<div align="center">
+  <img alt="Figure 9 Andrew Bernas" src={require('../../assets/school/quad-sim/yaw-paper.png').default} width="500px" />
+  <p><b><i>Figure 9 Paper Yaw Angle PD Response [1]</i></b></p>
+</div>
+
+Figure 8 illustrates the yaw angle step response with a settling time of 2.576 seconds and negligible percent overshoot. Figure 9 illustrates the yaw angle plot provided from the paper that was emulated.
+
+The paper did not provide the settling time or overshoot of the responses, but by visual inspection, both associated plots for altitude, roll, pitch, and yaw are identical. Additionally, while the article did not specify the simulation method used, the Euler method is a suitable approach for effectively modeling the quadcopter control system, as evidenced by similar results.
+
+The use of a PD controller for altitude served as a means of testing the quadcopter model rather than a reasonable control approach. It is unrealistic to program a controller that will only work if the mass of the system is always known. A more practical solution would be a PID controller for $U_1$. This allows $mg$ in $u_1(t)$ to be replaced by an integral term, which will gradually converge to the gravitational force over time.
+
+### Conclusion
+
+The reproduction of the proposed quadcopter model in [1] was conducted with further analysis on the equations of motion and the implementation of a custom Euler integration scheme. The similarity of the setpoint responses for altitude, roll, pitch, and yaw angles indicate that the simulation was properly replicated. Furthermore, this report includes an analysis of both the transient and steady-state responses, which was not covered in the referenced paper. Future refinements could include the use of quaternions and the modeling of wind resistance effects. Nevertheless, the model produced in this report serves as a stepping stone for further developments, such as implementing a trajectory controller.
+
+### References
+[1] Karahan, Mehmet, and Cosku Kasnakoglu. “Modeling and Simulation of Quadrotor UAV Using PID Controller.” Conference-processing. ECAI 2019 - International Conference – 11th Edition. IEEE, 2019.
