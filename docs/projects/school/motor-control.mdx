@@ -24,7 +24,7 @@ The following documentation provides a brief overview of the design process to c
 
 The first step in designing a controller is to identify the system. I used a step input of magnitude 3 volts to the motor and recorded the response. The data was then used to identify the transfer function of the system.
 
-The DC motor transfer function from **voltage** $u(t)$ to **speed** $y(t)$ can be modeled as follows:
+The DC motor transfer function from voltage $u(t)$ to **speed** $y(t)$ can be modeled as follows:
 
 <div class='equation-block'>
   <div class='equation'>$\frac{Y(s)}{U(s)}=G_p(s)=\frac{b}{s+a}$</div>
@@ -32,7 +32,7 @@ The DC motor transfer function from **voltage** $u(t)$ to **speed** $y(t)$ can b
 
 Where constants $a$ and $b$ can be estimated through time response analysis of the motor at the given step input voltage. My trials calculated $a=3.2751$ and $b=67.3999$.
 
-The DC motor transfer function from **voltage** $u(t)$ to **position** $y(t)$ can be modeled as follows:
+The DC motor transfer function from voltage $u(t)$ to **position** $y(t)$ can be modeled as follows:
 
 <div class='equation-block'>
   <div class='equation'>$\frac{Y(s)}{U(s)}=G_p(s)=\frac{b}{s(s+a)}$</div>

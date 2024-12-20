@@ -177,37 +177,40 @@
 }
 
 .equation-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    position: relative;
-    width: 100%;
-    padding: 0 10px 15px;
-    box-sizing: border-box;
-    overflow-x: auto; /* Allow horizontal scrolling */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 100%;
+  padding: 0 10px 15px;
+  box-sizing: border-box;
+  overflow-x: auto; /* Allow horizontal scrolling */
 }
 
 .equation {
-    flex: 1 1 auto; /* Allow it to shrink or grow as needed */
-    text-align: center;
-    white-space: nowrap; /* Prevent long equations from overflowing */
+  flex: 1 1 auto; /* Allow it to shrink or grow as needed */
+  text-align: center;
+  white-space: nowrap; /* Prevent long equations from overflowing */
 }
 
 .right-text {
-    flex: 0 0 auto; /* Keep its width auto */
-    text-align: right;
-    margin-left: auto; /* Push it to the far right */
-    white-space: nowrap; /* Prevent the text from wrapping */
+  flex: 0 0 auto; /* Keep its width auto */
+  text-align: right;
+  margin-left: auto; /* Push it to the far right */
+  white-space: nowrap; /* Prevent the text from wrapping */
 }
 
 .table-container {
   display: flex;
-  justify-content: center; /* Center the table horizontally */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap; /* Prevent the text from wrapping */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  padding: 0 5px 0;
 }
 
-table {
-    border-collapse: collapse; /* Ensure clean table borders */
-    width: initial;
-    margin: 0 auto 16px;
-}
