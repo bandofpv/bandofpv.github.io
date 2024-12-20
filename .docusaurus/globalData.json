@@ -161,6 +161,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/motor-control",
+              "path": "/docs/projects/school/motor-control",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/ping-pong",
               "path": "/docs/projects/school/ping-pong",
               "sidebar": "projectsSidebar"

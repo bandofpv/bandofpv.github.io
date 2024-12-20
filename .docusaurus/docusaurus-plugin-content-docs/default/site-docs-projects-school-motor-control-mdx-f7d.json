@@ -1,0 +1,27 @@
+{
+  "id": "projects/school/motor-control",
+  "title": "DC Motor Position Control",
+  "description": "August 2024 - December 2024",
+  "source": "@site/docs/projects/school/motor-control.mdx",
+  "sourceDirName": "projects/school",
+  "slug": "/projects/school/motor-control",
+  "permalink": "/docs/projects/school/motor-control",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Motor Control"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Quadcopter Simulation",
+    "permalink": "/docs/projects/school/quad-sim"
+  },
+  "next": {
+    "title": "Ping Pong Levitator",
+    "permalink": "/docs/projects/school/ping-pong"
+  }
+}

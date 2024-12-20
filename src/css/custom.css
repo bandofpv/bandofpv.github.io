@@ -194,3 +194,9 @@
     position: absolute;
     right: 0;
 }
+
+table {
+    display: table;
+    width: initial;
+    margin: 0 auto 16px;
+}

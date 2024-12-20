@@ -17,8 +17,8 @@
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "Quadcopter Simulation",
-    "permalink": "/docs/projects/school/quad-sim"
+    "title": "Motor Control",
+    "permalink": "/docs/projects/school/motor-control"
   },
   "next": {
     "title": "Tag! Pygame",
