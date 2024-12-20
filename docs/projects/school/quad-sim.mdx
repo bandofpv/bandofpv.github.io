@@ -222,18 +222,20 @@ Equation (24) is the result of simplifying and isolating $\dot{\omega}$, the ang
 All equations required to model the quadcopter have been derived. Table 1 refers to the parameters used.
 
 <div align="center">
-***Table 1 Quadcopter Model Parameters***
+  ***Table 1 Quadcopter Model Parameters***
+</div>
 
-|$\textbf{Parameter}$|$\textbf{Description}$|$\textbf{Value}$|
-|:---:|:----:|:---:|
-|$m$|$\text{Quadcopter Mass}$|$\text{0.65 kg}$|
-|$l$|$\text{Quadcopter Arm Length}$|$\text{0.23 m}$|
-|$b$|$\text{Thrust Factor}$|$3.13\times 10^{-5}\text{ Ns}^2$|
-|$d$|$\text{Torque Factor}$|$7.5\times 10^{-7}\text{ Ns}^2$|
-|$I_x$|$\text{Moment of Inertia about x-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
-|$I_y$|$\text{Moment of Inertia about y-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
-|$I_z$|$\text{Moment of Inertia about z-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
-|$g$|$\text{Acceleration of Gravity}$|$9.81\text{ m/s}^2$|
+<div class='table-container'>
+  |$\textbf{Parameter}$|$\textbf{Description}$|$\textbf{Value}$|
+  |:---:|:----:|:---:|
+  |$m$|$\text{Quadcopter Mass}$|$\text{0.65 kg}$|
+  |$l$|$\text{Quadcopter Arm Length}$|$\text{0.23 m}$|
+  |$b$|$\text{Thrust Factor}$|$3.13\times 10^{-5}\text{ Ns}^2$|
+  |$d$|$\text{Torque Factor}$|$7.5\times 10^{-7}\text{ Ns}^2$|
+  |$I_x$|$\text{Moment of Inertia about x-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+  |$I_y$|$\text{Moment of Inertia about y-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+  |$I_z$|$\text{Moment of Inertia about z-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
+  |$g$|$\text{Acceleration of Gravity}$|$9.81\text{ m/s}^2$|
 </div>
 
 A PD controller was utilized for altitude, roll, pitch, and yaw angle control. A PD controller for altitude is plausible because the force of gravity on the quadcopter is known (25). $K_p$ and $K_d$ denote the proportional and derivative gains of the controller. $e_z$ refers to the altitude error.
@@ -263,12 +265,14 @@ Equations (26), (27), and (28) refer to the PD controllers for the roll, pitch, 
 Table 2 refers to the gains used.
 
 <div align="center">
-***Table 2 PD Gains***
+  ***Table 2 PD Gains***
+</div>
 
-|$\textbf{Gain}$|$\textbf{Altitude}$|$\textbf{Roll}$|$\textbf{Pitch}$|$\textbf{Yaw}$|
-|:---:|:----:|:---:|:---:|:----:|
-|$K_p$|$\text{1.8}$|$\text{0.4}$|$\text{0.6}$|$\text{0.3}$|
-|$K_d$|$\text{2}$|$\text{0.2}$|$\text{0.2}$|$\text{0.2}$|
+<div class='table-container'>
+  |$\textbf{Gain}$|$\textbf{Altitude}$|$\textbf{Roll}$|$\textbf{Pitch}$|$\textbf{Yaw}$|
+  |:---:|:----:|:---:|:---:|:----:|
+  |$K_p$|$\text{1.8}$|$\text{0.4}$|$\text{0.6}$|$\text{0.3}$|
+  |$K_d$|$\text{2}$|$\text{0.2}$|$\text{0.2}$|$\text{0.2}$|
 </div>
 
 Notice the use of the derivative on measurement versus taking the derivative on error. This is implemented to eliminate derivative kick by assuming the setpoint is constant (29)

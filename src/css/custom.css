@@ -176,27 +176,38 @@
   --ifm-link-hover-color: inherit;
 }
 
-.equation-block{
+.equation-block {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
     position: relative;
     width: 100%;
-    padding: 0 0 18px;
+    padding: 0 10px 15px;
+    box-sizing: border-box;
+    overflow-x: auto; /* Allow horizontal scrolling */
 }
 
 .equation {
+    flex: 1 1 auto; /* Allow it to shrink or grow as needed */
     text-align: center;
-    flex: 0 1 auto;
+    white-space: nowrap; /* Prevent long equations from overflowing */
 }
 
 .right-text {
-    position: absolute;
-    right: 0;
+    flex: 0 0 auto; /* Keep its width auto */
+    text-align: right;
+    margin-left: auto; /* Push it to the far right */
+    white-space: nowrap; /* Prevent the text from wrapping */
+}
+
+.table-container {
+  display: flex;
+  justify-content: center; /* Center the table horizontally */
 }
 
 table {
-    display: table;
+    border-collapse: collapse; /* Ensure clean table borders */
     width: initial;
     margin: 0 auto 16px;
 }
