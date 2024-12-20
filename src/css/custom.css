@@ -187,7 +187,7 @@
 
 .equation {
     text-align: center;
-    flex: 0 0 auto; /* Prevent the centered content from shrinking */
+    flex: 0 1 auto;
 }
 
 .right-text {
