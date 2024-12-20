@@ -192,6 +192,7 @@
   flex: 1 1 auto; /* Allow it to shrink or grow as needed */
   text-align: center;
   white-space: nowrap; /* Prevent long equations from overflowing */
+  margin-right: 10px; /* Add some space between equations */
 }
 
 .right-text {
