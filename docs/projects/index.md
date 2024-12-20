@@ -23,7 +23,7 @@ import Card from '@site/src/components/Card';
   <Card
     title="School"
     icon={<IIcon icon="mdi:school" />}
-    to="/docs/projects/school/ping-pong"
+    to="/docs/projects/school/quad-sim"
     description="Final projects from the United States Naval Academy"
   />
   <Card
