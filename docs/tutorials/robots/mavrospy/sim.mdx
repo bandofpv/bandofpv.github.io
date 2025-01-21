@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player';
 
 # Simulation
 
-An additional benifit of using ROS is that it allows users to easily develop simulators such as [Gazebo](https://classic.gazebosim.org/) with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.
+An additional benifit of using ROS is that it allows users to easily develop simulators such as [Gazebo](https://gazebosim.org/home) with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.
 
 ## Docker
 
@@ -26,7 +26,7 @@ $ docker run hello-world
 
 ## NVIDIA GPU Acceleration
 
-We can use [Gazebo Classic](https://classic.gazebosim.org/) to simulate our MAVROSPY movment commands. Using an NVIDIA graphics card will improve simulation performance and is highly recommended.
+We can use [Gazebo](https://gazebosim.org/home) to simulate our MAVROSPY movment commands. Using an NVIDIA graphics card will improve simulation performance and is highly recommended.
 
 To use our NVIDIA GPU, verify you have installed its driver:
 
@@ -86,78 +86,146 @@ Then, reboot.
 We can now build our Docker image via the following commands:
 
 ```bash
-$ cd ~
-$ git clone https://github.com/bandofpv/mavrospy.git
 $ cd ~/mavrospy/docker/sim
 $ bash run_docker.sh
 ```
 
 This script will automatically build the Docker image and open it in a Docker container.
 
-## Launch Gazebo Classic Simulator
+## Launch Gazebo Simulator
 
-Inside the docker container, launch a simulation:
+<Tabs groupId="ros-version">
+  <TabItem value="ros2" label="ROS2">
+    Open [QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/index.html).
 
-```bash
-$ roslaunch mavrospy gazebo_sim.launch
-```
+    Inside the docker container, launch a simulation:
 
-:::info
-You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
+    ```bash
+    $ ros2 launch mavrospy gazebo_sim.py
+    ```
 
-```bash
-$ roslaunch mavrospy gazebo_sim.launch pattern:=spiral
-```
+    :::info
+    You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
 
-Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
-:::
+    ```bash
+    $ ros2 launch mavrospy gazebo_sim.py pattern:=spiral
+    ```
 
-Gazebo will open up and display a quadcopter model.
+    Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
+    :::
 
-In the container, wait for the messages to stop updating until you see the following line:
+    Gazebo will open up and display a quadcopter model. The simulator will automatically connect to your QGroundControl application.
 
-```bash
-INFO  [commander] Ready for takeoff!
-```
+    In the container, wait for the messages to stop updating until you see the following line:
 
-Press `Enter` to open the PX4 shell. You should see a `pxh>` before your cursor.
+    ```bash
+    INFO  [commander] Ready for takeoff!
+    ```
 
-Enter the following command to change into offboard mode:
+    Navigate to your QGroundControl application and click on the text that says `Hold` to change the mode to `Offboard`.
 
-```bash
-pxh> commander mode offboard
-```
+    Go back to the Gazebo window and watch drone fly!
 
-Go back to the Gazebo window and watch drone fly!
+    You can press **CTRL-C** in the container running Gazebo to close the simulation.
 
-The ROS program will automatically clean up after the drone lands. Press **CTRL+D** to exit/close the container.
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/AhNdDKY6k5Y"/>
+    </div>
+  </TabItem>
 
-<div className="video_wrapper">
-    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
-</div>
+  <TabItem value="ros1" label="ROS1">
+    Inside the docker container, launch a simulation:
 
-## Visualization with RViz
+    ```bash
+    $ roslaunch mavrospy gazebo_sim.launch
+    ```
 
-We can also visualize our simulation poses with [RViz](http://wiki.ros.org/rviz).
+    :::info
+    You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
 
-After launching the Gazebo Classic Simulator, we can launch RViz.
+    ```bash
+    $ roslaunch mavrospy gazebo_sim.launch pattern:=spiral
+    ```
 
-Open a new termial and attach to the MAVROSPY sim container:
+    Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
+    :::
 
-```bash
-$ bash ~/mavrospy/docker/sim/run_docker.sh
-```
+    Gazebo will open up and display a quadcopter model.
 
-Launch RViz:
+    In the container, wait for the messages to stop updating until you see the following line:
 
-```bash
-$ roslaunch mavrospy rviz.launch
-```
+    ```bash
+    INFO  [commander] Ready for takeoff!
+    ```
 
-ROS will automatically begin plotting the drone's path.
+    Press `Enter` to open the PX4 shell. You should see a `pxh>` before your cursor.
 
-**CTRL+C** to exit.
+    Enter the following command to change into offboard mode:
 
-<div className="video_wrapper">
-    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/exunchncuj8"/>
-</div>
+    ```bash
+    pxh> commander mode offboard
+    ```
+
+    Go back to the Gazebo window and watch drone fly!
+
+    The ROS program will automatically clean up after the drone lands.
+
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
+    </div>
+  </TabItem>
+</Tabs>
+
+## Visualization with Rviz
+
+<Tabs groupId="ros-version">
+  <TabItem value="ros2" label="ROS2">
+    We can also visualize our simulation poses with [Rviz](https://docs.ros.org/en/humble/p/rviz2/doc/index.html).
+
+    After launching the Gazebo Simulator, we can launch Rviz.
+
+    Open a new termial and attach to the MAVROSPY sim container:
+
+    ```bash
+    $ bash ~/mavrospy/docker/sim/run_docker.sh
+    ```
+
+    Launch Rviz:
+
+    ```bash
+    $ ros2 launch mavrospy rviz.py
+    ```
+    Rviz will automatically begin plotting the drone's path.
+
+    **CTRL+C** to exit.
+
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/hGexYsNV-Q4"/>
+    </div>
+  </TabItem>
+
+  <TabItem value="ros1" label="ROS1">
+    We can also visualize our simulation poses with [Rviz](http://wiki.ros.org/rviz).
+
+    After launching the Gazebo Classic Simulator, we can launch Rviz.
+
+    Open a new termial and attach to the MAVROSPY sim container:
+
+    ```bash
+    $ bash ~/mavrospy/docker/sim/run_docker.sh
+    ```
+
+    Launch Rviz:
+
+    ```bash
+    $ roslaunch mavrospy rviz.launch
+    ```
+    Rviz will automatically begin plotting the drone's path.
+
+    **CTRL+C** to exit.
+
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/exunchncuj8"/>
+    </div>
+  </TabItem>
+</Tabs>
