@@ -59,7 +59,42 @@ You can specify the flight pattern to any of the available patterns: `square`, `
 However, doing so will require additional steps:
 
 <Tabs groupId="companion-computers">
-  <TabItem value="rpi" label="RPi4">
+  <TabItem value="rpi-ros2" label="RPi4 (ROS2)">
+    Remove the outdoor MAVROSPY container and image:
+
+    ```bash
+    $ docker container rm -f mavrospy2-rpi-outdoor-container
+    $ docker image rm mavrospy2-rpi-outdoor
+    ```
+
+    Then modify the outdoor MAVROSPY Dockerfile:
+
+    ```bash
+    $ cd ~/mavrospy/docker/rpi/outdoor
+    $ nano Dockerfile
+    ```
+
+    The last line should look like this:
+
+    ```bash
+    ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source /home/rpi/ros2_ws/install/setup.bash && sudo chown rpi /dev/serial0 && ros2 launch mavrospy outdoor.py"]
+    ```
+
+    Modify the last part to specify the `pattern`:
+
+    ```bash
+    ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source /home/rpi/ros2_ws/install/setup.bash && sudo chown rpi /dev/serial0 && ros2 launch mavrospy outdoor.py pattern:=circle"]
+    ```
+
+    Rebuild via the `run_docker.sh` script:
+
+    ```bash
+    $ cd ~/mavrospy/docker/rpi/outdoor
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+
+  <TabItem value="rpi-ros1" label="RPi4 (ROS1)">
     Remove the outdoor MAVROSPY container and image:
 
     ```bash
@@ -94,7 +129,42 @@ However, doing so will require additional steps:
     ```
   </TabItem>
 
-  <TabItem value="jetson" label="Jetson Nano">
+  <TabItem value="jetson-ros2" label="Jetson Nano (ROS2)">
+    Remove the outdoor MAVROSPY container and image:
+
+    ```bash
+    $ docker container rm -f mavrospy2-jetson-outdoor-container
+    $ docker image rm mavrospy2-jetson-outdoor
+    ```
+
+    Then modify the outdoor MAVROSPY Dockerfile:
+
+    ```bash
+    $ cd ~/mavrospy/docker/jetson/outdoor
+    $ nano Dockerfile
+    ```
+
+    The last line should look like this:
+
+    ```bash
+    ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source /home/jetson/ros2_ws/install/setup.bash && ros2 launch mavrospy outdoor.py fcu_url:=/dev/ttyUSB0:921600"]
+    ```
+
+    Modify the last part to specify the `pattern`:
+
+    ```bash
+    ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source /home/jetson/ros2_ws/install/setup.bash && ros2 launch mavrospy outdoor.py fcu_url:=/dev/ttyUSB0:921600 pattern:=circle"]
+    ```
+
+    Rebuild via the `run_docker.sh` script:
+
+    ```bash
+    $ cd ~/mavrospy/docker/jetson/outdoor
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+
+  <TabItem value="jetson-ros1" label="Jetson Nano (ROS1)">
     Remove the outdoor MAVROSPY container and image:
 
     ```bash
