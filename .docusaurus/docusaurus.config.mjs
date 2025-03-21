@@ -77,7 +77,7 @@ export default {
         },
         {
           "href": "https://www.flickr.com/photos/201020418@N06/",
-          "label": "Photgraphy",
+          "label": "Photography",
           "position": "right"
         },
         {

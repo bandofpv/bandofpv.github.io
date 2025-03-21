@@ -2,7 +2,9 @@
 sidebar_position: 1
 sidebar_label: MAVROSPY
 ---
-import ReactPlayer from 'react-player'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import ReactPlayer from 'react-player';
 
 # MAVROSPY
 
@@ -16,7 +18,7 @@ Check out my tutorial **[HERE](../../tutorials/robots/mavrospy/setup)**
 
 ## Introduction
 
-[MAVROS](http://wiki.ros.org/mavros) is a [MAVLink](https://mavlink.io/en/) extendable communication node for ROS. In other words, it allows users to integrate their ROS based architectures with [Ardupilot](https://ardupilot.org/ardupilot/) and/or [PX4](https://docs.px4.io/main/en/) autopliot firmwares which support MAVLink communication. By incorperating ROS and multicopter autopilots, users can easily dive into more advanced autonomous navigation systems like motion capture, lidar, obstacle avoidance, visual inertial odometry (VIO), and more.
+[MAVROS](http://wiki.ros.org/mavros) is a [MAVLink](https://mavlink.io/en/) extendable communication node for ROS1 and ROS2. In other words, it allows users to integrate their ROS based architectures with [Ardupilot](https://ardupilot.org/ardupilot/) and/or [PX4](https://docs.px4.io/main/en/) autopliot firmwares which support MAVLink communication. By incorperating ROS and multicopter autopilots, users can easily dive into more advanced autonomous navigation systems like motion capture, lidar, obstacle avoidance, visual inertial odometry (VIO), and more.
 
 This can be very useful as it acts as a abstraction layer between your ROS topics and your flight controller. You can simply send ROS topics through MAVROS and let it translate those topics to MAVLink messages which the flight controller can understand.
 
@@ -139,10 +141,20 @@ Now we can integrate the `goto_xyz_rpy` method as well as any PX4 Auto modes uti
 
 ### Simulation
 
-Being able to simulate in any robotics project and especially for UAVs is very important if you want to avoid damaging hardware. With ROS fully integrated into our system, we can easily use the [Gazebo Simulator](https://classic.gazebosim.org/) to simulate our UAV.
+Being able to simulate in any robotics project and especially for UAVs is very important if you want to avoid damaging hardware. With ROS fully integrated into our system, we can easily use the [Gazebo Simulator](https://gazebosim.org/home) to simulate our UAV.
 
 Luckily, PX4 makes this very easy as its source code is all [open-source](https://github.com/PX4/PX4-Autopilot) and can be compiled on almost any system to simulate its flight controller software. We can then use MAVROS to integrate the simualted flight controller into ROS and MAVROSPY to maneuver our simulated drone:
 
-<div className="video_wrapper">
-    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
-</div>
+<Tabs groupId="ros-version">
+  <TabItem value="ros2" label="ROS2">
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/AhNdDKY6k5Y"/>
+    </div>
+  </TabItem>
+
+  <TabItem value="ros1" label="ROS1">
+    <div className="video_wrapper">
+        <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/DxHJPO-wjzs"/>
+    </div>
+  </TabItem>
+</Tabs>
