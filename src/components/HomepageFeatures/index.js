@@ -14,7 +14,7 @@ export default function HomepageFeatures() {
             <div className="text--center">
               <Link className="home-link" to="/docs/projects">
                 <ThemedImage className={styles.Svg}
-                  alt="Projects svg"
+                  alt="Projects"
                   sources={{
                     light: useBaseUrl('/img/undraw_project_light.svg'),
                     dark: useBaseUrl('/img/undraw_project_dark.svg'),
@@ -40,7 +40,7 @@ export default function HomepageFeatures() {
             <div className="text--center">
               <Link className="home-link" to="/docs/tutorials">
                 <ThemedImage className={styles.Svg}
-                  alt="Tutorials svg"
+                  alt="Tutorials"
                   sources={{
                     light: useBaseUrl('/img/undraw_tutorial_light.svg'),
                     dark: useBaseUrl('/img/undraw_tutorial_dark.svg'),
