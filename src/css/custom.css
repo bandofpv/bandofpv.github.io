@@ -148,6 +148,9 @@
 }
 
 @media screen and (max-width: 996px) {
+  .footer-content {
+    display: none;
+  }
   .section-content {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
