@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/vslam/setup",
+  "title": "Setup",
+  "description": "MAVROSPY is supported on a PX4 (v1.15.2) flight controller with a RPi4 (Ubuntu 22.04 MATE) or Jetson Nano (JetPack 4.6) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.",
+  "source": "@site/docs/tutorials/robots/vslam/setup.mdx",
+  "sourceDirName": "tutorials/robots/vslam",
+  "slug": "/tutorials/robots/vslam/setup",
+  "permalink": "/docs/tutorials/robots/vslam/setup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Hardware Setup"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "MAVROSPY",
+    "permalink": "/docs/tutorials/robots/vslam/"
+  },
+  "next": {
+    "title": "Simulation",
+    "permalink": "/docs/tutorials/robots/vslam/sim"
+  }
+}

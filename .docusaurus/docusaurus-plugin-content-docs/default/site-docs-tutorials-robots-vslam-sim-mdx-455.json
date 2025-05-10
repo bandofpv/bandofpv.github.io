@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/vslam/sim",
+  "title": "Simulation",
+  "description": "Simulating the VSLAM UAV pipeline is a great way to test your code without the need for a physical drone. This tutorial will show you how to set up the VSLAM UAV simulator on your local machine using Docker and Isaac Sim 4.2.",
+  "source": "@site/docs/tutorials/robots/vslam/sim.mdx",
+  "sourceDirName": "tutorials/robots/vslam",
+  "slug": "/tutorials/robots/vslam/sim",
+  "permalink": "/docs/tutorials/robots/vslam/sim",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Simulation"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Hardware Setup",
+    "permalink": "/docs/tutorials/robots/vslam/setup"
+  },
+  "next": {
+    "title": "MAVROSPY",
+    "permalink": "/docs/tutorials/robots/mavrospy/"
+  }
+}

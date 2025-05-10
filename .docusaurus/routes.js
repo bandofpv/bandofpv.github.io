@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '9d1'),
+    component: ComponentCreator('/docs', '014'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '146'),
+        component: ComponentCreator('/docs', '7b0'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '370'),
+            component: ComponentCreator('/docs', 'cf4'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -358,6 +358,24 @@ export default [
               {
                 path: '/docs/tutorials/robots/sar-drone',
                 component: ComponentCreator('/docs/tutorials/robots/sar-drone', '7de'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/vslam',
+                component: ComponentCreator('/docs/tutorials/robots/vslam', 'eb6'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/vslam/setup',
+                component: ComponentCreator('/docs/tutorials/robots/vslam/setup', '0bd'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/vslam/sim',
+                component: ComponentCreator('/docs/tutorials/robots/vslam/sim', '6de'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
               }

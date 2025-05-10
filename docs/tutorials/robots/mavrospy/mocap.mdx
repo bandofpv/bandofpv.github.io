@@ -44,14 +44,14 @@ This script will automatically build the Docker image and open it in a Docker co
 If you wish to use a motion caputure system as your means for navigating with out a GPS, you must configure the following PX4 parameters.
 
 ```bash
-    EKF2_HGT_REF = Vision
-    EKF2_EV_DELAY = 50.0ms
-    EKF2_GPS_CTRL = 0
-    EKF2_BARO_CTRL = Disabled
-    EKF2_RNG_CTRL = Disable range fusion
-    EKF2_REQ_NSATS = 5
-    MAV_USEHILGPS = Enabled
-    EKF2_MAG_TYPE = None
+EKF2_HGT_REF = Vision
+EKF2_EV_DELAY = 50.0ms
+EKF2_GPS_CTRL = 0
+EKF2_BARO_CTRL = Disabled
+EKF2_RNG_CTRL = Disable range fusion
+EKF2_REQ_NSATS = 5
+MAV_USEHILGPS = Enabled
+EKF2_MAG_TYPE = None
 ```
 
 ## Timesync

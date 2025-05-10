@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/vslam/outdoor",
+  "title": "GPS Navigation",
+  "description": "We can run an outdoor demonstration of MAVROSPY via the outdoor.launch file. However, we need to make sure it runs on boot as we would not be able to SSH to our companion computer on the field.",
+  "source": "@site/docs/tutorials/robots/vslam/outdoor.mdx",
+  "sourceDirName": "tutorials/robots/vslam",
+  "slug": "/tutorials/robots/vslam/outdoor",
+  "permalink": "/docs/tutorials/robots/vslam/outdoor",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "GPS Navigation"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Hardware Setup",
+    "permalink": "/docs/tutorials/robots/vslam/setup"
+  },
+  "next": {
+    "title": "Motion Capture",
+    "permalink": "/docs/tutorials/robots/vslam/mocap"
+  }
+}

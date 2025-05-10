@@ -236,6 +236,21 @@
               "sidebar": "tutorialsSidebar"
             },
             {
+              "id": "tutorials/robots/vslam/index",
+              "path": "/docs/tutorials/robots/vslam/",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/vslam/setup",
+              "path": "/docs/tutorials/robots/vslam/setup",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/vslam/sim",
+              "path": "/docs/tutorials/robots/vslam/sim",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
               "id": "/category/robots",
               "path": "/docs/category/robots",
               "sidebar": "projectsSidebar"

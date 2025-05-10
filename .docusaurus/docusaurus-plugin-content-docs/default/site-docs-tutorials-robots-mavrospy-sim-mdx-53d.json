@@ -1,7 +1,7 @@
 {
   "id": "tutorials/robots/mavrospy/sim",
   "title": "Simulation",
-  "description": "An additional benifit of using ROS is that it allows users to easily develop simulators such as Gazebo with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.",
+  "description": "An additional benefit of using ROS is that it allows users to easily develop simulators such as Gazebo with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.",
   "source": "@site/docs/tutorials/robots/mavrospy/sim.mdx",
   "sourceDirName": "tutorials/robots/mavrospy",
   "slug": "/tutorials/robots/mavrospy/sim",

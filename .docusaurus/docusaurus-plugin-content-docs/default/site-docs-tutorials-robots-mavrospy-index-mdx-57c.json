@@ -1,7 +1,7 @@
 {
   "id": "tutorials/robots/mavrospy/index",
   "title": "MAVROSPY",
-  "description": "June 2024 - Present",
+  "description": "June 2024 - February 2025",
   "source": "@site/docs/tutorials/robots/mavrospy/index.mdx",
   "sourceDirName": "tutorials/robots/mavrospy",
   "slug": "/tutorials/robots/mavrospy/",
@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialsSidebar",
   "previous": {
-    "title": "Robots",
-    "permalink": "/docs/category/robots-1"
+    "title": "Simulation",
+    "permalink": "/docs/tutorials/robots/vslam/sim"
   },
   "next": {
-    "title": "Setup",
+    "title": "Hardware Setup",
     "permalink": "/docs/tutorials/robots/mavrospy/setup"
   }
 }

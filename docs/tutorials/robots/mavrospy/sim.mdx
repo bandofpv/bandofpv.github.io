@@ -8,11 +8,11 @@ import ReactPlayer from 'react-player';
 
 # Simulation
 
-An additional benifit of using ROS is that it allows users to easily develop simulators such as [Gazebo](https://gazebosim.org/home) with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.
+An additional benefit of using ROS is that it allows users to easily develop simulators such as [Gazebo](https://gazebosim.org/home) with their robotic projects. This is crucial for rapid development as it allows you to test your scripts without having to risk crashing your physical drone.
 
 ## Docker
 
-Setting up Gazebo ROS on Linux is made easy via Docker.
+Setting up Gazebo ROS on Linux is made easy via [Docker](https://www.docker.com/).
 
 This tutorial will assume you are running on a Linux OS, but Docker can be used on both Mac and Windows via [Docker Desktop](https://docs.docker.com/get-docker/).
 
@@ -81,63 +81,29 @@ $ sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 
 Then, reboot.
 
-## Install Isaac Sim
-
-[Gazebo](https://gazebosim.org/home) is already installed in the Docker image. However, if you want to use Isaac Sim, you will need to install it manually.
-
-First, start by downloading [Isaac Sim 4.2](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html) which is the latest version supported by Pegasus Simulator extension which is required to integrate a PX4 backend and thus MAVROSPY. Currently, the traditional method of installing Isaac Sim via the Omniverse Launcher is not supported and must be downloaded manually:
-
-```bash
-mkdir -p ~/isaacsim
-cd ~/Downloads
-wget https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone%404.2.0-rc.18%2Brelease.16044.3b2ed111.gl.linux-x86_64.release.zip
-unzip "isaac-sim-standalone@4.2.0-rc.18+release.16044.3b2ed111.gl.linux-x86_64.release.zip" -d ~/isaacsim
-rm isaac-sim-standalone@4.2.0-rc.18+release.16044.3b2ed111.gl.linux-x86_64.release.zip
-```
-
-Next, install Isaac Sim by running the following commands one after another:
-
-```bash
-cd ~/isaacsim
-./omni.isaac.sim.post.install.sh
-./isaac-sim.selector.sh
-```
-
-Now, you can install Pegasus Simulator by following the [installation instructions](https://pegasussimulator.github.io/PegasusSimulator/source/setup/installation.html#configuring-the-environment-variables).
-
-Due to the manual installation of Isaac Sim, the Pegasus Simulator installation instructions must be modified slightly. The `ISAACSIM_PATH` variable must be set to the directory where Isaac Sim was installed. For example, if you installed Isaac Sim in `~/isaacsim`, as per these instructions, then the following commands should be added to the end of your `~/.bashrc` file:
-
-```bash
-# Isaac Sim root directory
-export ISAACSIM_PATH="${HOME}/isaacsim"
-# Isaac Sim python executable
-alias ISAACSIM_PYTHON="${ISAACSIM_PATH}/python.sh"
-# Isaac Sim app
-alias ISAACSIM="${ISAACSIM_PATH}/isaac-sim.sh"
-```
-
-You can press **CTRL+C** after the `make px4_sitl_default none` command  when you see:
-
-```bash
-[100%] Built target px4
-```
-
-:::tip
-The rest of the installation instructions should work as is. However, in my experience, I found it necessary to install empy v3.3.4 during the PX4-Autopilot installation [step](https://pegasussimulator.github.io/PegasusSimulator/source/setup/installation.html#installing-px4-autopilot). This can be done by running the following command prior to compiling the PX4-Autopilot source code:
-
-```bash
-pip install empy==3.3.4
-```
-:::
-
 ## Build Docker Image
 
-We can now build our Docker image via the following commands:
+We can now build the MAVROSPY Docker image via the following commands:
 
-```bash
-$ cd ~/mavrospy/docker/sim
-$ bash run_docker.sh
-```
+<Tabs groupId="ros-version">
+  <TabItem value="ros2" label="ROS2">
+    ```bash
+    $ cd ~
+    $ git clone -b ros2 https://github.com/bandofpv/mavrospy.git
+    $ cd ~/mavrospy/docker/sim
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+
+  <TabItem value="ros1" label="ROS1">
+    ```bash
+    $ cd ~
+    $ git clone -b ros1 https://github.com/bandofpv/mavrospy.git
+    $ cd ~/mavrospy/docker/sim
+    $ bash run_docker.sh
+    ```
+  </TabItem>
+</Tabs>
 
 This script will automatically build the Docker image and open it in a Docker container.
 
@@ -224,6 +190,71 @@ This script will automatically build the Docker image and open it in a Docker co
     </div>
   </TabItem>
 </Tabs>
+
+## Install Isaac Sim
+
+[Gazebo](https://gazebosim.org/home) is already installed in the Docker image. However, if you want to use Isaac Sim, you will need to install it manually.
+
+First, start by downloading [Isaac Sim 4.2](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html) which is the latest version supported by the Pegasus Simulator extension which is required to integrate a PX4 backend and thus MAVROSPY. Currently, the traditional method of installing Isaac Sim via the Omniverse Launcher is not supported and must be installed manually:
+
+```bash
+$ mkdir ~/isaacsim
+$ cd ~/Downloads
+$ wget https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone%404.2.0-rc.18%2Brelease.16044.3b2ed111.gl.linux-x86_64.release.zip
+$ unzip "isaac-sim-standalone@4.2.0-rc.18+release.16044.3b2ed111.gl.linux-x86_64.release.zip" -d ~/isaacsim
+$ rm isaac-sim-standalone@4.2.0-rc.18+release.16044.3b2ed111.gl.linux-x86_64.release.zip
+```
+
+Next, install Isaac Sim by running the following commands one after another:
+
+```bash
+$ cd ~/isaacsim
+$ ./omni.isaac.sim.post.install.sh
+$ ./isaac-sim.selector.sh
+```
+
+:::note
+These commands will take a while to run. Please don't close the terminal or interrupt the process.
+:::
+
+Now, you can install Pegasus Simulator by following the [installation instructions](https://pegasussimulator.github.io/PegasusSimulator/source/setup/installation.html#configuring-the-environment-variables).
+
+Due to the manual installation of Isaac Sim, the Pegasus Simulator installation instructions must be modified slightly. The `ISAACSIM_PATH` variable must be set to the directory where Isaac Sim was installed. For example, if you installed Isaac Sim in `~/isaacsim`, as per these instructions, then the following commands should be added to the end of your `~/.bashrc` file:
+
+```bash
+# Isaac Sim root directory
+export ISAACSIM_PATH="${HOME}/isaacsim"
+# Isaac Sim python executable
+alias ISAACSIM_PYTHON="${ISAACSIM_PATH}/python.sh"
+# Isaac Sim app
+alias ISAACSIM="${ISAACSIM_PATH}/isaac-sim.sh"
+```
+
+Additionally, the following commands should be added to your `~/.bashrc` file after the previous step to set the correct environment variables for ROS 2 Humble integration:
+
+```bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DISTRO=humble
+export ROS_DOMAIN_ID=1
+
+# Can only be set once per terminal.
+# Setting this command multiple times will append the internal library path again potentially leading to conflicts
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ISAACSIM_PATH/exts/omni.isaac.ros2_bridge/humble/lib
+```
+
+You can press **CTRL+C** after the `make px4_sitl_default none` command  when you see:
+
+```bash
+[100%] Built target px4
+```
+
+:::tip
+The rest of the installation instructions should work as is. However, in my experience, I found it necessary to install empy v3.3.4 during the PX4-Autopilot installation [step](https://pegasussimulator.github.io/PegasusSimulator/source/setup/installation.html#installing-px4-autopilot). This can be done by running the following command prior to compiling the PX4-Autopilot source code:
+
+```bash
+$ pip install empy==3.3.4
+```
+:::
 
 ## Launch Isaac Simulator
 
