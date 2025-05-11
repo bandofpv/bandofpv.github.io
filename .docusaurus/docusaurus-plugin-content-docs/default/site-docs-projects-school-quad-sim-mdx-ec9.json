@@ -1,7 +1,7 @@
 {
   "id": "projects/school/quad-sim",
   "title": "Modeling and Simulation of a Quadcopter",
-  "description": "August 2024 - December 2024",
+  "description": "November 2024 - December 2024",
   "source": "@site/docs/projects/school/quad-sim.mdx",
   "sourceDirName": "projects/school",
   "slug": "/projects/school/quad-sim",
@@ -10,15 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
+  "sidebarPosition": 3,
   "frontMatter": {
-    "sidebar_position": 1,
+    "sidebar_position": 3,
     "sidebar_label": "Quadcopter Simulation"
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "School",
-    "permalink": "/docs/category/school"
+    "title": "Inverted Pendulum",
+    "permalink": "/docs/projects/school/ip-cart"
   },
   "next": {
     "title": "Motor Control",

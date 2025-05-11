@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '014'),
+    component: ComponentCreator('/docs', 'f5c'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '7b0'),
+        component: ComponentCreator('/docs', '13f'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'cf4'),
+            component: ComponentCreator('/docs', '6ed'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -272,6 +272,12 @@ export default [
                 sidebar: "projectsSidebar"
               },
               {
+                path: '/docs/projects/school/ip-cart',
+                component: ComponentCreator('/docs/projects/school/ip-cart', 'bb3'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
                 path: '/docs/projects/school/motor-control',
                 component: ComponentCreator('/docs/projects/school/motor-control', 'c00'),
                 exact: true,
@@ -292,6 +298,12 @@ export default [
               {
                 path: '/docs/projects/school/tag',
                 component: ComponentCreator('/docs/projects/school/tag', '72b'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/school/turret',
+                component: ComponentCreator('/docs/projects/school/turret', '890'),
                 exact: true,
                 sidebar: "projectsSidebar"
               },

@@ -161,6 +161,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/ip-cart",
+              "path": "/docs/projects/school/ip-cart",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/motor-control",
               "path": "/docs/projects/school/motor-control",
               "sidebar": "projectsSidebar"
@@ -178,6 +183,11 @@
             {
               "id": "projects/school/tag",
               "path": "/docs/projects/school/tag",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/school/turret",
+              "path": "/docs/projects/school/turret",
               "sidebar": "projectsSidebar"
             },
             {

@@ -1,7 +1,7 @@
 {
   "id": "projects/school/tag",
   "title": "Tag! Pygame",
-  "description": "October 2023 - December 2023",
+  "description": "November 2023",
   "source": "@site/docs/projects/school/tag.mdx",
   "sourceDirName": "projects/school",
   "slug": "/projects/school/tag",
@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 4,
+  "sidebarPosition": 6,
   "frontMatter": {
-    "sidebar_position": 4,
+    "sidebar_position": 6,
     "sidebar_label": "Tag! Pygame"
   },
   "sidebar": "projectsSidebar",
