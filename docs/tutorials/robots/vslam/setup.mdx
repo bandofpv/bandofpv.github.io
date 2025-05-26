@@ -9,191 +9,235 @@ import TabItem from '@theme/TabItem';
 
 ## WORK IN PROGRESS
 
-## OLD STUFF BELOW
+VSLAM UAV is supported on a PX4 (v1.15.4) flight controller, Intel D435i camera, and a Jetson Orin Nano (JetPack 6.2) companion computer.
 
-MAVROSPY is supported on a PX4 (v1.15.2) flight controller with a RPi4 (Ubuntu 22.04 MATE) or Jetson Nano (JetPack 4.6) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.
+If you haven't already done so, please install [JetPack 6.2](https://developer.nvidia.com/embedded/jetpack-sdk-62) for the Jetson Orin Nano using the [Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 
-PX4 allows interaction with a companion computer via `OFFBOARD` mode. Make sure to setup an `OFFBOARD` mode switch and an `Emergency Kill` switch in [QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/index.html).
+Select the Log in automatically option upon first boot.
 
-If you haven't already, please install [Ubuntu MATE 22.04](https://releases.ubuntu-mate.org/22.04/arm64/) for the RPi4 (arm64) or [JetPack 4.6](https://developer.nvidia.com/embedded/jetpack-sdk-46) for the Jetson Nano using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
+## Jetson Orin Setup
 
-Select the `Log in automatically` option upon first boot.
-
-## Wiring
-
-This tutorial uses the flight controller's `TELEM2` port to communicate with the companion computer.
-
-The Jetson Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
-
-Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
-
-| PX4 TELEM2 Pin | USB To UART Adapter Pin |
-|----------------|-------------------------|
-| UART5_TX (2)   | RXD                     |
-| UART5_RX (3)   | TXD                     |
-
-The standard `TELEM2` pin assignments are shown below:
-
-| Pins      | Signal          | Voltage |
-|-----------|-----------------|---------|
-| 1 (Red)   | VCC (out)       | +5V     |
-| 2 (Black) | UART5_TX (out)  | +3.3V   |
-| 3 (Black) | UART5_RX (in)   | +3.3V   |
-| 4 (Black) | UART5_CTS (out) | +3.3V   |
-| 5 (Black) | UART5_RTS (in)  | +3.3V   |
-| 6 (Black) | GND             | GND     |
-
-The Jetson Nano requires a separate 5V/3A power supply via the `5V power` (pin 4) and `Ground` (pin 6). I would recommend soldering a battery elimination circuit (BEC) or Polulu voltage regulator to your UAV's power leads.
-
-This diagram shows the Jetson Nano GPIO board pinout:
-
-<div align="center">
-  ![Jetson Nano Andrew Bernas](../../../assets/robots/mavrospy/jetson_nano_gpio.png)
-</div>
-
-## PX4 Parameters
-
-Assuming you have installed the latest PX4 
-[firmware](https://docs.px4.io/main/en/config/firmware.html#install-stable-px4), change the following 
-[parameters](https://docs.px4.io/main/en/advanced_config/parameters.html) in QGroundControl:
-
-```
-   MAV_1_CONFIG = TELEM2
-   UXRCE_DDS_CFG = 0
-   SER_TEL2_BAUD = 921600
-```
-
-## Setting up SSH
-
-SSH allows us to remotely issue commands to the companion computer over Wi-Fi.
-
-Install the `openssh-server` package on your companion computer:
+Confirm that you have installed the correct version of Jetpack by running the following command:
 
 ```bash
-$ sudo apt update
-$ sudo apt install -y openssh-server net-tools
+$ cat /etc/nv_tegra_release
 ```
 
-The SSH service will start automatically. We can verify this by entering:
+Confirm that the output has the terms `R36 (release), REVISION: 4.3` which indicates that you are running Jetpack 6.2.
+
+Next, set the GPU and CPU clock to max:
 
 ```bash
-$ sudo systemctl status ssh
+$ sudo /usr/bin/jetson_clocks
 ```
 
-You should see `Active: active (running)` somewhere in the status report. **CTRL+C** to exit.
-
-On your publishing computer, SSH to your companion computer. Make sure you change `username` to your companion computer's username and `ip_address` to your companion computer's IP address:
+Then, run the following command to set the to power to `MAXN SUPER` mode:
 
 ```bash
-$ ssh username@ip_address
+$ sudo /usr/sbin/nvpmodel -m 2
 ```
 
-Remember, you can always check your IP address via:
-
-```bash
-$ ifconfig
-```
-
-If you forget your username, you can alway run:
-
-```bash
-$ echo $USER
-```
-
-Youcan now issue commands to our companion computer via SSH rather than having it hooked up to a monitor with a mouse and keyboard.
-
-## Test Connection
-
-[MAVLink](https://mavlink.io/en/) is the default and stable communication interface for working with PX4.
-
-You can test that the companion computer and flight controller are communicating with each other via a MAVLink GCS called `mavproxy`.
-
-Run this command to add your user to the `dialout` group:
-
-```bash
-$ sudo adduser ${USER} dialout
-```
-
-Restart your companion computer.
-
-You can check that the serial port is available by issuing this command:
-
-```bash
-$ ls /dev/ttyUSB0
-```
-
-The result of the command should include the RX/TX connection `/dev/ttyUSB0`
-
-Install MAVProxy:
-
-```bash
-$ sudo apt install -y python3-pip
-$ sudo pip3 install mavproxy
-$ sudo apt remove -y modemmanager
-```
-
-Run MAVProxy, setting the port to connect to `/dev/ttyUSB0` and the baud rate to match the flight controller (921600):
-
-```bash
-$ sudo mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600
-```
-
-MAVProxy on the Jetson Nano should now connect to the flight controller via its RX/TX pins. You should be able to see this in the terminal. **CTRL+C** to exit.
-
-## Install Docker
-
-Installing [Docker](https://www.docker.com/) on Ubuntu is very easy and will allow us to build the ROS environment onto the companion computer in just a few steps.
-
-This is a summarized version of the offical [installation insructions](https://docs.docker.com/engine/install/ubuntu/#installation-methods).
-
-Jetpack already comes with Docker installed!
-
-Add your user to the `docker` group:
+JetPack comes with Docker pre-installed. However, you need to add your user to the `docker` group in order to run Docker commands without `sudo`. Run the following command:
 
 ```bash
 $ sudo usermod -aG docker $USER
+$ newgrp docker
 ```
 
-Restart so that your group membership is re-evaluated.
+## SSD Setup
 
-You can verify our Docker installation via:
+An SSD is required for the Jetson Orin Nano to store container images and rosbag files.
+
+Follow the steps below to install the SSD on the Jetson Orin Nano:
+
+1. **Power Off the Jetson**: Unplug the power supply and any peripherals from the Jetson developer kit.
+2. **Install the SSD**: Physically install the NVMe SSD card on the carrier board of your Jetson developer kit. Ensure that the connector is properly seated and secure it with the screw.
+3. **Reconnect Peripherals**: Reconnect any peripherals you had previously unplugged.
+4. **Power On the Jetson**: Reconnect the power supply to turn on the Jetson developer kit.
+
+Once the system is up, verify that your Jetson identifies a new memory controller on the PCI bus by running the following command:
 
 ```bash
-$ docker run hello-world
+$ lspci
 ```
 
-## Build MAVROSPY Docker image
-
-Now that Docker is installed properly, you can build our Docker image and run it in a Docker container.
-
-Clone the `mavrospy` repository:
+You should see a line similar to the following:
 
 ```bash
+0004:01:00.0 Non-Volatile memory controller: Sandisk Corp Device 5041 (rev 01)
+```
+
+To format the SSD, start by checking the device name of the SSD. Run the following command:
+
+```bash
+$ lsblk
+```
+
+Identify a new device listed corresponding to your SSD, typically as `nvme0n1`.
+
+Next, format the SSD with the `ext4` filesystem. Replace `nvme0n1` with the actual device name of your SSD:
+
+```bash
+$ sudo mkfs.ext4 /dev/nvme0n1
+```
+
+Mount the SSD to a directory `/ssd`:
+
+```bash
+$ sudo mkdir /ssd
+$ sudo mount /dev/nvme0n1 /ssd
+```
+
+To ensure the SSD mounts automatically on boot, add an entry to the `/etc/fstab` file.
+
+First, get the UUID of the SSD:
+
+```bash
+$ lsblk -f
+```
+
+Find the line corresponding to your SSD and note the UUID.
+
+Next, add the SSD to the `/etc/fstab` file replacing `<UUID>` with the actual UUID of your SSD:
+
+```bash
+$ echo 'UUID=<UUID> /ssd ext4 defaults 0 2' | sudo tee -a /etc/fstab > /dev/null
+```
+
+Finally, change the ownership of the /ssd directory.
+
+```bash
+$ sudo chown ${USER}:${USER} /ssd
+```
+
+Now that the SSD is mounted, migrate the Docker data directory to the SSD.
+
+Start by stopping the Docker service:
+
+```bash
+$ sudo systemctl stop docker
+```
+
+Next, move the Docker data directory to the SSD:
+
+```bash
+$ sudo du -csh /var/lib/docker/ && \
+  sudo mkdir /ssd/docker && \
+  sudo rsync -axPS /var/lib/docker/ /ssd/docker/ && \
+  sudo du -csh  /ssd/docker/
+```
+
+Modify the Docker service configuration to point to the new location of the Docker data directory:
+
+```bash
+$ echo '{"runtimes":{"nvidia":{"path":"nvidia-container-runtime","runtimeArgs":[]}},"default-runtime":"nvidia","data-root":"/ssd/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
+```
+
+Rename the old Docker data directory:
+
+```bash
+$ sudo mv /var/lib/docker /var/lib/docker.old
+```
+
+Finally, restart the Docker service:
+
+```bash
+$ sudo systemctl daemon-reload && \
+  sudo systemctl restart docker && \
+  sudo journalctl -u docker
+```
+
+## Isaac ROS Setup
+
+VSLAM UAV uses the [Isaac ROS](https://developer.nvidia.com/isaac-ros) framework for VSLAM. This framework is built on top of ROS2 and provides a set of tools and libraries for building robotics applications.
+
+Start by installing Git-LFS and other dependencies:
+
+```bash
+$ sudo apt install git-lfs
+$ git lfs install --skip-repo
+$ sudo apt-get install -y curl jq tar
+```
+
+Then, create a workspace for Isaac ROS:
+
+```bash
+$ mkdir -p /ssd/workspaces/isaac_ros-dev/src
+$ echo "export ISAAC_ROS_WS=/ssd/workspaces/isaac_ros-dev/" >> ~/.bashrc
+$ source ~/.bashrc
+```
+
+Next, clone the Isaac ROS repository:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src
+$ git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common
+```
+
+Configure the Isaac ROS Docker image for the RealSense camera:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common/scripts && \
+  touch .isaac_ros_common-config && \
+  echo CONFIG_IMAGE_KEY=ros2_humble.realsense > .isaac_ros_common-config
+```
+
+Generate CDI Spec for GPU:
+
+```bash
+$ sudo nvidia-ctk cdi generate --mode=csv --output=/etc/cdi/nvidia.yaml
+```
+
+Clone the VSLAM-UAV repository and download the required assets:
+
+```bash
+$ cd ${ISAAC_ROS_WS}
+$ git clone https://github.com/bandofpv/VSLAM-UAV.git
+$ ${ISAAC_ROS_WS}/VSLAM-UAV/setup/isaac_vslam_assets.sh
+```
+
+Make sure your RealSense camera is connected to the Jetson Orin and run the following command to build the Docker image:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+  ./scripts/run_dev.sh -d ${ISAAC_ROS_WS}
+```
+
+:::warning
+It is required to use RealSense firmware version [5.13.0.50](https://dev.intelrealsense.com/docs/firmware-releases). Any other version may not work with the Isaac ROS Docker image.
+:::
+
+Once the image is built and running, you can test the RealSense camera by running the following command:
+
+```bash
+$ realsense-viewer
+```
+
+This should open the RealSense viewer and display the camera feed.
+
+:::tip
+
+If your RealSense camera is not detected, you may need to run the following commands to update the udev rules in a separate terminal:
+
+```bash
+$ sudo apt install v4l-utils -y
 $ cd ~
-$ git clone -b ros2 https://github.com/bandofpv/mavrospy.git
+$ git clone https://github.com/IntelRealSense/librealsense.git
+$ cd ~/librealsense
+$ ./scripts/setup_udev_rules.sh
 ```
+:::
 
-Build via the `run_docker.sh` script:
+## IMU Calibration (Optional)
 
-```bash
-$ cd ~/mavrospy/docker/jetson
-$ bash run_docker.sh
-```
-
-The script will automatically start building the MAVROSPY docker image and run it in a container.
-
-**CTRL+D** to exit the container.
-
-## TESTING BELOW
-
-## IMU Calibration
-
-In order to best take advantage of VSLAM, you must incorporate IMU data into the VSLAM pipeline. You can use the built in IMU of the Intel D435i camera. This requires the calibration of the IMU and the estimation of its parameters. The calibration of the IMU is done by estimating the bias, scale factor, and misalignment of the accelerometer and gyroscope.
+In order to best take advantage of VSLAM, you must incorporate IMU data into the VSLAM pipeline. You can use the built in IMU of the Intel D435i camera. The IMU comes pre-calibrated from the factory, but it is recommended to calibrate the IMU to ensure accurate measurements.
 
 To calibrate the IMU, you can use the IMU Calibration tool that comes with [Librealsense](https://github.com/IntelRealSense/librealsense). First, you need to build the `realsense` docker image:
 
+note: installed librealesnes git to workspace
+
 ```bash
-$ cd VSLAM-UAV/docker/realsense
+$ cd ~/VSLAM-UAV/docker/realsense
 $ ./run_docker.sh
 ```
 
@@ -250,33 +294,21 @@ Position 6: Viewing direction facing up
 
 Make sure you write the calibration results to the camera's eeprom.
 
-Note: if you get permission denied errors, you need to update the jetson uddev rules. Close the container (Ctrl+D) and run the following commands:
-
-```bash
-$ cd ~
-$ git clone https://github.com/IntelRealSense/librealsense.git
-$ cd ~/librealsense/scripts
-$ ./setup_udev_rules.sh
-```
-
-Follow any instructions that are printed out. Then, restart the container and try running the IMU calibration tool again.
-
 ## IMU Parameter Estimation
 
 With the internal IMU calibrated, you need to estimate the parameters of the IMU. The parameters of the IMU are the accelerometer and gyroscope noise and bias instability. You can estimate these parameters by collecting data from the IMU and using [Allan Variance](https://en.wikipedia.org/wiki/Allan_variance) to estimate the parameters.
 
-First, you need to record static data from the IMU for an extended period of time (at least 3 hours). In the `realsense` container, open up the realsense ros nodes:
+First, you need to record static data from the IMU for an extended period of time (at least 3 hours). Open the Isaac ROS Realsense Docker container and run the realsense node to start streaming data from the camera:
 
 ```bash
-$ cd ~/VSLAM-UAV/setup
-$ ./realsense_node.sh
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && ./scripts/run_dev.sh -b
+$ ${ISAAC_ROS_WS}/VSLAM-UAV/setup/realsense_node.sh
 ```
 
-This will open up the realsense ros node. Next, open up a new terminal and attach to the `realsense` container:
+This will open up the realsense ros node. Next, open up a new terminal and attach to the container:
 
 ```bash
-$ cd ~/VSLAM-UAV/docker/realsense
-$ ./run_docker.sh
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && ./scripts/run_dev.sh
 ```
 
 In the attached container, run the following command to record IMU data:
@@ -292,56 +324,161 @@ Go to the terminal running the realsense-node.sh script and stop the realsense r
 
 With our IMU data, you can now proceed to estimate the IMU parameters. This can be done easily within the ROS2 framework via [allan_ros2](https://github.com/CruxDevStuff/allan_ros2/tree/main).
 
-First, you need to copy the IMU data to our desktop computer. Open a new terminal on your desktop computer and run the following command:
+First, you need to clone the VSLAM-UAV repository on your desktop computer:
 
 ```bash
-$ scp <username>@<jetson_ip>:/home/jetson/imu_rosbag/imu_rosbag.db3 ~/VIO-UAV/docker/analysis/imu_rosbag.db3
+$ cd ~
+$ git clone https://github.com/bandofpv/VSLAM-UAV.git
+```
+
+Next, you need to copy the IMU data to your desktop computer.
+
+Start by copying the IMU rosbag file from the docker container to the Jetson Orin Nano's home directory. In a new terminal on the Jetson Orin Nano, run the following command:
+
+```bash
+$ docker cp $(docker ps -q --filter ancestor=isaac_ros_dev-aarch64):/home/admin/imu_rosbag ~
+```
+
+Open a new terminal on your desktop computer and run the following command:
+
+```bash
+$ scp <username>@<jetson_ip>:/home/<username>/imu_rosbag ~/VSLAM-UAV/docker/analysis
 ```
 
 Where `<username>` is your username on the jetson and `<jetson_ip>` is the IP address.
 
-## Check to see if the COPY works ^^^
-
 Next, you need to build the `analysis` docker image on your desktop computer:
 
 ```bash
-$ cd VSLAM-UAV/docker/analysis
-$ bash run_docker.sh
+$ cd ~/VSLAM-UAV/docker/analysis
+$ ./run_docker.sh
 ```
 
-This will build the image and run it in a container. Once the container is running, edit the allan_ros2 config file:
+This will build the image and run it in a container. Once the container is running, you must modify the configuration to point to the IMU rosbag file. Simply run the following command:
 
 ```bash
-$ nano ~/allan_ws/src/allan_ros2/config/config.yaml
+$ ~/VSLAM-UAV/setup/allan_config.sh
 ```
 
-## Check if this works (name wise)
-
-Modify the file to look like the following:
-
-```yaml
-allan_node:
-  ros__parameters:
-     topic: /camera/imu
-     bag_path: /home/analysis/imu_rosbag/imu_rosbag.db3
-     msg_type: ros
-     publish_rate: 200
-     sample_rate: 200
-```
-
-Next, you need to re-build the allan_ros2 package and run allan_node to compute the raw deviation values:
+Next, run allan_node to compute the raw deviation values:
 
 ```bash
-$ cd ~/allan_ws
-$ colcon build --packages-select allan_ros2
-$ source ~/allan_ws/install/setup.bash
 $ ros2 launch allan_ros2 allan_node.py
 ```
 
 After you get the `DONE` message, exit via **CTRL+C** and run the `analysis.py` script to compute the IMU parameters:
 
 ```bash
-$ python3 src/allan_ros2/scripts/analysis.py --data deviation.csv
+$ python3 ~/ros2_ws/src/allan_ros2/scripts/analysis.py --data deviation.csv
 ```
 
 This will output the IMU parameters and save them to the `imu.yaml` file. I would recommend saving this file or at least the IMU parameters for future reference.
+
+### Note location of imu.yaml following the above commands ^^^^
+
+## OLD STUFF BELOW
+
+## Wiring
+
+This tutorial uses the flight controller's `TELEM2` port to communicate with the companion computer.
+
+The Jetson Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
+
+Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
+
+| PX4 TELEM2 Pin | USB To UART Adapter Pin |
+|----------------|-------------------------|
+| UART5_TX (2)   | RXD                     |
+| UART5_RX (3)   | TXD                     |
+
+The standard `TELEM2` pin assignments are shown below:
+
+| Pins      | Signal          | Voltage |
+|-----------|-----------------|---------|
+| 1 (Red)   | VCC (out)       | +5V     |
+| 2 (Black) | UART5_TX (out)  | +3.3V   |
+| 3 (Black) | UART5_RX (in)   | +3.3V   |
+| 4 (Black) | UART5_CTS (out) | +3.3V   |
+| 5 (Black) | UART5_RTS (in)  | +3.3V   |
+| 6 (Black) | GND             | GND     |
+
+The Jetson Nano requires a separate 5V/3A power supply via the `5V power` (pin 4) and `Ground` (pin 6). I would recommend soldering a battery elimination circuit (BEC) or Polulu voltage regulator to your UAV's power leads.
+
+This diagram shows the Jetson Nano GPIO board pinout:
+
+<div align="center">
+  ![Jetson Nano Andrew Bernas](../../../assets/robots/mavrospy/jetson_nano_gpio.png)
+</div>
+
+## PX4 Parameters
+
+Assuming you have installed the latest PX4 
+[firmware](https://docs.px4.io/main/en/config/firmware.html#install-stable-px4), change the following 
+[parameters](https://docs.px4.io/main/en/advanced_config/parameters.html) in QGroundControl:
+
+```
+   MAV_1_CONFIG = TELEM2
+   UXRCE_DDS_CFG = 0
+   SER_TEL2_BAUD = 921600
+```
+
+## Test Connection
+
+[MAVLink](https://mavlink.io/en/) is the default and stable communication interface for working with PX4.
+
+You can test that the companion computer and flight controller are communicating with each other via a MAVLink GCS called `mavproxy`.
+
+Run this command to add your user to the `dialout` group:
+
+```bash
+$ sudo adduser ${USER} dialout
+```
+
+Restart your companion computer.
+
+You can check that the serial port is available by issuing this command:
+
+```bash
+$ ls /dev/ttyUSB0
+```
+
+The result of the command should include the RX/TX connection `/dev/ttyUSB0`
+
+Install MAVProxy:
+
+```bash
+$ sudo apt install -y python3-pip
+$ sudo pip3 install mavproxy
+$ sudo apt remove -y modemmanager
+```
+
+Run MAVProxy, setting the port to connect to `/dev/ttyUSB0` and the baud rate to match the flight controller (921600):
+
+```bash
+$ sudo mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600
+```
+
+MAVProxy on the Jetson Nano should now connect to the flight controller via its RX/TX pins. You should be able to see this in the terminal. **CTRL+C** to exit.
+
+## Build MAVROSPY Docker image
+
+Now that Docker is installed properly, you can build our Docker image and run it in a Docker container.
+
+Clone the `mavrospy` repository:
+
+```bash
+$ cd ~
+$ git clone -b ros2 https://github.com/bandofpv/mavrospy.git
+```
+
+Build via the `run_docker.sh` script:
+
+```bash
+$ cd ~/mavrospy/docker/jetson
+$ bash run_docker.sh
+```
+
+The script will automatically start building the MAVROSPY docker image and run it in a container.
+
+**CTRL+D** to exit the container.
+

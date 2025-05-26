@@ -12,214 +12,168 @@ January 2025 - April 2025
 
 ## Introduction
 
-My sixth major course at USNA was EW309 (System Modeling and Simulation). BLAH BLAH BLAH
+My sixth major course at USNA was EW309 (System Modeling and Simulation). We pursued a project starting from the problem statement to the final prototype and report. 
 
-The final project for this course was to research a technical paper from an academic journal or conference proceeding and create a figure from the paper.
+The final project was to design and build a turret that could automatically track and fire at a target.
 
 <div align="center">
-  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/quad-sim/Quad3D.png').default} width="480px" />
+  <img alt="Turret Andrew Bernas" src={require('../../assets/school/turret/turret.JPG').default} width="480px" />
 </div>
 
 ## Final Report
 
-**Abstract** — Flying robots such as quadcopters can perform many tasks efficiently and safely across a variety of industries such as agriculture, construction, photography, the military, and more. With current advances in sensor, actuator, and energy storage technology, quadcopters can operate on a larger scale and tackle increasingly complex challenges. As a result, it is vital to understand how to model and simulate these complex systems for development purposes. The paper studied provides a way of modeling and simulating the movement of quadcopters with PD control. The following report delves into further analysis of the underlying modeling equations and utilizes a Euler’s method scheme to compose a simulation capable of reproducing the results found in the paper studied.
+**Abstract** — The EW309 automated turret design project aimed to develop a fully autonomous control system for the Sentry Turret, integrating motor control, computer vision, and ballistics analysis to accurately detect, aim, and engage static circular targets with a minimum accuracy of 95%. The project was based on applications in defense, law enforcement, and industrial automation, and it highlighted the critical engineering challenges associated with autonomous targeting, precise motor control, and feedback systems. The final turret design employed a dual-axis actuation system powered by DC motors and controlled via a custom-built circuit using a Raspberry Pi Pico microcontroller. Target detection used the Luxonis OAK-1 Lite camera paired with a YOLOv11 based neural network, and achieved classification and localization of colored targets within a given board space and with varying conditions. Performance evaluations demonstrated that the turret can successfully target specified circles and discriminate between valid targets and decoys with steady-state errors within ±0.5°. Ballistics testing across distances between 10 feet and 20 feet quantified system biases and precision, confirming the turret’s capability to reliably meet specified performance criteria. These results reinforce the effectiveness of classical control methods combined with advanced computer vision in an autonomous turret system.
 
 ### Introduction
 
-Unmanned Aerial Vehicles, or UAVs, are robots that have the ability to fly. This gives them an upper hand over land-based robots as UAVs are capable of navigating around difficult terrain and move at faster speeds. As a result, these systems have proven to be effective at aiding a variety of industries. Some examples include infrastructure inspections, exploring dangerous regions, spraying crops, and more. With the current advancements in electronic technology and control theory, UAVs have become relatively simple to manufacture at scale. Being able to model UAVs, such as quadcopters, is essential during the developmental process. With a model, simulations can evaluate the performance of different controller designs, minimizing the risk of damage to physical components.
+Automated turrets have evolved in recent years, including integrating computer vision and custom motor control to improve targeting accuracy and responsiveness. This project focuses on designing an electrical control system for a prefabricated Sentry Turret that incorporates the concepts of the United States Naval Academy’s Robotics and Control Engineering major. By using a combination of computer vision, motor control, and feedback loops, the turret will autonomously identify and engage targets within its field of view with at least 95% overall accuracy. This section details the motivation behind the project, the problem statement, and the background research that informs the design and implementation of the turret system.
 
-In [1], the authors propose a nonlinear dynamic model of a quadcopter and simulate its performance via a PD controller. The equations of motion for the six degrees of freedom were provided, along with the parameters used in simulation. In the following report, a manual reconstruction of the referenced paper was conducted supplemented by an in-depth analysis on the equations of motion and the implementation of a custom Euler integration scheme. Additionally, the report offers criticism to the control design provided and explains why it lacks practical feasibility. 
+#### Motivation
 
-### Problem Statement and Objectives
+Autonomous turrets have significant applications across various industries, including military, law enforcement, and consumer products. In the military, autonomous targeting systems enhance security by providing rapid threat assessment and response with minimal human input or casualties. The ability to identify and neutralize targets while avoiding unintended harm to noncombatants is crucial both ethically and operationally. Beyond defense and law enforcement, autonomous turrets are increasingly used in commercial and research settings, such as industrial automation, wildlife monitoring and management, and robotics competitions. The growing sophistication of computer vision and automated control systems has enabled more precise and accurate targeting, reducing reliance on human operators and increasing overall efficiency. This project addresses key challenges in target identification, motor control, and feedback loops, reinforcing fundamental concepts in robotics, control theory, and computer vision. By engaging with these technical challenges, students gain a deeper understanding of how autonomous systems operate, fostering both technical proficiency and critical thinking.
 
-Quadcopters offer a complex modelling problem as they involve four motors connected to a rigid body with some means to move about 3D space. It is a classic underactuated system with only throttle, roll, pitch, and yaw inputs to maneuver throughout six degrees of freedom. It is up to the engineer to come up with some method of converting the individual speeds of each motor into a position and orientation of the quadcopter. A controller must then be designed to manipulate the four motor speeds to reach a desired state. 
+#### Problem Statement
 
-The paper studied documents a nonlinear mathematical model of a quadcopter with three translational ($x, y, z$) and three rotational ($\varphi, \theta, \psi$) degrees of freedom (DOF). Euler angles are used to model rotation as they are more intuitive. However, they are prone to “gimbal lock” which loses one degree of freedom. This issue can be resolved by using quaternions, but doing so can be confusing for the reader as they live in 4-dimensional space. Additionally, the authors propose a PD controller to achieve altitude, roll, pitch, and yaw angle setpoints. Details on the applied simulation method were excluded from the paper, but plots of the 4 setpoint responses were provided along with the associated gain values.
+Design, implement, and test an autonomous method of controlling a prefabricated Sentry Turret. The method should enable the turret to autonomously detect and hit two circular static targets of a specified size and color with 95% accuracy. The turret should be able to distinguish between its target and decoys of many sizes and colors, including the same size or color as the target. The gun itself will operate in a stationary position with an unobstructed view. The turret should be able to detect two targets within the full field of view of the gun mounted camera, aim itself, and fire accurately at those targets within 15 seconds. The system must also provide diagnostics at the end of each trial including the final steady-state error for pitch and yaw rotations and how many shots the turret intended to take.
 
-### Modeling
+#### Background Research
 
-A quadcopter is defined as a multirotor with four motors, typically arranged in a “+” or “x” configuration. We decided to model the “+” variant of the quadcopter rather than the “x” variant as it is more intuitive. The front and back motors, $M_2$ and $M_4$, rotate in the counterclockwise direction whereas the left and right motors, $M_1$ and $M_3$, rotate in the clockwise direction as depicted in Figure 1. This configuration ensures that the torque due to the clockwise spinning motors counteract the torque due counterclockwise spinning motors.
+Modern automated turret designs rely on a camera for target detection and motor actuators to orient the gun. For example, [1] demonstrated a system using a webcam and two stepper motors to aim a toy gun, as illustrated in Fig. 1. The turret implements a motion detection algorithm to detect any movement within the camera’s field of view. If motion is detected, the system will calculate the necessary rotation angle and required motor steps to aim at its general location. This approach offers a cheap and easily replicable design, but the target acquisition software remains rudimentary.
 
 <div align="center">
-  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/quad-sim/Quad3D.png').default} width="480px" />
-  <p><b><i>Figure 1 Body Frame of Quadcopter</i></b></p>
+  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/turret/fig1.jpg').default} width="460px" />
+  <p><b><i>Figure 1:  Motion detecting Nerf gun turret [1]</i></b></p>
 </div>
 
-When modeling with Euler angles, it is crucial to maintain a standard rotation order as each rotation is relative to the new reference frame due to the previous rotation. For example, to yaw 90 degrees the quadcopter rotates 90 degrees about the original z axis. This establishes a new reference frame for the next rotation. Consequently, to roll 45 degrees, the quadcopter rotates 45 degrees about the new x axis. The new x axis due to the yaw rotation should not be confused with the original x axis before the yaw rotation. This paper will assume the order: yaw, pitch, roll.
+Advancements in computer vision explore facial recognition and the use of color filters [2] for targeting, as illustrated in Fig. 2. The method proposed can detect and target multiple colors or faces with the use of Hue, Saturation, and Value color filtering. Alternative methods incorporate human detection capabilities using histogram of oriented gradient (HOG) and support vector machine (SVM) classifiers [3]. Even with the advances in computer vision algorithms, these systems fail to implement a target discriminating capability, shooting anything that moves.
 
-Control of the quadcopter involves varying the speed of the motors. Rotating the motor, and thereby the propeller, generates two main forces: thrust (1) and torque (2).
+<div align="center">
+  <img alt="Figure 2 Andrew Bernas" src={require('../../assets/school/turret/fig2.jpg').default} width="480px" />
+  <p><b><i>Figure 2: Face detecting laser pointer turret [2]</i></b></p>
+</div>
+
+To overcome the limitations of non-discriminatory target acquisition, recent work focuses on targeting the largest object within the camera's field of view [4]. Should a blue object get within the camera’s field of view, the turret will reach the desired servo angles to aim a laser at it. If there are multiple blue objects detected, the turret will aim at the largest target. The main advantage of the design is its ability to discriminate between different targets based on their size. However, the target acquisition program is still quite limited as it only locates blue objects. Providing the user with greater control over target selection would enhance the automated turret's ability to distinguish and prioritize firing at specified targets.
+
+Several turret actuation methods rely on servo motors [2],[3],[4], as illustrated in Fig. 3. Servo motors implement a built-in position controller for motor actuation. While this might work with small turret designs, servo motors tend to not exist at large sizes. To scale this approach for actuating larger guns, a custom motor position control loop would be necessary [5]. An additional sensor (like an encoder) would be required to measure the motor’s position and an additional controller must be developed to calculate the input voltage.
+
+<div align="center">
+  <img alt="Figure 3 Andrew Bernas" src={require('../../assets/school/turret/fig3.jpg').default} width="360px" />
+  <p><b><i>Figure 3: Servo motor actuated turret [4]</i></b></p>
+</div>
+
+To address the limitations of previous works [1],[2],[3],[4] this report will encompass an automated turret system enabling the user to specify the characteristics of the targets to fire at and utilize an easily scalable motor controller. By utilizing advancements in computer vision, the turret can distinguish between pre-specified targets and decoys. Additionally, by utilizing a classical approach towards motor position control, this method can be easily reproduced at scale.
+
+### Turret Actuation
+
+The turret’s actuation system is made up of three main subsystems: a laptop for user/programmable control, a turret board which handles interpreting signal commands and power, and the turret body. These processes are depicted in Fig. 4 and all code can be found in Appendix A. 
+
+<div align="center">
+  <img alt="Figure 4 Andrew Bernas" src={require('../../assets/school/turret/fig4.png').default} width="680px" />
+  <p><b><i>Figure 4: Operational block diagram for actuation phase</i></b></p>
+</div>
+
+The turret body is a repurposed Proaim Sr. Pan Tilt Head [6] operating on two axes, yaw and pitch. A custom motor control board replaces the default control box, enabling direct interfacing with the motors. The tilt head is modified to operate in a 180° range with a physical stop and the pan head can operate without limitations, captured in Fig. 5. It has two brushed, high torque DC motors that can operate between 6°/sec at 4VDC and 51°/sec at 12VDC, according to Proaim [6]. Both motors are using far less than their maximum load of 16.5lbs. The custom circuit board, shown in Fig. 6, connects two systems: a Raspberry Pi PICO microcontroller, which manages control logic and interprets commands from the laptop, and two motor drivers that power the motors and control their speed and direction. The two ROHM BD62120AEFJ motor drivers can operate between 8VDC and 24VDC [7], are powered via a 12VDC power supply and are used to control both the yaw and pitch motors.
+
+<div align="center">
+  <img alt="Figure 5 Andrew Bernas" src={require('../../assets/school/turret/fig5.jpg').default} width="360px" />
+  <p><b><i>Figure 5: Turret motor locations</i></b></p>
+</div>
+
+<div align="center">
+  <img alt="Figure 6 Andrew Bernas" src={require('../../assets/school/turret/fig6.jpg').default} width="420px" />
+  <p><b><i>Figure 6: Board layout and motor wiring</i></b></p>
+</div>
+
+The main advantage for using this motor driver is its ability to control high power (12VDC) motors with low power (3.3VDC) pulse width modulation (PWM) logic from the PICO microcontroller [8]. The motor driver is a standard H-bridge that allows control over polarity of the load, which in turn, allows control over the direction of the motors. Motor direction and speed is facilitated via two low power PWM input pins, IN1 and IN2. Turning IN1 on and IN2 off causes clockwise rotation and turning IN1 off and IN2 on causes counterclockwise rotation. Speed is directed via the PWM duty cycle through each pin. A 100% duty cycle would result in full power (12VDC) and a 0% duty cycle would result in no power (0VDC). The PWM frequency of 1kHz was selected to balance audible motor noise and efficient operation. This motor driving process is managed by the motor class, motor.py, in Appendix A.
+
+In order to control the turret, the PC communicates movement commands to the PICO over a serial port. The PICO then decides which motor to actuate and the polarity of voltage to achieve the desired motor rotation. Finally, the microcontroller sends PWM signals to the motor controllers to power the motors for yaw and pitch actuation. 
+
+The user can use the left arrow key, right arrow key, up arrow key, and down arrow key to control the orientation of the turret and use the space key to stop the motors. Upon key press, the laptop will send the respective movement command over serial to the PICO (manual_pc.py). When the microcontroller receives the commands "RIGHT" or "LEFT," it interprets them as clockwise or counterclockwise rotation, respectively. Via pins GP9 (IN1) and GP10 (IN2), the microcontroller will instruct the motor controller to apply 12V DC at a 60% duty cycle to the yaw motor. The same is true for commands “UP” or “DOWN,” but for the pitch motor at GP12 (IN1) and GP13 (IN2).  A 60% duty cycle was chosen for a controlled yet responsive motor speed. The “SPACE” command locks both motors by setting the IN1 and IN2 duty cycle to 100% (manual_pico.py).
+
+The greatest difficulty experienced was getting the laptop to detect keyboard presses and send them to the PICO via serial. The initial attempt used MATLAB for keyboard control to allow for easy integration of data collection and analysis. Unfortunately, MATLAB does not offer a straightforward solution for this, so an alternative approach was implemented using the Python keyboard library [9]. This allowed key presses to be detected using the is_pressed() method within a while loop. While granting easier control of the turret, it may require the use of Python data analysis tools instead of MATLAB. Looking forward, it's important to be flexible during problem-solving and avoid relying too heavily on familiar approaches.
+
+### Position Sensor
+
+The turret has a BNO055 9-axis inertial measurement unit (IMU) [10] which consists of triaxial accelerometer to measure linear acceleration, a triaxial gyroscope to measure angular velocity, and a triaxial magnetometer to measure the sensor's orientation relative to magnetic north. Since the turret needs a motor position controller to aim at the target, orientation and angular velocity measurements are required. Orientation measurements are used for the calculation of the error between current and desired motor positions, and angular velocity data will be utilized for system identification (plant transfer function estimation).
+
+Although only orientation and angular velocity are required, relying solely on the gyroscope is insufficient. Gyroscope measurements are inherently noisy, sensitive to temperature variations, and do not directly provide orientation. Instead, orientation is derived by integrating angular velocity, which accumulates sensor bias over time, leading to drift. To counteract this, sensor fusion combines data from the accelerometer, gyroscope, and magnetometer, yielding a more accurate state estimation. The accelerometer and magnetometer improve orientation measurements by referencing constant external vectors: the gravity vector from the accelerometer and magnetic north from the magnetometer.
+
+The BNO055 IMU communicates to the PICO via Inter-Integrated Circuit (I2C) on pins GP2 and GP3. This is pictured in Fig. 7 with the additional two wires being the sensor’s ground and 5V power.
+
+<div align="center">
+  <img alt="Figure 7 Andrew Bernas" src={require('../../assets/school/turret/fig7.png').default} width="360px" />
+  <p><b><i>Figure 7:  BNO-055 IMU Wiring Diagram and Mounting</i></b></p>
+</div>
+
+GP2 (orange wire) is a serial clock line (SCL), crucial for synchronizing communication between the PICO and IMU. It does this by sending pulses at regular intervals, with each pulse indicating when each bit of data is transmitted via GP3 (brown wire) or the serial data line (SDA). Using the Adafruit BNO055 library [11], the PICO receives the yaw, roll, and pitch position in degrees and velocity in degrees per second using the euler()  and gyro() methods respectively. The yaw and pitch data (roll data discarded) are then streamed over serial to the PC using a formatted print statement. The PC receives that information in a data array which it decodes into yaw and pitch position data and velocity data, for a total of four lists storing data as it is recorded.
+
+The streamed data is published at a constant rate of 10 Hz by using a while loop and time.sleep(0.1). Collecting measurements at 10 Hz should be fast enough for most motor control designs and reading at equal time intervals is crucial for accurate control calculations. A PID controller, for example, requires integrals and derivatives. Inconsistent measurement intervals distort these calculations, potentially accumulating errors and hindering the controller's ability to reach the desired position. 
+
+To enable concurrent reading and writing to the serial port, the PICO leverages its dual-core Arm Cortex-M0+ processor [8], executing each process to a separate thread. This is done via the _thread MicroPython library [12] and allows the turret to simultaneously receive keyboard movement commands from the laptop while publishing constant IMU data back to it. Fig. 8 illustrates the process from start to finish, noting that the data collection process continuously loops until “q” is pressed. The code for this process can be found in manual_IMU_pico.py in Appendix A.
+
+<div align="center">
+  <img alt="Figure 8 Andrew Bernas" src={require('../../assets/school/turret/fig8.png').default} width="600px" />
+  <p><b><i>Figure 8: Component Operations Diagram for serial communication</i></b></p>
+</div>
+
+Fig. 9 displays a plot of the turret’s position and velocity over a testing period of five seconds using the Matplotlib library [13] in manual_IMU_pc.py script. The test shifted the turret clockwise then counterclockwise (yaw), stopped, then tilted the turret down then back up (pitch), which agrees with the Position vs. Time plot. Each time the turret changes direction in either direction, the velocity shifts quickly to a constant speed of about ±40 deg/s as seen in the Angular Velocity vs. Time plot. This consistency in moving in either the clockwise or counterclockwise direction will make it easier for system identification. Instead of having to calculate four different transfer functions for movement in all four directions, only two or maybe even one transfer function would be required to model the DC motor turret system.
+
+<div align="center">
+  <img alt="Figure 9 Andrew Bernas" src={require('../../assets/school/turret/fig9.png').default} />
+  <p><b><i>Figure 9: Plot of Position vs. Time and Angular Velocity vs Time for turret motor actuation</i></b></p>
+</div>
+
+Initially, getting two-way serial communication between the PICO and laptop proved to be difficult. The original approach utilized the Python asyncio library for concurrent processing, but the _thread library was more straightforward to implement and provided better documentation. This allowed the PICO to manage two independent processes, serial reading and writing, to operate simultaneously on different threads.
+
+Additional issues occurred while rotating across the turret’s centerline, when the PC recorded a dramatic jump from 0° to 360°. This large shift would make it difficult to implement a position controller which requires a smooth transition between angles. A sudden jump, representing the same relative position, can confuse the controller and lead to erratic behavior. To mitigate this issue, a “wrap to pi” function was implemented to map the data to a continuous range from -180° to 180°. This function can be seen in manual_IMU_pico.py in Appendix A.
+
+During testing, a frequent problem arose when the PICO script would time out if a keyboard command was not received. If the user did not send commands quick enough, there was a high chance the script would break. Initially, a simple sleep command allowed enough time to press a key after code execution, but a more robust solution was implemented utilizing a while loop. The program now loops continuously until a serial command triggers its exit, allowing the remaining code to execute.
+
+### Controller Design
+
+This section of the report outlines the process of data collection, transfer function derivation, system response analysis, and controller development for the yaw and pitch motors. The System Modeling section covers data collection and transfer function derivation, while the Deadzone Compensation section explains how stiction in the DC motors was addressed. The Yaw and Pitch Controller Design section details the approach used to develop a position controller. To enhance system performance, a Proportional-Integral (PI) controller was implemented. The PI controller adjusts the control input based on the current error (proportional) and the accumulation of past errors (integral), ensuring immediate error correction while eliminating steady-state error. Finally, the Performance Evaluation section assesses the controller's effectiveness, comparing its performance to design expectations and outlining any modifications made to improve the system.
+
+#### System Modeling
+
+The objective of system modeling is to develop a mathematical model of the Sentry Turret motors, which is crucial for evaluating its dynamics before designing a controller. The system model provides transfer functions to analyze and predict the turret’s behavior based on a given input. For this setup, the velocity transfer function was derived using a first-order system approximation of the DC motor turret system. While more accurate models exist for representing the system, a first-order approximation is sufficient for determining the appropriate controller type and calculating initial control gains based on a design point. 
+
+Data collection was carried out using controlled, repeatable, and time-based trials to model the turret’s dynamics. First-order system analysis was performed by examining the step response for each motor. A step response with a 30% duty cycle was selected to provide enough voltage to initiate motor movement, while keeping the speed low enough to allow for accurate data measurements from the 10Hz IMU. Each motor received a one-second step input, using the time.sleep() method, to ensure it reached its final value. During the whole trial, the PICO recorded angular velocity and angular position from the IMU using the gyro() and euler() methods, respectively. Measurements were taken at equal time intervals to reduce the risk of missing critical changes in the system’s behavior and simplify the transfer function estimation. Each motor was powered individually in both directions, clockwise (CW) and counterclockwise (CCW) for yaw, and up and down for pitch, as shown in Fig. 10 and performed via the calc_TF_pico.py and calc_TF_pc.py scripts in Appendix A.
+
+<div align="center">
+  <img alt="Figure 10 Andrew Bernas" src={require('../../assets/school/turret/fig10.png').default} />
+  <p><b><i>Figure 10: Position and angular velocity step response for yaw and pitch motors at 30% duty cycle</i></b></p>
+</div>
+
+Using this data, first-order system analysis can be performed to estimate the motor’s transfer function. The velocity transfer function represents how the turret's angular velocity in deg/s responds to a given motor input in volts and is given by,
+
+<div class='equation-block'>
+  <div class='equation'>$G_{vel}(s)=\frac{b}{s+a}.$</div>
+  <div class='right-text'>(1)</div>
+</div>
+
+The position transfer function represents how the turret’s position in degrees responds to a given motor input in volts and can be derived by taking the integral of the velocity transfer function,
+
+<div class='equation-block'>
+  <div class='equation'>$G_{pos}(s)=\frac{b}{s(s+a)}.$</div>
+  <div class='right-text'>(2)</div>
+</div>
+
+The coefficients $a$ and $b$ are found via the calc_TF_data_anlaysis.py script by analyzing the velocity step response data, as illustrated in Fig. 11. The blue line represents the step response and black line denotes the start of the given motor step input. The final value, $F_v$, (red line) was calculated by taking the average of the last four values of the step response to compensate for any noise within the velocity measurement. The 63% final value is denoted by the magenta line and was used for determining the system's time constant, $\tau$, (green line) or the time it takes for the motor to reach 63% of its final velocity.
+
+
+### Change Appendix A to repo[link]
+
+### Templates
+
+<div align="center">
+  <img alt="Figure 1 Andrew Bernas" src={require('../../assets/school/turret/fig1.jpg').default} width="480px" />
+  <p><b><i>Figure 1 Body Frame of Quadcopter</i></b></p>
+</div>
 
 <div class='equation-block'>
   <div class='equation'>$F_i = b\omega_i^2$</div>
   <div class='right-text'>(1)</div>
 </div>
-
-<div class='equation-block'>
-  <div class='equation'>$T_i=d\omega_i^2$</div>
-  <div class='right-text'>(2)</div>
-</div>
-
-Where $F$ is the thrust produced, $T$ is the torque, $i$ references the motor number, $l$ is the length between the motor and center of gravity, and $\omega$ is the angular velocity of the motor. The constants $b$ and $d$ are a simplified representation of the parameters affecting the thrust and torque produced by the propeller. This value can be estimated empirically and is influenced by factors such as air density and size of the propeller. Thrust will produce a lifting force as denoted in Figure 1 and torque will produce a moment in the direction opposite of the propeller rotation. Both of these phenomenon’s are derived from Newton’s third law which states, that every action has an equal and opposite reaction. The thrust generated by the propellers will push air down, causing the quadcopter to lift in the opposite direction. Additionally, the act of rotating a propeller clockwise will in turn apply a force to rotate the body counterclockwise.
-
-In order to maneuver the quadcopter, there are four independent control inputs: throttle, roll, pitch, and yaw. To change the throttle, $U_1$, all four motors are increased or decreased equivalently (3).
-
-<div class='equation-block'>
-  <div class='equation'>$U_1=F_{tot}=F_1+F_2+F_3+F_4=b(\omega_1^2+\omega_2^2+\omega_3^2+\omega_4^2)$</div>
-  <div class='right-text'>(3)</div>
-</div>
-
-To make the quadcopter roll, $U_2$, in the positive $\varphi$ direction, keep $F_1$ and $F_3$ the same, but increase $F_4$ and decrease $F_2$ (4). To roll the opposite direction, decrease $F_4$ and increase $F_2$.
-
-<div class='equation-block'>
-  <div class='equation'>$U_2=T_\varphi=l(F_4-F_2)=lb(\omega_4^2-\omega_2^2)$</div>
-  <div class='right-text'>(4)</div>
-</div>
-
-To make the quadcopter pitch, $U_3$, in the positive $\theta$ direction, keep $F_2$ and $F_4$ the same, but increase $F_1$ and decrease $F_3$ (5). To pitch in the opposite direction, decrease $F_1$ and increase $F_3$.
-
-<div class='equation-block'>
-  <div class='equation'>$U_3=T_\theta=l(F_1-F_3)=lb(\omega_1^2-\omega_3^2)$</div>
-  <div class='right-text'>(5)</div>
-</div>
-
-To make the quadcopter yaw, $U_4$, in the positive $\psi$ direction, increase both $F_2$ and $F_4$, but decrease both $F_1$ and $F_3$ (6). To yaw in the opposite direction, decrease both $F_2$ and $F_4$, but increase both $F_1$ and $F_3$.
-
-<div class='equation-block'>
-  <div class='equation'>$U_4=T_\psi=-T_1+T_2-T_3+T_4=d(-\omega_1^2+\omega_2^2-\omega_3^2+\omega_4^2)$</div>
-  <div class='right-text'>(6)</div>
-</div>
-
-Equation (7) represents (3), (4), (5), and (6) in matrix form.
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}U_1\\U_2\\U_3\\U_4\end{bmatrix}=\begin{bmatrix}b&b&b&b\\0&-lb&0&lb\\lb&0&-lb&0\\-d&d&-d&d\end{bmatrix}\begin{bmatrix}\omega_1^2\\\omega_2^2\\\omega_3^2\\\omega_4^2\end{bmatrix}$</div>
-  <div class='right-text'>(7)</div>
-</div>
-
-From a practical control perspective, it is more beneficial to calculate the resulting motor speeds based on the four control inputs (8).
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}\omega_1^2\\\omega_2^2\\\omega_3^2\\\omega_4^2\end{bmatrix}=\begin{bmatrix}\frac{1}{4b}&0&\frac{1}{2bl}&\frac{1}{4d}\\\\\frac{1}{4b}&-\frac{1}{2bl}&0&\frac{1}{4d}\\\\-\frac{1}{4b}&0&-\frac{1}{2bl}&-\frac{1}{4d}\\\\\frac{1}{4b}&\frac{1}{2bl}&0&\frac{1}{4d}\end{bmatrix}\begin{bmatrix}U_1\\U_2\\U_3\\U_4\end{bmatrix}$</div>
-  <div class='right-text'>(8)</div>
-</div>
-
-With (7) and (8), understanding the relationship between motor speed and change in translation or rotation is straight forward. It is important to notice that the four control inputs $U_1$, $U_2$, $U_3$, and $U_4$ affect movements relative to the body. These changes however, are not equal to the movements which are observed from a fixed point of view. This problem is exacerbated when attempting to integrate sensors such as a barometer and GPS. For example, when using these sensors to estimate altitude, a fixed reference frame is being used. Altitude is defined as the location along the z axis relative to Earth. However, if the quadcopter is pitched or rolled, the z axis relative to the body no longer aligns with the z axis relative to Earth. This can cause problems when trying to maintain altitude as maintaining position on the z axis relative to the body, will not always equate to maintaining altitude or position on the z axis relative to Earth. As a result, it is important to define two coordinate systems, one body frame and one Earth frame. The body frame is represented in Figure 1 where the reference frame is always fixed to the body of the quadcopter. No matter the orientation, the body frame’s z axis will always be orthogonal to the quadcopter’s body. Furthermore, the Earth frame is fixed, with the z axis orthogonal to the surface of the Earth.
-
-Moving between the two coordinate systems can be achieved using a rotation matrix accounting for the three successive Euler angle rotations. Before the first rotation, the body frame and Earth frame are aligned. Sticking with the yaw, pitch, roll order convention, first rotate about the z axis (yaw) through an angle $\psi$ (9). The frame $e$ refers to the original Earth frame and $e_1$ refers to the rotated reference frame.
-
-<div class='equation-block'>
-  <div class='equation'>$R_e^{e_1}(\psi)=\begin{bmatrix}\cos(\psi)&\sin(\psi)&0\\-\sin(\psi)&\cos(\psi)&0\\0&0&1\end{bmatrix}$</div>
-  <div class='right-text'>(9)</div>
-</div>
-
-Next, pitch about the new y axis by the angle $\theta$ (10).
-
-<div class='equation-block'>
-  <div class='equation'>$R_{e_1}^{e_2}(\theta)=\begin{bmatrix}\cos(\theta)&0&-\sin(\theta)\\0&1&0\\\sin(\theta)&0&\cos(\theta)\end{bmatrix}$</div>
-  <div class='right-text'>(10)</div>
-</div>
-
-Finally, roll about the new x axis by the angle $\varphi$ (11). The frame $b$ refers to the final body frame.
-
-<div class='equation-block'>
-  <div class='equation'>$R_{e_2}^b(\varphi)=\begin{bmatrix}1&0&0\\0&\cos(\varphi)&\sin(\varphi)\\0&-\sin(\varphi)&\cos(\varphi)\end{bmatrix}$</div>
-  <div class='right-text'>(11)</div>
-</div>
-
-Equation (12) represents the derivation of the rotation matrix of the original Earth frame, $e$, in the fully transformed body frame, $b$.
-
-<div class='equation-block'>
-  <div class='equation'>$R_e^b(\varphi,\theta,\psi)=R_{e_2}^b(\varphi)R_{e_1}^{e_2}(\theta)R_e^{e_1}(\psi)$</div>
-  <div class='right-text'>(12)</div>
-</div>
-
-Equation (13) is the expanded form of $R_e^b$ where $\text{s}$ represents $\sin$ and $\text{c}$ represents $\cos$.
-
-<div class='equation-block'>
-  <div class='equation'>$R_e^b=\begin{bmatrix}\text{c}(\theta)\text{c}(\psi)&\text{c}(\theta)\text{s}(\psi)&-\text{s}(\theta)\\\text{s}(\theta)\text{s}(\varphi)\text{c}(\psi)-\text{s}(\psi)\text{c}(\varphi)&\text{s}(\psi)\text{s}(\theta)\text{s}(\varphi)+\text{c}(\psi)\text{c}(\varphi)&\text{s}(\varphi)\text{c}(\theta)\\\text{s}(\theta)\text{c}(\varphi)\text{c}(\psi)+\text{s}(\psi)\text{s}(\varphi)&\text{s}(\psi)\text{s}(\theta)\text{c}(\varphi)-\text{c}(\psi)\text{s}(\varphi)&\text{c}(\varphi)\text{c}(\theta)\end{bmatrix}$</div>
-  <div class='right-text'>(13)</div>
-</div>
-
-With a method of converting between both reference frames, deriving the translational equations of motions is straight forward. Newton’s 2nd law of motion states that the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass (14).
-
-<div class='equation-block'>
-  <div class='equation'>$F=ma$</div>
-  <div class='right-text'>(14)</div>
-</div>
-
-For simplification purposes, the model assumes no drag and claims that the gyroscopic effects due to the spinning motors are negligible. Therefore, the only forces acting on the body is the total thrust, $U_1$, and gravity, $mg$ (15). Notice how the accelerations $\ddot{x}$, $\ddot{y}$, $\ddot{z}$ and $g$ are in relation to the earth frame but $U_1$ is relative to the body frame. The transformation of $U_1$ to the earth frame is achieved by multiplying the rotation matrix $R_e^b$.
-
-<div class='equation-block'>
-  <div class='equation'>$m\begin{bmatrix}\ddot{x}\\\ddot{y}\\\ddot{z}\end{bmatrix}=\begin{bmatrix}0\\0\\-mg\end{bmatrix}+R_e^b\begin{bmatrix}0\\0\\U_1\end{bmatrix}$</div>
-  <div class='right-text'>(15)</div>
-</div>
-
-Expanding (15) and isolating the linear accelerations $\ddot{x}$, $\ddot{y}$, and $\ddot{z}$ is illustrated in (16).
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}\ddot{x}\\\ddot{y}\\\ddot{z}\end{bmatrix}=\begin{bmatrix}(\sin(\theta)\cos(\varphi)\cos(\psi)+\sin(\psi)\sin(\varphi))\frac{U_1}{m}\\\\(\sin(\psi)\sin(\theta)\cos(\varphi)-\cos(\psi)\sin(\varphi))\frac{U_1}{m}\\\\(\cos(\varphi)\cos(\theta))\frac{U_1}{m}-g\end{bmatrix}$</div>
-  <div class='right-text'>(16)</div>
-</div>
-
-Deriving the rotational equations of motion is a little more difficult due to the fact that the time rate of change of Euler angles does not directly equate to angular velocity of the body frame. This makes sense because the yaw angle, applied first, is not rotated about the final body yaw axis. Instead, pitch and roll rotations have to be incorporated before calculating the time rate change for yaw relative to the final body frame. Equation (17) illustrates this concept in mathematical form.
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}p\\q\\r\end{bmatrix}=R_{e_2}^b(\varphi)R_{e_1}^{e_2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}+R_e^{e_1}(\varphi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+\begin{bmatrix}\dot{\varphi}\\0\\0\end{bmatrix}$</div>
-  <div class='right-text'>(17)</div>
-</div>
-
-The vector, $[p\;q\;r]^T$, denotes the angular velocity of the body frame and $\dot{\varphi}$, $\dot{\theta}$, and $\dot{\psi}$ denote the instantaneous change of Euler angles. Notice how the time rate change vector for yaw, $[0\;0\;\dot{\psi}]^T$, is multiplied by the rotation matrices $R_{e_2}^b(\varphi)$ and $R_{e_1}^{e_2}(\theta)$ to account for the roll and pitch rotations.
-
-Equation (18) is the expanded form of (17).
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}p\\q\\r\end{bmatrix}=\begin{bmatrix}1&0&-\sin(\theta)\\0&\cos(\varphi)&\sin(\varphi)\cos(\theta)\\0&-\sin(\varphi)&\cos(\varphi)\cos(\theta)\end{bmatrix}\begin{bmatrix}\dot{\varphi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}$</div>
-  <div class='right-text'>(18)</div>
-</div>
-
-It is more beneficial to calculate the time rate change of Euler angles from the angular velocity of the body frame (19). Numerically integrating $\dot{\varphi}$, $\dot{\theta}$, $\dot{\psi}$ will get the Euler rotation angles $\varphi$, $\theta$, $\psi$ to be used in (16).
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}\dot{\varphi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}=\begin{bmatrix}1&\sin(\varphi)\tan(\theta)&\cos(\varphi)\tan(\theta)\\0&\cos(\varphi)&-\sin(\varphi)\\0&\sin(\varphi)\sec(\theta)&\cos(\varphi)\sec(\theta)\end{bmatrix}\begin{bmatrix}p\\q\\r\end{bmatrix}$</div>
-  <div class='right-text'>(19)</div>
-</div>
-
-A method of calculating the angular velocity can be derived using Euler’s rotation equations. Equation (20) denotes the general vector form.
-
-<div class='equation-block'>
-  <div class='equation'>$M=I\dot{\omega}+\omega\times(I\omega)$</div>
-  <div class='right-text'>(20)</div>
-</div>
-
-$M$ refers to the vector of the applied torques (21). $T_\varphi$, $T_\theta$, and $T_\psi$ denote the torques about the x, y, and z axis. Notice how these torques also equate to $U_2$, $U_3$, and $U_4$ as defined in (4), (5), and (6).
-
-<div class='equation-block'>
-  <div class='equation'>$M=\begin{bmatrix}T_\varphi\\T_\theta\\T_\psi\end{bmatrix}=\begin{bmatrix}U_2\\U_3\\U_4\end{bmatrix}$</div>
-  <div class='right-text'>(21)</div>
-</div>
-
-$I$ refers to the principle inertia matrix where $I_x$, $I_y$, and $I_z$ denotes the moment of inertia about the x-axis, y-axis, and z-axis respectively (22).
-
-<div class='equation-block'>
-  <div class='equation'>$I=\begin{bmatrix}I_x&0&0\\0&I_y&0\\0&0&I_z\end{bmatrix}$</div>
-  <div class='right-text'>(22)</div>
-</div>
-
-$\omega$ denotes the angular velocity of the body frame, $[p\;q\;r]^T$. $\dot{\omega}$ denotes the angular acceleration of the body frame $[\dot{p}\;\dot{q}\;\dot{r}]^T$. Equation (23) represents (20) rearranged with the vectors plugged in.
-
-<div class='equation-block'>
-  <div class='equation'>$I\begin{bmatrix}\dot{p}\\\dot{q}\\\dot{r}\end{bmatrix}=\begin{bmatrix}U_2\\U_3\\U_4\end{bmatrix}-\begin{bmatrix}p\\q\\r\end{bmatrix}\times I\begin{bmatrix}p\\q\\r\end{bmatrix}$</div>
-  <div class='right-text'>(23)</div>
-</div>
-
-Equation (24) is the result of simplifying and isolating $\dot{\omega}$, the angular velocity vector.
-
-<div class='equation-block'>
-  <div class='equation'>$\begin{bmatrix}\dot{p}\\\dot{q}\\\dot{r}\end{bmatrix}=\begin{bmatrix}\frac{U_2}{I_x}+qr\frac{I_y-I_z}{I_x}\\\\\frac{U_3}{I_y}+rp\frac{I_z-I_x}{I_y}\\\\\frac{U_4}{I_z}+pq\frac{I_x-I_y}{I_z}\end{bmatrix}$</div>
-  <div class='right-text'>(24)</div>
-</div>
-
-All equations required to model the quadcopter have been derived. Table 1 refers to the parameters used.
 
 <div align="center">
   ***Table 1 Quadcopter Model Parameters***
@@ -237,124 +191,3 @@ All equations required to model the quadcopter have been derived. Table 1 refers
   |$I_z$|$\text{Moment of Inertia about z-axis}$|$7.5\times 10^{-3}\text{ Ns}^2$|
   |$g$|$\text{Acceleration of Gravity}$|$9.81\text{ m/s}^2$|
 </div>
-
-A PD controller was utilized for altitude, roll, pitch, and yaw angle control. A PD controller for altitude is plausible because the force of gravity on the quadcopter is known (25). $K_p$ and $K_d$ denote the proportional and derivative gains of the controller. $e_z$ refers to the altitude error.
-
-<div class='equation-block'>
-  <div class='equation'>$u_1(t)=\frac{e_zK_p+mg-K_d\frac{d}{dt}z}{\cos(\varphi)\cos(\theta)}$</div>
-  <div class='right-text'>(25)</div>
-</div>
-
-Equations (26), (27), and (28) refer to the PD controllers for the roll, pitch, and yaw angles respectively. $e_\varphi$, $e_\theta$, and $e_\psi$ denote the associated roll, pitch, and yaw errors.
-
-<div class='equation-block'>
-  <div class='equation'>$u_2(t)=e_\varphi K_p-K_d\frac{d}{dt}\varphi$</div>
-  <div class='right-text'>(26)</div>
-</div>
-
-<div class='equation-block'>
-  <div class='equation'>$u_3(t)=e_\theta K_p-K_d\frac{d}{dt}\theta$</div>
-  <div class='right-text'>(27)</div>
-</div>
-
-<div class='equation-block'>
-  <div class='equation'>$u_4(t)=e_\psi K_p-K_d\frac{d}{dt}\psi$</div>
-  <div class='right-text'>(28)</div>
-</div>
-
-Table 2 refers to the gains used.
-
-<div align="center">
-  ***Table 2 PD Gains***
-</div>
-
-<div class='table-container'>
-  |$\textbf{Gain}$|$\textbf{Altitude}$|$\textbf{Roll}$|$\textbf{Pitch}$|$\textbf{Yaw}$|
-  |:---:|:----:|:---:|:---:|:----:|
-  |$K_p$|$\text{1.8}$|$\text{0.4}$|$\text{0.6}$|$\text{0.3}$|
-  |$K_d$|$\text{2}$|$\text{0.2}$|$\text{0.2}$|$\text{0.2}$|
-</div>
-
-Notice the use of the derivative on measurement versus taking the derivative on error. This is implemented to eliminate derivative kick by assuming the setpoint is constant (29)
-
-<div class='equation-block'>
-  <div class='equation'>$\frac{d\text{Error}}{dt}=\frac{d\text{Setpoint}}{dt}-\frac{d\text{Input}}{dt}=-\frac{d\text{Input}}{dt},\space\frac{d\text{Setpoint}}{dt}=0$</div>
-  <div class='right-text'>(29)</div>
-</div>
-
-### Simulations
-
-Simulation of the quadcopter plant system can be accomplished using the equations of motion (16) and (24), with (19) serving as an equation to transform the angular velocities into the time rate change of the Euler angles. Numerical integration of variables $\ddot{x}$, $\dot{x}$, $\ddot{y}$, $\dot{y}$, $\ddot{z}$, $\dot{z}$, $\dot{p}$, $\dot{q}$, $\dot{r}$, $\dot{\varphi}$, $\dot{\theta}$, and $\dot{\psi}$ is achieved using the Euler method (30). Where $y$ denotes the integrated variable and $h$ the variable to integrate. The step size, $h$, was set to 0.001 seconds.
-
-<div class='equation-block'>
-  <div class='equation'>$y(t+h)\approx y(t)+h\dot{y}(t)$</div>
-  <div class='right-text'>(30)</div>
-</div>
-
-The feedback control system is simulated using the PD control equations (25), (26), (27), and (28). The derivative term is calculated by taking the backward difference (31). Where $\dot{y}$ denotes the derivative of the variable $y$. The sampling rate, $h$, is equal to the step size of 0.001 seconds.
-
-<div class='equation-block'>
-  <div class='equation'>$\dot{y}(t)=\frac{y(t)-y(t-h)}{h}$</div>
-  <div class='right-text'>(31)</div>
-</div>
-
-### Results
-
-<div align="center">
-  <img alt="Figure 2 Andrew Bernas" src={require('../../assets/school/quad-sim/altitude.png').default} width="500px" />
-  <p><b><i>Figure 2 Simulated Altitude PD Response</i></b></p>
-</div>
-
-<div align="center">
-  <img alt="Figure 3 Andrew Bernas" src={require('../../assets/school/quad-sim/altitude-paper.png').default} width="500px" />
-  <p><b><i>Figure 3 Paper Altitude PD Response [1]</i></b></p>
-</div>
-
-Figure 2 illustrates the altitude step response of the simulated PD controller with a settling time of 2.510 seconds and percent overshoot of 2.9683%. Figure 3 illustrates the altitude plot provided from the paper that was emulated.
-
-<div align="center">
-  <img alt="Figure 4 Andrew Bernas" src={require('../../assets/school/quad-sim/roll.png').default} width="500px" />
-  <p><b><i>Figure 4 Simulated Roll Angle PD Response</i></b></p>
-</div>
-
-<div align="center">
-  <img alt="Figure 5 Andrew Bernas" src={require('../../assets/school/quad-sim/roll-paper.png').default} width="500px" />
-  <p><b><i>Figure 5 Paper Roll Angle PD Response [1]</i></b></p>
-</div>
-
-Figure 4 illustrates the roll angle step response with a settling time of 1.933 seconds and negligible percent overshoot. Figure 5 illustrates the roll angle plot provided from the paper that was emulated.
-
-<div align="center">
-  <img alt="Figure 6 Andrew Bernas" src={require('../../assets/school/quad-sim/pitch.png').default} width="500px" />
-  <p><b><i>Figure 6 Simulated Pitch Angle PD Response</i></b></p>
-</div>
-
-<div align="center">
-  <img alt="Figure 7 Andrew Bernas" src={require('../../assets/school/quad-sim/pitch-paper.png').default} width="500px" />
-  <p><b><i>Figure 7 Paper Pitch Angle PD Response [1]</i></b></p>
-</div>
-
-Figure 6 illustrates the pitch angle step response with a settling time of 1.166 seconds and percent overshoot of 0.0248%. Figure 7 illustrates the pitch angle plot provided from the paper that was emulated.
-
-<div align="center">
-  <img alt="Figure 8 Andrew Bernas" src={require('../../assets/school/quad-sim/yaw.png').default} width="500px" />
-  <p><b><i>Figure 8 Simulated Yaw Angle PD Response</i></b></p>
-</div>
-
-<div align="center">
-  <img alt="Figure 9 Andrew Bernas" src={require('../../assets/school/quad-sim/yaw-paper.png').default} width="500px" />
-  <p><b><i>Figure 9 Paper Yaw Angle PD Response [1]</i></b></p>
-</div>
-
-Figure 8 illustrates the yaw angle step response with a settling time of 2.576 seconds and negligible percent overshoot. Figure 9 illustrates the yaw angle plot provided from the paper that was emulated.
-
-The paper did not provide the settling time or overshoot of the responses, but by visual inspection, both associated plots for altitude, roll, pitch, and yaw are identical. Additionally, while the article did not specify the simulation method used, the Euler method is a suitable approach for effectively modeling the quadcopter control system, as evidenced by similar results.
-
-The use of a PD controller for altitude served as a means of testing the quadcopter model rather than a reasonable control approach. It is unrealistic to program a controller that will only work if the mass of the system is always known. A more practical solution would be a PID controller for $U_1$. This allows $mg$ in $u_1(t)$ to be replaced by an integral term, which will gradually converge to the gravitational force over time.
-
-### Conclusion
-
-The reproduction of the proposed quadcopter model in [1] was conducted with further analysis on the equations of motion and the implementation of a custom Euler integration scheme. The similarity of the setpoint responses for altitude, roll, pitch, and yaw angles indicate that the simulation was properly replicated. Furthermore, this report includes an analysis of both the transient and steady-state responses, which was not covered in the referenced paper. Future refinements could include the use of quaternions and the modeling of wind resistance effects. Nevertheless, the model produced in this report serves as a stepping stone for further developments, such as implementing a trajectory controller.
-
-### References
-[1] Karahan, Mehmet, and Cosku Kasnakoglu. “Modeling and Simulation of Quadrotor UAV Using PID Controller.” Conference-processing. ECAI 2019 - International Conference – 11th Edition. IEEE, 2019.
