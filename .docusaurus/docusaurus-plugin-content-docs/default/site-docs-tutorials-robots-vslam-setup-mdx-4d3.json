@@ -1,7 +1,7 @@
 {
   "id": "tutorials/robots/vslam/setup",
-  "title": "Setup",
-  "description": "WORK IN PROGRESS",
+  "title": "Hardware Setup",
+  "description": "VSLAM UAV is supported on a PX4 (v1.15.4) flight controller, Intel D435i camera, and a Jetson Orin Nano (JetPack 6.2) companion computer.",
   "source": "@site/docs/tutorials/robots/vslam/setup.mdx",
   "sourceDirName": "tutorials/robots/vslam",
   "slug": "/tutorials/robots/vslam/setup",
@@ -21,7 +21,7 @@
     "permalink": "/docs/tutorials/robots/vslam/"
   },
   "next": {
-    "title": "Simulation",
-    "permalink": "/docs/tutorials/robots/vslam/sim"
+    "title": "Flight Demo",
+    "permalink": "/docs/tutorials/robots/vslam/flight"
   }
 }

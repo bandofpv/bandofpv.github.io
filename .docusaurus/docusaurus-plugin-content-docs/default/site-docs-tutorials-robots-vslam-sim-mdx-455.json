@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialsSidebar",
   "previous": {
-    "title": "Hardware Setup",
-    "permalink": "/docs/tutorials/robots/vslam/setup"
+    "title": "Validation",
+    "permalink": "/docs/tutorials/robots/vslam/valid"
   },
   "next": {
     "title": "MAVROSPY",

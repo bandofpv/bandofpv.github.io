@@ -299,7 +299,7 @@ Then, download the required `isaac_ros_visual_slam` assets:
 ```bash
 $ cd ${ISAAC_ROS_WS}
 $ git clone https://github.com/bandofpv/VSLAM-UAV.git
-$ cd ${ISAAC_ROS_WS}/VSLAM-UAV/setup
+$ cd ${ISAAC_ROS_WS}/VSLAM-UAV/vslam/setup
 $ ./isaac_vslam_assets.sh
 ```
 
@@ -365,7 +365,7 @@ $ ./scripts/run_dev.sh -b
 Then, initialize the Isaac ROS Visual SLAM pipeline:
 
 ```bash
-$ cd /workspaces/isaac_ros-dev/VSLAM-UAV/sim
+$ cd ${ISAAC_ROS_WS}/VSLAM-UAV/sim
 $ ./isaac_ros_vslam.sh
 ```
 
@@ -379,8 +379,7 @@ $ ./scripts/run_dev.sh
 Then, run Rviz to visualize the VSLAM pipeline:
 
 ```bash
-$ cd /workspaces/isaac_ros-dev/VSLAM-UAV/sim
-$ ros2 launch rviz.launch.py
+$ rviz2 -d ${ISAAC_ROS_WS}/VSLAM-UAV/sim/isaac_sim.cfg.rviz
 ```
 
 In a new terminal, run Isaac Sim:

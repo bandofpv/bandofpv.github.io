@@ -4,20 +4,37 @@ sidebar_label: MAVROSPY
 ---
 import ReactPlayer from 'react-player'
 
-# VSLAM UAV
+# GPS-Denied UAV with Visual SLAM
 
-August 2024 - Present
+August 2024 - June 2025
 
 **[GitHub Repository](https://github.com/bandofpv/VSLAM-UAV)**
 
-## Work in Progress
-
 ## Story
 
-YO TALK ABOUT STUFF HERE
+Autonomous navigation in GPS-denied environments is one of the most critical challenges facing unmanned aerial vehicle (UAV) systems today. From urban canyons to subterranean tunnels and dense forests, many real-world environments render GPS unreliable or entirely unavailable. For drones to operate safely and effectively in these conditions, whether for search and rescue missions, military reconnaissance, or industrial inspection, they must rely on onboard perception and mapping capabilities.
+
+This project presents a UAV platform powered by Visual Simultaneous Localization and Mapping (VSLAM) using [Isaac ROS VSLAM](https://nvidia-isaac-ros.github.io/concepts/visual_slam/index.html), integrated with [MAVROS](https://wiki.ros.org/mavros) and the [PX4](https://docs.px4.io/main/en/) flight stack. By fusing visual-inertial data and leveraging the [Jetson Orin Nano’s](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) edge computing capabilities, the system enables real-time localization and map building to empower the drone to navigate autonomously without the need for GPS.
+
+Through this implementation, the UAV can maintain situational awareness, dynamically map unknown environments, and execute autonomous flight with high precision. This work not only demonstrates the feasibility of deploying real-time VSLAM on resource-constrained platforms, but also underscores its broader implications in expanding the reach and reliability of autonomous systems across critical, GPS-denied scenarios.
+
+<div align="center">
+  <img alt="VSLAM UAV Andrew Bernas" src={require('../../../assets/robots/vslam-uav/uav.jpg').default} width="600px" />
+</div>
 
 ## Demo Video
 
 <div className="video_wrapper">
-    <ReactPlayer className="video_player" controls height="100%" width="100%" url=""/>
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/ImaltGOlEDc"/>
 </div>
+
+## Components List
+
+| Qty | Component|
+| --- | --- |
+| x1  | [F450 Quadcopter](https://www.amazon.com/Dji-F450-Kit/s?k=Dji+F450+Kit) |
+| x1  | [Jetson Orin Nano](https://www.sparkfun.com/nvidia-jetson-orin-nano-developer-kit.html) |
+| x1  | [D435i Camera](https://store.intelrealsense.com/buy-intel-realsense-depth-camera-d435i.html) |
+| x1  | [PX4 Flight Controller](https://irlock.com/products/pixhawk2-1-blue-cube?srsltid=AfmBOooy1GMhQZwPVIZ5BS8J7kMOqyokIUJdLFV-qQ1KLBc-tqwNrTGN) |
+| x1  | [9V, 5A Voltage Regulator](https://www.pololu.com/product/4094) |
+| x1  | [USB to UART Converter](https://www.amazon.com/usb-uart/s?k=usb+to+uart) |

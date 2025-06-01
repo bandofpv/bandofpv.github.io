@@ -42,17 +42,17 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-f5c": {
+  "/docs-01e": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-13f": {
+  "/docs-cf8": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-6ed": {
+  "/docs-750": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/docs/category/code-ad2": {
@@ -203,6 +203,10 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-projects-robots-vacuum-robote-92-e71"
   },
+  "/docs/projects/robots/vslam-7d5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-projects-robots-vslam-62-a-f65"
+  },
   "/docs/projects/school/ip-cart-bb3": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-projects-school-ip-cart-9-b-7-844"
@@ -275,6 +279,10 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorials-robots-vslamcd-3-e76"
   },
+  "/docs/tutorials/robots/vslam/flight-f4c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-vslam-flight-57-b-e31"
+  },
   "/docs/tutorials/robots/vslam/setup-0bd": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorials-robots-vslam-setup-4-d-3-328"
@@ -282,6 +290,10 @@
   "/docs/tutorials/robots/vslam/sim-6de": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tutorials-robots-vslam-sim-455-b73"
+  },
+  "/docs/tutorials/robots/vslam/valid-368": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-robots-vslam-valid-521-dea"
   },
   "/-2e1": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",

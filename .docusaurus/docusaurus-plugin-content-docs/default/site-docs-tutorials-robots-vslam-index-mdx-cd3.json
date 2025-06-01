@@ -1,7 +1,7 @@
 {
   "id": "tutorials/robots/vslam/index",
-  "title": "VSLAM UAV",
-  "description": "August 2024 - Present",
+  "title": "GPS-Denied UAV with Visual SLAM",
+  "description": "August 2024 - June 2025",
   "source": "@site/docs/tutorials/robots/vslam/index.mdx",
   "sourceDirName": "tutorials/robots/vslam",
   "slug": "/tutorials/robots/vslam/",

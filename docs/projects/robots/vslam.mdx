@@ -1,0 +1,91 @@
+---
+sidebar_position: 1
+sidebar_label: VSLAM UAV
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import ReactPlayer from 'react-player';
+
+# GPS-Denied UAV with Visual SLAM
+
+August 2024 - June 2025
+
+**[GitHub Repository](https://github.com/bandofpv/VSLAM-UAV.git)**
+
+:::info
+Check out my tutorial **[HERE](../../tutorials/robots/vslam/setup)**
+:::
+
+## Introduction
+
+Autonomous navigation in GPS-denied environments is one of the most critical challenges facing unmanned aerial vehicle (UAV) systems today. From urban canyons to subterranean tunnels and dense forests, many real-world environments render GPS unreliable or entirely unavailable. For drones to operate safely and effectively in these conditions, whether for search and rescue missions, military reconnaissance, or industrial inspection, they must rely on onboard perception and mapping capabilities.
+
+This project presents a UAV platform powered by Visual Simultaneous Localization and Mapping (VSLAM) using [Isaac ROS VSLAM](https://nvidia-isaac-ros.github.io/concepts/visual_slam/index.html), integrated with [MAVROS](https://wiki.ros.org/mavros) and the [PX4](https://docs.px4.io/main/en/) flight stack. By fusing visual-inertial data and leveraging the [Jetson Orin Nano’s](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) edge computing capabilities, the system enables real-time localization and map building to empower the drone to navigate autonomously without the need for GPS.
+
+Through this implementation, the UAV can maintain situational awareness, dynamically map unknown environments, and execute autonomous flight with high precision. This work not only demonstrates the feasibility of deploying real-time VSLAM on resource-constrained platforms, but also underscores its broader implications in expanding the reach and reliability of autonomous systems across critical, GPS-denied scenarios.
+
+<div align="center">
+  <img alt="VSLAM UAV Andrew Bernas" src={require('../../assets/robots/vslam-uav/uav.jpg').default} width="600px" />
+</div>
+
+## Video
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/ImaltGOlEDc"/>
+</div>
+
+## Description
+
+At the core of the system is the [Intel RealSense D435i](https://www.intelrealsense.com/depth-camera-d435i/), a depth-sensing RGB-D camera equipped with a built-in inertial measurement unit (IMU). This device captures synchronized visual and inertial data streams—specifically, aligned depth maps, color imagery, and accelerometer/gyroscope data—which serve as the raw input for visual-inertial odometry (VIO). These data streams are processed onboard by the [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/), a compact yet powerful AI-capable embedded computer running JetPack 6.2. This board provides the necessary GPU acceleration to perform real-time VSLAM computation using [Isaac ROS Visual SLAM](https://nvidia-isaac-ros.github.io/concepts/visual_slam/index.html), an NVIDIA-developed ROS 2 package optimized for Jetson hardware.
+
+Isaac ROS VSLAM fuses the RGB-D imagery and IMU data through tightly coupled visual-inertial processing, producing a locally consistent estimate of the UAV’s 6-DOF pose (position and orientation) relative to its starting location. Crucially, this process is entirely self-contained, allowing for accurate localization and navigation in GPS-denied environments, such as indoors, underground, or in electromagnetically compromised areas.
+
+The generated pose is then published over [ROS 2](https://docs.ros.org/en/humble/index.html) topics, from which [MAVROS](https://wiki.ros.org/mavros) subscribes and converts the data into MAVLink messages interpretable by the PX4 flight controller. MAVROS acts as the critical middleware bridge, ensuring seamless data translation and protocol compatibility. PX4, running its own onboard IMU and internal estimation systems, receives the VIO-derived pose data and performs sensor fusion using an Extended Kalman Filter (EKF2). This fusion improves robustness by blending inertial data with external VIO input, resulting in a smooth, drift-aware local position estimate.
+
+This pose estimate is then used by PX4 to stabilize flight and execute autonomous navigation commands. The system includes [MAVROSPY](https://github.com/bandofpv/mavrospy), a Python interface layer over MAVROS, allowing for easy scripting of movement commands in Python while preserving integration with the ROS ecosystem. This enables high-level autonomy—such as waypoint navigation or trajectory following—without requiring GPS.
+
+All system components are tightly integrated: the RealSense provides synchronized depth and motion data; Isaac ROS VSLAM transforms this into usable odometry; MAVROS handles communication and protocol translation; PX4 executes low-level control based on the fused pose. The system runs fully onboard, with no reliance on external computation or localization infrastructure.
+
+### Data Flow
+
+**1. Image and IMU Capture**
+
+The D435i publishes RGB-D and IMU data to ROS 2 topics:
+
+ ```bash
+/camera/infra1/camera_info
+/camera/infra1/image_rect_raw
+/camera/infra2/camera_info
+/camera/infra2/image_rect_raw
+/camera/imu
+```
+
+**2. Pose Estimation (Isaac ROS VSLAM):**
+
+Isaac ROS subscribes to the above topics and computes the UAV's pose using visual-inertial odometry. The output is published to the topic:
+
+```bash
+/visual_slam/tracking/vo_pose_covariance
+```
+
+**3. MAVROS:**
+
+The topic above is then remapped to be used by the MAVROS `vision_pose_estimate` plugin:
+
+```bash
+mavros/vision_pose/pose_cov
+```
+
+This plugin converts the above pose topic into MAVLink messages, which are then sent to the PX4 flight controller.
+
+**4. PX4 Flight Controller:**
+
+PX4 fuses the received VIO pose with its internal IMU data using EKF2, producing a stable local position estimate for flight control.
+
+### Simulation
+
+In addition to hardware testing, the platform supports simulation using [Isaac Sim](https://docs.isaacsim.omniverse.nvidia.com/4.2.0/index.html), NVIDIA’s robotics simulation engine. Isaac Sim can simulate realistic physics, multi-body dynamics, sensor feedback, and complex environments, allowing for safe prototyping, software-in-the-loop testing, and training of autonomous behaviors in virtual scenarios. The same VSLAM pipeline can be tested using simulated RGB-D and IMU inputs, accelerating development and de-risking flight trials.
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/WW3YfgAy7W4"/>
+</div>

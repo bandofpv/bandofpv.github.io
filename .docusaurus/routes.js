@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'f5c'),
+    component: ComponentCreator('/docs', '01e'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '13f'),
+        component: ComponentCreator('/docs', 'cf8'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '6ed'),
+            component: ComponentCreator('/docs', '750'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -272,6 +272,12 @@ export default [
                 sidebar: "projectsSidebar"
               },
               {
+                path: '/docs/projects/robots/vslam',
+                component: ComponentCreator('/docs/projects/robots/vslam', '7d5'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
                 path: '/docs/projects/school/ip-cart',
                 component: ComponentCreator('/docs/projects/school/ip-cart', 'bb3'),
                 exact: true,
@@ -380,6 +386,12 @@ export default [
                 sidebar: "tutorialsSidebar"
               },
               {
+                path: '/docs/tutorials/robots/vslam/flight',
+                component: ComponentCreator('/docs/tutorials/robots/vslam/flight', 'f4c'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
                 path: '/docs/tutorials/robots/vslam/setup',
                 component: ComponentCreator('/docs/tutorials/robots/vslam/setup', '0bd'),
                 exact: true,
@@ -388,6 +400,12 @@ export default [
               {
                 path: '/docs/tutorials/robots/vslam/sim',
                 component: ComponentCreator('/docs/tutorials/robots/vslam/sim', '6de'),
+                exact: true,
+                sidebar: "tutorialsSidebar"
+              },
+              {
+                path: '/docs/tutorials/robots/vslam/valid',
+                component: ComponentCreator('/docs/tutorials/robots/vslam/valid', '368'),
                 exact: true,
                 sidebar: "tutorialsSidebar"
               }

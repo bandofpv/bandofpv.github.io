@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/vslam/flight",
+  "title": "Flight Demo",
+  "description": "Make sure you have completed the Hardware Setup Guide before running this demo.",
+  "source": "@site/docs/tutorials/robots/vslam/flight.mdx",
+  "sourceDirName": "tutorials/robots/vslam",
+  "slug": "/tutorials/robots/vslam/flight",
+  "permalink": "/docs/tutorials/robots/vslam/flight",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Flight Demo"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Hardware Setup",
+    "permalink": "/docs/tutorials/robots/vslam/setup"
+  },
+  "next": {
+    "title": "Validation",
+    "permalink": "/docs/tutorials/robots/vslam/valid"
+  }
+}

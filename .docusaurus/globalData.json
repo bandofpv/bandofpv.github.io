@@ -161,6 +161,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/robots/vslam",
+              "path": "/docs/projects/robots/vslam",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/ip-cart",
               "path": "/docs/projects/school/ip-cart",
               "sidebar": "projectsSidebar"
@@ -246,6 +251,11 @@
               "sidebar": "tutorialsSidebar"
             },
             {
+              "id": "tutorials/robots/vslam/flight",
+              "path": "/docs/tutorials/robots/vslam/flight",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
               "id": "tutorials/robots/vslam/index",
               "path": "/docs/tutorials/robots/vslam/",
               "sidebar": "tutorialsSidebar"
@@ -258,6 +268,11 @@
             {
               "id": "tutorials/robots/vslam/sim",
               "path": "/docs/tutorials/robots/vslam/sim",
+              "sidebar": "tutorialsSidebar"
+            },
+            {
+              "id": "tutorials/robots/vslam/valid",
+              "path": "/docs/tutorials/robots/vslam/valid",
               "sidebar": "tutorialsSidebar"
             },
             {

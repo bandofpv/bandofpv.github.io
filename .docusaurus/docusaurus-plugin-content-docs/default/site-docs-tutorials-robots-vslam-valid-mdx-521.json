@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/robots/vslam/valid",
+  "title": "Validation",
+  "description": "This page outlines an optional procedure that can be used to validate the successful installation and configuration of your VSLAM system. It requires the use of a motion capture system to provide ground truth data.",
+  "source": "@site/docs/tutorials/robots/vslam/valid.mdx",
+  "sourceDirName": "tutorials/robots/vslam",
+  "slug": "/tutorials/robots/vslam/valid",
+  "permalink": "/docs/tutorials/robots/vslam/valid",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Validation"
+  },
+  "sidebar": "tutorialsSidebar",
+  "previous": {
+    "title": "Flight Demo",
+    "permalink": "/docs/tutorials/robots/vslam/flight"
+  },
+  "next": {
+    "title": "Simulation",
+    "permalink": "/docs/tutorials/robots/vslam/sim"
+  }
+}

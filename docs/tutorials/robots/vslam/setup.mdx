@@ -5,17 +5,54 @@ sidebar_label: Hardware Setup
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Setup
-
-## WORK IN PROGRESS
+# Hardware Setup
 
 VSLAM UAV is supported on a PX4 (v1.15.4) flight controller, Intel D435i camera, and a Jetson Orin Nano (JetPack 6.2) companion computer.
 
 If you haven't already done so, please install [JetPack 6.2](https://developer.nvidia.com/embedded/jetpack-sdk-62) for the Jetson Orin Nano using the [Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 
-Select the Log in automatically option upon first boot.
+Select the `Log in automatically` option upon first boot.
 
-## Jetson Orin Setup
+
+## Jetson Orin Nano Setup
+
+### Wiring
+
+This tutorial uses the flight controller's `TELEM2` port to communicate with the companion computer.
+
+The Jetson Orin Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Orin Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
+
+Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
+
+<div class='table-container'>
+  | PX4 TELEM2 Pin | USB To UART Adapter Pin |
+  |----------------|-------------------------|
+  | UART5_TX (2)   | RXD                     |
+  | UART5_RX (3)   | TXD                     |
+</div>
+
+The standard `TELEM2` pin assignments are shown below:
+
+<div class='table-container'>
+  | Pins      | Signal          | Voltage |
+  |-----------|-----------------|---------|
+  | 1 (Red)   | VCC (out)       | +5V     |
+  | 2 (Black) | UART5_TX (out)  | +3.3V   |
+  | 3 (Black) | UART5_RX (in)   | +3.3V   |
+  | 4 (Black) | UART5_CTS (out) | +3.3V   |
+  | 5 (Black) | UART5_RTS (in)  | +3.3V   |
+  | 6 (Black) | GND             | GND     |
+</div>
+
+Make sure to plug in the D435i camera to the Jetson Orin Nano via USB.
+
+The Jetson Orin Nano also requires a separate 7-20V power supply with a max power consumption of 36W. The power supply should be connected to the Jetson Orin Nano's barrel jack or USB-C port as seen below:
+
+<div align="center">
+  <img alt="Jetson Orin Nano Wiring Andrew Bernas" src={require('../../../assets/robots/vslam-uav/wiring.jpg').default} width="600px" />
+</div>
+
+### Software Setup
 
 Confirm that you have installed the correct version of Jetpack by running the following command:
 
@@ -44,7 +81,7 @@ $ sudo usermod -aG docker $USER
 $ newgrp docker
 ```
 
-## SSD Setup
+### SSD Setup
 
 An SSD is required for the Jetson Orin Nano to store container images and rosbag files.
 
@@ -193,10 +230,10 @@ Clone the VSLAM-UAV repository and download the required assets:
 ```bash
 $ cd ${ISAAC_ROS_WS}
 $ git clone https://github.com/bandofpv/VSLAM-UAV.git
-$ ${ISAAC_ROS_WS}/VSLAM-UAV/setup/isaac_vslam_assets.sh
+$ ${ISAAC_ROS_WS}/VSLAM-UAV/vslam/setup/isaac_vslam_assets.sh
 ```
 
-Make sure your RealSense camera is connected to the Jetson Orin and run the following command to build the Docker image:
+Make sure your RealSense camera is connected to the Jetson Orin and run the following command to build the `Isaac ROS` docker image:
 
 ```bash
 $ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
@@ -228,7 +265,9 @@ $ ./scripts/setup_udev_rules.sh
 ```
 :::
 
-## IMU Calibration (Optional)
+## Camera IMU Setup
+
+### IMU Calibration (Optional)
 
 In order to best take advantage of VSLAM, you must incorporate IMU data into the VSLAM pipeline. You can use the built in IMU of the Intel D435i camera. The IMU comes pre-calibrated from the factory, but it is recommended to calibrate the IMU to ensure accurate measurements.
 
@@ -294,7 +333,7 @@ Position 6: Viewing direction facing up
 
 Make sure you write the calibration results to the camera's eeprom.
 
-## IMU Parameter Estimation
+### IMU Parameter Estimation
 
 With the internal IMU calibrated, you need to estimate the parameters of the IMU. The parameters of the IMU are the accelerometer and gyroscope noise and bias instability. You can estimate these parameters by collecting data from the IMU and using [Allan Variance](https://en.wikipedia.org/wiki/Allan_variance) to estimate the parameters.
 
@@ -302,7 +341,7 @@ First, you need to record static data from the IMU for an extended period of tim
 
 ```bash
 $ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && ./scripts/run_dev.sh -b
-$ ${ISAAC_ROS_WS}/VSLAM-UAV/setup/realsense_node.sh
+$ ${ISAAC_ROS_WS}/VSLAM-UAV/vslam/setup/realsense_node.sh
 ```
 
 This will open up the realsense ros node. Next, open up a new terminal and attach to the container:
@@ -357,7 +396,7 @@ $ ./run_docker.sh
 This will build the image and run it in a container. Once the container is running, you must modify the configuration to point to the IMU rosbag file. Simply run the following command:
 
 ```bash
-$ ~/VSLAM-UAV/setup/allan_config.sh
+$ ~/VSLAM-UAV/vslam/setup/allan_config.sh
 ```
 
 Next, run allan_node to compute the raw deviation values:
@@ -372,69 +411,54 @@ After you get the `DONE` message, exit via **CTRL+C** and run the `analysis.py` 
 $ python3 ~/ros2_ws/src/allan_ros2/scripts/analysis.py --data deviation.csv
 ```
 
-This will output the IMU parameters and save them to the `imu.yaml` file. I would recommend saving this file or at least the IMU parameters for future reference.
+This will output the IMU parameters and save them to the `imu.yaml` file.
 
-### Note location of imu.yaml following the above commands ^^^^
+Now, we can use these parameters in the VSLAM pipeline. In a new terminal on the Jetson Orin Nano, modify the `isaac_ros_vslam_realsense.py` script to include the IMU parameters. Open the script in a text editor:
 
-## OLD STUFF BELOW
-
-## Wiring
-
-This tutorial uses the flight controller's `TELEM2` port to communicate with the companion computer.
-
-The Jetson Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
-
-Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
-
-| PX4 TELEM2 Pin | USB To UART Adapter Pin |
-|----------------|-------------------------|
-| UART5_TX (2)   | RXD                     |
-| UART5_RX (3)   | TXD                     |
-
-The standard `TELEM2` pin assignments are shown below:
-
-| Pins      | Signal          | Voltage |
-|-----------|-----------------|---------|
-| 1 (Red)   | VCC (out)       | +5V     |
-| 2 (Black) | UART5_TX (out)  | +3.3V   |
-| 3 (Black) | UART5_RX (in)   | +3.3V   |
-| 4 (Black) | UART5_CTS (out) | +3.3V   |
-| 5 (Black) | UART5_RTS (in)  | +3.3V   |
-| 6 (Black) | GND             | GND     |
-
-The Jetson Nano requires a separate 5V/3A power supply via the `5V power` (pin 4) and `Ground` (pin 6). I would recommend soldering a battery elimination circuit (BEC) or Polulu voltage regulator to your UAV's power leads.
-
-This diagram shows the Jetson Nano GPIO board pinout:
-
-<div align="center">
-  ![Jetson Nano Andrew Bernas](../../../assets/robots/mavrospy/jetson_nano_gpio.png)
-</div>
-
-## PX4 Parameters
-
-Assuming you have installed the latest PX4 
-[firmware](https://docs.px4.io/main/en/config/firmware.html#install-stable-px4), change the following 
-[parameters](https://docs.px4.io/main/en/advanced_config/parameters.html) in QGroundControl:
-
-```
-   MAV_1_CONFIG = TELEM2
-   UXRCE_DDS_CFG = 0
-   SER_TEL2_BAUD = 921600
+```bash
+$ nano ${ISAAC_ROS_WS}/VSLAM-UAV/vslam/isaac_ros_vslam_realsense.py
 ```
 
-## Test Connection
+Update the `gyro_noise_density`, `gyro_random_walk`, `accel_noise_density`, and `accel_random_walk` parameters with the values from the `imu.yaml` file you generated earlier.
+
+## Flight Controller Setup
+
+### PX4 Parameters
+
+Assuming you have installed the latest PX4 [firmware](https://docs.px4.io/main/en/config/firmware.html#install-stable-px4) (v1.15.4), change the following [parameters](https://docs.px4.io/main/en/advanced_config/parameters.html) in QGroundControl to enable the companion computer to communicate with the flight controller via the `TELEM2` port:
+
+```
+ MAV_1_CONFIG = TELEM2
+ UXRCE_DDS_CFG = 0
+ SER_TEL2_BAUD = 921600
+```
+
+Additionally, to enable use of vision pose estimation without GPS, you must set the following PX4 parameters:
+
+```bash
+EKF2_HGT_REF = Vision
+EKF2_EV_DELAY = 50.0ms
+EKF2_GPS_CTRL = 0
+EKF2_BARO_CTRL = Disabled
+EKF2_RNG_CTRL = Disable range fusion
+EKF2_REQ_NSATS = 5
+MAV_USEHILGPS = Enabled
+EKF2_MAG_TYPE = None
+```
+
+### Test Connection
 
 [MAVLink](https://mavlink.io/en/) is the default and stable communication interface for working with PX4.
 
-You can test that the companion computer and flight controller are communicating with each other via a MAVLink GCS called `mavproxy`.
+You can test that the Jetson Orin Nano and flight controller are communicating with each other via a MAVLink GCS called MAVProxy.
 
-Run this command to add your user to the `dialout` group:
+Run this command on your Jetson Orin Nano to add your user to the `dialout` group:
 
 ```bash
 $ sudo adduser ${USER} dialout
 ```
 
-Restart your companion computer.
+Then, reboot the Jetson Orin Nano to apply the changes.
 
 You can check that the serial port is available by issuing this command:
 
@@ -444,7 +468,7 @@ $ ls /dev/ttyUSB0
 
 The result of the command should include the RX/TX connection `/dev/ttyUSB0`
 
-Install MAVProxy:
+Next, install MAVProxy:
 
 ```bash
 $ sudo apt install -y python3-pip
@@ -458,27 +482,4 @@ Run MAVProxy, setting the port to connect to `/dev/ttyUSB0` and the baud rate to
 $ sudo mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600
 ```
 
-MAVProxy on the Jetson Nano should now connect to the flight controller via its RX/TX pins. You should be able to see this in the terminal. **CTRL+C** to exit.
-
-## Build MAVROSPY Docker image
-
-Now that Docker is installed properly, you can build our Docker image and run it in a Docker container.
-
-Clone the `mavrospy` repository:
-
-```bash
-$ cd ~
-$ git clone -b ros2 https://github.com/bandofpv/mavrospy.git
-```
-
-Build via the `run_docker.sh` script:
-
-```bash
-$ cd ~/mavrospy/docker/jetson
-$ bash run_docker.sh
-```
-
-The script will automatically start building the MAVROSPY docker image and run it in a container.
-
-**CTRL+D** to exit the container.
-
+MAVProxy on the Jetson Orin Nano should now connect to the PX4 flight controller via its RX/TX pins. **CTRL+C** to exit.

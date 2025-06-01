@@ -1,7 +1,7 @@
 {
   "id": "projects/robots/mavrospy",
   "title": "MAVROSPY",
-  "description": "June 2024 - September 2024",
+  "description": "June 2024 - May 2025",
   "source": "@site/docs/projects/robots/mavrospy.mdx",
   "sourceDirName": "projects/robots",
   "slug": "/projects/robots/mavrospy",
@@ -10,15 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
+  "sidebarPosition": 2,
   "frontMatter": {
-    "sidebar_position": 1,
+    "sidebar_position": 2,
     "sidebar_label": "MAVROSPY"
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "Robots",
-    "permalink": "/docs/category/robots"
+    "title": "VSLAM UAV",
+    "permalink": "/docs/projects/robots/vslam"
   },
   "next": {
     "title": "Search & Rescue Drone",

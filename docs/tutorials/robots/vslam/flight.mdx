@@ -1,0 +1,98 @@
+---
+sidebar_position: 2
+sidebar_label: Flight Demo
+---
+import ReactPlayer from 'react-player'
+
+# Flight Demo
+
+:::warning
+Make sure you have completed the [Hardware Setup Guide](/docs/tutorials/robots/vslam/setup) before running this demo.
+:::
+
+This demo showcases the Isaac ROS VSLAM node in action, allowing a quadcopter to autonomously fly a specified pattern using visual SLAM for pose estimation. The quadcopter will utilize the MAVROSPY node to receive pose estimates and control the flight pattern.
+
+## Procedure
+
+To run the flight demo, start by launching the `Isaac ROS` docker container:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+  ./scripts/run_dev.sh -b
+```
+
+Inside the container, navigate the to the `vslam` directory:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/VSLAM-UAV/vslam
+```
+
+Next, launch the Issac ROS VSLAM node:
+
+```bash
+$ ./vslam_launch.sh
+```
+
+In a new terminal, launch the `mavrospy` docker container:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/VSLAM-UAV/docker/mavrospy && \
+  ./run_docker.sh
+```
+
+In the `mavrospy` container, launch the `mavrospy` node:
+
+```bash
+$ cd ~/VSLAM-UAV/vslam
+$ ros2 launch mavrospy.launch.py
+```
+
+:::note
+If you wish to ensure that the VSLAM pose estimation is being published correctly, you can run the following commands in a new terminal:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+  ./scripts/run_dev.sh
+$ export ROS_DOMAIN_ID=1
+$ ros2 topic echo /mavros/vision_pose/pose_cov
+```
+:::
+
+:::tip
+You can also check that the flight controller is properly interpreting the pose estimates by test flying in POSITION flight mode.
+:::
+
+Finally, switch the quadcopter to OFFBOARD mode and watch it fly!
+
+:::info
+You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
+
+```bash
+$ ros2 launch mavrospy.launch.py pattern:=figure8
+```
+
+Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
+:::
+
+## Visualization
+
+If you wish to visualize the VSLAM output in RViz, you can run the following commands in a new terminal:
+
+```bash
+$ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+  ./scripts/run_dev.sh -b
+$ export ROS_DOMAIN_ID=1
+$ rviz2 -d ${ISAAC_ROS_WS}/VSLAM-UAV/vslam/vslam_realsense.cfg.rviz
+```
+
+:::warning
+Running RViz on a remote desktop is generally not recommended due to performance issues. Even working with X11 forwarding can be slow depending on your network connection. 
+
+Instead, consider recording the demo using the `ros2 bag record -a` command and then visualizing the recorded data later.
+:::
+
+## Demo Video
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/ImaltGOlEDc"/>
+</div>
