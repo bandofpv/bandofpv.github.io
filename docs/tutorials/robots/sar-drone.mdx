@@ -30,7 +30,7 @@ This device is a drone that can successfully fly autonomously over any terrain a
 
 ## Code
 
-Please clone my GitHub [repository](https://github.com/bandofpv/SAR_Drone) to follow along with this tutorial.
+Please clone my GitHub [repository](https://github.com/bandofpv/Search-and-Rescue-Drone) to follow along with this tutorial.
 
 ## Components List
 
@@ -300,13 +300,13 @@ $ pip install dronekit-sitl
 Now we test our installation with a simple program. First we need to clone the GitHub repository:
 
 ```bash
-$ git clone https://github.com/bandofpv/SAR_Drone
+$ git clone https://github.com/bandofpv/Search-and-Rescue-Drone
 ```
 
-Navigate to the SAR_Drone repository and run the test program:
+Navigate to the Search-and-Rescue-Drone repository and run the test program:
 
 ```bash
-$ cd SAR_Drone
+$ cd Search-and-Rescue-Drone
 $ python dronekit_test.py
 ```
 
@@ -616,7 +616,7 @@ Finally, we can flash the new firmware onto the radio. Click on the **Write Firm
 ![telemetry10 Andrew Bernas](../../assets/robots/sar-drone/telemetry10.jpg)
 </div>
 
-After flashing the radio, copy the contents in this [folder](https://github.com/bandofpv/SAR_Drone/tree/master/SD) to your radio SD card.
+After flashing the radio, copy the contents in this [folder](https://github.com/bandofpv/Search-and-Rescue-Drone/tree/master/SD) to your radio SD card.
 
 Turn on your radio and navigate to the **Display** page and assign **yaapu9** to **Screen 1** of type **Script**:
 
@@ -645,7 +645,7 @@ First, we need to test the MavLink connection between the RPI and the flight con
 On the RPI, run the **connection_test.py** program:
 
 ```bash
-$ cd SAR_Drone
+$ cd Search-and-Rescue-Drone
 $ python connection_test.py
 ```
 
@@ -693,7 +693,7 @@ Navigate to the bottom of the file and add the following lines:
 
 ```bash
 workon sar
-python /home/pi/SAR_Drone/takeoff_test.py
+python /home/pi/Search-and-Rescue-Drone/takeoff_test.py
 ```
 
 Now, take your drone out to the field and perform the proper [Pre-Arm Safety Checks](https://ardupilot.org/copter/docs/common-prearm-safety-checks.html). Once ready to arm, switch the drone into **GUIDED** mode. Shortly after, the drone should arm its self, take off to 10m, hover for 10 seconds, then land back down, and disarm.
@@ -710,7 +710,7 @@ Navigate to the bottom of the file, remove our previous addition, and replace it
 
 ```bash
 workon sar
-python /home/pi/SAR_Drone/square_movement_test.py
+python /home/pi/Search-and-Rescue-Drone/square_movement_test.py
 ```
 
 Now, take your drone out to the field and perform the proper [Pre-Arm Safety Checks](https://ardupilot.org/copter/docs/common-prearm-safety-checks.html). Once ready to arm, switch the drone into **GUIDED mode**. Shortly after, the drone should arm its self, take off to 10m, then proceed to fly in a large square pattern, then land back down, and disarm.
@@ -727,14 +727,14 @@ Navigate to the bottom of the file, remove our previous addition, and replace it
 
 ```bash
 workon sar
-python /home/pi/SAR_Drone/record_test.py \
---model /home/pi/SAR_Drone/mobilenet_ssd_v2/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite \
---labels /home/pi/SAR_Drone/mobilenet_ssd_v2/coco_labels.txt
+python /home/pi/Search-and-Rescue-Drone/record_test.py \
+--model /home/pi/Search-and-Rescue-Drone/mobilenet_ssd_v2/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite \
+--labels /home/pi/Search-and-Rescue-Drone/mobilenet_ssd_v2/coco_labels.txt
 ```
 
 Now, take your drone out to the field and perform the proper [Pre-Arm Safety Checks](https://ardupilot.org/copter/docs/common-prearm-safety-checks.html). Once ready to arm, switch the drone into **GUIDED** mode. Shortly after, the drone should arm its self, take off to 6m, hover and record the camera footage. Make sure to stand in front of the drone's camera so that it can detect a human subject. After a couple seconds, you can switch the flight mode to **RTL** and it will land back to where it launched.
 
-On the RPI, you will notice that there is a file in the **SAR_Drone** repository called: **output.mp4**. Open it and you will notice that its the recording. Make sure that the camera was able to detect you in the recording.
+On the RPI, you will notice that there is a file in the **Search-and-Rescue-Drone** repository called: **output.mp4**. Open it and you will notice that its the recording. Make sure that the camera was able to detect you in the recording.
 
 If the drone was able to pass all those tests, then you can finally put the drone into action. If you had any troubles, feel free to debug it yourself or ask for help in the comment section.
 
@@ -748,9 +748,9 @@ Navigate to the bottom of the file, remove our previous addition, and replace it
 
 ```bash
 workon sar
-python /home/pi/SAR_Drone/main.py \
---model /home/pi/SAR_Drone/mobilenet_ssd_v2/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite \
---labels /home/pi/SAR_Drone/mobilenet_ssd_v2/coco_labels.txt
+python /home/pi/Search-and-Rescue-Drone/main.py \
+--model /home/pi/Search-and-Rescue-Drone/mobilenet_ssd_v2/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite \
+--labels /home/pi/Search-and-Rescue-Drone/mobilenet_ssd_v2/coco_labels.txt
 ```
 
 Now, take your drone out to the field and perform the proper [Pre-Arm Safety Checks](https://ardupilot.org/copter/docs/common-prearm-safety-checks.html). Once ready to arm, switch the drone into **GUIDED** mode. Shortly after, the drone should arm its self and begin searching for missing persons.
