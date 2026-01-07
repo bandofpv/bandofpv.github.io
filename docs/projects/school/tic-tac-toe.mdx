@@ -1,0 +1,308 @@
+---
+sidebar_position: 1
+sidebar_label: Tic-Tac-Toe Robot
+---
+import ReactPlayer from 'react-player'
+
+# Automated Turret
+
+November 2025
+
+**[GitHub Repository](https://github.com/bandofpv/USNA-Robotics-Courses/tree/main/EW450)**
+
+## Introduction
+
+My eighth major course at USNA was EW450 (Introduction to Robotic Systems). The course covered modeling and analysis of articulated robots, including robot configurations, workcell layout, reachable and dexterous workspaces, forward and inverse kinematics, and Jacobians, as well as introductory concepts in computer vision and camera modeling.
+
+The final project was to program a UR3e robotic arm to autonomously play the game Tic-tac-Toe.
+
+<div align="center">
+  <img alt="Tic Tac Toe Robot Andrew Bernas" src={require('../../assets/school/tic-tac-toe/tic-tac.jpg').default} />
+</div>
+
+## Demo Video
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/fwrUv4tN84M?si=6vsOqtFJRiBv9pV5"/>
+</div>
+
+## Design Documentation
+
+The integration of artificial intelligence with robotic manipulation represents a fundamental cornerstone of modern automation. This project explores that intersection by developing a system in which a UR3e robot autonomously plays Tic-Tac-Toe against a human opponent.
+
+Developed as the final project for EW450 (Introduction to Robotic Systems), this system demonstrates the application of articulated robot modeling, forward and inverse kinematics, workcell layout, and computer vision. The UR3e, a six-axis robotic arm, serves as the physical agent, tasked with perceiving the game state, computing the optimal move, and physically executing that move by manipulating game pieces on a board.
+
+To achieve this, the software architecture combines three distinct subsystems:
+
+- Computer Vision: To detect the board state and human moves.
+- Game Logic: Utilizing the Minimax algorithm to ensure the robot plays optimally.
+- Motion Control: Utilizing Inverse Kinematics to translate board coordinates into precise joint movements.
+
+This report details the design and implementation of these subsystems, analyzing the mathematical foundations and software logic that allow the UR3e to function as an intelligent, autonomous adversary.
+
+### Computer Vision
+
+Located above the robotic arm is a calibrated monocular camera used to recognize the game board and game pieces. The system relies on AprilTags (family: tag36h11) for robust fiducial marker detection.
+
+#### Board and Piece Detection
+
+The board is recognized via two AprilTags (ID: 450 and 460, Size: 29mm). The program detects the board pose if it can see either tag; if both are visible, it averages the board's center pose. The specific position of each grid cell relative to these tags is described in figure below.
+
+<div align="center">
+  <img alt="Board Andrew Bernas" src={require('../../assets/school/tic-tac-toe/board.png').default} width="460px" />
+</div>
+
+The system identifies game pieces using unique AprilTags (Size: 25.0mm).
+
+- Red "X" Pieces: IDs 461–465
+- Blue "O" Pieces: IDs 451–455
+
+<div align="center">
+  <img alt="Piece Andrew Bernas" src={require('../../assets/school/tic-tac-toe/piece.png').default} width="460px" class="white-bg" />
+</div>
+
+The program updates the board and piece poses at a rate of 2Hz. To update the game state, the system calculates the Euclidean distance between the center of a detected piece and the center of a grid cell; the cell is considered filled if this distance is minimized for a specific piece.
+
+### Game Logic
+
+To ensure the robot competes effectively, the decision-making engine is built upon the Minimax algorithm. This is a recursive backtracking algorithm widely used in decision theory and game theory for zero-sum games—games where one player's gain is equivalent to the other's loss.
+
+In this context, the robot acts as the **Maximizer**, seeking to maximize its score, while the human opponent is modeled as the **Minimizer**, seeking to minimize the robot's score.
+
+#### Algorithm Execution
+
+The algorithm simulates the game by constructing a Game Tree, exploring all possible future moves from the current state down to the terminal states.
+
+1. **State Evaluation:** Terminal states are assigned numerical values:
+    * +10: Robot wins.
+    * -10: Human wins.
+    * 0: Draw.
+2. **Backtracking:** Values are propagated up the tree. At each layer, the Maximizer chooses the move leading to the highest value, while the Minimizer (simulating optimal human play) chooses the move leading to the lowest value.
+3. **Optimality:** By assuming the human will always play the best possible move, the robot ensures it selects a strategy that minimizes the maximum possible loss. This guarantees the robot will never lose if it plays first and will force a draw or win if the human makes a mistake.
+
+### Motion Control
+
+While the Minimax algorithm determines the target location in Cartesian space ($x, y, z$), the UR3e requires joint angles ($\theta_1, \dots, \theta_6$) to reach that position. This mapping is achieved through Inverse Kinematics (IK), which calculates the specific angle $\theta$ for each of the robot's six joints required to reach a desired pose.
+
+For reference, Figure 1 displays the UR3e manipulator's 6 joint poses.
+
+<div align="center">
+  <img alt="Arm Andrew Bernas" src={require('../../assets/school/tic-tac-toe/arm.png').default} width="350px" />
+  <p><b><i>Figure 1: UR3e manipulator joint poses</i></b></p>
+</div>
+
+#### Assumptions and Constraints
+
+Solving the IK problem is non-trivial due to non-linear mapping and multiple possible solutions (e.g., "elbow up" vs. "elbow down"). The derivation is performed under the following assumptions:
+
+1. **Downward Facing End-Effector:** The z-axis of the end-effector opposes the base z-axis:
+$$
+\hat{Z}_{6}^{0} = -\hat{Z}_{0}^{0} = \begin{bmatrix} 0 & 0 & -1 \end{bmatrix}^{\top}
+$$
+2. **Wrist Constraint:** This orientation requires the fifth joint to be fixed at $\theta_{5}^{*} = -\frac{\pi}{2}$.
+3. **Task Variables:** The target is defined by position and gripper orientation $\phi$.
+
+#### Geometric Derivation
+
+The joint angles are derived using a geometric decomposition of the manipulator.
+
+**Step 1: Base Rotation ($\theta_1$)**
+
+Figure 2 displays the Top-Down view of the robotic arm used to derive the base angle.
+
+<div align="center">
+  <img alt="Top Down 1 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/top1.png').default} width="450px" />
+  <p><b><i>Figure 2: Top-Down view of the robotic arm</i></b></p>
+</div>
+
+Based on the geometry shown in Figure 3, we define intermediate variables to solve for the base rotation.
+
+<div align="center">
+  <img alt="Top Down 2 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/top2.png').default} width="450px" />
+  <p><b><i>Figure 3: Derivation of equations 1-4</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$a_1 = -y$</div>
+  <div class='right-text'>(1)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$b_1 = -x$</div>
+  <div class='right-text'>(2)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$c_1 = \sqrt{(a_1)^2 + (b_1)^2} \quad$</div>
+  <div class='right-text'>(3)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\alpha_1 = \operatorname{atan2}(a_1, b_1) \quad$</div>
+  <div class='right-text'>(4)</div>
+</div>
+
+Figure 4 displays how equations (5)–(7) are derived to account for the offset $l_4$.
+
+<div align="center">
+  <img alt="Top Down 3 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/top3.png').default} width="450px" />
+  <p><b><i>Figure 4: Derivation of equations 5-7</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$a_2 = l_4 \quad$</div>
+  <div class='right-text'>(5)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$b_2 = \sqrt{(c_1)^2 - (a_2)^2} \quad $</div>
+  <div class='right-text'>(6)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\alpha_2 = \operatorname{atan2}(a_2, b_2) \quad$</div>
+  <div class='right-text'>(7)</div>
+</div>
+
+The angle for the base joint is then calculated as:
+
+<div class='equation-block'>
+  <div class='equation'>$\theta_1^* = \alpha_1 - \alpha_2 \quad$</div>
+  <div class='right-text'>(8)</div>
+</div>
+
+**Step 2: Shoulder and Elbow ($\theta_2, \theta_3$)** To determine the link lengths in the planar view, we refer to Figure 5.
+
+<div align="center">
+  <img alt="Top Down 4 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/top4.png').default} width="450px" />
+  <p><b><i>Figure 5: Derivation of equation 9</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$c_3 = b_2 - l_5 \quad$</div>
+  <div class='right-text'>(9)</div>
+</div>
+
+Figure 6 displays the Plane of the Manipulator view used for the subsequent calculations.
+
+<div align="center">
+  <img alt="Plane 5 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/plane5.png').default} width="450px" />
+  <p><b><i>Figure 6: Plane of the Manipulator view</i></b></p>
+</div>
+
+As shown in Figure 7, we define the vertical and hypotenuse components for the target reach.
+
+<div align="center">
+  <img alt="Plane 1 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/plane1.png').default} width="450px" />
+  <p><b><i>Figure 7: Derivation of equations 10-12</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$a_4 = (z + l_6) - l_1 \quad$</div>
+  <div class='right-text'>(10)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$c_4 = \sqrt{(c_3)^2 + (a_4)^2} \quad$</div>
+  <div class='right-text'>(11)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\alpha_4 = \operatorname{atan2}(a_4, c_3) \quad$</div>
+  <div class='right-text'>(12)</div>
+</div>
+
+Using the Law of Cosines as derived in Figure 8, we solve for the internal angles of the arm triangle.
+
+<div align="center">
+  <img alt="Plane 2 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/plane2.png').default} width="450px" />
+  <p><b><i>Figure 8: Derivation of equations 13-16</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$b_5 = l_2 \quad$</div>
+  <div class='right-text'>(13)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$a_5 = l_3 \quad$</div>
+  <div class='right-text'>(14)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\alpha_5 = \arccos\left(\frac{(b_5)^2 + (c_4)^2 - (a_5)^2}{2 b_5 c_4}\right) \quad$</div>
+  <div class='right-text'>(15)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\gamma_5 = \arccos\left(\frac{(a_5)^2 + (b_5)^2 - (c_4)^2}{2 a_5 b_5}\right) \quad$</div>
+  <div class='right-text'>(16)</div>
+</div>
+
+Figure 9 displays how Joint angles 2 and 3 are derived from these components.
+
+<div align="center">
+  <img alt="Plane 3 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/plane3.png').default} width="450px" />
+  <p><b><i>Figure 9: Derivation of Joint angles 2 and 3</i></b></p>
+</div>
+
+The system uses the **Elbow-Up** solution:
+
+<div class='equation-block'>
+  <div class='equation'>$\theta_2^* = -(\alpha_4 + \alpha_5) \quad$</div>
+  <div class='right-text'>(17)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\theta_3^* = \pi - \gamma_5 \quad$</div>
+  <div class='right-text'>(18)</div>
+</div>
+
+Note: An Elbow-Down solution is also mathematically possible but was not required for the robot.
+
+**Step 3: Wrist Orientation ($\theta_4, \theta_6$)** Figure 10 displays how joint angle 4 is derived to maintain the downward orientation.
+
+<div align="center">
+  <img alt="Plane 4 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/plane4.png').default} width="450px" />
+  <p><b><i>Figure 10: Derivation of joint angle 4</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\theta_4^* = -(\theta_2^* + \theta_3^* + \frac{\pi}{2}) \quad$</div>
+  <div class='right-text'>(19)</div>
+</div>
+
+Finally, Figure 11 displays how joint angle 6 is derived to control the gripper rotation.
+
+<div align="center">
+  <img alt="Top 5 Andrew Bernas" src={require('../../assets/school/tic-tac-toe/top5.png').default} width="450px" class="white-bg" />
+  <p><b><i>Figure 11: Derivation of joint angle 6</i></b></p>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\theta_6^* = \frac{\pi}{2} + \theta_1^* - \phi \quad$</div>
+  <div class='right-text'>(20)</div>
+</div>
+
+With equations (8), (17), (18), (19), and (20), the system can calculate the required joint angles to reach any reachable pose.
+
+### System Integration
+
+With a method to extract piece poses, strategize moves, and control the robot to a desired position, we can put it all together into a fully autonomous system. The program starts by asking the player what piece type they want to play with and who wants to start first.
+
+The robot plays against the player in a continuous loop:
+1. **Update Board Status:** Extract the board pose and piece poses.
+2. **Determine Move:** If it is the robot's turn, it uses the Minimax algorithm to determine the best move.
+3. **Execute Pick-and-Place:** 
+    * The system finds a piece of the correct type that is not on the board.
+    * It uses the detected piece pose and Inverse Kinematics to calculating the joint angles required to pick up the piece.
+    * It then uses Inverse Kinematics to place the grabbed piece onto the grid cell aligned with the best move.
+
+This process repeats until the game is determined to be a draw or a winner is determined.
+
+### Conclusion
+
+This project successfully demonstrated the capability of the UR3e robotic arm to function as an autonomous agent in a structured game environment. By effectively synthesizing computer vision for state estimation, the Minimax algorithm for strategic decision-making, and geometric inverse kinematics for precise motion control, the system achieved robust gameplay against human opponents.
+
+The implementation of the Minimax algorithm ensured that the robot never lost a match when playing first, validating the effectiveness of the game logic. Furthermore, the geometric IK solver proved computationally efficient and accurate, allowing for smooth pick-and-place operations within the robot's workspace. Overall, the system serves as a comprehensive proof-of-concept for human-robot interaction and autonomous manipulation tasks.
+

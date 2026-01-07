@@ -10,15 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
+  "sidebarPosition": 3,
   "frontMatter": {
-    "sidebar_position": 1,
+    "sidebar_position": 3,
     "sidebar_label": "Automated Turret"
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "School",
-    "permalink": "/docs/category/school"
+    "title": "Roomba Light Show",
+    "permalink": "/docs/projects/school/light-show"
   },
   "next": {
     "title": "Inverted Pendulum",

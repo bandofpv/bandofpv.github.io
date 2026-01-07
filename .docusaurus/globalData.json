@@ -171,6 +171,11 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/light-show",
+              "path": "/docs/projects/school/light-show",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/motor-control",
               "path": "/docs/projects/school/motor-control",
               "sidebar": "projectsSidebar"
@@ -188,6 +193,11 @@
             {
               "id": "projects/school/tag",
               "path": "/docs/projects/school/tag",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/school/tic-tac-toe",
+              "path": "/docs/projects/school/tic-tac-toe",
               "sidebar": "projectsSidebar"
             },
             {
