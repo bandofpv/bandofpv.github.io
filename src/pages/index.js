@@ -2,37 +2,15 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Head from '@docusaurus/Head';
 import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/projects">
-            Get Started
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="Porfolio Website"
+      title="Portfolio Website"
       description="Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.">
       <Head>
         <meta property="og:image" content="https://bandofpv.github.io/img/profile.jpg" />
@@ -51,9 +29,78 @@ export default function Home() {
           })}
         </script>
       </Head>
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      
+      <main className="container margin-vert--xl">
+        {/* Bio Section */}
+        <div className="row margin-bottom--lg">
+          <div className="col col--3">
+            <div className="avatar avatar--vertical">
+              <img
+                className="avatar__photo avatar__photo--xl profile-image"
+                src="img/profile.jpg"
+                alt="Andrew Bernas"
+              />
+            </div>
+          </div>
+          <div className="col col--9 bio-text-col">
+            <Heading as="h1" className="bio-header-title">{siteConfig.title}</Heading>
+            {siteConfig.tagline && <p className="hero__subtitle">{siteConfig.tagline}</p>}
+            <div>
+              <p>
+                I am a Weapons, Robotics, & Control Engineering student at the United States Naval Academy with a passion for building autonomous systems that work in the real world. My research focuses on perception-driven autonomy for uncrewed aerial vehicles (UAVs), aiming to enable robust, scalable operation in challenging, GPS-denied environments.  This site collects documentation for my projects, hands-on tutorials, and details on my research publications.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Links Section */}
+        <div className="row">
+          <div className="col col--4 margin-bottom--md">
+            <div className="card shadow--md" style={{height: '100%'}}>
+              <div className="card__header">
+                <Heading as="h3">Projects</Heading>
+              </div>
+              <div className="card__body">
+                <p>Documentation for various projects.</p>
+              </div>
+              <div className="card__footer">
+                <Link className="button button--primary button--block" to="/docs/projects">
+                  View Projects
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col col--4 margin-bottom--md">
+            <div className="card shadow--md" style={{height: '100%'}}>
+              <div className="card__header">
+                <Heading as="h3">Tutorials</Heading>
+              </div>
+              <div className="card__body">
+                <p>Step-by-step guides and tutorials.</p>
+              </div>
+              <div className="card__footer">
+                <Link className="button button--primary button--block" to="/docs/tutorials">
+                  View Tutorials
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col col--4 margin-bottom--md">
+            <div className="card shadow--md" style={{height: '100%'}}>
+              <div className="card__header">
+                <Heading as="h3">Research</Heading>
+              </div>
+              <div className="card__body">
+                <p>Academic research and publications.</p>
+              </div>
+              <div className="card__footer">
+                <Link className="button button--primary button--block" to="/research">
+                  View Research
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </Layout>
   );

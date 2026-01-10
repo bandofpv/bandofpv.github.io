@@ -110,8 +110,10 @@
   overflow: hidden;
 }
 
-.homepage-card:hover {
-  background-color: var(--docs-color-background-hover);
+@media (hover: hover) {
+  .homepage-card:hover {
+    background-color: var(--docs-color-background-hover);
+  }
 }
 
 .homepage-card.row {
@@ -148,16 +150,24 @@
 }
 
 @media screen and (max-width: 996px) {
-  .footer-content {
-    display: none;
-  }
   .section-content {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
+.footer__links {
+  text-align: center;
+  width: 100%;
+}
+
+.footer__link-item {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
 .footer-content {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  display: inline-block;
   margin-right: 5px;
   margin-left: 5px;
 }
@@ -169,8 +179,18 @@
   width: 35px;
 }
 
-.footer-content .icon:hover {
-  color: var(--ifm-color-primary);
+@media (hover: hover) {
+  .footer-content .icon:hover {
+    color: var(--ifm-color-primary);
+  }
+}
+
+.footer-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .home-link {
@@ -199,10 +219,10 @@
 }
 
 .right-text {
-  flex: 0 0 auto; /* Keep its width auto */
+  flex: 0 0 auto;
   text-align: right;
-  margin-left: auto; /* Push it to the far right */
-  white-space: nowrap; /* Prevent the text from wrapping */
+  margin-left: auto; 
+  white-space: nowrap;
 }
 
 .table-container {
@@ -210,7 +230,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  white-space: nowrap; /* Prevent the text from wrapping */
+  white-space: nowrap;
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -220,4 +240,57 @@
 
 .white-bg {
     background-color: #ffffff;
+}
+
+.bio-header-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.bio-text-col {
+  font-size: 1.1rem;
+}
+
+.profile-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  min-width: 250px;
+  max-width: none;
+}
+
+.navbar__title {
+  font-size: 1.1rem;
+  margin-left: 2px;
+}
+
+.footer {
+  padding-bottom: 15px;
+}
+
+.footer__copyright {
+  margin-bottom: 0px;
+}
+
+/* Add spacing when columns stack on smaller screens */
+@media screen and (max-width: 996px) {
+  .bio-text-col {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .bio-header-title {
+    font-size: 3.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .bio-text-col > div > p {
+    margin-top: 0;
+  }
+
+  .container.margin-vert--xl {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
 }
