@@ -12,9 +12,7 @@ export default function Home() {
     <Layout
       description="Portfolio website for Andrew Bernas, a Robotics & Control Engineering student specializing in UAVs and autonomous systems.">
       <Head>
-        <meta property="og:image" content="https://bandofpv.github.io/img/profile.jpg" />
-        <meta property="image" content="https://bandofpv.github.io/img/profile.jpg" />
-        <meta property="og:logo" content="https://bandofpv.github.io/img/profile.jpg" />
+        <meta property="og:image" content="https://www.andrewbernas.com/img/profile.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -29,8 +27,7 @@ export default function Home() {
               "https://www.hackster.io/bandofpv"
             ],
             description: 'Portfolio website for Andrew Bernas, a Robotics & Control Engineering student specializing in UAVs and autonomous systems.', 
-            logo: 'https://bandofpv.github.io/img/profile.jpg',
-            image: 'https://bandofpv.github.io/img/profile.jpg',
+            image: 'https://www.andrewbernas.com/img/profile.jpg',
           })}
         </script>
         <script type="application/ld+json">
@@ -95,8 +92,7 @@ export default function Home() {
                 <Heading as="h3">Projects</Heading>
               </div>
               <div className="card__body">
-                {/* Updated description to match desired search subtitle */}
-                <p>Robots, drones, robotic arms, computer vision, and more.</p>
+                <p>Robots, drones, computer vision, and more.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/docs/projects">
@@ -111,8 +107,7 @@ export default function Home() {
                 <Heading as="h3">Tutorials</Heading>
               </div>
               <div className="card__body">
-                 {/* Updated description to match desired search subtitle */}
-                <p>Step-by-step guides for robotics, hardware, and software.</p>
+                <p>Step-by-step guides and tutorials.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/docs/tutorials">
@@ -127,8 +122,7 @@ export default function Home() {
                 <Heading as="h3">Research</Heading>
               </div>
               <div className="card__body">
-               {/* Updated description to match desired search subtitle */}
-                <p>Publications on perception-driven autonomy for UAVs.</p>
+                <p>Academic research and publications.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/research">
