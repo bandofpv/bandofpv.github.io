@@ -10,8 +10,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="Portfolio Website"
-      description="Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.">
+      description="Portfolio website for Andrew Bernas, a Robotics & Control Engineering student specializing in UAVs and autonomous systems.">
       <Head>
         <meta property="og:image" content="https://bandofpv.github.io/img/profile.jpg" />
         <meta property="image" content="https://bandofpv.github.io/img/profile.jpg" />
@@ -20,12 +19,47 @@ export default function Home() {
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org/',
-            '@type': 'Organization',
+            '@type': 'Person', 
             name: 'Andrew Bernas',
             url: 'https://www.andrewbernas.com/',
-            description: 'Portfolio website for Andrew Bernas. Includes documentation for several robotics projects and tutorials.',
+            sameAs: [ 
+              "https://www.linkedin.com/in/andrewbernas",
+              "https://github.com/bandofpv",
+              "http://www.youtube.com/@BandoFPV",
+              "https://www.hackster.io/bandofpv"
+            ],
+            description: 'Portfolio website for Andrew Bernas, a Robotics & Control Engineering student specializing in UAVs and autonomous systems.', 
             logo: 'https://bandofpv.github.io/img/profile.jpg',
             image: 'https://bandofpv.github.io/img/profile.jpg',
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            'itemListElement': [
+              {
+                '@type': 'SiteNavigationElement',
+                'position': 1,
+                'name': 'Projects',
+                'description': 'Robots, drones, computer vision, and more.',
+                'url': 'https://www.andrewbernas.com/docs/projects'
+              },
+              {
+                '@type': 'SiteNavigationElement',
+                'position': 2,
+                'name': 'Tutorials',
+                'description': 'Step-by-step guides for robotics, hardware, and software.',
+                'url': 'https://www.andrewbernas.com/docs/tutorials'
+              },
+              {
+                '@type': 'SiteNavigationElement',
+                'position': 3,
+                'name': 'Research',
+                'description': 'Publications on perception-driven autonomy for UAVs.',
+                'url': 'https://www.andrewbernas.com/research'
+              }
+            ]
           })}
         </script>
       </Head>
@@ -61,7 +95,8 @@ export default function Home() {
                 <Heading as="h3">Projects</Heading>
               </div>
               <div className="card__body">
-                <p>Documentation for various projects.</p>
+                {/* Updated description to match desired search subtitle */}
+                <p>Robots, drones, robotic arms, computer vision, and more.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/docs/projects">
@@ -76,7 +111,8 @@ export default function Home() {
                 <Heading as="h3">Tutorials</Heading>
               </div>
               <div className="card__body">
-                <p>Step-by-step guides and tutorials.</p>
+                 {/* Updated description to match desired search subtitle */}
+                <p>Step-by-step guides for robotics, hardware, and software.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/docs/tutorials">
@@ -91,7 +127,8 @@ export default function Home() {
                 <Heading as="h3">Research</Heading>
               </div>
               <div className="card__body">
-                <p>Academic research and publications.</p>
+               {/* Updated description to match desired search subtitle */}
+                <p>Publications on perception-driven autonomy for UAVs.</p>
               </div>
               <div className="card__footer">
                 <Link className="button button--primary button--block" to="/research">

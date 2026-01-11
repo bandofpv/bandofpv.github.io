@@ -5,7 +5,7 @@
  */
 export default {
   "title": "Andrew Bernas",
-  "tagline": "",
+  "tagline": "Robotics, Perception, & Control Engineering",
   "favicon": "img/favicon.ico",
   "url": "https://www.andrewbernas.com",
   "baseUrl": "/",
