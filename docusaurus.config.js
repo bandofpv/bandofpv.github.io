@@ -11,7 +11,7 @@ import rehypeKatex from 'rehype-katex';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Andrew Bernas',
-  tagline: 'Robotics, Perception, & Control Engineering', // Modified: Added specific tagline
+  tagline: 'Robotics & Control Engineering Student',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

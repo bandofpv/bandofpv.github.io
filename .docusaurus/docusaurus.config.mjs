@@ -5,7 +5,7 @@
  */
 export default {
   "title": "Andrew Bernas",
-  "tagline": "Robotics, Perception, & Control Engineering",
+  "tagline": "Robotics & Control Engineering Student",
   "favicon": "img/favicon.ico",
   "url": "https://www.andrewbernas.com",
   "baseUrl": "/",

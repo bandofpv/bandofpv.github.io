@@ -61,9 +61,9 @@ export default function Home() {
         </script>
       </Head>
       
-      <main className="container margin-vert--xl">
+      <main className="container margin-vert--lg">
         {/* Bio Section */}
-        <div className="row margin-bottom--lg">
+        <div className="row margin-bottom--lg profile-row">
           <div className="col col--3">
             <div className="avatar avatar--vertical">
               <img

@@ -52,7 +52,7 @@ const AbstractText = ({ abstract, title }) => {
 function Research() {
   return (
     <Layout title="Research" description="My published research papers">
-      <div className="container margin-top--lg padding-top--md margin-bottom--xl">
+      <div className="container margin-top--lg padding-top--md margin-bottom--md">
         <div className="text--center margin-bottom--lg">
           <h1 className="hero__title">Published Research</h1>
           <p className="hero__subtitle">My research contributions to robotics and autonomous systems.</p>
