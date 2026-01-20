@@ -110,14 +110,20 @@
   overflow: hidden;
 }
 
+.homepage-card:hover {
+  color: var(--docs-color-text);
+}
+
 @media (hover: hover) {
   .homepage-card:hover {
     background-color: var(--docs-color-background-hover);
+    color: var(--ifm-color-primary);
   }
 }
 
 .homepage-card:active {
   background-color: var(--docs-color-background-hover);
+  color: var(--ifm-color-primary);
   transition-duration: 0s;
 }
 
