@@ -1,320 +1,277 @@
 {
-  "/__docusaurus/debug-5ff": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/config-5ba": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/content-a2b": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    },
-    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
-  },
-  "/__docusaurus/debug/globalData-c3c": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/metadata-156": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/registry-88c": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/routes-000": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
   "/research-e57": {
-    "__comp": "__comp---site-src-pages-research-js-45-d-372",
+    "__comp": "45d5673d",
     "__context": {
-      "plugin": "plugin---researcha-74-f30"
+      "plugin": "a7456010"
     },
-    "config": "config---research-5-e-9-aff"
+    "config": "5e9f5e1a"
   },
   "/docs-e47": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---docsaba-d7c"
+      "plugin": "aba21aa0"
     }
   },
   "/docs-e2e": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---docs-005-788"
+    "__comp": "a7bd4aaa",
+    "__props": "0058b4c6"
   },
   "/docs-5d7": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
+    "__comp": "a94703ab"
   },
   "/docs/category/code-ad2": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-code-25-d-3d3"
+    "__comp": "14eb3368",
+    "__props": "25d282fd"
   },
   "/docs/category/code-1-341": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-code-1695-0c9"
+    "__comp": "14eb3368",
+    "__props": "695322eb"
   },
   "/docs/category/race-quads-8d7": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-race-quads-5-ae-189"
+    "__comp": "14eb3368",
+    "__props": "5ae56056"
   },
   "/docs/category/rc-airplanes-96b": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-rc-airplanes-7-f-8-20c"
+    "__comp": "14eb3368",
+    "__props": "7f8e55ac"
   },
   "/docs/category/robots-566": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-robotsb-30-ca4"
+    "__comp": "14eb3368",
+    "__props": "b304e8d3"
   },
   "/docs/category/robots-1-a5f": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-robots-1734-d3c"
+    "__comp": "14eb3368",
+    "__props": "7341caaa"
   },
   "/docs/category/school-369": {
-    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-school-1-eb-b96"
+    "__comp": "14eb3368",
+    "__props": "1eb2abcb"
   },
   "/docs/projects-55c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-10-e-8ce"
+    "__comp": "17896441",
+    "content": "10e1d9b6"
   },
   "/docs/projects/code/barber-scheduler-145": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-code-barber-scheduler-922-8f4"
+    "__comp": "17896441",
+    "content": "92227a3e"
   },
   "/docs/projects/code/website-2ae": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-code-website-7-c-2-bf0"
+    "__comp": "17896441",
+    "content": "7c2c4b82"
   },
   "/docs/projects/race-quads/diatone-f64": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-diatone-0-db-52e"
+    "__comp": "17896441",
+    "content": "0db72905"
   },
   "/docs/projects/race-quads/ft-210-753": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-ft-21041-a-407"
+    "__comp": "17896441",
+    "content": "41a43311"
   },
   "/docs/projects/race-quads/qav-r-e54": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-qav-r-349-4af"
+    "__comp": "17896441",
+    "content": "349ffa86"
   },
   "/docs/projects/race-quads/qav-ulx-060": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-qav-ulx-8-be-a0a"
+    "__comp": "17896441",
+    "content": "8bea585f"
   },
   "/docs/projects/race-quads/rotor-riot-cl1-db6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-rotor-riot-cl-1575-adf"
+    "__comp": "17896441",
+    "content": "575fe5fc"
   },
   "/docs/projects/race-quads/versacopter-c91": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-race-quads-versacopterc-06-ad2"
+    "__comp": "17896441",
+    "content": "c06e78e9"
   },
   "/docs/projects/rc-airplanes/arrow-9f8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-arrow-430-b72"
+    "__comp": "17896441",
+    "content": "430cc6f6"
   },
   "/docs/projects/rc-airplanes/dr-1-89c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-dr-10-b-3-e24"
+    "__comp": "17896441",
+    "content": "0b3e0abc"
   },
   "/docs/projects/rc-airplanes/f22-c30": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-f-22-b-36-c1a"
+    "__comp": "17896441",
+    "content": "b36e10e0"
   },
   "/docs/projects/rc-airplanes/flyer-b62": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-flyer-734-bae"
+    "__comp": "17896441",
+    "content": "73490f7d"
   },
   "/docs/projects/rc-airplanes/ft-explorer-c85": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-ft-explorer-039-463"
+    "__comp": "17896441",
+    "content": "03924bd8"
   },
   "/docs/projects/rc-airplanes/goblin-683": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-goblinf-3-c-93f"
+    "__comp": "17896441",
+    "content": "f3c1ac83"
   },
   "/docs/projects/rc-airplanes/guinea-pig-91d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-guinea-pig-9-c-3-1e2"
+    "__comp": "17896441",
+    "content": "9c364451"
   },
   "/docs/projects/rc-airplanes/lockheed-vega-ed6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-lockheed-vegae-5-b-b1c"
+    "__comp": "17896441",
+    "content": "e5b29c77"
   },
   "/docs/projects/rc-airplanes/nutball-0d9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-nutballe-3-c-a5b"
+    "__comp": "17896441",
+    "content": "e3c494c6"
   },
   "/docs/projects/rc-airplanes/p-51-aad": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-p-5146-b-f86"
+    "__comp": "17896441",
+    "content": "46bba66d"
   },
   "/docs/projects/rc-airplanes/scout-8fc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-scoutca-9-91c"
+    "__comp": "17896441",
+    "content": "ca90cdda"
   },
   "/docs/projects/rc-airplanes/se5-c74": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-se-59-b-5-36d"
+    "__comp": "17896441",
+    "content": "9b5ead1e"
   },
   "/docs/projects/rc-airplanes/sportster-147": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-sportster-1-aa-7a6"
+    "__comp": "17896441",
+    "content": "1aa4f38d"
   },
   "/docs/projects/rc-airplanes/trainer-596": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-rc-airplanes-trainer-04-a-0ff"
+    "__comp": "17896441",
+    "content": "04a4338d"
   },
   "/docs/projects/robots/bipedal-robot-fb7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-bipedal-robot-0-c-6-8fb"
+    "__comp": "17896441",
+    "content": "0c68354c"
   },
   "/docs/projects/robots/ft-explorer-vtol-876": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-ft-explorer-vtol-394-f06"
+    "__comp": "17896441",
+    "content": "394286d2"
   },
   "/docs/projects/robots/mavrospy-ae2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-mavrospy-7-d-5-107"
+    "__comp": "17896441",
+    "content": "7d5cd32b"
   },
   "/docs/projects/robots/reading-eye-98f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-reading-eye-8-d-7-186"
+    "__comp": "17896441",
+    "content": "8d7f52e2"
   },
   "/docs/projects/robots/recycle-sorting-robot-392": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-recycle-sorting-robot-46-d-340"
+    "__comp": "17896441",
+    "content": "46d912db"
   },
   "/docs/projects/robots/sar-drone-8c8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-sar-drone-063-606"
+    "__comp": "17896441",
+    "content": "063ae940"
   },
   "/docs/projects/robots/vacuum-robot-8e7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-vacuum-robote-92-e71"
+    "__comp": "17896441",
+    "content": "e92f1bb0"
   },
   "/docs/projects/robots/vslam-7d5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-robots-vslam-62-a-f65"
+    "__comp": "17896441",
+    "content": "62a63005"
   },
   "/docs/projects/school/ip-cart-bb3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-ip-cart-9-b-7-844"
+    "__comp": "17896441",
+    "content": "9b73d3df"
   },
   "/docs/projects/school/light-show-7b8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-light-showb-48-a5c"
+    "__comp": "17896441",
+    "content": "b483b365"
   },
   "/docs/projects/school/motor-control-c00": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-motor-controlf-7-d-4e2"
+    "__comp": "17896441",
+    "content": "f7d2503e"
   },
   "/docs/projects/school/ping-pong-07d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-ping-pong-68-f-d07"
+    "__comp": "17896441",
+    "content": "68ffc56c"
   },
   "/docs/projects/school/quad-sim-1d1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-quad-simec-9-a67"
+    "__comp": "17896441",
+    "content": "ec919465"
   },
   "/docs/projects/school/tag-72b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-tag-5-a-0-6a1"
+    "__comp": "17896441",
+    "content": "5a099d91"
   },
   "/docs/projects/school/tic-tac-toe-42d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-tic-tac-toe-80-e-892"
+    "__comp": "17896441",
+    "content": "80e919f3"
   },
   "/docs/projects/school/turret-890": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-projects-school-turret-599-fbd"
+    "__comp": "17896441",
+    "content": "599ef91f"
   },
   "/docs/tutorials-84d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorialsfea-ae6"
+    "__comp": "17896441",
+    "content": "fea1970e"
   },
   "/docs/tutorials/code/barber-scheduler-783": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-code-barber-schedulerb-22-8b6"
+    "__comp": "17896441",
+    "content": "b22efbf3"
   },
   "/docs/tutorials/robots/ft-explorer-vtol-701": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-ft-explorer-vtol-5-fb-f68"
+    "__comp": "17896441",
+    "content": "5fb45f70"
   },
   "/docs/tutorials/robots/mavrospy-d25": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-mavrospy-57-c-b56"
+    "__comp": "17896441",
+    "content": "57c71ac2"
   },
   "/docs/tutorials/robots/mavrospy/mocap-f0e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-mavrospy-mocap-891-7ac"
+    "__comp": "17896441",
+    "content": "89150860"
   },
   "/docs/tutorials/robots/mavrospy/outdoor-9c8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-mavrospy-outdoor-4-d-7-937"
+    "__comp": "17896441",
+    "content": "4d7a9dec"
   },
   "/docs/tutorials/robots/mavrospy/setup-7e2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-mavrospy-setup-432-aeb"
+    "__comp": "17896441",
+    "content": "432219d4"
   },
   "/docs/tutorials/robots/mavrospy/sim-719": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-mavrospy-sim-53-d-a5c"
+    "__comp": "17896441",
+    "content": "53dfaeff"
   },
   "/docs/tutorials/robots/reading-eye-662": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-reading-eyef-03-d1b"
+    "__comp": "17896441",
+    "content": "f034be7a"
   },
   "/docs/tutorials/robots/recycle-sorting-robot-953": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-recycle-sorting-robotdf-1-ee4"
+    "__comp": "17896441",
+    "content": "df1906fc"
   },
   "/docs/tutorials/robots/sar-drone-7de": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-sar-drone-651-064"
+    "__comp": "17896441",
+    "content": "65112e2d"
   },
   "/docs/tutorials/robots/vslam-eb6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-vslamcd-3-e76"
+    "__comp": "17896441",
+    "content": "cd3ba5b2"
   },
   "/docs/tutorials/robots/vslam/flight-f4c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-vslam-flight-57-b-e31"
+    "__comp": "17896441",
+    "content": "57b6b5c1"
   },
   "/docs/tutorials/robots/vslam/setup-0bd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-vslam-setup-4-d-3-328"
+    "__comp": "17896441",
+    "content": "4d35ce87"
   },
   "/docs/tutorials/robots/vslam/sim-6de": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-vslam-sim-455-b73"
+    "__comp": "17896441",
+    "content": "455c7f63"
   },
   "/docs/tutorials/robots/vslam/valid-368": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorials-robots-vslam-valid-521-dea"
+    "__comp": "17896441",
+    "content": "5213b7f1"
   },
   "/-2e1": {
-    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__comp": "c4f5d8e4",
     "__context": {
-      "plugin": "plugin---researcha-74-f30"
+      "plugin": "a7456010"
     },
-    "config": "config---research-5-e-9-aff"
+    "config": "5e9f5e1a"
   }
 }
