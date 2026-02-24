@@ -11,7 +11,7 @@ const papers = [
 //  },
   {
     title: 'Relative Pose Estimation of an Unmanned Aerial System to a Naval Vessel Using Gaussian Splatting',
-    authors: 'Andrew Bernas, Nolan Jess, Levi DeVries, Armon Shariati, Donald H. Costello.',
+    authors: 'Andrew Bernas, Nolan Jess, Levi DeVries, John McConnell, and Donald H. Costello.',
     venue: 'AIAA SciTech Forum, 2026',
     link: 'https://doi.org/10.2514/6.2026-1123',
     abstract: 'Precise relative pose estimation between Unmanned Aerial Vehicles (UAVs) and naval vessels is critical for autonomous operations, particularly in GPS-degraded environments where jamming or spoofing risks catastrophic failure. Addressing the limitations of current vision-based methods that often rely on physical markers, active lighting, or labor-intensive CAD annotations, this work presents a novel maritime localization approach using 3D Gaussian Splatting (3DGS) to estimate 6-DoF camera pose directly from a learned scene representation.  Utilizing the 6DGS framework, the pipeline inverts the rendering process via Radiant Ellicell ray- casting and a learned attention mechanism to solve for pose in a one-shot, closed-form manner without requiring an initial guess. Experimental validation performed with a quadcopter and a 1/10th scale Yard Patrol (YP) craft demonstrates that the system achieves high computational efficiency with an average inference latency of 0.012s (86Hz) and robust sub-meter accuracy in lateral and vertical translation, offering a scalable, real-time alternative for dynamic maritime environments.'
