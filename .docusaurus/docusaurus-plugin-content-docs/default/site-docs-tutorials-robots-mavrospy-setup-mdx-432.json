@@ -1,7 +1,7 @@
 {
   "id": "tutorials/robots/mavrospy/setup",
   "title": "Hardware Setup",
-  "description": "MAVROSPY is supported on a PX4 (v1.15.2) flight controller with a RPi4 (Ubuntu 22.04 MATE) or Jetson Nano (JetPack 4.6) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.",
+  "description": "MAVROSPY is supported on a PX4 (v1.15.4) flight controller with a RPi4 (Ubuntu 22.04 MATE), Jetson Nano (JetPack 4.6), or Jetson Orin Nano (JetPack 6.2) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.",
   "source": "@site/docs/tutorials/robots/mavrospy/setup.mdx",
   "sourceDirName": "tutorials/robots/mavrospy",
   "slug": "/tutorials/robots/mavrospy/setup",

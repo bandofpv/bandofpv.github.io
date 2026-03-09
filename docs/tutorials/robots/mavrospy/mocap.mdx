@@ -93,11 +93,18 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
         ```bash
         $ docker container rm -f mavrospy2-jetson-outdoor-container
         ```
       </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+        ```bash
+        $ docker container rm -f mavrospy2-jetson-outdoor-container
+        ```
+      </TabItem>
+
     </Tabs>
     :::
 
@@ -139,7 +146,15 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ cd ~/mavrospy/docker/jetson
+        $ ./run_docker.sh
+        $ ros2 topic echo /poses
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ cd ~/mavrospy/docker/jetson
         $ ./run_docker.sh
@@ -157,7 +172,13 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL
         ```
@@ -174,7 +195,13 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL pattern:=figure8
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL pattern:=figure8
         ```
@@ -204,7 +231,13 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ docker container rm -f mavrospy-jetson-outdoor-container
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ docker container rm -f mavrospy-jetson-outdoor-container
         ```
@@ -222,7 +255,14 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ cd ~/mavrospy/docker/jetson
+        $ bash run_docker.sh
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ cd ~/mavrospy/docker/jetson
         $ bash run_docker.sh
@@ -253,7 +293,13 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL
         ```
@@ -270,7 +316,13 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL pattern:=figure8
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL pattern:=figure8
         ```
@@ -314,7 +366,15 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson" label="Jetson Nano">
+      <TabItem value="jetson-nano" label="Jetson Nano">
+        ```bash
+        $ cd ~/mavrospy/docker/jetson
+        $ bash run_docker.sh
+        $ rostopic echo /qualisys/My_Quad/pose
+        ```
+      </TabItem>
+
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
         $ cd ~/mavrospy/docker/jetson
         $ bash run_docker.sh

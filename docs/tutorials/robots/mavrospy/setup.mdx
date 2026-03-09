@@ -7,11 +7,11 @@ import TabItem from '@theme/TabItem';
 
 # Hardware Setup
 
-MAVROSPY is supported on a PX4 (v1.15.2) flight controller with a RPi4 (Ubuntu 22.04 MATE) or Jetson Nano (JetPack 4.6) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.
+MAVROSPY is supported on a PX4 (v1.15.4) flight controller with a RPi4 (Ubuntu 22.04 MATE), Jetson Nano (JetPack 4.6), or Jetson Orin Nano (JetPack 6.2) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.
 
 PX4 allows interaction with a companion computer via `OFFBOARD` mode. Make sure to setup an `OFFBOARD` mode switch and an `Emergency Kill` switch in [QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/index.html).
 
-If you haven't already, please install [Ubuntu MATE 22.04](https://releases.ubuntu-mate.org/22.04/arm64/) for the RPi4 (arm64) or [JetPack 4.6](https://developer.nvidia.com/embedded/jetpack-sdk-46) for the Jetson Nano using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
+If you haven't already, please install [Ubuntu MATE 22.04](https://releases.ubuntu-mate.org/22.04/arm64/) for the RPi4 (arm64), [JetPack 4.6](https://developer.nvidia.com/embedded/jetpack-sdk-46) for the Jetson Nano, or [JetPack 6.2](https://developer.nvidia.com/embedded/jetpack-sdk-62) using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
 
 ## Wiring
 
@@ -46,7 +46,7 @@ This tutorial uses the flight controller's `TELEM2` port to communicate with the
     The RPi4 requires a separate 5V/3A power supply via the `5V power` (pin 4) and `Ground` (pin 6). I would recommend soldering a battery elimination circuit (BEC) or Polulu voltage regulator to your UAV's power leads.
   </TabItem>
 
-  <TabItem value="jetson" label="Jetson Nano">
+  <TabItem value="jetson-nano" label="Jetson Nano">
     The Jetson Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
 
     Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
@@ -75,6 +75,33 @@ This tutorial uses the flight controller's `TELEM2` port to communicate with the
       ![Jetson Nano Andrew Bernas](../../../assets/robots/mavrospy/jetson_nano_gpio.png)
     </div>
 
+  </TabItem>
+  <TabItem value="jetson-orin" label="Jetson Orin Nano">
+    The Jetson Orin Nano should theoretically be able to communicate with the flight controller via the GPIO pins. However upon testing, the Jetson Orin Nano struggles to communicate with the flight controller due to a possibly noisy data link. I would recommend using a USB to UART adapter to communicate with the flight controller.
+
+    Connect the flight controller's `TELEM2` `TX`/`RX` pins to the complementary `RXD`/`TXD` pins on the USB to UART adapter:
+
+    | PX4 TELEM2 Pin | USB To UART Adapter Pin |
+    |----------------|-------------------------|
+    | UART5_TX (2)   | RXD                     |
+    | UART5_RX (3)   | TXD                     |
+
+    The standard `TELEM2` pin assignments are shown below:
+
+    | Pins      | Signal          | Voltage |
+    |-----------|-----------------|---------|
+    | 1 (Red)   | VCC (out)       | +5V     |
+    | 2 (Black) | UART5_TX (out)  | +3.3V   |
+    | 3 (Black) | UART5_RX (in)   | +3.3V   |
+    | 4 (Black) | UART5_CTS (out) | +3.3V   |
+    | 5 (Black) | UART5_RTS (in)  | +3.3V   |
+    | 6 (Black) | GND             | GND     |
+
+    The Jetson Orin Nano also requires a separate 7-20V power supply with a max power consumption of 36W. The power supply should be connected to the Jetson Orin Nano's barrel jack or USB-C port as seen below:
+
+    <div align="center">
+      <img alt="Jetson Orin Nano Wiring Andrew Bernas" src={require('../../../assets/robots/vslam-uav/wiring.jpg').default} width="600px" />
+    </div>
   </TabItem>
 </Tabs>
 
@@ -189,7 +216,34 @@ Restart your companion computer.
 
   </TabItem>
 
-  <TabItem value="jetson" label="Jetson Nano">
+  <TabItem value="jetson-nano" label="Jetson Nano">
+    You can check that the serial port is available by issuing this command:
+
+    ```bash
+    $ ls /dev/ttyUSB0
+    ```
+
+    The result of the command should include the RX/TX connection `/dev/ttyUSB0`
+
+    Install MAVProxy:
+
+    ```bash
+    $ sudo apt install -y python3-pip
+    $ sudo pip3 install mavproxy
+    $ sudo apt remove -y modemmanager
+    ```
+
+    Run MAVProxy, setting the port to connect to `/dev/ttyUSB0` and the baud rate to match the flight controller (921600):
+
+    ```bash
+    $ sudo mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600
+    ```
+
+    MAVProxy on the Jetson Nano should now connect to the flight controller via its RX/TX pins. You should be able to see this in the terminal. **CTRL+C** to exit.
+
+  </TabItem>
+
+  <TabItem value="jetson-orin" label="Jetson Orin Nano">
     You can check that the serial port is available by issuing this command:
 
     ```bash
@@ -266,7 +320,25 @@ This is a summarized version of the offical [installation insructions](https://d
     ```
   </TabItem>
 
-  <TabItem value="jetson" label="Jetson Nano">
+  <TabItem value="jetson-nano" label="Jetson Nano">
+    Jetpack already comes with Docker installed!
+
+    Add your user to the `docker` group:
+
+    ```bash
+    $ sudo usermod -aG docker $USER
+    ```
+
+    Restart so that your group membership is re-evaluated.
+
+    We can verify our Docker installation via:
+
+    ```bash
+    $ docker run hello-world
+    ```
+  </TabItem>
+
+  <TabItem value="jetson-orin" label="Jetson Orin Nano">
     Jetpack already comes with Docker installed!
 
     Add your user to the `docker` group:
@@ -321,7 +393,20 @@ Clone the `mavrospy` repository:
     **CTRL+D** to exit the container.
   </TabItem>
 
-  <TabItem value="jetson" label="Jetson Nano">
+  <TabItem value="jetson-nano" label="Jetson Nano">
+    Build via the `run_docker.sh` script:
+
+    ```bash
+    $ cd ~/mavrospy/docker/jetson
+    $ bash run_docker.sh
+    ```
+
+    The script will automatically start building the MAVROSPY docker image and run it in a container.
+
+    **CTRL+D** to exit the container.
+  </TabItem>
+
+  <TabItem value="jetson-orin" label="Jetson Orin Nano">
     Build via the `run_docker.sh` script:
 
     ```bash
