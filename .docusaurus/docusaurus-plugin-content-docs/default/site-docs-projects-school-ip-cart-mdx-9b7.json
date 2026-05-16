@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 4,
+  "sidebarPosition": 6,
   "frontMatter": {
-    "sidebar_position": 4,
+    "sidebar_position": 6,
     "sidebar_label": "Inverted Pendulum"
   },
   "sidebar": "projectsSidebar",

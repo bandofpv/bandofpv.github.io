@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 2,
+  "sidebarPosition": 4,
   "frontMatter": {
-    "sidebar_position": 2,
+    "sidebar_position": 4,
     "sidebar_label": "Roomba Light Show"
   },
   "sidebar": "projectsSidebar",

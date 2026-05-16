@@ -191,6 +191,16 @@
               "sidebar": "projectsSidebar"
             },
             {
+              "id": "projects/school/robot-dog",
+              "path": "/docs/projects/school/robot-dog",
+              "sidebar": "projectsSidebar"
+            },
+            {
+              "id": "projects/school/search-and-rescue",
+              "path": "/docs/projects/school/search-and-rescue",
+              "sidebar": "projectsSidebar"
+            },
+            {
               "id": "projects/school/tag",
               "path": "/docs/projects/school/tag",
               "sidebar": "projectsSidebar"

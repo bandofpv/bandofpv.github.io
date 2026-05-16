@@ -1,0 +1,27 @@
+{
+  "id": "projects/school/robot-dog",
+  "title": "Combat Robot Dog",
+  "description": "April 2026",
+  "source": "@site/docs/projects/school/robot-dog.mdx",
+  "sourceDirName": "projects/school",
+  "slug": "/projects/school/robot-dog",
+  "permalink": "/docs/projects/school/robot-dog",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Combat Robot Dog"
+  },
+  "sidebar": "projectsSidebar",
+  "previous": {
+    "title": "Search and Rescue Robot",
+    "permalink": "/docs/projects/school/search-and-rescue"
+  },
+  "next": {
+    "title": "Tic-Tac-Toe Robot",
+    "permalink": "/docs/projects/school/tic-tac-toe"
+  }
+}

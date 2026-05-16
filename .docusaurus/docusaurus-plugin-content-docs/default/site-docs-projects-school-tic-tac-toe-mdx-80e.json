@@ -1,6 +1,6 @@
 {
   "id": "projects/school/tic-tac-toe",
-  "title": "Automated Turret",
+  "title": "Tic-Tac-Toe Robot",
   "description": "November 2025",
   "source": "@site/docs/projects/school/tic-tac-toe.mdx",
   "sourceDirName": "projects/school",
@@ -10,15 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
+  "sidebarPosition": 3,
   "frontMatter": {
-    "sidebar_position": 1,
+    "sidebar_position": 3,
     "sidebar_label": "Tic-Tac-Toe Robot"
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "School",
-    "permalink": "/docs/category/school"
+    "title": "Combat Robot Dog",
+    "permalink": "/docs/projects/school/robot-dog"
   },
   "next": {
     "title": "Roomba Light Show",

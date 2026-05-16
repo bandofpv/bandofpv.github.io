@@ -1,0 +1,229 @@
+---
+sidebar_position: 1
+sidebar_label: Search and Rescue Robot
+---
+import ReactPlayer from 'react-player'
+
+# Search and Rescue Robot
+
+April 2026
+
+**[GitHub Repository](https://github.com/bandofpv/USNA-Robotics-Courses/tree/main/EW458/Final_Project)**
+
+## Introduction
+
+My tenth major course at USNA was EW458 (Programming & Planning For Mobile Robots). The course explores the use of modern programming tools to develop high-level mobile robot applications, covering core concepts such as mapping, autonomous navigation, algorithm design, and state machine logic.
+
+The final project was to program a Create3 ground vehicle to autonomously navigate a search and rescue course, locate a target object, and return to the starting point. The robot had to use its 360-degree LiDAR sensor and camera to map the environment, plan a path to the target, and execute that path while avoiding collisions.
+
+<div align="center">
+  <img alt="Create 3 Robot Andrew Bernas" src={require('../../assets/school/search-and-rescue/create3.jpg').default} width="580" />
+</div>
+
+## Demo Video
+
+<div className="video_wrapper">
+    <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/ya9MTyyWKX4"/>
+</div>
+
+## Design Documentation
+
+The search and rescue system utilizes an iRobot Create3 ground rover integrated with ROS2 to autonomously explore unknown environments, identify specific targets (green & orange cones), and navigate safely. The system is designed around a continuous loop of mapping the environment, identifying new areas to explore (frontiers), planning efficient paths, executing precise movements, and actively scanning for rescue targets.
+
+### Mapping
+
+The foundation of the robot's autonomy is its ability to understand its surroundings in real-time. The standard map for robotic navigation is called an Occupancy Grid. It divides a space into squares of a known size to create a grid, where each cell is assigned a numerical value to represent a feature of the environment.
+
+The system uses odometry to estimate the robot's position, while the LiDAR measurements provide the location of obstacles relative to the robot's body-fixed reference frame. In standard ROS mapping, -1 represents unknown space, 0 represents free space, and 100 represents a high probability of an obstacle.
+
+#### Coordinate Transformations
+
+To build the map, the robot must convert raw Lidar scans into global map coordinates. The Lidar returns distance ($\rho$) and angle ($\phi$) to obstacles. First, a point $i$ is calculated in the robot's Body Frame using polar-to-Cartesian conversion:
+
+<div class='equation-block'>
+  <div class='equation'>$p_{i}^{B}=\begin{bmatrix}\rho_{i}\cos(\phi_{i})\\ \rho_{i}\sin(\phi_{i})\end{bmatrix}$</div>
+  <div class='right-text'>(1)</div>
+</div>
+
+Next, these points are mapped from the Body Frame to the Global Frame. Using the robot's global position $(x_r, y_r)$ and heading $(\psi)$, the algorithm applies a rotation matrix and translation:
+
+<div class='equation-block'>
+  <div class='equation'>$p_{i}^{G}=\begin{bmatrix}\cos(\psi)&-\sin(\psi)\\ \sin(\psi)&\cos(\psi)\end{bmatrix}_{B}^{G}\begin{bmatrix}\rho_{i}\cos(\phi_{i})\\ \rho_{i}\sin(\phi_{i})\end{bmatrix}_{i}^{B}+\begin{bmatrix}x_{r}\\ y_{r}\end{bmatrix}^{G}$</div>
+  <div class='right-text'>(2)</div>
+</div>
+
+<div align="center">
+  <img alt="Coordinate Transformation Andrew Bernas" src={require('../../assets/school/search-and-rescue/coord_trans.png').default} width="460px" />
+</div>
+
+#### Spatial to Grid Conversion
+
+To place this physical point into the digital matrix of the occupancy map, the spatial coordinates are converted to pixel indices. For a map with spatial resolutions $\delta x$ and $\delta y$, the grid index $(i_x, i_y)$ is found by comparing the point against the map's minimum boundaries:
+
+<div class='equation-block'>
+  <div class='equation'> $i_{x}=\frac{x-x_{min}}{\delta x}$ </div>
+  <div class='right-text'>(3)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'> $i_{y}=\frac{y-y_{min}}{\delta y}$ </div>
+  <div class='right-text'>(4)</div>
+</div>
+
+<div align="center">
+  <img alt="Pixels Andrew Bernas" src={require('../../assets/school/search-and-rescue/pixels.png').default} width="360px" />
+</div>
+
+#### Ray Tracing (Clearing Free Space)
+
+Every grid point on the ray connecting the vehicle position to the obstacle location must be free space. The algorithm clears all of the cells the laser passes through. For a ray with total distance $\rho=\sqrt{dx^2+dy^2}$ , the system divides the ray into $N$ steps, where $N=\frac{\rho}{\delta\rho}$. At each fractional step $t=k/N$, the intermediate coordinates are calculated:
+
+<div class='equation-block'>
+  <div class='equation'>$x=x_{0}+dx*t$</div>
+  <div class='right-text'>(5)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$y=y_{0}+dy*t$</div>
+  <div class='right-text'>(6)</div>
+</div>
+
+These intermediate cells are marked as free, while the final endpoint is marked as an obstacle.
+
+<div align="center">
+  <img alt="Ray Tracing Andrew Bernas" src={require('../../assets/school/search-and-rescue/ray-tracing.png').default} width="360px" />
+</div>
+
+### Frontier Selection
+
+Once a map is generated, the robot must decide where to go next. It does this by finding "frontiers," which are the boundaries between known free space and unknown, unexplored space.
+
+* **FOV-Targeted Exploration**: The robot specifically looks for frontiers within its camera's FOV map to ensure it is actively pointing its sensors at unexplored areas.
+* **Candidate Filtering**: Not all frontiers are valid. The system filters out frontiers that are too close to walls (maintaining a 0.30m clearance) or do not have a minimum connected free area (0.5 square meters) to ensure the robot doesn't get stuck in tight corners.
+* **Goal Selection**: Among the valid candidates, the algorithm prefers frontiers that are positioned near the edge of the camera's maximum range (3.0 meters) to effectively push the exploration outward.
+
+<div align="center">
+  <img alt="Frontier Andrew Bernas" src={require('../../assets/school/search-and-rescue/frontier.png').default} />
+</div>
+
+### Path Planning
+
+With a frontier goal selected, the robot calculates a safe route using a Rapidly-exploring Random Tree (RRT) algorithm.
+
+* **Tree Generation**: The algorithm samples random points in the map and iteratively builds a tree connecting these points toward the goal. It explicitly checks every path segment against the occupancy grid to ensure the route is entirely collision-free.
+* **Adaptive Planning**: If the robot struggles to find a path, it dynamically scales down its expansion distance and increases its maximum iterations to navigate tighter spaces.
+* **Path Pruning (Shortcut Method)**: Raw RRT paths are often jagged and inefficient. To fix this, a pruning function applies a greedy shortcut algorithm. It iterates through the waypoints and attempts to connect the current position directly to the furthest possible waypoint in a straight line. If that direct segment is collision-free, it deletes all the redundant waypoints in between, resulting in a much smoother and faster route.
+
+<div align="center">
+  <img alt="Pruned RRT Andrew Bernas" src={require('../../assets/school/search-and-rescue/RRT.png').default} />
+</div>
+
+### Waypoint Control
+
+After a pruned path is generated, the robot relies on a custom proportional controller to navigate from waypoint to waypoint.
+
+The Create3 robot utilizes a built-in inner loop controller to manage wheel speeds based on a desired forward velocity ($u$) and turn rate ($r$). Therefore, the project focused on developing an outer-loop controller to calculate inputs $u$ and $r$ to drive the robot toward specific global coordinates.
+
+<div align="center">
+  <img alt="Controller Diagram Andrew Bernas" src={require('../../assets/school/light-show/diag.png').default} width="450px" />
+</div>
+
+#### Control Logic
+
+The controller uses Proportional Control to minimize the error between the current pose and the desired waypoint $(X_{des}, Y_{des})$. The error terms are calculated as:
+
+<div class='equation-block'>
+  <div class='equation'>$X_{err} = X_{des} - X$</div>
+  <div class='right-text'>(7)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$Y_{err} = Y_{des} - Y$</div>
+  <div class='right-text'>(8)</div>
+</div>
+
+The desired heading ($\psi_{des}$) and distance to the target are derived from these errors:
+
+<div class='equation-block'>
+  <div class='equation'>$\psi_{des} = \text{atan2}(Y_{err}, X_{err})$</div>
+  <div class='right-text'>(9)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$dist = \sqrt{X_{err}^2 + Y_{err}^2}$</div>
+  <div class='right-text'>(10)</div>
+</div>
+
+The control inputs are then computed using proportional gains ($K_u$ and $K_r$):
+
+<div class='equation-block'>
+  <div class='equation'>$u = K_u \cdot dist$</div>
+  <div class='right-text'>(11)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$\psi_{err} = \psi_{des} - \psi$</div>
+  <div class='right-text'>(12)</div>
+</div>
+
+<div class='equation-block'>
+  <div class='equation'>$r = K_r \cdot \psi_{err}$</div>
+  <div class='right-text'>(13)</div>
+</div>
+
+#### Tuning
+
+The gains were tuned separately. Heading ($K_r$) was tuned first to achieve static heading accuracy, followed by the speed gain ($K_u$) to optimize travel time. Inputs were saturated to stay within the robot's physical limits.
+
+### Target Detection and Mission Completion
+
+The ultimate goal of the search and rescue mission is to locate specific targets in the environment—in this case, designated green and orange cones.
+
+* **Vision Fusion**: The system listens to a 2D object detection topic (running YOLO) and filters for specific class IDs representing the targets. Detections must meet a minimum confidence score of 0.60 and fall within the 66-degree camera FOV.
+
+* **Target Tracking**: To prevent false positives, a cone must be detected at least 5 times before it is officially logged. Once confirmed, the system maps the cone as a physical circular obstacle on the occupancy grid so the path planner avoids running it over.
+
+* **Return to Base**: Once both the green and orange targets are securely confirmed, the robot triggers a "return home" mode. It abandons frontier exploration, queries the RRT planner for a path back to its initial starting coordinates, and autonomously navigates home to conclude the mission.
+
+<div align="center">
+  <img alt="Detections Andrew Bernas" src={require('../../assets/school/search-and-rescue/detect.png').default} />
+</div>
+
+### System Performance and Results
+
+The autonomous system was rigorously tested to evaluate its mapping accuracy, path-tracking capabilities, and target detection precision. The plotted telemetry data demonstrates highly reliable performance across the entire search and rescue mission.
+
+#### Path Tracking and Navigation
+
+Telemetry tracking overlaying the desired path against the actual robot path shows that the system tightly adheres to the RRT-generated routes. The custom waypoint controller enforces strict operational bounds to ensure precision:
+
+* **Position Tolerance:** The robot accurately tracks the desired X and Y coordinates over time, reliably staying within a predefined waypoint threshold of +/- 0.15 m.
+
+* **Heading Tolerance:** The robot consistently maintains its desired heading within a strict yaw threshold of +/- 5 degrees.
+
+* **Error Convergence:** Position and yaw error graphs display predictable, stable behavior; errors naturally peak when transitioning to a new waypoint but smoothly converge to near zero as the proportional controller corrects the robot's trajectory.
+
+<div align="center">
+  <img alt="Position Error Andrew Bernas" src={require('../../assets/school/search-and-rescue/position_error.png').default} />
+</div>
+
+<div align="center">
+  <img alt="Yaw Error Andrew Bernas" src={require('../../assets/school/search-and-rescue/yaw_error.png').default} />
+</div>
+
+
+#### Quantitative Error Metrics
+
+Post-mission data analysis yielded the following average error rates, highlighting the overall effectiveness of the integrated sensors and control algorithms:
+
+<div class="table-container">
+| Performance Metric | Average Error |
+| --- | --- |
+| **Position Tracking** | 0.08 m |
+| **Yaw / Heading** | 0.08 deg |
+| **LiDAR Mapping** | 0.11 m |
+| **Target Detection** | 0.36 m |
+| **Return Home** | 0.17 m |
+</div>
+
+Ultimately, the combination of a low-error LiDAR map (0.11 m) and a tightly tuned proportional controller allows the system to autonomously explore its environment, detect objectives, and successfully return to its origin point with an accuracy of 0.17 m.

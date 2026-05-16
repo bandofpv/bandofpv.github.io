@@ -10,9 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 6,
+  "sidebarPosition": 8,
   "frontMatter": {
-    "sidebar_position": 6,
+    "sidebar_position": 8,
     "sidebar_label": "Motor Control"
   },
   "sidebar": "projectsSidebar",

@@ -3,21 +3,56 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
+    path: '/__docusaurus/debug',
+    component: ComponentCreator('/__docusaurus/debug', '5ff'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/config',
+    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/content',
+    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/globalData',
+    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/metadata',
+    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/registry',
+    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/routes',
+    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
+    exact: true
+  },
+  {
     path: '/research',
     component: ComponentCreator('/research', 'e57'),
     exact: true
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e47'),
+    component: ComponentCreator('/docs', '197'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'e2e'),
+        component: ComponentCreator('/docs', '736'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '5d7'),
+            component: ComponentCreator('/docs', '727'),
             routes: [
               {
                 path: '/docs/category/code',
@@ -274,6 +309,18 @@ export default [
               {
                 path: '/docs/projects/school/quad-sim',
                 component: ComponentCreator('/docs/projects/school/quad-sim', '1d1'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/school/robot-dog',
+                component: ComponentCreator('/docs/projects/school/robot-dog', '1ee'),
+                exact: true,
+                sidebar: "projectsSidebar"
+              },
+              {
+                path: '/docs/projects/school/search-and-rescue',
+                component: ComponentCreator('/docs/projects/school/search-and-rescue', 'c03'),
                 exact: true,
                 sidebar: "projectsSidebar"
               },
