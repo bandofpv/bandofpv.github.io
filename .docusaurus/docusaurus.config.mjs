@@ -14,6 +14,23 @@ export default {
   "deploymentBranch": "deployment",
   "trailingSlash": false,
   "onBrokenLinks": "throw",
+  "markdown": {
+    "hooks": {
+      "onBrokenMarkdownLinks": "warn",
+      "onBrokenMarkdownImages": "throw"
+    },
+    "format": "mdx",
+    "mermaid": false,
+    "emoji": true,
+    "mdx1Compat": {
+      "comments": true,
+      "admonitions": true,
+      "headingIds": true
+    },
+    "anchors": {
+      "maintainCase": false
+    }
+  },
   "i18n": {
     "defaultLocale": "en",
     "locales": [
@@ -329,12 +346,19 @@ export default {
     }
   },
   "baseUrlIssueBanner": true,
+  "storage": {
+    "type": "localStorage",
+    "namespace": false
+  },
   "future": {
     "v4": {
       "removeLegacyPostBuildHeadAttribute": false,
-      "useCssCascadeLayers": false
+      "useCssCascadeLayers": false,
+      "siteStorageNamespacing": false,
+      "fasterByDefault": false,
+      "mdx1CompatDisabledByDefault": false
     },
-    "experimental_faster": {
+    "faster": {
       "swcJsLoader": false,
       "swcJsMinimizer": false,
       "swcHtmlMinimizer": false,
@@ -342,12 +366,10 @@ export default {
       "mdxCrossCompilerCache": false,
       "rspackBundler": false,
       "rspackPersistentCache": false,
-      "ssgWorkerThreads": false
+      "ssgWorkerThreads": false,
+      "gitEagerVcs": false
     },
-    "experimental_storage": {
-      "type": "localStorage",
-      "namespace": false
-    },
+    "experimental_vcs": {},
     "experimental_router": "browser"
   },
   "onBrokenAnchors": "warn",
@@ -362,22 +384,5 @@ export default {
   "headTags": [],
   "clientModules": [],
   "titleDelimiter": "|",
-  "noIndex": false,
-  "markdown": {
-    "format": "mdx",
-    "mermaid": false,
-    "emoji": true,
-    "mdx1Compat": {
-      "comments": true,
-      "admonitions": true,
-      "headingIds": true
-    },
-    "anchors": {
-      "maintainCase": false
-    },
-    "hooks": {
-      "onBrokenMarkdownLinks": "warn",
-      "onBrokenMarkdownImages": "throw"
-    }
-  }
+  "noIndex": false
 };

@@ -1,6 +1,6 @@
 {
   "id": "projects/school/robot-dog",
-  "title": "Combat Robot Dog",
+  "title": "Tactical Robo-Dog",
   "description": "April 2026",
   "source": "@site/docs/projects/school/robot-dog.mdx",
   "sourceDirName": "projects/school",
@@ -13,11 +13,11 @@
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2,
-    "sidebar_label": "Combat Robot Dog"
+    "sidebar_label": "Tactical Robo-Dog"
   },
   "sidebar": "projectsSidebar",
   "previous": {
-    "title": "Search and Rescue Robot",
+    "title": "Search and Rescue Rover",
     "permalink": "/docs/projects/school/search-and-rescue"
   },
   "next": {
