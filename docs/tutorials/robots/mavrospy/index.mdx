@@ -3,6 +3,8 @@ sidebar_position: 1
 sidebar_label: MAVROSPY
 ---
 import ReactPlayer from 'react-player'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # MAVROSPY
 
@@ -23,3 +25,27 @@ MAVROSPY serves as an additional layer to the MAVROS node. It allows users to ea
 <div className="video_wrapper">
     <ReactPlayer className="video_player" controls height="100%" width="100%" url="https://youtu.be/EHgD98Hd8aQ"/>
 </div>
+
+## Hardware Support
+
+MAVROSPY is supported on a PX4 (v1.15.4) flight controller with a Jetson Orin Nano (JetPack 6.2), Jetson Nano (JetPack 4.6), or a RPi4 (Ubuntu 22.04 MATE) companion computer. Additionally, it supported on ROS2 Humble and ROS1 Noetic.
+
+<Tabs groupId="companion-computers">
+  <TabItem value="jetson-orin" label="Jetson Orin Nano">
+    <div align="center">
+      <img alt="Jetson Orin Nano UAV Andrew Bernas" src={require('../../../assets/robots/mavrospy/jetson-orin-uav.jpg').default} width="600px" />
+    </div>
+  </TabItem>
+
+  <TabItem value="jetson-nano" label="Jetson Nano">
+    <div align="center">
+      <img alt="Jetson Nano UAV Andrew Bernas" src={require('../../../assets/robots/mavrospy/jetson-uav.jpg').default} width="600px" />
+    </div>
+  </TabItem>
+
+  <TabItem value="rpi" label="RPi4">
+    <div align="center">
+      <img alt="RPI4 UAV Andrew Bernas" src={require('../../../assets/robots/mavrospy/rpi-uav.jpg').default} width="600px" />
+    </div>
+  </TabItem>
+</Tabs>

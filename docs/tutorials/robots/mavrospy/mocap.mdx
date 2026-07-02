@@ -87,9 +87,9 @@ After this, run `timedatectl` again to confirm the network time status.
     If you are following this tutorial after the [GPS Navigation Tutorial](outdoor.mdx) please remove the outdoor `MAVROSPY` container:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ docker container rm -f mavrospy2-rpi-outdoor-container
+        $ docker container rm -f mavrospy2-jetson-outdoor-container
         ```
       </TabItem>
 
@@ -99,12 +99,11 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ docker container rm -f mavrospy2-jetson-outdoor-container
+        $ docker container rm -f mavrospy2-rpi-outdoor-container
         ```
       </TabItem>
-
     </Tabs>
     :::
 
@@ -138,9 +137,9 @@ After this, run `timedatectl` again to confirm the network time status.
     To verify your pose topics are being published, run the following on your companion computer:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ cd ~/mavrospy/docker/rpi
+        $ cd ~/mavrospy/docker/jetson
         $ ./run_docker.sh
         $ ros2 topic echo /poses
         ```
@@ -154,9 +153,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ cd ~/mavrospy/docker/jetson
+        $ cd ~/mavrospy/docker/rpi
         $ ./run_docker.sh
         $ ros2 topic echo /poses
         ```
@@ -166,9 +165,9 @@ After this, run `timedatectl` again to confirm the network time status.
     You can now start our motion capture control node on our companion computer via:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ ros2 launch mavrospy mocap.py
+        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL
         ```
       </TabItem>
 
@@ -178,9 +177,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL
+        $ ros2 launch mavrospy mocap.py
         ```
       </TabItem>
     </Tabs>
@@ -189,9 +188,9 @@ After this, run `timedatectl` again to confirm the network time status.
     You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ ros2 launch mavrospy mocap.py pattern:=figure8
+        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL pattern:=figure8
         ```
       </TabItem>
 
@@ -201,11 +200,12 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ ros2 launch mavrospy mocap.py fcu_url:=$FCU_URL pattern:=figure8
+        $ ros2 launch mavrospy mocap.py pattern:=figure8
         ```
       </TabItem>
+
     </Tabs>
 
     Available Patterns: `square`, `square_head`, `circle`, `circle_head`, `figure8`, `figure8_head`, `spiral`, and `spiral_head`. Where `_head` will specify the drone to face in the direction of motion.
@@ -225,9 +225,9 @@ After this, run `timedatectl` again to confirm the network time status.
     If you are following this tutorial after the [GPS Navigation Tutorial](outdoor.mdx) please remove the outdoor `MAVROSPY` container:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ docker container rm -f mavrospy-rpi-outdoor-container
+        $ docker container rm -f mavrospy-jetson-outdoor-container
         ```
       </TabItem>
 
@@ -237,9 +237,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ docker container rm -f mavrospy-jetson-outdoor-container
+        $ docker container rm -f mavrospy-rpi-outdoor-container
         ```
       </TabItem>
     </Tabs>
@@ -248,9 +248,9 @@ After this, run `timedatectl` again to confirm the network time status.
     On your companion computer, make sure your running the `MAVROSPY` Docker container:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ cd ~/mavrospy/docker/rpi
+        $ cd ~/mavrospy/docker/jetson
         $ bash run_docker.sh
         ```
       </TabItem>
@@ -262,9 +262,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ cd ~/mavrospy/docker/jetson
+        $ cd ~/mavrospy/docker/rpi
         $ bash run_docker.sh
         ```
       </TabItem>
@@ -287,9 +287,9 @@ After this, run `timedatectl` again to confirm the network time status.
     You can now start our motion capture control node on our companion computer via:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ roslaunch mavrospy mocap.launch
+        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL
         ```
       </TabItem>
 
@@ -299,9 +299,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL
+        $ roslaunch mavrospy mocap.launch
         ```
       </TabItem>
     </Tabs>
@@ -310,9 +310,9 @@ After this, run `timedatectl` again to confirm the network time status.
     You can specify the flight pattern via the `pattern` argument. If unspecified, it will default to `square`.
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ roslaunch mavrospy mocap.launch pattern:=figure8
+        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL pattern:=figure8
         ```
       </TabItem>
 
@@ -322,9 +322,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ roslaunch mavrospy mocap.launch fcu_url:=$FCU_URL pattern:=figure8
+        $ roslaunch mavrospy mocap.launch pattern:=figure8
         ```
       </TabItem>
     </Tabs>
@@ -358,9 +358,9 @@ After this, run `timedatectl` again to confirm the network time status.
     To verify your pose topics are being published, run the following on another terminal on your companion computer:
 
     <Tabs groupId="companion-computers">
-      <TabItem value="rpi" label="RPi4">
+      <TabItem value="jetson-orin" label="Jetson Orin Nano">
         ```bash
-        $ cd ~/mavrospy/docker/rpi
+        $ cd ~/mavrospy/docker/jetson
         $ bash run_docker.sh
         $ rostopic echo /qualisys/My_Quad/pose
         ```
@@ -374,9 +374,9 @@ After this, run `timedatectl` again to confirm the network time status.
         ```
       </TabItem>
 
-      <TabItem value="jetson-orin" label="Jetson Orin Nano">
+      <TabItem value="rpi" label="RPi4">
         ```bash
-        $ cd ~/mavrospy/docker/jetson
+        $ cd ~/mavrospy/docker/rpi
         $ bash run_docker.sh
         $ rostopic echo /qualisys/My_Quad/pose
         ```
